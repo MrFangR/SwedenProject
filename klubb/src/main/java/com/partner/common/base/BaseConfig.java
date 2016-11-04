@@ -14,10 +14,9 @@ import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.druid.DruidPlugin;
 import com.jfinal.render.ViewType;
 import com.partner.busi.front.controller.IndexController;
-import com.partner.busi.model.User;
 import com.partner.busi.model._MappingKit;
-import com.partner.common.interceptor.AuthInterceptor;
 import com.partner.common.plugin.PropertiesPlugin;
+import com.partner.common.tag.I18nTag;
 
 /**
  * @author issuser
@@ -36,6 +35,7 @@ public class BaseConfig extends JFinalConfig {
 		isDev = getPropertyToBoolean("devMode", false);
 		me.setViewType(ViewType.JSP);
 		me.setBaseViewPath("WEB-INF/view/");
+		I18nTag.locale = "en_US";
 	}
 
 	/*
