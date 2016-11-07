@@ -7,5 +7,20 @@ import com.partner.busi.model.base.BaseIntroduce;
  */
 @SuppressWarnings("serial")
 public class Introduce extends BaseIntroduce<Introduce> {
+	
+	public static enum INTRODUCE_TYPE{
+		POOL(1), //台球厅介绍
+		STAFF(2); //员工介绍
+		
+		private int type;
+		private INTRODUCE_TYPE(int type){
+			this.type = type;
+		}
+		@Override
+		public String toString() {
+			return String.valueOf(this.type);
+		}
+	};
+	
 	public static final Introduce dao = new Introduce();
 }
