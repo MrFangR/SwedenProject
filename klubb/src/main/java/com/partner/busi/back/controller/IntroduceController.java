@@ -8,6 +8,7 @@ import java.util.Date;
 import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
 import com.jfinal.ext.route.ControllerBind;
+import com.partner.busi.back.util.BackSessionUtil;
 import com.partner.busi.back.validator.IntroduceValidator;
 import com.partner.busi.model.Introduce;
 import com.partner.busi.model.Introduce.INTRODUCE_TYPE;
@@ -32,7 +33,7 @@ public class IntroduceController extends Controller {
 		Introduce intro = getModel(Introduce.class);
 		
 		intro.set("CREATE_TIME", new Date());
-		intro.set("CREATE_USER_ID", BackSessionUtil.getUserNo(getRequest()));
+		intro.set("CREATE_USER_ID", BackSessionUtil.getUserId(getRequest()));
 		rsFlag = intro.update();
 		
 		if(rsFlag){ //保存成功
