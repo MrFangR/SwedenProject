@@ -4,6 +4,7 @@
 package com.partner.busi.back.controller;
 
 import java.util.Date;
+import java.util.List;
 
 import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
@@ -11,7 +12,6 @@ import com.jfinal.ext.route.ControllerBind;
 import com.partner.busi.back.util.BackSessionUtil;
 import com.partner.busi.back.validator.IntroduceValidator;
 import com.partner.busi.model.Introduce;
-import com.partner.busi.model.Introduce.INTRODUCE_TYPE;
 
 /** 
  * @ClassName: IntroduceController 
@@ -21,6 +21,25 @@ import com.partner.busi.model.Introduce.INTRODUCE_TYPE;
  */
 @ControllerBind(controllerKey="/back/introduce",viewPath="/back/introduce")
 public class IntroduceController extends Controller {
+	
+	/**
+	 * 介绍可编辑列表
+	 */
+	public void list(){
+		List<Introduce> list = Introduce.dao.find("select * from t_introduce");
+		setAttr("list", list);
+		render("list.jsp");
+	}
+	
+	/**
+	 * 获取介绍编辑页面
+	 */
+	public void edit(){
+		String type = getPara("type");
+		Introduce intro = Introduce.dao.findById(type);
+		setAttr("intro", intro);
+		render("edit.jsp");
+	}
 	
 	/**
      * 新闻 新增/更新
@@ -44,22 +63,4 @@ public class IntroduceController extends Controller {
 		renderJson();
 	}
     
-    /**
-     * 修改台球厅介绍页面
-     */
-    public void editPoolIntro(){
-    	Introduce intro = Introduce.dao.findById(INTRODUCE_TYPE.POOL);
-		setAttr("intro", intro);
-		render("pool_edit.jsp");
-	}
-    
-    /**
-     * 修改员工介绍页面
-     */
-    public void editStaffIntro(){
-    	Introduce intro = Introduce.dao.findById(INTRODUCE_TYPE.STAFF);
-		setAttr("intro", intro);
-		render("staff_edit.jsp");
-	}
-	
 }
