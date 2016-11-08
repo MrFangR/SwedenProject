@@ -8,4 +8,8 @@ import com.partner.busi.model.base.BaseUser;
 @SuppressWarnings("serial")
 public class User extends BaseUser<User> {
 	public static final User dao = new User();
+	
+	public User findByLogin(String email, String pwd){
+		return dao.findFirst("select * from t_user where status = 0 and EMAIL = ? and password = ?", email, pwd);
+	}
 }

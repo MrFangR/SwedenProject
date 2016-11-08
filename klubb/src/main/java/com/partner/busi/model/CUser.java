@@ -1,5 +1,8 @@
 package com.partner.busi.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.partner.busi.model.base.BaseCUser;
 
 /**
@@ -11,5 +14,20 @@ public class CUser extends BaseCUser<CUser> {
 	
 	public CUser findByName(String name){
 		 return dao.findFirst("select * from c_user where status = 0 and user_name = ?",name);
+	}
+	
+	/**
+	 * 根据userNo和pwd校验是否存在用户，存在则返回对象，否则返回null
+	 * @param userNo
+	 * @param pwd
+	 * @return BackUser/null
+	 */
+	public CUser validCUser(String userNo, String pwd){
+		StringBuffer sql = new StringBuffer("SELECT * FROM c_user WHERE STATUS=0 AND ");
+		sql.append("USER_NAME=?").append(" AND PASSWORD=?");
+		List<String> paramLst = new ArrayList<String>();
+		paramLst.add(userNo);
+		paramLst.add(pwd);
+		return dao.findFirst(sql.toString(), paramLst.toArray());
 	}
 }
