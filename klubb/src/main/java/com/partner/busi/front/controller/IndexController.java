@@ -4,9 +4,7 @@
 package com.partner.busi.front.controller;
 
 import com.jfinal.core.Controller;
-import com.jfinal.ext.route.ControllerBind;
 import com.partner.busi.model.CUser;
-import com.partner.common.base.BasePageController;
 
 /**
  * @author fangrui
