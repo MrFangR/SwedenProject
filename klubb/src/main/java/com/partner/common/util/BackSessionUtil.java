@@ -1,8 +1,5 @@
 package com.partner.common.util;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang.StringUtils;
@@ -25,29 +22,24 @@ public class BackSessionUtil {
 	 * @return void
 	 */
 	public static boolean setSession(HttpServletRequest request, CUser user){
-		// 如果传入的 backUser为空，则作为异常处理，直接返回
+		// 如果传入的 CUser为空，则作为异常处理，直接返回
 		if (user==null || StringUtils.isBlank(user.getStr("USER_NAME"))) {
 			log.info("初始化后台管理系统所用用户对象为空，初始化失败，直接返回");
 			return false;
 		}
+		
 		// 设置session值
 		request.getSession().setAttribute(Constants.BACK_SESSION_USER, user);
-		log.info("初始化后台管理用户session 完成[userNo="+user.getUserName()+"]");
+		log.info("初始化后台管理用户session 完成[userName="+user.getStr("USER_NAME")+"]");
 		return true;
 	}
 	
 	/**
 	 * 获取 BackSession
-	 * @return BackUser
+	 * @return CUser
 	 */
-	public static CUser getSession(HttpServletRequest request){
-		CUser user = (CUser)request.getSession().getAttribute(Constants.BACK_SESSION_USER);
-		if(user == null){
-			user = new CUser();
-			user = CUser.dao.findByName(request.getParameter("loginName"));
-			request.getSession().setAttribute(Constants.BACK_SESSION_USER, user);
-		}
-		return user;
+	public static CUser getUser(HttpServletRequest request){
+		return (CUser)request.getSession().getAttribute(Constants.BACK_SESSION_USER);
 	}
 
 	/**
@@ -63,27 +55,35 @@ public class BackSessionUtil {
 	 * @return boolean
 	 */
 	public static boolean isLoginBack(HttpServletRequest request){
-		CUser user = getSession(request);
-		// 判断session不为空，且session中存放的 用户对象不为空，且其USER_NO属性也不为空
-		if (user!=null
-				&& StringUtils.isNotBlank(user.getUserName())) {
-			return true;
-		} else {
-			return false;
-		}
+		CUser user = getUser(request);
+		return user!=null && StringUtils.isNotBlank(user.getStr("USER_NAME"));
 	}
 	
 	/**
-	 * 获取登录用户.USER_NO
+	 * 获取登录用户.USER_NAME
 	 * @param request
 	 * @return userNo/""
 	 */
 	public static String getUserName(HttpServletRequest request){
-		CUser user = getSession(request);
-		if (user!=null && StringUtils.isNotBlank(user.getUserName())) {
-			return user.getUserName();
+		CUser user = getUser(request);
+		if (user != null) {
+			return user.getStr("USER_NAME");
 		} else {
-			return "";
+			return null;
+		}
+	}
+	
+	/**
+	 * 获取登录用户.USER_ID
+	 * @param request
+	 * @return userNo/""
+	 */
+	public static String getUserId(HttpServletRequest request){
+		CUser user = getUser(request);
+		if (user != null) {
+			return user.getStr("ID");
+		} else {
+			return null;
 		}
 	}
 	
