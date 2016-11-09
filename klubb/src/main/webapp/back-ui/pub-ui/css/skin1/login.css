@@ -1,0 +1,71 @@
+@charset "utf-8";
+/* CSS Document */
+
+*{ padding:0; margin:0;}
+a{ text-decoration:none}
+ul,ul li{ list-style:none}
+img{ border:none;max-width:100%;}
+
+.login-bg{width: 100%;background:url(../../images/login.jpg) center center no-repeat; background-size: 100%; position: relative;}
+.login-foot{height: 78px; line-height: 78px; background-color: #3b3b3b; text-align: center;font-size: 14px;color: #f5f5f5;}
+/*lo-wrap  s*/
+.lo-wrap{width: 355px;padding: 20px; height: auto; background:url(../../images/lo-warp.png) repeat;border: 1px #a1a0a1 solid;box-shadow: 1px 1px 4px #a1a0a1;position: absolute;top: 20%;left: 50%;margin-left: -200px;}
+
+/*lo-wrap  d*/
+.lo-title{height:30px; line-height: 30px; padding-left: 45px; background:url(../../images/lo-logo-2.png) left center no-repeat;}
+.login_box{border:1px #aeafb1 solid; padding:8px;margin-top:10px; background-color:#fff;}
+
+.login_box .login-p{ position:relative; padding:5px 0 5px 40px; border-bottom:1px solid #aeafb1; position:relative; box-sizing:border-box;}
+.login_box .login-p input{ border:none; background:none; width:100%; font-size:16px;color: #919191; height:30px; line-height:30px;font-size:14px; box-sizing:border-box;font-family: "Microsoft Yahei"; }
+.login_box .login-p label{ position:absolute; left:5px; top:6px; width:30px; height:30px;}
+.login_box label.icon-person{ background:url(../../images/user-bg.png) no-repeat left center;}
+.login_box label.icon-pwd{ background:url(../../images/pwd.png) no-repeat left center;}
+.login_box label.icon-yzm{ background:url(../../images/icon-yzm.png) no-repeat left center;}
+.login_box .last{border-bottom: none;}
+.select_box {
+    background:url("../../images/icon-2.png") 270px center no-repeat;    
+    cursor: pointer;    
+    height:30px;    
+    width:100%;
+    z-index: 2;
+	position:relative;
+}
+.select_box .select_txt{color: #919191;font-size: 14px;line-height:30px; display:block}
+.option {
+    border: 1px solid #aeafb1;
+    display: none;
+    left: -1px;
+    overflow: hidden;
+    position: absolute;
+    top: 30px;
+    width: 90%;
+    z-index: 2;
+	background-color:#fff;
+}
+.option a {
+    background: #fff;
+    display: block;
+    font-family: "Microsoft Yahei";
+    height: 30px;
+    line-height:30px;
+    padding: 0 10px;
+    text-align: left;
+    width: 85%;
+	font-size:14px
+}
+
+.ued-button {
+    border: medium none;
+    border-radius: 3px;
+    box-sizing: border-box;
+    display: block;
+    font-family: "microsoft yahei","Droid Sans","Droid Sans Fallback","Lucida Grande","Hiragino Sans GB","Hiragino Sans GB W3";
+    font-size: 18px;
+    height: 44px;
+    line-height: 44px;
+    text-align: center;
+    width: 100%;
+	background:#e4007f;
+	color:#fff;
+}
+.ued-input{border: 1px #aeafb1 solid;height:20px;padding:8px 0 8px 8px;font-size: 14px;color: #919191;font-family: "microsoft yahei","Droid Sans","Hiragino Sans GB";}
