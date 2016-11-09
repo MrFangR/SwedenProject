@@ -9,9 +9,9 @@ import java.util.List;
 import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
 import com.jfinal.ext.route.ControllerBind;
-import com.partner.busi.back.util.BackSessionUtil;
 import com.partner.busi.back.validator.IntroduceValidator;
 import com.partner.busi.model.Introduce;
+import com.partner.common.util.BackSessionUtil;
 
 /** 
  * @ClassName: IntroduceController 

@@ -1,5 +1,11 @@
 package com.partner.busi.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.commons.lang.StringUtils;
+
+import com.jfinal.plugin.activerecord.Page;
 import com.partner.busi.model.base.BaseContact;
 
 /**
@@ -8,4 +14,27 @@ import com.partner.busi.model.base.BaseContact;
 @SuppressWarnings("serial")
 public class Contact extends BaseContact<Contact> {
 	public static final Contact dao = new Contact();
+	
+	/**
+	 * 搜索联系我们
+	 * @param phone
+	 * @param status
+	 * @param pageNum
+	 * @param pageSize
+	 * @return
+	 */
+	public Page<Contact> search(String phone, String status, int pageNum, int pageSize){
+		String select = "select c.*";
+		StringBuilder sql = new StringBuilder(" from t_contact c where 1=1 ");
+		List<Object> params = new ArrayList<Object>();
+		if (StringUtils.isNotBlank(phone)) {
+			sql.append(" and c.PHONE like ? ");
+			params.add("%" + phone + "%");
+		}
+		if (StringUtils.isNotBlank(status)) {
+			sql.append(" and c.STATUS = ? ");
+			params.add(status);
+		}
+		return paginate(pageNum, pageSize, select, sql.toString(), params.toArray());
+	}
 }
