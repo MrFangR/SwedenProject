@@ -19,8 +19,7 @@ import com.partner.common.util.BackSessionUtil;
  * @author zhanglei
  * @date 2016年11月4日 下午3:45:05  
  */
-@ControllerBind(controllerKey="/back/introduce",viewPath="/back/introduce")
-public class IntroduceController extends Controller {
+public class BackIntroduceController extends Controller {
 	
 	/**
 	 * 介绍可编辑列表
