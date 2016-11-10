@@ -40,6 +40,7 @@ public class BaseConfig extends JFinalConfig {
 		isDev = getPropertyToBoolean("devMode", false);
 		me.setViewType(ViewType.JSP);
 		me.setBaseViewPath("WEB-INF/view/");
+		me.setBaseUploadPath(getProperty("uploadDir"));
 		I18nTag.locale = "en_US";
 	}
 
@@ -57,7 +58,7 @@ public class BaseConfig extends JFinalConfig {
 		me.add("/back", BackLoginController.class, "/back");
 		me.add("/back/main",BackMainController.class,"/back");
 		me.add("/back/contact",BackContactController.class,"/back");
-		me.add("/back/introduct",BackIntroduceController.class,"/back");
+		me.add("/back/introduce",BackIntroduceController.class,"/back");
 		me.add("/back/activity",BackActivityController.class,"/back");
 	}
 
@@ -79,11 +80,11 @@ public class BaseConfig extends JFinalConfig {
 		druid.setFilters("stat");
 		me.add(druid);
 
-		// 配置ActiveRecord插件
+		// 閰嶇疆ActiveRecord鎻掍欢
 		ActiveRecordPlugin arp = new ActiveRecordPlugin(druid);
 		me.add(arp);
 		//arp.addMapping("c_user", User.class);
-		// 所有配置在 MappingKit 中搞定
+		// 鎵�湁閰嶇疆鍦�MappingKit 涓悶瀹�
 		_MappingKit.mapping(arp);
 
 	}
