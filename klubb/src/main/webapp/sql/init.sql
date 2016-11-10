@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50626
 File Encoding         : 65001
 
-Date: 2016-11-09 14:24:39
+Date: 2016-11-10 21:54:50
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -57,7 +57,8 @@ CREATE TABLE `sys_access_log` (
 DROP TABLE IF EXISTS `t_activity`;
 CREATE TABLE `t_activity` (
   `ID` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
-  `title` varchar(50) DEFAULT NULL COMMENT '活动名称',
+  `TITLE` varchar(50) DEFAULT NULL COMMENT '活动名称',
+  `IMG` varchar(100) DEFAULT NULL COMMENT '图片描述',
   `CONTENT` varchar(1000) DEFAULT NULL COMMENT '活动内容',
   `ACT_TIME` datetime DEFAULT NULL COMMENT '活动时间',
   `STATUS` tinyint(2) DEFAULT NULL COMMENT '状态，0：草稿，1：正常',
@@ -157,13 +158,15 @@ CREATE TABLE `t_introduce` (
   `CREATE_TIME` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
   `CREATE_USER_ID` int(11) DEFAULT NULL COMMENT '创建人',
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='介绍';
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='介绍';
 
 -- ----------------------------
 -- Records of t_introduce
 -- ----------------------------
-INSERT INTO `t_introduce` VALUES ('1', '1', null, null, null);
-INSERT INTO `t_introduce` VALUES ('2', '2', null, null, null);
+INSERT INTO `t_introduce` VALUES ('1', '1', '<p>阿法士大夫</p>', '2016-11-10 21:54:22', null);
+INSERT INTO `t_introduce` VALUES ('2', '2', null, '2016-11-10 16:31:40', '1');
+INSERT INTO `t_introduce` VALUES ('3', '0', '<p>阿法士大夫</p>', '2016-11-10 21:54:22', '0');
+INSERT INTO `t_introduce` VALUES ('4', '2', null, null, null);
 
 -- ----------------------------
 -- Table structure for t_notice
