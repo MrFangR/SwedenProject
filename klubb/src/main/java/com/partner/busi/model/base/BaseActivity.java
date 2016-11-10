@@ -17,12 +17,20 @@ public abstract class BaseActivity<M extends BaseActivity<M>> extends Model<M> i
 		return get("ID");
 	}
 
-	public void setTitle(java.lang.String title) {
-		set("title", title);
+	public void setTITLE(java.lang.String TITLE) {
+		set("TITLE", TITLE);
 	}
 
-	public java.lang.String getTitle() {
-		return get("title");
+	public java.lang.String getTITLE() {
+		return get("TITLE");
+	}
+
+	public void setIMG(java.lang.String IMG) {
+		set("IMG", IMG);
+	}
+
+	public java.lang.String getIMG() {
+		return get("IMG");
 	}
 
 	public void setCONTENT(java.lang.String CONTENT) {
@@ -41,14 +49,6 @@ public abstract class BaseActivity<M extends BaseActivity<M>> extends Model<M> i
 		return get("ACT_TIME");
 	}
 
-	public void setCreateTime(java.util.Date createTime) {
-		set("CREATE_TIME", createTime);
-	}
-
-	public java.util.Date getCreateTime() {
-		return get("CREATE_TIME");
-	}
-
 	public void setSTATUS(java.lang.Integer STATUS) {
 		set("STATUS", STATUS);
 	}
@@ -57,12 +57,36 @@ public abstract class BaseActivity<M extends BaseActivity<M>> extends Model<M> i
 		return get("STATUS");
 	}
 
+	public void setCreateTime(java.util.Date createTime) {
+		set("CREATE_TIME", createTime);
+	}
+
+	public java.util.Date getCreateTime() {
+		return get("CREATE_TIME");
+	}
+
 	public void setCreateUserId(java.lang.Integer createUserId) {
 		set("CREATE_USER_ID", createUserId);
 	}
 
 	public java.lang.Integer getCreateUserId() {
 		return get("CREATE_USER_ID");
+	}
+
+	public void setUpdateTime(java.util.Date updateTime) {
+		set("UPDATE_TIME", updateTime);
+	}
+
+	public java.util.Date getUpdateTime() {
+		return get("UPDATE_TIME");
+	}
+
+	public void setUpdateUserId(java.lang.Integer updateUserId) {
+		set("UPDATE_USER_ID", updateUserId);
+	}
+
+	public java.lang.Integer getUpdateUserId() {
+		return get("UPDATE_USER_ID");
 	}
 
 }
