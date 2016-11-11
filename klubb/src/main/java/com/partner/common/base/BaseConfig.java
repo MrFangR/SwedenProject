@@ -13,6 +13,7 @@ import com.jfinal.ext.handler.ContextPathHandler;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.druid.DruidPlugin;
 import com.jfinal.render.ViewType;
+import com.partner.busi.back.controller.BackActivityController;
 import com.partner.busi.back.controller.BackContactController;
 import com.partner.busi.back.controller.BackIntroduceController;
 import com.partner.busi.back.controller.BackLoginController;
@@ -58,7 +59,7 @@ public class BaseConfig extends JFinalConfig {
 		me.add("/back/main",BackMainController.class,"/back");
 		me.add("/back/contact",BackContactController.class,"/back");
 		me.add("/back/introduce",BackIntroduceController.class,"/back");
-		me.add("/back/introduce",BackIntroduceController.class,"/back");
+		me.add("/back/activity",BackActivityController.class,"/back");
 	}
 
 	/*
