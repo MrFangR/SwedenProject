@@ -25,12 +25,12 @@ public abstract class BaseContact<M extends BaseContact<M>> extends Model<M> imp
 		return get("NAME");
 	}
 
-	public void setPhone(java.lang.String phone) {
-		set("phone", phone);
+	public void setPHONE(java.lang.String PHONE) {
+		set("PHONE", PHONE);
 	}
 
-	public java.lang.String getPhone() {
-		return get("phone");
+	public java.lang.String getPHONE() {
+		return get("PHONE");
 	}
 
 	public void setCONTENT(java.lang.String CONTENT) {

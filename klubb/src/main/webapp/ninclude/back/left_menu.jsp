@@ -5,25 +5,15 @@
 %>
 <div class="left-control" id="left-control">
 	<div class="side-fold js_side_fold"></div>
+	<h4 class="ued-side-tit">台球厅管理</h4>
+	<ul class="list-c1 js_list_active">
+		<li>
+			<a tabid="1-1" url="${ctx}/back/introduce">
+				<b class="b-t6"></b><span>介绍管理</span>
+			</a>
+		</li>
+	</ul>
 	
-	<c:if test="${not empty menuLst}">
-		<c:forEach items="${menuLst}" var="m0">
-			<c:if test="${m0.PARENT_ID eq 0}">
-				<h4 class="ued-side-tit">${m0.FUNC_NAME}</h4>
-				<ul class="list-c1 js_list_active">
-					<c:forEach items="${menuLst}" var="m1">
-						<c:if test="${m1.PARENT_ID eq m0.ID}">
-							<li>
-								<a tabid="${m0.ID}-${m1.ID}" url="${ctx}${m1.FUNC_URL}">
-									<b class="b-t6"></b><span>${m1.FUNC_NAME}</span>
-								</a>
-							</li>
-						</c:if>
-					</c:forEach>
-				</ul>
-			</c:if>
-		</c:forEach>
-	</c:if>
 </div>
 
 

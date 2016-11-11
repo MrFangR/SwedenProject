@@ -7,5 +7,20 @@ import com.partner.busi.model.base.BaseEvaluation;
  */
 @SuppressWarnings("serial")
 public class Evaluation extends BaseEvaluation<Evaluation> {
+	
+	public static enum OBJ_TYPE{
+		HAPPYTIMES(1), //happytimes
+		ACTIVITY(2); //活动
+		
+		private int type;
+		private OBJ_TYPE(int type){
+			this.type = type;
+		}
+		@Override
+		public String toString() {
+			return String.valueOf(this.type);
+		}
+	};
+	
 	public static final Evaluation dao = new Evaluation();
 }

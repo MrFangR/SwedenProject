@@ -13,33 +13,64 @@
 
 <body>
 	<!--面包屑  s-->
-	<div class="ued-location mgb-20">我的位置：介绍编辑</div>
+	<div class="ued-location mgb-20">我的位置：活动添加</div>
 	<!--面包屑  d-->
 	<div class="ued-tab js_tab">
 		<div class="ued-tab-tit clearfix js_tab_tit">
 	        <ul class="ued-tab-1 ued-tab-2 fl clearfix">
-	        	<li><a href="${ctx}/back/introduce">介绍查询</a></li>
+	        	<li><a href="${ctx}/back/release/init">介绍查询</a></li>
 	            <li class="on1"><a href="javascript:void(0)">介绍信息</a></li>
 	        </ul>
 	    </div>
 		    <div class="ued-tab-con">	
 		        <div class="box-n on1">
 		            <h4 class="ued-title-3 mgt-10">基本信息</h4>
-		<form enctype="multipart/form-data" id="introduceForm">
+					<form enctype="multipart/form-data" id="activityForm">
 		            
 		            <h4 class="ued-title-3 mgt-10">主要内容</h4>
-		            <p class="color-3 fs-14" id="content_msg"></p>
+                    <p class="color-3 fs-14" id="content_msg"></p>
+		            <div class="ued-pannel">
+		            	<table width="100%" cellspacing="0" cellpadding="0" class="ued-table-nobor">
+		                    <colgroup><col width="135"><col><col width="135"><col></colgroup>
+		                    <tbody>
+				            	<tr>
+		                            <th><font color="color-3">*&nbsp;</font>活动名称：</th>
+		                            <td>
+		                                <input type="text" name="activity.TITLE" value="" class="ued-text-2" maxlength="30">
+		                                <p class="color-3 fs-14" id="title_msg"></p>            
+		                            </td>
+		                            <th><font color="color-3">*&nbsp;</font>活动时间：</th>
+		                            <td>
+		                            	<div class="ued-time fl mgl-10">
+		                            		<input type="text" name="activity.ACT_TIME" class="Wdate ued-text-2" onClick="WdatePicker()" maxlength="30"/>
+		                            		<p class="color-3 fs-14" id="act_time_msg"></p>  
+		                            	</div>
+		                            </td>
+		                        </tr>
+		                        <tr>
+		                            <th><font color="color-3">*&nbsp;</font>图片：</th>
+		                            <td>
+		                                 <input type="hidden" name="activity.IMG_PATH" id="imgPath" class="ued-text-2" maxlength="30" >
+		                                 <input id="imgForUpload" name="imgForUpload" type="file" multiple="multiple">
+		                                 <p class="color-3 fs-14" id="img_path_msg"></p>  
+		                            </td>
+		                            <th>图片预览：</th>
+		                            <td><img id="showImg" alt="" src=""></td>
+		                        </tr>
+		                    </tbody>
+		                </table>
+		            </div>
 		            <div class="ued-pannel">
 		            	<div style="margin-left: 10px">
     						<script id="editor" type="text/plain" style="width:98%;height:500px;"></script>
     					</div>
 		            </div>
 		            
-		            <input type="hidden" name="introduce.ID" value="${introduce.ID }" />
-					<input type="hidden" id="CONTENT" name="introduce.CONTENT" value=""/>
-					<input type="hidden" id="type" name="type" value=""/>
-   		</form>
-					<div id="contentStr" style="visibility: hidden;">${introduce.CONTENT }</div>
+		            <input type="hidden" name="activity.ID" value="${activity.ID }" />
+					<input type="hidden" id="CONTENT" name="activity.CONTENT" value=""/>
+   					
+   					</form>
+					<div id="contentStr" style="visibility: hidden;">${activity.CONTENT }</div>
 		            <div class="mgt-25 tc"><button class="ued-button-2 mgr-25"  onclick="update(1)">保存</button><button class="ued-button-2 mgr-25"  onclick="update(2)">发布</button><button class="ued-button-3" onclick="back()">返回</button></div>
 		        </div>
 		    </div>
@@ -58,16 +89,15 @@ $(function(){
 
 //保存
 function update(status){
-	$("#type").val(status);
 	//设置文章
 	$("#CONTENT").val(UE.getEditor('editor').getContent());
 	
 	if(validData()){
 		$.ajax({
 			type : "POST",
-			url : "${ctx}/back/introduce/saveOrUpdate",
+			url : "${ctx}/back/activity/saveOrUpdate",
 			dataType : "json",
-			data : $("#introduceForm").serialize(),
+			data : $("#activityForm").serialize(),
 			success: function(data){
 				if(data.rsFlag){
 					pop.success(data.rsMsg, function(){
@@ -100,7 +130,7 @@ function validData(){
 
 //返回
 function back(){
-	location.href = ctx+"/back/introduce";
+	location.href = ctx+"/back/activity/init";
 }
 
 //图片相关

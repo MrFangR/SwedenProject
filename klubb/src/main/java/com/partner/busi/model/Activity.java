@@ -1,5 +1,9 @@
 package com.partner.busi.model;
 
+import java.util.List;
+import java.util.Map;
+
+import com.jfinal.plugin.activerecord.Db;
 import com.partner.busi.model.base.BaseActivity;
 
 /**
@@ -8,4 +12,26 @@ import com.partner.busi.model.base.BaseActivity;
 @SuppressWarnings("serial")
 public class Activity extends BaseActivity<Activity> {
 	public static final Activity dao = new Activity();
+	
+	/**
+	 * 活动名称唯一性校验
+	 * @return
+	 */
+	public boolean findActByName(String actName){
+		Long rs = Db.queryLong("select count(*) from t_activity where TITLE = ?",actName);
+		if(rs==0){
+			return false;
+		}else{
+			return true;
+		}
+	}
+
+	public Map<String, List<Activity>> getActivityList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
+	
+	
 }

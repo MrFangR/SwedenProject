@@ -1,5 +1,6 @@
 package com.partner.busi.model;
 
+import com.jfinal.plugin.activerecord.Db;
 import com.partner.busi.model.base.BaseActUser;
 
 /**
@@ -8,4 +9,22 @@ import com.partner.busi.model.base.BaseActUser;
 @SuppressWarnings("serial")
 public class ActUser extends BaseActUser<ActUser> {
 	public static final ActUser dao = new ActUser();
+
+	public boolean findUserByEmail(String Email, String actId) {
+		Long rs = Db.queryLong("select count(*) from t_act_user where ACT_ID = ? and EMAIL=?",actId,Email);
+		if(rs==0){
+			return false;
+		}else{
+			return true;
+		}
+	}
+
+	public boolean findUserByPhone(String Phone, String actId) {
+		Long rs = Db.queryLong("select count(*) from t_act_user where ACT_ID = ? and PHONE = ?",actId,Phone);
+		if(rs==0){
+			return false;
+		}else{
+			return true;
+		}
+	}
 }

@@ -7,6 +7,7 @@ function reset(){
 	$('#statusSelect a').first().click();
 }
 $(function(){
+	$('.liQuery').click();
 	qry(1);
 });
 // 查询

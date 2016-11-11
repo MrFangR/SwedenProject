@@ -9,42 +9,45 @@ Table: c_user
 -----------+-------------+------+-----+---------+---------
 
 Table: sys_access_log
--------------+--------------+------+-----+---------+---------
- Field       | Type         | Null | Key | Default | Remarks 
--------------+--------------+------+-----+---------+---------
- ID          | INT(10)      | NO   | PRI |         | 主键      
- USER_ID     | INT(10)      | YES  |     |         | 用户ID    
- IP          | VARCHAR(20)  | YES  |     |         | 源IP     
- URL         | VARCHAR(100) | YES  |     |         | 访问URL   
- FUNC_CODE   | VARCHAR(30)  | YES  |     |         | 功能编码    
- DESCRIPTION | VARCHAR(100) | YES  |     |         | 描述      
- CREATE_TIME | DATETIME(19) | YES  |     |         | 访问时间    
--------------+--------------+------+-----+---------+---------
+-------------+---------------+------+-----+---------+---------
+ Field       | Type          | Null | Key | Default | Remarks 
+-------------+---------------+------+-----+---------+---------
+ ID          | INT(10)       | NO   | PRI |         | 主键      
+ USER_ID     | INT(10)       | YES  |     |         | 用户ID    
+ IP          | VARCHAR(20)   | YES  |     |         | 源IP     
+ URL         | VARCHAR(100)  | YES  |     |         | 访问URL   
+ FUNC_CODE   | VARCHAR(30)   | YES  |     |         | 功能编码    
+ DESCRIPTION | VARCHAR(100)  | YES  |     |         | 描述      
+ CREATE_TIME | TIMESTAMP(19) | YES  |     |         | 访问时间    
+-------------+---------------+------+-----+---------+---------
 
 Table: t_act_user
--------------+--------------+------+-----+---------+---------
- Field       | Type         | Null | Key | Default | Remarks 
--------------+--------------+------+-----+---------+---------
- ID          | INT(10)      | NO   | PRI |         | 主键      
- ACT_ID      | INT(10)      | YES  |     |         | 活动ID    
- USER_ID     | INT(10)      | YES  |     |         | 用户ID    
- NAME        | VARCHAR(50)  | YES  |     |         | 姓名      
- phone       | VARCHAR(20)  | YES  |     |         | 手机号     
- EMAIL       | VARCHAR(50)  | YES  |     |         | 邮箱      
- CREATE_TIME | DATETIME(19) | YES  |     |         | 报名时间    
--------------+--------------+------+-----+---------+---------
+-------------+---------------+------+-----+---------+---------
+ Field       | Type          | Null | Key | Default | Remarks 
+-------------+---------------+------+-----+---------+---------
+ ID          | INT(10)       | NO   | PRI |         | 主键      
+ ACT_ID      | INT(10)       | YES  |     |         | 活动ID    
+ USER_ID     | INT(10)       | YES  |     |         | 用户ID    
+ NAME        | VARCHAR(50)   | YES  |     |         | 姓名      
+ phone       | VARCHAR(20)   | YES  |     |         | 手机号     
+ EMAIL       | VARCHAR(50)   | YES  |     |         | 邮箱      
+ CREATE_TIME | TIMESTAMP(19) | YES  |     |         | 报名时间    
+-------------+---------------+------+-----+---------+---------
 
 Table: t_activity
 ----------------+---------------+------+-----+---------+---------
  Field          | Type          | Null | Key | Default | Remarks 
 ----------------+---------------+------+-----+---------+---------
  ID             | INT(10)       | NO   | PRI |         | 主键      
- title          | VARCHAR(50)   | YES  |     |         | 活动名称    
+ TITLE          | VARCHAR(50)   | YES  |     |         | 活动名称    
+ IMG            | VARCHAR(100)  | YES  |     |         | 图片描述    
  CONTENT        | VARCHAR(1000) | YES  |     |         | 活动内容    
  ACT_TIME       | DATETIME(19)  | YES  |     |         | 活动时间    
- CREATE_TIME    | DATETIME(19)  | YES  |     |         | 创建时间    
  STATUS         | TINYINT(3)    | YES  |     |         | 状态，0：草稿，1：正常
+ CREATE_TIME    | TIMESTAMP(19) | YES  |     |         | 创建时间    
  CREATE_USER_ID | INT(10)       | YES  |     |         | 创建人     
+ UPDATE_TIME    | TIMESTAMP(19) | YES  |     |         | 修改时间    
+ UPDATE_USER_ID | INT(10)       | YES  |     |         | 修改用户ID  
 ----------------+---------------+------+-----+---------+---------
 
 Table: t_config
@@ -59,29 +62,29 @@ Table: t_config
 ---------------+----------------+------+-----+---------+---------
 
 Table: t_contact
--------------+--------------+------+-----+---------+---------
- Field       | Type         | Null | Key | Default | Remarks 
--------------+--------------+------+-----+---------+---------
- ID          | INT(10)      | NO   | PRI |         | 主键      
- NAME        | VARCHAR(50)  | YES  |     |         | 姓名      
- phone       | VARCHAR(20)  | YES  |     |         | 手机号     
- CONTENT     | VARCHAR(500) | YES  |     |         | 内容      
- CREATE_TIME | DATETIME(19) | YES  |     |         | 创建时间    
- STATUS      | TINYINT(3)   | YES  |     |         | 状态：0：未读，1：已读
--------------+--------------+------+-----+---------+---------
+-------------+---------------+------+-----+---------+---------
+ Field       | Type          | Null | Key | Default | Remarks 
+-------------+---------------+------+-----+---------+---------
+ ID          | INT(10)       | NO   | PRI |         | 主键      
+ NAME        | VARCHAR(50)   | YES  |     |         | 姓名      
+ PHONE       | VARCHAR(20)   | YES  |     |         | 手机号     
+ CONTENT     | VARCHAR(500)  | YES  |     |         | 内容      
+ CREATE_TIME | TIMESTAMP(19) | YES  |     |         | 创建时间    
+ STATUS      | TINYINT(3)    | YES  |     |         | 状态：0：未读，1：已读
+-------------+---------------+------+-----+---------+---------
 
 Table: t_evaluation
--------------+--------------+------+-----+---------+---------
- Field       | Type         | Null | Key | Default | Remarks 
--------------+--------------+------+-----+---------+---------
- ID          | INT(10)      | NO   | PRI |         | 主键      
- OBJ_ID      | INT(10)      | YES  |     |         | 评价对象ID  
- OBJ_TYPE    | TINYINT(3)   | YES  |     |         | 操作对象类型，1：happytimes，2：活动
- CONTENT     | VARCHAR(300) | YES  |     |         | 评价留言    
- USER_ID     | INT(10)      | YES  |     |         | 用户ID    
- CREATE_TIME | DATETIME(19) | NO   |     |         | 创建时间    
- P_ID        | INT(10)      | NO   |     |         | 回复那条评论  
--------------+--------------+------+-----+---------+---------
+-------------+---------------+------+-----+---------+---------
+ Field       | Type          | Null | Key | Default | Remarks 
+-------------+---------------+------+-----+---------+---------
+ ID          | INT(10)       | NO   | PRI |         | 主键      
+ OBJ_ID      | INT(10)       | YES  |     |         | 评价对象ID  
+ OBJ_TYPE    | TINYINT(3)    | YES  |     |         | 操作对象类型，1：happytimes，2：活动
+ CONTENT     | VARCHAR(300)  | YES  |     |         | 评价留言    
+ USER_ID     | INT(10)       | YES  |     |         | 用户ID    
+ CREATE_TIME | TIMESTAMP(19) | YES  |     |         | 创建时间    
+ P_ID        | INT(10)       | NO   |     |         | 回复那条评论  
+-------------+---------------+------+-----+---------+---------
 
 Table: t_introduce
 ----------------+---------------+------+-----+---------+---------
@@ -90,7 +93,7 @@ Table: t_introduce
  ID             | INT(10)       | NO   | PRI |         | 主键      
  TYPE           | TINYINT(3)    | YES  |     |         | 类型，1：台球厅介绍，2：人员介绍
  CONTENT        | VARCHAR(1000) | YES  |     |         | 内容      
- CREATE_TIME    | DATETIME(19)  | YES  |     |         | 创建时间    
+ CREATE_TIME    | TIMESTAMP(19) | YES  |     |         | 创建时间    
  CREATE_USER_ID | INT(10)       | YES  |     |         | 创建人     
 ----------------+---------------+------+-----+---------+---------
 
@@ -104,29 +107,29 @@ Table: t_notice
 ---------+--------------+------+-----+---------+---------
 
 Table: t_picture
--------------+--------------+------+-----+---------+---------
- Field       | Type         | Null | Key | Default | Remarks 
--------------+--------------+------+-----+---------+---------
- ID          | INT(10)      | NO   | PRI |         | 主键      
- url         | VARCHAR(100) | YES  |     |         | 访问url   
- DESCRIPTION | VARCHAR(200) | YES  |     |         | 描述      
- USER_ID     | INT(10)      | YES  |     |         | 归属用户ID  
- CREATE_TIME | DATETIME(19) | YES  |     |         | 创建时间    
--------------+--------------+------+-----+---------+---------
+-------------+---------------+------+-----+---------+---------
+ Field       | Type          | Null | Key | Default | Remarks 
+-------------+---------------+------+-----+---------+---------
+ ID          | INT(10)       | NO   | PRI |         | 主键      
+ url         | VARCHAR(100)  | YES  |     |         | 访问url   
+ DESCRIPTION | VARCHAR(200)  | YES  |     |         | 描述      
+ USER_ID     | INT(10)       | YES  |     |         | 归属用户ID  
+ CREATE_TIME | TIMESTAMP(19) | YES  |     |         | 创建时间    
+-------------+---------------+------+-----+---------+---------
 
 Table: t_user
--------------+--------------+------+-----+---------+---------
- Field       | Type         | Null | Key | Default | Remarks 
--------------+--------------+------+-----+---------+---------
- ID          | INT(10)      | NO   | PRI |         | 主键      
- EMAIL       | VARCHAR(50)  | NO   |     |         | 邮箱      
- PASSWORD    | VARCHAR(64)  | NO   |     |         | 密码      
- ID_NUMBER   | VARCHAR(50)  | YES  |     |         | 人口号     
- NAME        | VARCHAR(50)  | YES  |     |         | 姓名      
- NICKNAME    | VARCHAR(50)  | YES  |     |         | 昵称      
- GENDER      | TINYINT(3)   | YES  |     |         | 性别，0：女，1：男
- PHONE       | VARCHAR(20)  | YES  |     |         | 手机号     
- STATUS      | TINYINT(3)   | NO   |     |         | 状态，0可用，1不可用
- CREATE_TIME | DATETIME(19) | YES  |     |         | 创建时间    
--------------+--------------+------+-----+---------+---------
+-------------+---------------+------+-----+---------+---------
+ Field       | Type          | Null | Key | Default | Remarks 
+-------------+---------------+------+-----+---------+---------
+ ID          | INT(10)       | NO   | PRI |         | 主键      
+ EMAIL       | VARCHAR(50)   | NO   |     |         | 邮箱      
+ PASSWORD    | VARCHAR(64)   | NO   |     |         | 密码      
+ ID_NUMBER   | VARCHAR(50)   | YES  |     |         | 人口号     
+ NAME        | VARCHAR(50)   | YES  |     |         | 姓名      
+ NICKNAME    | VARCHAR(50)   | YES  |     |         | 昵称      
+ GENDER      | TINYINT(3)    | YES  |     |         | 性别，0：女，1：男
+ PHONE       | VARCHAR(20)   | YES  |     |         | 手机号     
+ STATUS      | TINYINT(3)    | NO   |     |         | 状态，0可用，1不可用
+ CREATE_TIME | TIMESTAMP(19) | YES  |     |         | 创建时间    
+-------------+---------------+------+-----+---------+---------
 
