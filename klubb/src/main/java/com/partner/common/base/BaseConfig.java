@@ -80,11 +80,11 @@ public class BaseConfig extends JFinalConfig {
 		druid.setFilters("stat");
 		me.add(druid);
 
-		// 閰嶇疆ActiveRecord鎻掍欢
+		// 配置ActiveRecord插件
 		ActiveRecordPlugin arp = new ActiveRecordPlugin(druid);
 		me.add(arp);
 		//arp.addMapping("c_user", User.class);
-		// 鎵�湁閰嶇疆鍦�MappingKit 涓悶瀹�
+		// 所有配置在 MappingKit 中搞定
 		_MappingKit.mapping(arp);
 
 	}
