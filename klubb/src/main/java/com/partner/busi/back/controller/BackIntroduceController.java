@@ -3,8 +3,11 @@
  */
 package com.partner.busi.back.controller;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Date;
 import java.util.List;
+
+import org.apache.commons.beanutils.BeanUtils;
 
 import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
@@ -64,11 +67,15 @@ public class BackIntroduceController extends Controller {
 		intro.set("CREATE_USER_ID", BackSessionUtil.getUserId(getRequest()));
 		rsFlag = intro.update();
 		if(rsFlag && "2".equals(type)){ //发布
-			Introduce intro1 = Introduce.dao.findById(intro.getID() + 2);
-			intro1.set("CREATE_TIME", new Date());
-			intro1.set("CREATE_USER_ID", BackSessionUtil.getUserId(getRequest()));
-			intro1.setCONTENT(intro.getCONTENT());
-			rsFlag = intro.update();
+			try {
+				Introduce intro1 = new Introduce();
+				BeanUtils.copyProperties(intro1, intro);
+				intro1.setID(intro1.getID() + 2);
+				rsFlag = intro1.update();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		
 		if(rsFlag){ //保存成功
