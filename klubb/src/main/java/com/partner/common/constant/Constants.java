@@ -1,5 +1,7 @@
 package com.partner.common.constant;
 
+import com.jfinal.kit.PropKit;
+
 /** 
  *
  * @ClassName: Constants 
@@ -16,4 +18,7 @@ public class Constants {
 	
 	public static final int  FLAG_SUCCESS = 0;             //操作成功标志
     public static final int  FLAG_FAIL = 1;				   //操作失败标志
+    
+    public static final String UPLOAD_SERVER_URL = PropKit.use("config.properties").get("uploadServerUrl");  //上传文件url
+
 }

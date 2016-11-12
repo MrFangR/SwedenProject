@@ -18,8 +18,10 @@
 	<colgroup>
 		<col width="5%" />
 		<col width="30%" />
-		<col width="40%" />
-		<col />
+		<col width="20%" />
+		<col width="5%" />
+		<col width="20%" />
+		<col width="20%" />
 	</colgroup>
 	<tbody>
 		<tr class="ued-tr-even">
@@ -41,7 +43,7 @@
 						<input type="radio" name="activityID" class="inp-radio" value="${act.ID}"/>
 						<span class="b-radio"><b></b></span>
 					</td>
-					<td>${act.TITLE}</td>
+					<td><a href="javascript:viewAct(${act.ID});">${act.TITLE}</a></td>
 					<td><fmt:formatDate value="${act.actTime}" type="both"/></td>
 					<td>
 						<c:choose>
@@ -60,7 +62,7 @@
 					<td>
 						<button class="ued-button-4" onclick="deleteAct(${act.ID},${act.STATUS})">删除</button>
 						<button class="ued-button-6" onclick="hideAct(${act.ID},${act.STATUS})">隐藏</button>
-						<button class="ued-button-6" onclick="ReRelease(${act.ID},${act.STATUS})">发布</button>
+						<button class="ued-button-4" onclick="ReRelease(${act.ID},${act.STATUS})">发布</button>
 					</td>
 				</tr>
 			</c:forEach>

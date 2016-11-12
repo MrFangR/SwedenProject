@@ -1,4 +1,5 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -27,7 +28,6 @@
 		            <h4 class="ued-title-3 mgt-10">基本信息</h4>
 		<form enctype="multipart/form-data" id="activityForm">
 		            
-		            <h4 class="ued-title-3 mgt-10">主要内容</h4>
 		            <p class="color-3 fs-14" id="content_msg"></p>
 		            <div class="ued-pannel">
 		            	<table width="100%" cellspacing="0" cellpadding="0" class="ued-table-nobor">
@@ -42,7 +42,8 @@
 		                            <th><font color="color-3">*&nbsp;</font>活动时间：</th>
 		                            <td>
 		                            	<div class="ued-time fl mgl-10">
-		                            		<input type="text" name="activity.ACT_TIME" class="Wdate ued-text-2" onClick="WdatePicker()" maxlength="30"/>
+		                            		
+		                            		<input type="text" name="activity.ACT_TIME" value="<fmt:formatDate value='${act.actTime}' pattern='yyyy-MM-dd HH:mm:ss'/>" class="Wdate ued-text-2" onClick="WdatePicker()" maxlength="30"/>
 		                            		<p class="color-3 fs-14" id="act_time_msg"></p>  
 		                            	</div>
 		                            </td>

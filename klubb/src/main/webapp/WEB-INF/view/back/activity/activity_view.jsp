@@ -25,10 +25,6 @@
 		    <div class="ued-tab-con">	
 		        <div class="box-n on1">
 		            <h4 class="ued-title-3 mgt-10">基本信息</h4>
-		<form enctype="multipart/form-data" id="activityForm">
-		            
-		            <h4 class="ued-title-3 mgt-10">主要内容</h4>
-		            <p class="color-3 fs-14" id="content_msg"></p>
 		            <div class="ued-pannel">
 		            	<table width="100%" cellspacing="0" cellpadding="0" class="ued-table-nobor">
 		                    <colgroup><col width="135"><col><col width="135"><col></colgroup>
@@ -42,54 +38,92 @@
 		                            <th><font color="color-3">*&nbsp;</font>活动时间：</th>
 		                            <td>
 		                            	<div class="ued-time fl mgl-10">
-		                            		<input type="text" name="activity.ACT_TIME" class="Wdate ued-text-2" onClick="WdatePicker()" maxlength="30"/>
-		                            		<p class="color-3 fs-14" id="act_time_msg"></p>  
+		                            		<fmt:formatDate value="${act.actTime}" pattern="yyyy-MM-dd HH:mm:ss"/>
 		                            	</div>
 		                            </td>
 		                        </tr>
 		                        <tr>
-		                            <th><font color="color-3">*&nbsp;</font>图片：</th>
-		                            <td>
-		                                 <input type="hidden" name="activity.IMG" id="imgPath" class="ued-text-2" maxlength="30" >
-		                                 <input id="imgForUpload" name="imgForUpload" type="file" multiple="multiple">
-		                                 <p class="color-3 fs-14" id="img_path_msg"></p>  
-		                            </td>
 		                            <th>图片预览：</th>
 		                            <td>
 		                            	<img id="showImg" src="${uploadUrl}${act.IMG}" path="${act.IMG}" style="width:130px; height:100px;"/>
 		                            </td>
+		                            <th></th>
+		                            <td></td>
 		                        </tr>
 		                    </tbody>
 		                </table>
 		            </div>
 		            <div class="ued-pannel">
 		            	<div style="margin-left: 10px">
-    						<script id="editor" type="text/plain" style="width:98%;height:500px;"></script>
+    						${act.CONTENT}
     					</div>
 		            </div>
-		            
-		            <input type="hidden" name="activity.ID" value="${act.ID }" />
-					<input type="hidden" id="CONTENT" name="activity.CONTENT" value=""/>
-					<input type="hidden" id="type" name="type" value=""/>
-   		</form>
-					<div id="contentStr" style="visibility: hidden;">${act.CONTENT }</div>
-		            <div class="mgt-25 tc"><button class="ued-button-2 mgr-25"  onclick="update(1)">保存</button><button class="ued-button-2 mgr-25"  onclick="update(2)">发布</button><button class="ued-button-3" onclick="back()">返回</button></div>
+		            <div class="ued-tab js_tab">
+					    <div class="ued-tab-tit clearfix js_tab_tit">
+					        <div class="ued-pack fr" id="ued-pack">收起查询条件</div>
+					        <ul class="ued-tab-1 fl clearfix">
+					        	<li class="liQuery on1"><a class="ued-see" href="javascript:void(0)">报名人员查询</a></li>
+					        </ul>
+					    </div>
+					    <div class="ued-tab-con">
+					        <div class="box-n on1">
+					        	<div id="ued-packBox">
+					            	<form enctype="multipart/form-data" id="qryForm">
+					                <table width="100%" cellspacing="0" cellpadding="0" class="ued-table-nobor mgt-15">
+					                    <colgroup>
+					                    	<col width="15%"><col width="35%">
+					                    	<col width="15%"><col>
+					                    </colgroup>
+					                    <tbody>
+					                        <tr>
+					                            <th>姓名：</th>
+					                            <td>
+					                            	<input id="titleIn" type="text" name="userName" class="ued-text-2" maxlength="30"/>
+					                            </td>
+					                        </tr>
+					                    </tbody>
+					                </table>
+					                <input id="actID" name="actID" type="hidden" value="${act.ID}"/>
+					                <input id="pageNumIn" name="pageNum" type="hidden" value="1"/>
+					                <input id="pageSizeIn" name="pageSize" type="hidden" value="6"/>
+					                </form>
+					                <div class="mgt-25 tc">
+					                	<button class="ued-button-2 mgr-25" onclick="qryUser()">查询</button>
+					                	<button class="ued-button-3" onclick="reset()">重置</button>
+					                </div>
+					            </div>
+					            <div id="showLst"></div>
+					        </div>
+					    </div>
+					</div>
+		            <div class="mgt-25 tc"><button class="ued-button-3" onclick="back()">返回</button></div>
 		        </div>
 		    </div>
 	</div>
 </body>
 <script type="text/javascript">
 var rootContext = '${ctx}';
-$(function(){
-	var ueditor = UE.getEditor('editor');
-	ueditor.ready(function() {
-		ueditor.setContent($("#contentStr").html());
+//qryUser
+function qryUser(){
+	$.ajax({
+		type : 'get',
+		cache : false,
+		async : true,
+		url : ctx + "/back/activity/getActUser",
+		data: $("#qryForm").serialize(),
+		dataType : "html",
+		success : function(data){
+			$('#showLst').html(data);
+			return;
+		},
+		error : function(json){
+			pop.fail("系统异常，请稍后重试");
+			return;
+		}
 	});
 
-	initUpload();
-});
-
-//保存
+}
+//取消
 function update(status){
 	$("#type").val(status);
 	//设置文章

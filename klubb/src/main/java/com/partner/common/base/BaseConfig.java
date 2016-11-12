@@ -18,6 +18,7 @@ import com.partner.busi.back.controller.BackContactController;
 import com.partner.busi.back.controller.BackIntroduceController;
 import com.partner.busi.back.controller.BackLoginController;
 import com.partner.busi.back.controller.BackMainController;
+import com.partner.busi.back.controller.BackUserController;
 import com.partner.busi.front.controller.IndexController;
 import com.partner.busi.model._MappingKit;
 import com.partner.common.plugin.PropertiesPlugin;

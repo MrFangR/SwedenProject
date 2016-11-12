@@ -108,5 +108,7 @@ function ReRelease(ID,status){
 		}
 	});
 }
-
-
+//查看活动
+function viewAct(ID){
+	location.href=ctx + "/back/activity/viewAct?type=" + ID;
+}
