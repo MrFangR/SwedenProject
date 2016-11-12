@@ -18,7 +18,7 @@
 	<div class="ued-tab js_tab">
 		<div class="ued-tab-tit clearfix js_tab_tit">
 	        <ul class="ued-tab-1 ued-tab-2 fl clearfix">
-	        	<li><a href="${ctx}/back/release/init">介绍查询</a></li>
+	        	<li><a href="${ctx}/back/activity">活动查询</a></li>
 	            <li class="on1"><a href="javascript:void(0)">介绍信息</a></li>
 	        </ul>
 	    </div>
@@ -50,7 +50,7 @@
 		                        <tr>
 		                            <th><font color="color-3">*&nbsp;</font>图片：</th>
 		                            <td>
-		                                 <input type="hidden" name="activity.IMG_PATH" id="imgPath" class="ued-text-2" maxlength="30" >
+		                                 <input type="hidden" name="activity.IMG" id="imgPath" class="ued-text-2" maxlength="30" >
 		                                 <input id="imgForUpload" name="imgForUpload" type="file" multiple="multiple">
 		                                 <p class="color-3 fs-14" id="img_path_msg"></p>  
 		                            </td>
@@ -68,10 +68,10 @@
 		            
 		            <input type="hidden" name="activity.ID" value="${activity.ID }" />
 					<input type="hidden" id="CONTENT" name="activity.CONTENT" value=""/>
-   					
+   					<input type="hidden" id="type" name="type" value=""/>
    					</form>
 					<div id="contentStr" style="visibility: hidden;">${activity.CONTENT }</div>
-		            <div class="mgt-25 tc"><button class="ued-button-2 mgr-25"  onclick="update(1)">保存</button><button class="ued-button-2 mgr-25"  onclick="update(2)">发布</button><button class="ued-button-3" onclick="back()">返回</button></div>
+		            <div class="mgt-25 tc"><button class="ued-button-2 mgr-25"  onclick="update(3)">保存</button><button class="ued-button-2 mgr-25"  onclick="update(4)">发布</button><button class="ued-button-3" onclick="back()">返回</button></div>
 		        </div>
 		    </div>
 	</div>
@@ -89,6 +89,7 @@ $(function(){
 
 //保存
 function update(status){
+	$("#type").val(status);
 	//设置文章
 	$("#CONTENT").val(UE.getEditor('editor').getContent());
 	

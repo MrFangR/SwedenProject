@@ -1,9 +1,13 @@
 package com.partner.busi.model;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang.StringUtils;
+
 import com.jfinal.plugin.activerecord.Db;
+import com.jfinal.plugin.activerecord.Page;
 import com.partner.busi.model.base.BaseActivity;
 
 /**
@@ -29,6 +33,18 @@ public class Activity extends BaseActivity<Activity> {
 	public Map<String, List<Activity>> getActivityList() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	public Page<Activity> findList(String title, int pageNum, Integer pagesize) {
+		String select = "select a.*";
+		StringBuilder sql = new StringBuilder(" from t_activity a where 1=1 ");
+		List<Object> params = new ArrayList<Object>();
+		if (StringUtils.isNotBlank(title)) {
+			sql.append(" and a.TITLE like ? ");
+			params.add("%" + title + "%");
+		}
+		sql.append(" order by a.CREATE_TIME desc");
+		return paginate(pageNum, pagesize, select, sql.toString(), params.toArray());
 	}
 	
 	

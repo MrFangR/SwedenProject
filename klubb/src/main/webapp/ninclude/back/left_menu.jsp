@@ -11,6 +11,9 @@
 			<a tabid="1-1" url="${ctx}/back/introduce">
 				<b class="b-t6"></b><span>介绍管理</span>
 			</a>
+			<a tabid="1-1" url="${ctx}/back/activity">
+				<b class="b-t6"></b><span>活动管理</span>
+			</a>
 		</li>
 	</ul>
 	
