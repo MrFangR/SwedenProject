@@ -17,6 +17,7 @@ import com.partner.busi.back.controller.BackLoginController;
 import com.partner.busi.back.controller.BackMainController;
 import com.partner.busi.front.controller.IndexController;
 import com.partner.busi.model._MappingKit;
+import com.partner.common.interceptor.AuthInterceptor;
 import com.partner.common.plugin.PropertiesPlugin;
 import com.partner.common.tag.I18nTag;
 
@@ -91,7 +92,7 @@ public class BaseConfig extends JFinalConfig {
 	@Override
 	public void configInterceptor(Interceptors me) {
 		// TODO Auto-generated method stub
-		//me.add(new AuthInterceptor());
+		me.add(new AuthInterceptor());
 	}
 
 	/*
