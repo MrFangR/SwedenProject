@@ -4,22 +4,30 @@
 package com.partner.common.base;
 
 /**
- * @author issuser
- * desc   用于记录返回信息
+ * @author fangrui desc 用于记录返回信息
  */
 public class ResultInfo {
 
-	private String retCode;// 0 成功   1 失败
-	
-	private String retMsg;// 描述信息
-	
-	private Object bean;//返回实体bean;
+	private int retCode;// 0 成功 1 失败
 
-	public String getRetCode() {
+	private String retMsg;// 描述信息
+
+	private Object bean;// 返回实体bean;
+
+	public ResultInfo() {
+
+	}
+	
+	public ResultInfo(int retCode,String retMsg){
+		this.retCode=retCode;
+		this.retMsg=retMsg;
+	}
+
+	public int getRetCode() {
 		return retCode;
 	}
 
-	public void setRetCode(String retCode) {
+	public void setRetCode(int retCode) {
 		this.retCode = retCode;
 	}
 
@@ -38,5 +46,5 @@ public class ResultInfo {
 	public void setBean(Object bean) {
 		this.bean = bean;
 	}
-	
+
 }
