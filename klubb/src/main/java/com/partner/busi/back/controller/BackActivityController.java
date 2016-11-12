@@ -1,11 +1,14 @@
 package com.partner.busi.back.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
 import com.jfinal.plugin.activerecord.Page;
 import com.partner.busi.back.validator.IntroduceValidator;
+import com.partner.busi.model.ActUser;
 import com.partner.busi.model.Activity;
 import com.partner.common.util.BackSessionUtil;
 
@@ -153,5 +156,31 @@ public class BackActivityController extends Controller {
 		setAttr("rsMsg", rsMsg);
 		renderJson();
 	}
+	
+	/**
+	 * 查看活动
+	 */
+	public void viewAct(){
+		String type = getPara("type");
+		Activity act = Activity.dao.findById(type);
+		List<ActUser> userList = ActUser.dao.getUserByActId(getParaToInt("type"));
+		setAttr("act", act);
+		setAttr("userList", userList);
+		render("activity/activity_view.jsp");
+	}
+	
+	/**
+	 * 搜索参加活动人员
+	 */
+	public void getActUser(){
+		String userName = getPara("userName");
+		int actID = getParaToInt("actID");
+		int pageNum = getParaToInt("pageNum");
+		
+		Page<ActUser> page = ActUser.dao.findList(userName, actID, pageNum, pageSize);
+		setAttr("paginate", page);
+		render("activity/activity_view_result.jsp");
+	}
+	
 	
 }
