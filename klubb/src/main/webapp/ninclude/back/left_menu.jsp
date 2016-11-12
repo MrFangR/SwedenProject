@@ -8,6 +8,9 @@
 	<h4 class="ued-side-tit">台球厅管理</h4>
 	<ul class="list-c1 js_list_active">
 		<li>
+			<a tabid="1-1" url="${ctx}/back/user">
+				<b class="b-t6"></b><span>用户管理</span>
+			</a>
 			<a tabid="1-1" url="${ctx}/back/introduce">
 				<b class="b-t6"></b><span>介绍管理</span>
 			</a>

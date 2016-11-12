@@ -15,6 +15,7 @@ import com.jfinal.plugin.druid.DruidPlugin;
 import com.jfinal.render.ViewType;
 import com.partner.busi.back.controller.BackLoginController;
 import com.partner.busi.back.controller.BackMainController;
+import com.partner.busi.back.controller.BackUserController;
 import com.partner.busi.front.controller.IndexController;
 import com.partner.busi.model._MappingKit;
 import com.partner.common.interceptor.AuthInterceptor;
@@ -54,6 +55,7 @@ public class BaseConfig extends JFinalConfig {
 		me.add("/sys", SysController.class);
 		me.add("/back", BackLoginController.class, "/back");
 		me.add("/back/main",BackMainController.class,"/back");
+		me.add("/back/user",BackUserController.class,"/back/user");
 	}
 
 	/*
