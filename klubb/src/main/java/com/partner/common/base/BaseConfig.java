@@ -22,6 +22,7 @@ import com.partner.busi.front.controller.IndexController;
 import com.partner.busi.model._MappingKit;
 import com.partner.common.plugin.PropertiesPlugin;
 import com.partner.common.tag.I18nTag;
+import com.partner.common.util.UploadController;
 
 /**
  * @author issuser
@@ -60,6 +61,7 @@ public class BaseConfig extends JFinalConfig {
 		me.add("/back/contact",BackContactController.class,"/back");
 		me.add("/back/introduce",BackIntroduceController.class,"/back");
 		me.add("/back/activity",BackActivityController.class,"/back");
+		me.add("/upload",UploadController.class);
 	}
 
 	/*
