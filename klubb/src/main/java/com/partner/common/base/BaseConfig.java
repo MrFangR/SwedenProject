@@ -62,6 +62,7 @@ public class BaseConfig extends JFinalConfig {
 		me.add("/back/introduce",BackIntroduceController.class,"/back");
 		me.add("/back/activity",BackActivityController.class,"/back");
 		me.add("/upload",UploadController.class);
+		me.add("/back/user",BackUserController.class,"/back/user");
 	}
 
 	/*

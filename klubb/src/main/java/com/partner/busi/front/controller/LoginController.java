@@ -26,10 +26,10 @@ public class LoginController extends Controller {
 		User user = User.dao.findByLogin(email, pwd);
 		if(user != null){
 			//登录成功，将登录信息放到session当中，跳转到首页
-			retInfo.setRetCode("0");
+			retInfo.setRetCode(0);
 			retInfo.setRetMsg("登录成功");
 		}else{//登录失败，返回给前台
-			retInfo.setRetCode("1");
+			retInfo.setRetCode(1);
 			retInfo.setRetMsg("登录失败");
 		}
 		renderJson(retInfo);
