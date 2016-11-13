@@ -47,7 +47,7 @@
 					<td>${contact.NAME}</td>
 					<td>${contact.PHONE}</td>
 					<td>${contact.CONTENT}</td>
-					<td><fmt:formatDate value="${contact.CREATE_TIME}" type="both"/></td>
+					<td><fmt:formatDate value="${contact.createTime}" type="both"/></td>
 					<td>
 						<c:choose>
 							<c:when test="${contact.STATUS eq 0}">

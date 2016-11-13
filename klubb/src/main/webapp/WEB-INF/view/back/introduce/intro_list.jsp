@@ -11,7 +11,6 @@
 	
 	<div class="ued-tab js_tab">
 	    <div class="ued-tab-tit clearfix js_tab_tit">
-	        <div class="ued-pack fr" id="ued-pack">收起查询条件</div>
 	        <ul class="ued-tab-1 fl clearfix">
 	        	<li class="liQuery on1"><a class="ued-see" href="javascript:void(0)">查询</a></li>
 	        </ul>

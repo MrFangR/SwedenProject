@@ -13,25 +13,15 @@ import com.partner.busi.model.Config;
  * @author zhanglei
  * @date 2016年11月8日 下午4:26:42  
  */
-@ControllerBind(controllerKey="/back/config",viewPath="/back/config")
-public class ConfigController extends Controller {
-	
-	/**
-	 * 查看台球厅配置
-	 */
-	public void view(){
-		Config config = Config.dao.findById(1);
-		setAttr("config", config);
-		render("view.jsp");
-	}
+public class BackConfigController extends Controller {
 	
 	/**
 	 * 编辑页面
 	 */
-	public void edit(){
+	public void index(){
 		Config config = Config.dao.findById(1);
 		setAttr("config", config);
-		render("edit.jsp");
+		render("config/config_edit.jsp");
 	}
 	
 	/**
@@ -42,7 +32,7 @@ public class ConfigController extends Controller {
 		String rsMsg = "保存失败，请稍后再试";
 		
 		Config config = getModel(Config.class);
-		
+		config.setID(1);
 		rsFlag = config.update();
 		
 		if(rsFlag){ //保存成功

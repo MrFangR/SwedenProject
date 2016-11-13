@@ -33,20 +33,28 @@ public abstract class BaseConfig<M extends BaseConfig<M>> extends Model<M> imple
 		return get("BUSINESS_TIME");
 	}
 
-	public void setLONGITUDE(java.math.BigDecimal LONGITUDE) {
-		set("LONGITUDE", LONGITUDE);
+	public void setPlaceId(java.lang.String placeId) {
+		set("PLACE_ID", placeId);
 	}
 
-	public java.math.BigDecimal getLONGITUDE() {
-		return get("LONGITUDE");
+	public java.lang.String getPlaceId() {
+		return get("PLACE_ID");
 	}
 
-	public void setLATITUDE(java.math.BigDecimal LATITUDE) {
-		set("LATITUDE", LATITUDE);
+	public void setADDRESS(java.lang.String ADDRESS) {
+		set("ADDRESS", ADDRESS);
 	}
 
-	public java.math.BigDecimal getLATITUDE() {
-		return get("LATITUDE");
+	public java.lang.String getADDRESS() {
+		return get("ADDRESS");
+	}
+
+	public void setMapUrl(java.lang.String mapUrl) {
+		set("MAP_URL", mapUrl);
+	}
+
+	public java.lang.String getMapUrl() {
+		return get("MAP_URL");
 	}
 
 }

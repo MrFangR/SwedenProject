@@ -1038,7 +1038,7 @@ text-align: right;
 	padding-left:10px;
 }
 .us-base-info textarea{ width:320px;border: 1px solid #c8c8c8; float:left}
-.us-base-info .ditu{ height:58px; line-height:58px; width:84px; border: 1px solid #feea5e; display:block; float:left; margin-left:10px; background:#b94d46; color:#feea5e; font-size:16px; text-align:center; cursor:pointer;}
+.ditu{ height:58px; line-height:58px; width:84px; border: 1px solid #feea5e; display:block; float:left; margin-left:10px; background:#b94d46; color:#feea5e; font-size:16px; text-align:center; cursor:pointer;}
 .us-base-info input.xiao{ width:116px; margin-right:10px}
 .us-base-info input.ma{ width:100px; color:#fff; background:#b94d46; border:0px;}
 .us-base-info input.iph{ background:#eeeff4}

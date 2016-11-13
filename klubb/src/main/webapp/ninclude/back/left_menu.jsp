@@ -17,6 +17,9 @@
 			<a tabid="1-1" url="${ctx}/back/activity">
 				<b class="b-t6"></b><span>活动管理</span>
 			</a>
+			<a tabid="1-1" url="${ctx}/back/config">
+				<b class="b-t6"></b><span>台球厅管理</span>
+			</a>
 		</li>
 	</ul>
 	
