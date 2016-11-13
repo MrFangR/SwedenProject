@@ -1,10 +1,10 @@
 package com.partner.busi.back.controller;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import com.jfinal.aop.Before;
+import org.apache.log4j.Logger;
+
 import com.jfinal.core.Controller;
 import com.jfinal.plugin.activerecord.Page;
 import com.partner.busi.back.validator.IntroduceValidator;
@@ -13,7 +13,7 @@ import com.partner.busi.model.Activity;
 import com.partner.common.util.BackSessionUtil;
 
 public class BackActivityController extends Controller {
-	
+	private static Logger log = Logger.getLogger(BackActivityController.class);
 	private final static Integer pageSize = 10; //每页显示数量
 	
 	/**
@@ -181,6 +181,24 @@ public class BackActivityController extends Controller {
 		setAttr("paginate", page);
 		render("activity/activity_view_result.jsp");
 	}
+	
+	/**
+	 * 取消报名
+	 */
+	public void cancleUser(){
+		boolean rsFlag = false;
+		String rsMsg = "删除失败，请稍后再试";
+		
+		Integer ID = getParaToInt("userID");
+		rsFlag = ActUser.dao.deleteById(ID);
+		if(rsFlag){
+			rsMsg = "删除成功";
+		}
+		setAttr("rsFlag", rsFlag);
+		setAttr("rsMsg", rsMsg);
+		renderJson();
+	}
+	
 	
 	
 }

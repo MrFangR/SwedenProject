@@ -48,7 +48,7 @@
 					<td>${user.EMAIL}</td>
 					<td>${user.createTime}</td>
 					<td>
-						<button class="ued-button-4" onclick="cancle(${user.ID})">取消报名</button>
+						<button class="ued-button-4" onclick="cancleUser(${user.ID})">取消报名</button>
 					</td>
 				</tr>
 			</c:forEach>

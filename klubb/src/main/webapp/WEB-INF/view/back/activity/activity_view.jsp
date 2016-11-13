@@ -124,28 +124,25 @@ function qryUser(){
 
 }
 //取消
-function update(status){
-	$("#type").val(status);
-	//设置文章
-	$("#CONTENT").val(UE.getEditor('editor').getContent());
-	
-	if(validData()){
-		$.ajax({
-			type : "POST",
-			url : "${ctx}/back/activity/saveOrUpdate",
-			dataType : "json",
-			data : $("#activityForm").serialize(),
-			success: function(data){
-				if(data.rsFlag){
-					pop.success(data.rsMsg, function(){
-						back();
-					});
-				}else{
-					showNotice(data);
-				}
-			}
-		});
-	}
+function cancleUser(userID){
+	$.ajax({
+		type : 'get',
+		cache : false,
+		async : true,
+		url : ctx + "/back/activity/cancleUser",
+		data: {
+			userID : userID
+		},
+		dataType : "html",
+		success : function(data){
+			qryUser();
+			return
+		},
+		error : function(json){
+			pop.fail("系统异常，请稍后重试");
+			return;
+		}
+	});
 }
 
 //显示提示信息
