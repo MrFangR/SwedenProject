@@ -14,6 +14,7 @@ import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.druid.DruidPlugin;
 import com.jfinal.render.ViewType;
 import com.partner.busi.back.controller.BackActivityController;
+import com.partner.busi.back.controller.BackConfigController;
 import com.partner.busi.back.controller.BackContactController;
 import com.partner.busi.back.controller.BackIntroduceController;
 import com.partner.busi.back.controller.BackLoginController;
@@ -64,6 +65,7 @@ public class BaseConfig extends JFinalConfig {
 		me.add("/back/activity",BackActivityController.class,"/back");
 		me.add("/upload",UploadController.class);
 		me.add("/back/user",BackUserController.class,"/back/user");
+		me.add("/back/config",BackConfigController.class,"/back");
 	}
 
 	/*
