@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50626
 File Encoding         : 65001
 
-Date: 2016-11-10 21:54:50
+Date: 2016-11-13 23:30:51
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -100,15 +100,16 @@ CREATE TABLE `t_config` (
   `ID` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
   `NAME` varchar(100) DEFAULT NULL COMMENT '台球厅名称',
   `BUSINESS_TIME` varchar(100) DEFAULT NULL COMMENT '营业时间',
-  `LONGITUDE` decimal(20,10) NOT NULL COMMENT '经度',
-  `LATITUDE` decimal(20,10) NOT NULL COMMENT '纬度',
+  `PLACE_ID` varchar(100) DEFAULT NULL COMMENT 'google地图PLACEID',
+  `ADDRESS` varchar(200) DEFAULT NULL COMMENT '地址',
+  `MAP_URL` varchar(200) DEFAULT NULL COMMENT '地图链接',
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='台球厅配置';
 
 -- ----------------------------
 -- Records of t_config
 -- ----------------------------
-INSERT INTO `t_config` VALUES ('1', 'klubb', '时间', '112.5805890000', '37.7981950000');
+INSERT INTO `t_config` VALUES ('1', 'klubb', '时间', null, '地址', null);
 
 -- ----------------------------
 -- Table structure for t_contact
@@ -164,9 +165,9 @@ CREATE TABLE `t_introduce` (
 -- Records of t_introduce
 -- ----------------------------
 INSERT INTO `t_introduce` VALUES ('1', '1', '<p>阿法士大夫</p>', '2016-11-10 21:54:22', null);
-INSERT INTO `t_introduce` VALUES ('2', '2', null, '2016-11-10 16:31:40', '1');
+INSERT INTO `t_introduce` VALUES ('2', '2', '<p>asolgjqwgj</p>', '2016-11-10 21:55:53', null);
 INSERT INTO `t_introduce` VALUES ('3', '0', '<p>阿法士大夫</p>', '2016-11-10 21:54:22', '0');
-INSERT INTO `t_introduce` VALUES ('4', '2', null, null, null);
+INSERT INTO `t_introduce` VALUES ('4', '0', '<p>asolgjqwgj</p>', '2016-11-10 21:55:53', '0');
 
 -- ----------------------------
 -- Table structure for t_notice
