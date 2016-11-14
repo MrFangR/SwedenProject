@@ -117,6 +117,7 @@ public class BaseConfig extends JFinalConfig {
 	public void configHandler(Handlers me) {
 		// TODO Auto-generated method stub
 		me.add(new ContextPathHandler());
+		me.add(new UploadServerUrlHandler());
 	}
 
 }
