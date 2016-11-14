@@ -19,6 +19,14 @@ public class Constants {
 	public static final int  FLAG_SUCCESS = 0;             //操作成功标志
     public static final int  FLAG_FAIL = 1;				   //操作失败标志
     
+    /**
+     * 邮件服务器
+     * 
+     */
+    public static final String  STMP = PropKit.use("config.properties").get("smtp");
+    public static final String  EMAIL_USER = PropKit.use("config.properties").get("email_user");
+    public static final String  EMAIL_PASSWORD = PropKit.use("config.properties").get("email_password");
+    
     public static final String UPLOAD_SERVER_URL = PropKit.use("config.properties").get("uploadServerUrl");  //上传文件url
 
 }
