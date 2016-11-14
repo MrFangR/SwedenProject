@@ -11,6 +11,7 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import com.partner.common.constant.Constants;
 
 import org.apache.log4j.Logger;
 
@@ -34,42 +35,43 @@ public class EmailUtil {
 	  * @param to
 	  *   收件人邮箱
 	  */
-	public static void send(String smtp, final String user,final String password, 
-			String subject, String content, String from,String to) {
+	public static boolean send(String subject, String content, String to) {
 		try {
 			Properties props = new Properties();
-			props.put("mail.smtp.host", smtp);
+			props.put("mail.smtp.host", Constants.STMP);
 			props.put("mail.smtp.auth", "true");
 			Session ssn = Session.getInstance(props, new Authenticator() {
 				@Override
 				protected PasswordAuthentication getPasswordAuthentication() {
-					return new PasswordAuthentication(user, password);
+					return new PasswordAuthentication(Constants.EMAIL_USER, Constants.EMAIL_PASSWORD);
 				}
 			});
 			MimeMessage message = new MimeMessage(ssn);
 			//由邮件会话新建一个消息对象 
-			InternetAddress fromAddress = new InternetAddress(from);
+			InternetAddress fromAddress = new InternetAddress(Constants.EMAIL_USER);
 			//发件人的邮件地址 
 			message.setFrom(fromAddress);
 			//设置发件人 
 			InternetAddress toAddress = new InternetAddress(to);
 			//收件人的邮件地址 
 			message.addRecipient(Message.RecipientType.TO, toAddress);
-			//设置收件人
-			message.setSubject(subject);
 			//设置标题
-			message.setText(content);
+			message.setSubject(subject, "gb2312");
+			//设置标题
+			message.setContent(content, "text/html;charset=gb2312");
 			//设置内容
 			message.setSentDate(new Date());
 			//设置发信时间 
 			Transport transport = ssn.getTransport("smtp");
-			transport.connect(smtp, user, password);
+			transport.connect(Constants.STMP, Constants.EMAIL_USER, Constants.EMAIL_PASSWORD);
 			transport.sendMessage(message, message.getRecipients(Message.RecipientType.TO));
 			// transport.send(message);
 			transport.close();
 			logger.info("邮件发送成功");
+			return true;
 		} catch (Exception e) {
 			logger.warn("邮件发送失败", e);
+			return false;
 		}
 	}
 	
@@ -91,21 +93,20 @@ public class EmailUtil {
 	  * @param tos
 	  *   收件人邮箱
 	  */
-	public static void sendMore(String smtp, final String user,final String password, 
-			String subject, String content, String from,String[] tos) {
+	public static boolean sendMore(String subject, String content, String[] tos) {
 		try {
 			Properties props = new Properties();
-			props.put("mail.smtp.host", smtp);
+			props.put("mail.smtp.host", Constants.STMP);
 			props.put("mail.smtp.auth", "true");
 			Session ssn = Session.getInstance(props, new Authenticator() {
 				@Override
 				protected PasswordAuthentication getPasswordAuthentication() {
-					return new PasswordAuthentication(user, password);
+					return new PasswordAuthentication(Constants.EMAIL_USER, Constants.EMAIL_PASSWORD);
 				}
 			});
 			MimeMessage message = new MimeMessage(ssn);
 			//由邮件会话新建一个消息对象 
-			InternetAddress fromAddress = new InternetAddress(from);
+			InternetAddress fromAddress = new InternetAddress(Constants.EMAIL_USER);
 			//发件人的邮件地址 
 			message.setFrom(fromAddress);
 			//设置发件人组
@@ -118,21 +119,23 @@ public class EmailUtil {
 				toall[i] = toAddress;
 			}
 			message.addRecipients(Message.RecipientType.TO, toall);
-			//设置收件人
-			message.setSubject(subject);
 			//设置标题
-			message.setText(content);
+			message.setSubject(subject, "gb2312");
+			//设置标题
+			message.setContent(content, "text/html;charset=gb2312");
 			//设置内容
 			message.setSentDate(new Date());
 			//设置发信时间 
 			Transport transport = ssn.getTransport("smtp");
-			transport.connect(smtp, user, password);
+			transport.connect(Constants.STMP, Constants.EMAIL_USER, Constants.EMAIL_PASSWORD);
 			transport.sendMessage(message, message.getRecipients(Message.RecipientType.TO));
 			// transport.send(message);
 			transport.close();
 			logger.info("邮件发送成功");
+			return true;
 		} catch (Exception e) {
 			logger.warn("邮件发送失败", e);
+			return false;
 		}
 	}
 }
