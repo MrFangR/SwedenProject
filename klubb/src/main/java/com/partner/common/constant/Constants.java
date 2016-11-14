@@ -19,6 +19,9 @@ public class Constants {
 	public static final int  FLAG_SUCCESS = 0;             //操作成功标志
     public static final int  FLAG_FAIL = 1;				   //操作失败标志
     
+    public static final int  PAGENUMBER = 1;             //默认页码
+    public static final int  PAGESIZE = 5;				   //每页展示数量
+    
     /**
      * 邮件服务器
      * 
