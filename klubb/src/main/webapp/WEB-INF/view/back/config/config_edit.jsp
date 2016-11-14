@@ -34,7 +34,7 @@
 		                        <tr>
 		                            <th><font color="color-3">*&nbsp;</font>营业时间：</th>
 		                            <td colspan="3">
-		                                 <input type="text" name="config.businessTime"  class="ued-text-2" maxlength="30"  value="${config.businessTime }" style="width: 500px;">     
+		                                 <input type="text" name="config.BUSINESS_TIME"  class="ued-text-2" maxlength="30"  value="${config.businessTime }" style="width: 500px;">     
 		                                 <p class="color-3 fs-14" id="config_business_time_msg"></p>  
 		                            </td>
 		                        </tr>         
@@ -54,12 +54,12 @@
 		                        </tr>
 		                        </tbody>
 		                </table>
-		                <div style="width: 90%;margin: auto;border: 1px solid #ccc;margin-top: 10px;">
+		                <div style="width: 90%;margin: auto;border: 1px solid #ccc;margin-top: 10px;" id="mapDiv">
 		                	<input id="pac-input" class="map-controls map-input" type="text" placeholder="输入台球厅名称">
 			                <div id="allmap" style="width: 100%;height: 400px;"></div>
 		                </div>
-		                <input type="hidden" id="mapUrl" name="config.mapUrl" value="${config.mapUrl }">
-		                <input type="hidden" id="placeId" name="config.placeId" value="${config.placeId }">
+		                <input type="hidden" id="mapUrl" name="config.MAP_URL" value="${config.mapUrl }">
+		                <input type="hidden" id="placeId" name="config.PLACE_ID" value="${config.placeId }">
 		            </div>
    				</form>
 				<div class="mgt-25 tc">
@@ -74,9 +74,26 @@
 <script type="text/javascript">
 var rootContext = '${ctx}';
 $(function(){
-	
 });
 
+//保存
+function save(){
+	if(validData()){
+		$.ajax({
+			type : "POST",
+			url : "${ctx}/back/config/saveOrUpdate",
+			dataType : "json",
+			data : $("#configForm").serialize(),
+			success: function(data){
+				if(data.rsFlag){
+					pop.success(data.rsMsg, function(){});
+				}else{
+					showNotice(data);
+				}
+			}
+		});
+	}
+}
 
 //显示提示信息
 function showNotice(data){
