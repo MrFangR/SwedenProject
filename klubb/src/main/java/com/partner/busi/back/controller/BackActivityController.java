@@ -11,6 +11,7 @@ import com.partner.busi.back.validator.IntroduceValidator;
 import com.partner.busi.model.ActUser;
 import com.partner.busi.model.Activity;
 import com.partner.common.util.BackSessionUtil;
+import com.partner.common.util.EmailUtil;
 
 public class BackActivityController extends Controller {
 	private static Logger log = Logger.getLogger(BackActivityController.class);
@@ -102,6 +103,26 @@ public class BackActivityController extends Controller {
 		String rsMsg = "删除失败，请稍后再试";
 		
 		Integer actID = getParaToInt("actID");
+		Activity act = Activity.dao.findById(actID);
+		//发送邮件
+		//查询活动下的所有报名用户
+		List<ActUser> actUserList = ActUser.dao.find("SELECT a.* from t_act_user a where a.ACT_ID=?", act.getID());
+		
+		String subject = "[台球厅]取消活动说明";
+		StringBuffer theMessage = new StringBuffer();
+        theMessage.append("<p>您好</p>");
+        theMessage.append("<p>----------------------------------------------------------------------<br></p>");
+        theMessage.append("<p>您报名参加的活动："+act.getTITLE()+"已取消，特此通知</p>");
+        theMessage.append("<p>----------------------------------------------------------------------<br></p>");
+        theMessage.append("<p>此致<br></p>");
+        theMessage.append("<p>台球厅管理团队.http://www.baidu.com/</p>");
+		
+        for(int i=0;i<actUserList.size();i++){
+        	if("".equals(actUserList.get(i).getEMAIL())){
+        		EmailUtil.send(subject, theMessage.toString(), actUserList.get(i).getEMAIL());
+        	}
+        }
+		
 		rsFlag = Activity.dao.deleteById(actID);
 		if(rsFlag){
 			rsMsg = "删除成功";
@@ -127,9 +148,23 @@ public class BackActivityController extends Controller {
 		if(rsFlag){
 			rsMsg = "隐藏成功";
 			//发送邮件
+			//查询活动下的所有报名用户
+			List<ActUser> actUserList = ActUser.dao.find("SELECT a.* from t_act_user a where a.ACT_ID=?", act.getID());
 			
+			String subject = "[台球厅]取消活动说明";
+			StringBuffer theMessage = new StringBuffer();
+	        theMessage.append("<p>您好</p>");
+	        theMessage.append("<p>----------------------------------------------------------------------<br></p>");
+	        theMessage.append("<p>您报名参加的活动："+act.getTITLE()+"已取消，特此通知</p>");
+	        theMessage.append("<p>----------------------------------------------------------------------<br></p>");
+	        theMessage.append("<p>此致<br></p>");
+	        theMessage.append("<p>台球厅管理团队.http://www.baidu.com/</p>");
 			
-			
+	        for(int i=0;i<actUserList.size();i++){
+	        	if("".equals(actUserList.get(i).getEMAIL())){
+	        		EmailUtil.send(subject, theMessage.toString(), actUserList.get(i).getEMAIL());
+	        	}
+	        }
 		}
 		setAttr("rsFlag", rsFlag);
 		setAttr("rsMsg", rsMsg);
@@ -187,10 +222,29 @@ public class BackActivityController extends Controller {
 	 */
 	public void cancleUser(){
 		boolean rsFlag = false;
+		boolean sendFlag = false;
 		String rsMsg = "删除失败，请稍后再试";
 		
 		Integer ID = getParaToInt("userID");
-		rsFlag = ActUser.dao.deleteById(ID);
+		ActUser actUser = ActUser.dao.findById(ID);
+		Activity act = Activity.dao.findById(actUser.getActId());
+		//发送邮件
+		String subject = "[台球厅]取消报名说明";
+		StringBuffer theMessage = new StringBuffer();
+        theMessage.append("<p>"+actUser.getNAME()+"，您好</p>");
+        theMessage.append("<p>----------------------------------------------------------------------<br></p>");
+        theMessage.append("<p>您报名参加的活动："+act.getTITLE()+"，管理员已将您取消报名资格，特此通知</p>");
+        theMessage.append("<p>----------------------------------------------------------------------<br></p>");
+        theMessage.append("<p>此致<br></p>");
+        theMessage.append("<p>台球厅管理团队.http://www.baidu.com/</p>");
+		
+		sendFlag = EmailUtil.send(subject, theMessage.toString(), actUser.getEMAIL());
+				
+		if(sendFlag){
+			rsFlag = ActUser.dao.deleteById(ID);
+		}else{
+			rsMsg = "由于邮件未发送成功，不能取消用户参加";
+		}
 		if(rsFlag){
 			rsMsg = "删除成功";
 		}
@@ -198,7 +252,4 @@ public class BackActivityController extends Controller {
 		setAttr("rsMsg", rsMsg);
 		renderJson();
 	}
-	
-	
-	
 }
