@@ -13,6 +13,7 @@ function qry(){
 		dataType : "html",
 		success : function(data){
 			$('#showLst').html(data);
+			setPageInfo("pageDiv", data, qry);
 			return;
 		},
 		error : function(json){

@@ -106,20 +106,22 @@ public class BackActivityController extends Controller {
 		Activity act = Activity.dao.findById(actID);
 		//发送邮件
 		//查询活动下的所有报名用户
+		Object[] obj = new Object[]{act.getTITLE()};
 		List<ActUser> actUserList = ActUser.dao.find("SELECT a.* from t_act_user a where a.ACT_ID=?", act.getID());
 		
 		String subject = "[台球厅]取消活动说明";
-		StringBuffer theMessage = new StringBuffer();
-        theMessage.append("<p>您好</p>");
-        theMessage.append("<p>----------------------------------------------------------------------<br></p>");
-        theMessage.append("<p>您报名参加的活动："+act.getTITLE()+"已取消，特此通知</p>");
-        theMessage.append("<p>----------------------------------------------------------------------<br></p>");
-        theMessage.append("<p>此致<br></p>");
-        theMessage.append("<p>台球厅管理团队.http://www.baidu.com/</p>");
+//		StringBuffer theMessage = new StringBuffer();
+//        theMessage.append("<p>您好</p>");
+//        theMessage.append("<p>----------------------------------------------------------------------<br></p>");
+//        theMessage.append("<p>您报名参加的活动："+act.getTITLE()+"已取消，特此通知</p>");
+//        theMessage.append("<p>----------------------------------------------------------------------<br></p>");
+//        theMessage.append("<p>此致<br></p>");
+//        theMessage.append("<p>台球厅管理团队.http://www.baidu.com/</p>");
 		
         for(int i=0;i<actUserList.size();i++){
         	if("".equals(actUserList.get(i).getEMAIL())){
-        		EmailUtil.send(subject, theMessage.toString(), actUserList.get(i).getEMAIL());
+        		//EmailUtil.send(subject, theMessage.toString(), actUserList.get(i).getEMAIL());
+        		EmailUtil.sendCancleActEmail(subject, actUserList.get(i).getEMAIL(), obj);
         	}
         }
 		
@@ -149,20 +151,22 @@ public class BackActivityController extends Controller {
 			rsMsg = "隐藏成功";
 			//发送邮件
 			//查询活动下的所有报名用户
+			Object[] obj = new Object[]{act.getTITLE()};
 			List<ActUser> actUserList = ActUser.dao.find("SELECT a.* from t_act_user a where a.ACT_ID=?", act.getID());
 			
 			String subject = "[台球厅]取消活动说明";
-			StringBuffer theMessage = new StringBuffer();
-	        theMessage.append("<p>您好</p>");
-	        theMessage.append("<p>----------------------------------------------------------------------<br></p>");
-	        theMessage.append("<p>您报名参加的活动："+act.getTITLE()+"已取消，特此通知</p>");
-	        theMessage.append("<p>----------------------------------------------------------------------<br></p>");
-	        theMessage.append("<p>此致<br></p>");
-	        theMessage.append("<p>台球厅管理团队.http://www.baidu.com/</p>");
+//			StringBuffer theMessage = new StringBuffer();
+//	        theMessage.append("<p>您好</p>");
+//	        theMessage.append("<p>----------------------------------------------------------------------<br></p>");
+//	        theMessage.append("<p>您报名参加的活动："+act.getTITLE()+"已取消，特此通知</p>");
+//	        theMessage.append("<p>----------------------------------------------------------------------<br></p>");
+//	        theMessage.append("<p>此致<br></p>");
+//	        theMessage.append("<p>台球厅管理团队.http://www.baidu.com/</p>");
 			
 	        for(int i=0;i<actUserList.size();i++){
-	        	if("".equals(actUserList.get(i).getEMAIL())){
-	        		EmailUtil.send(subject, theMessage.toString(), actUserList.get(i).getEMAIL());
+	        	if(!"".equals(actUserList.get(i).getEMAIL())){
+	        		EmailUtil.sendCancleActEmail(subject, actUserList.get(i).getEMAIL(), obj);
+	        		//EmailUtil.send(subject, theMessage.toString(), actUserList.get(i).getEMAIL());
 	        	}
 	        }
 		}

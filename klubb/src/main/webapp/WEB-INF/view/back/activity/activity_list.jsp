@@ -43,6 +43,10 @@
 	                </div>
 	            </div>
 	            <div id="showLst"></div>
+	            <!--分页 start-->
+				<div class="paging mgtb-15 clearfix" id="pageDiv">
+				</div>
+              	<!--分页 end--> 
 	        </div>
 	    </div>
 	</div>
