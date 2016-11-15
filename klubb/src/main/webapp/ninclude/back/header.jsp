@@ -45,7 +45,6 @@
 	<script type="text/javascript" src="${ctx}/back-ui/pub-ui/js/plugin/My97DatePicker/WdatePicker.js"></script>
 	<script type="text/javascript" src="${ctx}/back-ui/pub-ui/js/plugin/sysLayout.js"></script>
 	<script type="text/javascript" src="${ctx}/js/ands-popAlert.js"></script>
-	<script type="text/javascript" src="${ctx}/front-ui/js/price.js"></script>
 	<script type="text/javascript" src="${ctx}/front-ui/js/page.js"></script>
 <%/* 引入js end */%>
 

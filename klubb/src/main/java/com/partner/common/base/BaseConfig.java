@@ -20,6 +20,7 @@ import com.partner.busi.back.controller.BackIntroduceController;
 import com.partner.busi.back.controller.BackLoginController;
 import com.partner.busi.back.controller.BackMainController;
 import com.partner.busi.back.controller.BackUserController;
+import com.partner.busi.front.controller.ActivityController;
 import com.partner.busi.front.controller.IndexController;
 import com.partner.busi.model._MappingKit;
 import com.partner.common.plugin.PropertiesPlugin;
@@ -66,6 +67,7 @@ public class BaseConfig extends JFinalConfig {
 		me.add("/upload",UploadController.class);
 		me.add("/back/user",BackUserController.class,"/back/user");
 		me.add("/back/config",BackConfigController.class,"/back");
+		me.add("/front/activity",ActivityController.class,"/front");
 	}
 
 	/*
