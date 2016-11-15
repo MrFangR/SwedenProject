@@ -29,7 +29,7 @@
 	        </div>
 	        <div class="clearfix mgt-10">
 	        	<input type="text" id="imgcode_input" name="imgcode" maxlength="4" class="ued-input fl" style="width:110px;"/>
-	        	<img id="randImg" onclick="getRandImg()" class="mgl-10" style="height: 40px;"/>
+	        	<img id="randCodeImage" class="mgl-10" style="height: 40px;" src="${ctx}/sys/randCodeImage" />
 	        	<a href="javascript:getRandImg();" class="fr login-a mgt-10">看不清?换一张</a>
 	        </div>
 	        <%--<div class="mgt-10 mgb-10">

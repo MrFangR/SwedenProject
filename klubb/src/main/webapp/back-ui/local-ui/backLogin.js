@@ -15,14 +15,11 @@ $(function(){
 	
 	$('#tip').text(welcome_msg);
 	$('#userNo_input').val(userNo_msg);
-	getRandImg();
+	//getRandImg();
 });
 
 function getRandImg(){
-	$('#randImg').attr('src', ctx+"/back-ui/pub-ui/images/control-center/loading.gif?"+Math.random());
-	setTimeout(function(){
-		$('#randImg').attr('src', ctx+"/sys/randCodeImage?"+Math.random());
-	}, 1000);
+	$('#randCodeImage').attr('src', ctx+"/sys/randCodeImage?"+Math.random());
 }
 
 $('#userNo_input').focus(function(){
@@ -53,9 +50,6 @@ $('#imgcode_input').blur(function(){
 });
 
 $('#login_btn').click(function(){
-	location.href = ctx + "/back/main/init";
-	return;
-	// -----  下边为原有的业务逻辑，暂时先取消 
 	// 取值
 	var userNo = $('#userNo_input').val().trim();
 	var pwd = $('#pwd_input').val().trim();

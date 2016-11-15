@@ -315,7 +315,8 @@ public class Encoding {
 	 * @throws Exception
 	 */
 	public static void main(String[] args) {
-		System.out.println(Encoding.encoding("fangrui"));
+		System.out.println(Encoding.encoding("123456"));
+		System.out.println(Encoding.md5Encoding("123456"));
 		
 	}
 }
