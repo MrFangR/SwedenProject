@@ -1,9 +1,9 @@
 $(function(){
-	$('.liQuery').click();
-	qry();
+	qryAct(1);
 });
 //查询
-function qry(){
+function qryAct(pageNum){
+	$('#pageNumIn').val(pageNum);
 	$.ajax({
 		type : 'get',
 		cache : false,
@@ -13,7 +13,6 @@ function qry(){
 		dataType : "html",
 		success : function(data){
 			$('#showLst').html(data);
-			setPageInfo("pageDiv", data, qry);
 			return;
 		},
 		error : function(json){
@@ -21,6 +20,10 @@ function qry(){
 			return;
 		}
 	});
+}
+//翻页
+function qry4Page(pageNum){
+	qryAct(pageNum);
 }
 //重置
 function reset(){

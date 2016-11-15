@@ -30,6 +30,7 @@ public class BackActivityController extends Controller {
 	public void list(){
 		String title = getPara("title");
 		int pageNum = getParaToInt("pageNum");
+		int pageSize = getParaToInt("pageSize");
 		
 		Page<Activity> page = Activity.dao.findList(title, pageNum, pageSize);
 		setAttr("paginate", page);

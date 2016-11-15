@@ -55,6 +55,10 @@
 		</c:if>
 	</tbody>
 </table>
+<div class="tc">
+	<%@include file="/ninclude/back/page.jsp"%>
+</div>
+
 <script>
 $(".b-radio").click(function(){
 	$(this).closest("tbody").find(".b-radio").removeClass("bon-radio");

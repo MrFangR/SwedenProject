@@ -1,9 +1,6 @@
 $(function(){
-	initAction();
-});
-function initAction(){
 	searchAct(1);
-}
+});
 //查询
 function searchAct(pageNum){
 	$.ajax({
@@ -17,6 +14,7 @@ function searchAct(pageNum){
 		dataType : "json",
 		success : function(data){
 			showResultList(data);
+			return;
 		},
 		error : function(json){
 			pop.fail("系统异常，请稍后重试");

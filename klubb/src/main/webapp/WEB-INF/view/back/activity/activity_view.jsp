@@ -88,7 +88,7 @@
 					                <input id="pageSizeIn" name="pageSize" type="hidden" value="6"/>
 					                </form>
 					                <div class="mgt-25 tc">
-					                	<button class="ued-button-2 mgr-25" onclick="qryUser()">查询</button>
+					                	<button class="ued-button-2 mgr-25" onclick="qryUser(1)">查询</button>
 					                	<button class="ued-button-3" onclick="reset()">重置</button>
 					                </div>
 					            </div>
@@ -104,7 +104,8 @@
 <script type="text/javascript">
 var rootContext = '${ctx}';
 //qryUser
-function qryUser(){
+function qryUser(pageNum){
+	$('#pageNumIn').val(pageNum);
 	$.ajax({
 		type : 'get',
 		cache : false,
@@ -121,7 +122,10 @@ function qryUser(){
 			return;
 		}
 	});
-
+}
+//翻页
+function qry4Page(pageNum){
+	qryUser(pageNum);
 }
 //取消
 function cancleUser(userID){
