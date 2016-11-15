@@ -1,5 +1,7 @@
 package com.partner.busi.model;
 
+import java.util.List;
+
 import com.partner.busi.model.base.BasePicture;
 
 /**
@@ -8,4 +10,8 @@ import com.partner.busi.model.base.BasePicture;
 @SuppressWarnings("serial")
 public class Picture extends BasePicture<Picture> {
 	public static final Picture dao = new Picture();
+	
+	public List<Picture> findAll(){
+		return dao.find("select url, DESCRIPTION, USER_ID from t_picture order by CREATE_TIME desc ");
+	}
 }

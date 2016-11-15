@@ -17,7 +17,13 @@
     <%@include file="/ninclude/frontMember/header.jsp"%>
   </header >
   <div class="gonggao">
-    <div class="ggfont"><p class="mgl-200">最新公告：首都高校大学生锦标赛落幕 台球生态圈在形成；</p></div>
+    <div class="ggfont">
+    	<p class="mgl-200">
+			<c:forEach items="${noticeAll }"  var="notice">
+				${notice.CONTENT }&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			</c:forEach>
+		</p>
+    </div>
   </div>
 
   	<!--轮播 S-->
@@ -98,11 +104,16 @@
                                     }'> 
                        <div class="poster-btn poster-prev-btn"></div> 
                        <ul class="poster-list"> 
-                        <li class="poster-item"><a href="#"><p class="font-title">花式第一人打响头炮</p><img src="${ctx }/front-ui/images/happytimes1.jpg" alt="" width="100%" /></a></li> 
+                       		<c:forEach items="${pictures }"  var="picture">
+                        			<li class="poster-item"><a href="#"><p class="font-title">${picture.DESCRIPTION}</p><img src="${uploadUrl }${picture.url}" alt="" width="100%" /></a></li>
+                            </c:forEach>
+                            <!-- 
+						<li class="poster-item"><a href="#"><p class="font-title">花式第一人打响头炮</p><img src="${ctx }/front-ui/images/happytimes1.jpg" alt="" width="100%" /></a></li> 
                         <li class="poster-item"><a href="#"><p class="font-title">中式台球世界锦标赛</p><img src="${ctx }/front-ui/images/happytimes2.jpg" alt="" width="100%" /></a></li> 
                         <li class="poster-item"><a href="#"><p class="font-title">直播奥沙利文VS希金斯</p><img src="${ctx }/front-ui/images/happytimes3.jpg" alt="" width="100%" /></a></li> 
                         <li class="poster-item"><a href="#"><p class="font-title">中式台球锦标赛落户顺义 </p><img src="${ctx }/front-ui/images/happytimes4.jpg" alt="" width="100%" /></a></li> 
                         <li class="poster-item"><a href="#"><p class="font-title">冠中冠奥沙利文一日两胜 </p><img src="${ctx }/front-ui/images/happytimes5.jpg" alt="" width="100%" /></a></li> 
+                             -->
                        </ul> 
                        <div class="poster-btn poster-next-btn"></div> 
                   </div> 
@@ -110,28 +121,11 @@
 		 </div>
          <div class="hpbg"></div>
 <!--HappyTimes E-->
-            
 <!--CONTACT  US S-->
-        <div class="contact">
-           <h2 class="contact-title">CONTACT  US</h2>
-           <h3 class="contact-title2">联系我们</h3>
-            <div class="contact-con">
-              <div class="contactlef"><img src="${ctx }/front-ui/images/map.jpg" ></div>
-              <div class="contactright">
-                <p>公司名称：YOU NAME</p>
-                <p  class="mg0-30">联系电话: 400—888—88888</p>
-                <p>地址：太原火车南站-西到达口公交站</p>
-              </div>
-            </div>
-        
-        </div>
+	<%@ include file="/ninclude/frontMember/contact.jsp"%>
 <!--CONTACT  US E-->
-<!--bottom S-->
-		<div class="bottombg">
-           <p>Copyright © you name 2016 公司信息</p>
-           <p>使用本网站即构成接受本网站的条款和条件以及隐私政策</p>
-           
-        </div>
+ <!--bottom S-->           
+	<%@ include file="/ninclude/frontMember/footer.jsp"%>
 <!--bottom E-->
 </body>
 <script  src="${ctx }/front-ui/js/Carousel.js"></script>

@@ -1,5 +1,7 @@
 package com.partner.busi.model;
 
+import java.util.List;
+
 import com.partner.busi.model.base.BaseNotice;
 
 /**
@@ -8,4 +10,8 @@ import com.partner.busi.model.base.BaseNotice;
 @SuppressWarnings("serial")
 public class Notice extends BaseNotice<Notice> {
 	public static final Notice dao = new Notice();
+	
+	public List<Notice> findAll(){
+		return dao.find("select CONTENT from t_notice where STATUS = 0 order by CREATE_TIME desc ");
+	}
 }
