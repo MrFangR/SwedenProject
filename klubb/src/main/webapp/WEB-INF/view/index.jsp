@@ -122,7 +122,18 @@
          <div class="hpbg"></div>
 <!--HappyTimes E-->
 <!--CONTACT  US S-->
-	<%@ include file="/ninclude/frontMember/contact.jsp"%>
+	<div class="contact">
+           <h2 class="contact-title"><i18n:get key="portal.index.contact.title"></i18n:get></h2>
+            <div class="contact-con">
+              <div class="contactlef"><img src="https://maps.googleapis.com/maps/api/staticmap?center=62.391036,17.3046913&zoom=13&size=470x400&
+markers=color:red|62.391036,17.3046913&key=AIzaSyBJ4Kipc0KozKxGl36s4w0JyCWhywIFHas" ></div>
+              <div class="contactright">
+                <p><i18n:get key="portal.index.contact.company"></i18n:get>：Sundsvalls BiljardKlubb</p>
+                <p  class="mg0-30"><i18n:get key="portal.index.contact.phone"></i18n:get>: 400—888—88888</p>
+                <p><i18n:get key="portal.index.contact.address"></i18n:get>：${config.ADDRESS }</p>
+              </div>
+            </div>
+        </div>
 <!--CONTACT  US E-->
  <!--bottom S-->           
 	<%@ include file="/ninclude/frontMember/footer.jsp"%>
