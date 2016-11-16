@@ -17,12 +17,12 @@ public abstract class BasePicture<M extends BasePicture<M>> extends Model<M> imp
 		return get("ID");
 	}
 
-	public void setUrl(java.lang.String url) {
-		set("url", url);
+	public void setURL(java.lang.String URL) {
+		set("URL", URL);
 	}
 
-	public java.lang.String getUrl() {
-		return get("url");
+	public java.lang.String getURL() {
+		return get("URL");
 	}
 
 	public void setDESCRIPTION(java.lang.String DESCRIPTION) {
@@ -47,6 +47,14 @@ public abstract class BasePicture<M extends BasePicture<M>> extends Model<M> imp
 
 	public java.util.Date getCreateTime() {
 		return get("CREATE_TIME");
+	}
+
+	public void setIsRecommend(java.lang.Integer isRecommend) {
+		set("IS_RECOMMEND", isRecommend);
+	}
+
+	public java.lang.Integer getIsRecommend() {
+		return get("IS_RECOMMEND");
 	}
 
 }

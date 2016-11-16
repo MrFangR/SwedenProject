@@ -33,6 +33,14 @@ public abstract class BaseConfig<M extends BaseConfig<M>> extends Model<M> imple
 		return get("BUSINESS_TIME");
 	}
 
+	public void setPHONE(java.lang.String PHONE) {
+		set("PHONE", PHONE);
+	}
+
+	public java.lang.String getPHONE() {
+		return get("PHONE");
+	}
+
 	public void setPlaceId(java.lang.String placeId) {
 		set("PLACE_ID", placeId);
 	}
