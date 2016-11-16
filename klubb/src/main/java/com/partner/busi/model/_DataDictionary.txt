@@ -57,6 +57,7 @@ Table: t_config
  ID            | INT(10)      | NO   | PRI |         | 主键      
  NAME          | VARCHAR(100) | YES  |     |         | 台球厅名称   
  BUSINESS_TIME | VARCHAR(100) | YES  |     |         | 营业时间    
+ PHONE         | VARCHAR(50)  | YES  |     |         | 联系电话    
  PLACE_ID      | VARCHAR(100) | YES  |     |         | google地图PLACEID
  ADDRESS       | VARCHAR(200) | YES  |     |         | 地址      
  MAP_URL       | VARCHAR(200) | YES  |     |         | 地图链接    
@@ -108,15 +109,16 @@ Table: t_notice
 ---------+--------------+------+-----+---------+---------
 
 Table: t_picture
--------------+---------------+------+-----+---------+---------
- Field       | Type          | Null | Key | Default | Remarks 
--------------+---------------+------+-----+---------+---------
- ID          | INT(10)       | NO   | PRI |         | 主键      
- url         | VARCHAR(100)  | YES  |     |         | 访问url   
- DESCRIPTION | VARCHAR(200)  | YES  |     |         | 描述      
- USER_ID     | INT(10)       | YES  |     |         | 归属用户ID  
- CREATE_TIME | TIMESTAMP(19) | YES  |     |         | 创建时间    
--------------+---------------+------+-----+---------+---------
+--------------+---------------+------+-----+---------+---------
+ Field        | Type          | Null | Key | Default | Remarks 
+--------------+---------------+------+-----+---------+---------
+ ID           | INT(10)       | NO   | PRI |         | 主键      
+ URL          | VARCHAR(100)  | YES  |     |         | 访问url   
+ DESCRIPTION  | VARCHAR(200)  | YES  |     |         | 描述      
+ USER_ID      | INT(10)       | YES  |     |         | 归属用户ID  
+ CREATE_TIME  | TIMESTAMP(19) | YES  |     |         | 创建时间    
+ IS_RECOMMEND | TINYINT(3)    | NO   |     | 0       | 是否推荐：0，不推荐，1，推荐
+--------------+---------------+------+-----+---------+---------
 
 Table: t_user
 -------------+---------------+------+-----+---------+---------
