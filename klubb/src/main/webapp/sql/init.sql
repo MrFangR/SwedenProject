@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50626
 File Encoding         : 65001
 
-Date: 2016-11-13 23:30:51
+Date: 2016-11-17 00:10:11
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -100,6 +100,7 @@ CREATE TABLE `t_config` (
   `ID` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
   `NAME` varchar(100) DEFAULT NULL COMMENT '台球厅名称',
   `BUSINESS_TIME` varchar(100) DEFAULT NULL COMMENT '营业时间',
+  `PHONE` varchar(50) DEFAULT NULL COMMENT '联系电话',
   `PLACE_ID` varchar(100) DEFAULT NULL COMMENT 'google地图PLACEID',
   `ADDRESS` varchar(200) DEFAULT NULL COMMENT '地址',
   `MAP_URL` varchar(200) DEFAULT NULL COMMENT '地图链接',
@@ -109,7 +110,7 @@ CREATE TABLE `t_config` (
 -- ----------------------------
 -- Records of t_config
 -- ----------------------------
-INSERT INTO `t_config` VALUES ('1', 'klubb', '时间', null, '地址', null);
+INSERT INTO `t_config` VALUES ('1', 'klubb', '周六：早上10点\r\n周日：晚上20点', '+86 13711111111', 'ChIJ49WQXmCdX0YR9-T8Pz7wB9A', 'Klarabergsviadukten Stockholm', 'https://maps.google.com/?q=Klarabergsviadukten,+Stockholm,+%E7%91%9E%E5%85%B8&ftid=0x465f9d605e90d5e3:0xd007f03e3ffce4f7');
 
 -- ----------------------------
 -- Table structure for t_contact
@@ -191,10 +192,11 @@ INSERT INTO `t_notice` VALUES ('1', '通知', '0');
 DROP TABLE IF EXISTS `t_picture`;
 CREATE TABLE `t_picture` (
   `ID` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
-  `url` varchar(100) DEFAULT NULL COMMENT '访问url',
+  `URL` varchar(100) DEFAULT NULL COMMENT '访问url',
   `DESCRIPTION` varchar(200) DEFAULT NULL COMMENT '描述',
   `USER_ID` int(11) DEFAULT NULL COMMENT '归属用户ID',
   `CREATE_TIME` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
+  `IS_RECOMMEND` tinyint(2) NOT NULL DEFAULT '0' COMMENT '是否推荐：0，不推荐，1，推荐',
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='happytimes';
 
