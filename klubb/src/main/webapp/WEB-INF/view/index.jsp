@@ -129,7 +129,7 @@
 markers=color:red|62.391036,17.3046913&key=AIzaSyBJ4Kipc0KozKxGl36s4w0JyCWhywIFHas" ></div>
               <div class="contactright">
                 <p><i18n:get key="portal.index.contact.company"></i18n:get>：Sundsvalls BiljardKlubb</p>
-                <p  class="mg0-30"><i18n:get key="portal.index.contact.phone"></i18n:get>: 400—888—88888</p>
+                <p  class="mg0-30"><i18n:get key="portal.index.contact.phone"></i18n:get>: ${config.PHONE }</p>
                 <p><i18n:get key="portal.index.contact.address"></i18n:get>：${config.ADDRESS }</p>
               </div>
             </div>
