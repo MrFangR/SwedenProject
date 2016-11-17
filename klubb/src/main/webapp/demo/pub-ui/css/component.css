@@ -770,3 +770,84 @@ nav ul li.line{
     text-align: center;
     width: 200px;
 }
+
+
+.mapcon{ margin:90px 0 20px 0; border:1px solid #999;}
+.contactq{ width:1200px; margin:0 auto;}
+.contact-left{ width:790px; float:left; background:#fff;height:500px; overflow:hidden}
+.contact-right{ width:390px; float:right;background:#fff; height:500px; overflow:hidden}
+.contact-right h2{color:#eb003b; font-size:24px; font-weight:normal; height:58px; line-height:58px;  padding-left:30px;}
+.contact-right .contactright{ font-size:16px; margin-top:30px;}
+
+
+/*面包屑*/
+
+.flow-step-wrap {
+    margin: 0 auto;
+    padding-bottom: 36px;
+    padding-top: 16px;
+    width: 90%;
+}
+.flow-step-wrap ul {
+    margin: 0;
+    padding: 0;
+}
+.flow-step-wrap ul::after {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+.flow-step-wrap li {
+    float: left;
+    font-size: 16px;
+    list-style-type: none;
+    text-align: center;
+    width: 25%;
+}
+.flow-step-wrap li i {
+    background: #cdcdcd none repeat scroll 0 0;
+    display: block;
+    height: 7px;
+}
+.flow-step-wrap li span {
+    background: rgba(0, 0, 0, 0) url("../images/step-bg-new.png") repeat scroll 0 -59px;
+    color: #fff;
+    display: block;
+    height: 29px;
+    line-height: 29px;
+    margin: -19px auto 20px;
+    text-align: center;
+    width: 29px;
+}
+.flow-step-wrap li p {
+    color: #cccccc;
+}
+.flow-step-wrap .first-step span {
+    background-position: -29px -59px;
+}
+.flow-step-wrap .first-step p {
+    color: #de3a3b;
+}
+.flow-step-wrap .active i, .flow-step-wrap .last-step-active i {
+    background: #de3a3b none repeat scroll 0 0;
+}
+.flow-step-wrap .active span, .flow-step-wrap .last-step-active span {
+    background-position: -29px -59px;
+}
+.flow-step-wrap .active p, .flow-step-wrap .last-step-active p {
+    color: #de3a3b;
+}
+.flow-step-wrap .first-step i, .flow-step-wrap .last-step i {
+    background: rgba(0, 0, 0, 0) url("../images/step-bg-new.png") no-repeat scroll 1px -11px;
+}
+.flow-step-wrap .last-step i {
+    background-position: right -40px;
+}
+.flow-step-wrap .last-step-active i {
+    background: rgba(0, 0, 0, 0) url("../images/step-bg-new.png") no-repeat scroll right -11px;
+}
+.flow-step-5 li {
+    width: 20%;
+}
