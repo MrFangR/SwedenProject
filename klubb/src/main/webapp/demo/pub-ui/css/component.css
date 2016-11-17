@@ -44,7 +44,8 @@ nav ul li.line{
 	width:90px;
 	margin-left:15px;
 }
-.header-con span{ color:#eb003b; margin-top:42px}
+.header-con span{color:#eb003b;  margin-top:42px; position:absolute; right:40px; z-index:8}
+.header-con span a{color:#eb003b;}
 .gonggao{background:#282828; height:65px; width:100%; line-height:65px}
 .ggfont{ margin-left: auto;
     margin-right: auto;
@@ -850,4 +851,62 @@ nav ul li.line{
 }
 .flow-step-5 li {
     width: 20%;
+}
+
+
+.icon-succeed, .icon-defeated, .icon-hint, .icon-query, .mistake-icon{
+    display: inline-block;
+    margin: 0 10px 10px;
+    vertical-align: top;
+    width: 110px;
+}
+.result-right {
+    width: 780px;
+}
+.succeed-title {
+    color: #65ba05;
+    padding-top: 10px;
+}
+.font-YaHei {
+    font-family: Microsoft YaHei;
+}
+.font-24 {
+    font-size: 24px;
+}
+
+.font-ora2 {
+    color: #ff9600;
+}
+.pdt-10 {
+    padding-top: 10px;
+}
+.float-right {
+    float: right;
+}
+
+.icon-succeed-m {
+    margin: 40px 30px 10px 10px;
+	
+}
+.font-blue {
+    color: #0178cc !important;
+}
+.font-orange {
+    color: #f60;
+}
+.icon-succeed,.mistake-icon { width:350px;}
+.mistake-icon .correct-icon{
+    background: rgba(0, 0, 0, 0) url("../images/public.gif") no-repeat scroll -144px -346px;
+    display: inline-block;
+    float: right;
+    height: 40px;
+    width: 40px;
+	
+}
+.icon-succeed .correct-icon{
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    background: rgba(0, 0, 0, 0) url("../images/public.gif") no-repeat scroll 0 -346px;
+    float: right;
 }
