@@ -206,13 +206,14 @@ nav ul li.line{
 .list-con ul li {
     margin: 15px;
 }
-.list-con ul li .riqi {
+.riqi {
     height: 34px;
     margin-left: 11px;
 	width:500px;
 	position:relative;
+	margin-top:30px;
 }
-.list-con ul li .date {
+.date {
     font-size: 40px;
     height: 40px;
     line-height: 40px;
@@ -222,7 +223,7 @@ nav ul li.line{
 	top:0px;
 	left:0px;
 }
-.list-con ul li .month {
+ .month {
     font-size: 18px;
     height: 18px;
     line-height: 18px;
@@ -232,7 +233,7 @@ nav ul li.line{
 	top:0px;
 	left:50px;
 }
-.list-con ul li .Category {
+.Category {
     color: #909090;
     font-size: 12px;
     height: 18px;
@@ -909,4 +910,89 @@ nav ul li.line{
     width: 40px;
     background: rgba(0, 0, 0, 0) url("../images/public.gif") no-repeat scroll 0 -346px;
     float: right;
+}
+
+
+/*happytimes列表页*/
+.listbox {
+    background: #f5f5f5 none repeat scroll 0 0;
+    float: left;
+    margin-bottom: 20px;
+    position: relative;
+    width: 270px;
+	overflow:hidden;
+}
+.listboximg {
+    height: 211px;
+    position: relative;
+    width: 270px;
+}
+.listbox img {
+    height: 211px;
+    width: 270px;
+}
+.mr20 {
+    margin-right: 20px;
+}
+.listinfo {
+    line-height: 22px;
+    padding-left: 10px;
+    width: 270px;
+}
+
+.listtitle {
+    float: left;
+    margin-top: 8px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 260px;
+}
+.listdate {
+    color: #999;
+    float: left;
+    font-size: 12px;
+    margin-bottom: 5px;
+    margin-top: 2px;
+    text-align: left;
+    width: 70px;
+}
+
+/*happytimes 详情页*/
+.happytimes-con{width:1200px; margin:120px auto 20px auto;}
+.happytimes-con-left{ width:790px; background:#fff; float:left}
+.happytimes-con-right{ width:390px; background:#fff; float:right}
+
+.happytimes-con .contitle{ color:#333333; font-size:26px; font-weight:normal; text-align:center; height:100px; line-height:100px;}
+.happytimes-con .confutitle{ color:#5d5d5d; font-size:14px; padding:0 40px;}
+.happytimes-con .conline{height:1px; background:#dfdfdf; width:700px; margin:30px auto; font-size:1px;}
+
+.happytimes-con .cont-text{font-size:14px; line-height:28px; width:700px; margin:0 auto; padding-bottom:40px;}
+.happytimes-con .cont-text p{text-align:center}
+.happytimes-con .cont-text img{ margin:10px auto; max-width:1000px;}
+.happytime-text{ line-height:28px; padding:20px; height:500px;}
+
+
+.contentprevnextbox {
+    height: 20px;
+    line-height: 20px;
+    width: 780px;
+	margin-bottom:30px;
+	text-align:center;
+}
+.contentprevnextbox a:hover {
+    text-decoration: underline;
+	color:#eb003b;
+}
+.contentprev {
+    float: left;
+    width: 370px;
+}
+.contentnext {
+    float: right;
+    overflow: hidden;
+    text-align: right;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width:370px;
 }
