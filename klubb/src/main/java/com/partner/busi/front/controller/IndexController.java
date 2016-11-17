@@ -19,8 +19,8 @@ public class IndexController extends Controller {
 	
 	public void index(){
 		//获取最新公告
-		List<Notice> noticeAll = Notice.dao.findAll();
-		setAttr("noticeAll",noticeAll);
+		Notice notice = Notice.dao.findNotice();
+		setAttr("notice",notice);
 		//获取 happytime 数据
 		List<Picture> pictures = Picture.dao.findAll();
 		setAttr("pictures",pictures);

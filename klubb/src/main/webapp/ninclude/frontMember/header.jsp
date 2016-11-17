@@ -4,8 +4,10 @@
  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
  <h1 class="herder-logo"><img src="${ctx }/front-ui/images/logo.png" width="136" height="161"></h1>
      <div class="header-con">
-         <span class="fr"><i18n:get key="portal.menu.login"></i18n:get> | <i18n:get key="portal.menu.regist"></i18n:get></span>
-      
+         <span class="fr">
+         	<a href="${ctx }/front/toLogin"><i18n:get key="portal.menu.login"></i18n:get></a> | <a href="${ctx }/front/toRegist"><i18n:get key="portal.menu.regist"></i18n:get></a>
+         </span>
+      <!-- 
         <nav class="menu-body">
           <ul>
 			<li class="jsli" width="15"><a href="#none" ><i18n:get key="portal.menu.index"></i18n:get></a></li>
@@ -17,5 +19,6 @@
             <li class="line"></li>
            </ul>
         </nav>
+       -->
        
      </div>   

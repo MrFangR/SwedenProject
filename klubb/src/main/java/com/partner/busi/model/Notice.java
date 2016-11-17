@@ -11,7 +11,7 @@ import com.partner.busi.model.base.BaseNotice;
 public class Notice extends BaseNotice<Notice> {
 	public static final Notice dao = new Notice();
 	
-	public List<Notice> findAll(){
-		return dao.find("select CONTENT from t_notice where STATUS = 0 order by CREATE_TIME desc ");
+	public Notice findNotice(){
+		return dao.findFirst("select CONTENT from t_notice where STATUS = 0 and ID = 1 ");
 	}
 }
