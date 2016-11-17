@@ -22,7 +22,6 @@ function searchAct(pageNum){
 		}
 	});
 }
-
 function showResultList(data){
 	var htmlStr = "";
 	$.each(data.list, function(i, act){
@@ -39,12 +38,9 @@ function showResultList(data){
 	});
 	$("#resultDIV").html(htmlStr);
 	
-	setPageInfo("pageDiv", data, showResultList);
+	setPageInfo("pageDiv", data, searchAct);
 }
 
 function viewAct(ID){
 	location.href=ctx + "/front/activity/viewAct?type=" + ID;
 }
-
-
-

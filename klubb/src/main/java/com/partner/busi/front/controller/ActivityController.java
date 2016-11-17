@@ -1,11 +1,14 @@
 package com.partner.busi.front.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import com.jfinal.core.Controller;
 import com.jfinal.plugin.activerecord.Page;
 import com.partner.busi.model.ActUser;
 import com.partner.busi.model.Activity;
+import com.partner.busi.model.Evaluation;
+import com.partner.busi.model.Evaluation.OBJ_TYPE;
 
 public class ActivityController extends Controller {
 
@@ -15,6 +18,16 @@ public class ActivityController extends Controller {
 	public void index(){
 		render("activity/activitylist.jsp");
 	}
+	
+	/**
+	 * join activity index
+	 */
+	public void toJoinAct(){
+		String actID = getPara("actID");
+		setAttr("actID", actID);
+		render("activity/activityJoin.jsp");
+	}
+	
 	
 	/**
 	 * 搜索
@@ -34,10 +47,26 @@ public class ActivityController extends Controller {
 	public void viewAct(){
 		String type = getPara("type");
 		Activity act = Activity.dao.findById(type);
-		//List<ActUser> userList = ActUser.dao.getUserByActId(getParaToInt("type"));
 		setAttr("act", act);
-		//setAttr("userList", userList);
 		render("activity/activitycont.jsp");
+	}
+	
+	/**
+	 * join activity
+	 */
+	public void addAct(){
+		boolean rsFlag = false;
+		String rsMsg = "发布失败，请稍后再试";
+		
+		ActUser actUser = getModel(ActUser.class);
+		actUser.set("CREATE_TIME", new Date());
+		rsFlag = actUser.save();
+		if(rsFlag){
+			rsMsg = "参加成功！";
+		}
+		setAttr("rsFlag", rsFlag);
+		setAttr("rsMsg", rsMsg);
+		renderJson();
 	}
 	
 }

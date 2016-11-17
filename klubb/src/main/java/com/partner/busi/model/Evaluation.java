@@ -1,5 +1,9 @@
 package com.partner.busi.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.jfinal.plugin.activerecord.Page;
 import com.partner.busi.model.base.BaseEvaluation;
 
 /**
@@ -23,4 +27,61 @@ public class Evaluation extends BaseEvaluation<Evaluation> {
 	};
 	
 	public static final Evaluation dao = new Evaluation();
+	
+	public Page<Evaluation> findEvaByObjIDandPID(Integer objId,Integer PId, Integer objType, int pageNum, int pageSize){
+		
+		Page<Evaluation> page = paginate(pageNum, pageSize, "select e.ID, e.CONTENT, e.CREATE_TIME, u.NICKNAME", 
+				" from t_evaluation e, t_user u where e.USER_ID=u.ID and e.OBJ_ID=? and e.OBJ_TYPE=? and e.P_ID=0 order by e.CREATE_TIME desc", objId, objType);
+		
+		//查询回复
+		List<Integer> pIdList = new ArrayList<Integer>();
+		for(Evaluation e : page.getList()){
+			pIdList.add(e.getInt("ID"));
+		}
+		List<Evaluation> replyList = searchChild(pIdList);
+		
+//		for(Evaluation c : replyList){
+//			for(Evaluation p : page.getList()){
+//				if(c.getInt("P_ID") == p.getInt("ID")){ //匹配到回复关系
+//					replyChildList.add(c);
+//					p.put("reply", c);
+//				}
+//			}
+//		}
+		for(Evaluation p : page.getList()){
+			List<Evaluation> replyChildList = new ArrayList<Evaluation>();
+			for(Evaluation c : replyList){
+				if(c.getInt("P_ID") == p.getInt("ID")){ //匹配到回复关系
+					replyChildList.add(c);
+				}
+			}
+			if(replyChildList.size()>0){
+				p.put("replyList", replyChildList);
+			}
+		}
+		return page;
+	}
+	
+	private List<Evaluation> searchChild(List<Integer> pIdList){
+		List<Evaluation> list = new ArrayList<Evaluation>();
+		if(pIdList != null && pIdList.size() > 0){
+			List<Object> paras = new ArrayList<Object>();
+			StringBuilder pPara = new StringBuilder();
+			String inPara = ""; //问号参数
+			for(Integer pId : pIdList){
+				pPara.append("?,");
+				paras.add(pId); //具体参数
+			}
+			if(pPara.length() > 0){
+				inPara = pPara.substring(0, pPara.length() - 1);
+			}
+			
+			StringBuilder sb = new StringBuilder("select e.P_ID, e.CONTENT, e.CREATE_TIME, u.NICKNAME from t_evaluation e, t_user u where e.USER_ID=u.ID and e.P_ID in (");
+			sb.append(inPara).append(")");
+			list = find(sb.toString(), paras.toArray());
+		}
+		return list;
+	}
+	
+	
 }
