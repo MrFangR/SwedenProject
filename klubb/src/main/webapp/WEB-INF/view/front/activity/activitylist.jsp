@@ -1,13 +1,12 @@
-<%@ page language="java" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="zh-CN">
-
+<%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="/ninclude/import.jsp"%>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <meta name="format-detection" content="telephone=no,email=no">
     <title>活的列表页</title>
-    <%@include file="/ninclude/back/header.jsp"%>
     <script  src="${ctx}/front-ui/js/jquery1.9.0.min.js"></script>
     <script  src="${ctx}/front-ui/js/ui.js"></script>
     <link rel="stylesheet" type="text/css" href="${ctx}/front-ui/css/reset.css">
