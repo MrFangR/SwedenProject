@@ -17,6 +17,24 @@ $(function(){
 	      
 	   })
 	   
+	   
+   $(".list-tab .list-title").click(function(){
+	   	var index = $(this).index();
+		
+	     $(this).addClass("curr").siblings().removeClass("curr");
+		
+	        if(index == 0){
+				  $(".tabsub1").show();
+				  $(".tabsub2").hide();
+				}
+				else{
+				  $(".tabsub1").hide();
+				  $(".tabsub2").show();
+					
+					}
+	   
+	   })
+	   
 
 })
 

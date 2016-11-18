@@ -44,13 +44,12 @@ public class LoginValidator extends Validator {
 		// TODO Auto-generated method stub
 		c.keepPara();
 		if(c.getAttr("imgcode")!=null){
-			c.renderJson(new ResultInfo(Constants.FLAG_FAIL,(String)c.getAttr("imgcode")));
+			c.renderJson(new ResultInfo(Constants.FLAG_FAIL,"imgcode:"+(String)c.getAttr("imgcode")));
 		}else if(c.getAttr("loginpwd")!=null){
-			c.renderJson(new ResultInfo(Constants.FLAG_FAIL,(String)c.getAttr("loginpwd")));
+			c.renderJson(new ResultInfo(Constants.FLAG_FAIL,"loginpwd"+(String)c.getAttr("loginpwd")));
 		}else if(c.getAttr("loginname")!=null){
-			c.renderJson(new ResultInfo(Constants.FLAG_FAIL,(String)c.getAttr("loginname")));
+			c.renderJson(new ResultInfo(Constants.FLAG_FAIL,"loginname"+(String)c.getAttr("loginname")));
 		}
-		return;
 	}
 
 }

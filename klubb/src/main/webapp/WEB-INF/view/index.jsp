@@ -18,7 +18,9 @@
   </header >
   <div class="gonggao">
     <div class="ggfont">
+    	<marquee id=go1 onMouseOver=go1.stop() onMouseOut=go1.start() scrollamount=2 scrolldelay=2 direction=left hspace="80px">
     	<p class="mgl-200">${notice.CONTENT }</p>
+    	</marquee>
     </div>
   </div>
 

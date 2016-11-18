@@ -39,7 +39,7 @@
 					<dd class="fl">
 						<input type="text" name="loginname" id="loginname" placeholder="邮箱"/>
 					</dd>
-					<dd id="loginname_notice"></dd>
+					<dd id="loginname_notice" class="notice"></dd>
 				</dl>
 
 				<dl class="us-info-dl clearfix">
@@ -49,7 +49,7 @@
 					<dd class="fl">
 						<input type="password" id="loginpwd" name="loginpwd" placeholder="密码"/>
 					</dd>
-					<dd id="loginpwd_notice"></dd>
+					<dd id="loginpwd_notice" class="notice"></dd>
 				</dl>
 				<dl class="us-info-dl clearfix">
 					<dt class="fl">
@@ -60,7 +60,7 @@
 						<img id="randCodeImage" class="mgl-10" style="height: 40px;" src="${ctx}/sys/randCodeImage" /> 
 						<a href="javascript:getRandImg();" class="fr login-a mgt-10">看不清?换一张</a>
 					</dd>
-					<dd id="imgcode_notice"></dd>
+					<dd id="imgcode_notice" class="notice"></dd>
 				</dl>
 				<dl class="us-info-dl clearfix">
 					<dt class="fl">&nbsp;</dt>
@@ -119,8 +119,9 @@ $("#submitLogin").click(function(){
 			if (mark == 0) {
 				window.location.href = '${ctx}';
 			} else {
-				var tip = json.retMsg;
-				$("#"+tip+"notice").html(tip);
+				var tip = json.retMsg.split(":");
+				
+				$("#"+tip[0]+"_notice").html(tip[1]);
 				$("#submitLogin").attr('disabled', false);
 				getRandImg();
 			}

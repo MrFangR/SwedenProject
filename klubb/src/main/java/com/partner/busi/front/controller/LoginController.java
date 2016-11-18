@@ -49,6 +49,16 @@ public class LoginController extends Controller {
 		}
 		renderJson(retInfo);
 	}
+	/**
+	 * 退出
+	 */
+	public void logout(){
+		ResultInfo retInfo = new ResultInfo();
+		FrontSessionUtil.clearSession(getRequest());
+		retInfo.setRetCode(0);
+		retInfo.setRetMsg("退出成功");
+		renderJson(retInfo);
+	}
 	
 	public void regist(){
 		ResultInfo retInfo = new ResultInfo();
