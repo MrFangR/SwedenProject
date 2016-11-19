@@ -16,8 +16,8 @@
           <ul>
 			<li class="jsli" width="15"><a href="${ctx }" ><i18n:get key="portal.menu.index"></i18n:get></a></li>
             <li class="jsli" width="134"><a href="#none"><i18n:get key="portal.menu.introduce"></i18n:get></a></li>
-            <li class="jsli" width="254"><a href="#none"><i18n:get key="portal.menu.happytimes"></i18n:get></a></li>
-            <li class="jsli" width="376"><a href="#none"><i18n:get key="portal.menu.activity"></i18n:get></a></li>
+            <li class="jsli" width="254"><a href="${ctx}/front/happytimes"><i18n:get key="portal.menu.happytimes"></i18n:get></a></li>
+            <li class="jsli" width="376"><a href="${ctx}/front/activity"><i18n:get key="portal.menu.activity"></i18n:get></a></li>
             <li class="jsli" width="500"><a href="#none"><i18n:get key="portal.menu.game"></i18n:get></a></li>
             <li class="jsli" width="614"><a href="#none"><i18n:get key="portal.menu.contact"></i18n:get></a></li>
             <li class="line"></li>
