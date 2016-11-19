@@ -32,17 +32,17 @@
                                     <dl  class="us-info-dl clearfix">
 										<dt class="fl">姓名：</dt>
 										<dd class="fl"><input  type="text" name="actUser.NAME" /></dd>
-										<dd class="notice"></dd>
+										<dd class="notice" id="name_notice"></dd>
 									</dl>
                                     <dl  class="us-info-dl clearfix">
 										<dt class="fl">手机号码：</dt>
 										<dd class="fl"><input  type="text" name="actUser.phone" /></dd>
-										<dd class="notice"></dd>
+										<dd class="notice" id="phone_notice"></dd>
 									</dl>
                                     <dl  class="us-info-dl clearfix">
 										<dt class="fl">邮箱地址：</dt>
 										<dd class="fl"><input  type="text" name="actUser.EMAIL" /></dd>
-										<dd class="notice"></dd>
+										<dd class="notice" id="email_notice"></dd>
 									</dl>
                                     
                                  
@@ -80,11 +80,38 @@ function joinAct(){
 		dataType : "json",
 		data : $("#userFrom").serialize(),
 		success: function(data){
-			alert(data.rsMsg);
-			showEvaluation(1);
+			if(data.rsFlag){
+			
+			}else{
+				showNotice(data);
+				enableBtn();
+			}
 		}
 	});
-
+}
+//显示提示信息
+function showNotice(data){
+	if(data.isRepeat){
+		ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+				   {type:2,
+					info:'提示信息',
+					text:'<div style=" font-size:18px; color:#ff0000;">参加活动错误</div>您好，参加活动失败，请重新尝试！',
+					'ok':function(){},
+					tag:'zq-ring'}
+	               );
+	}else{
+		$(".notice").each(function(){
+			var tip = eval("data." + this.id);
+			if(tip != null && tip != "" && tip != undefined && tip != "undefined"){
+				$(this).html(tip);
+			}else{
+				$(this).html("");
+			}
+		});
+	}
+}
+function enableBtn(){
+	$(".us-btn").attr("disabled", "");
 }
 </script>
 </html>

@@ -20,4 +20,8 @@ public class Picture extends BasePicture<Picture> {
 		Page<Picture> page = paginate(pageNum, pageSize, "select * ", " from t_picture p order by p.CREATE_TIME desc");
 		return page;
 	}
+
+	public List<Picture> findByPicId(String picID) {
+		return dao.find("select p.ID, p.url, p.CREATE_TIME, p.DESCRIPTION, u.NICKNAME from t_picture p,t_user u where p.USER_ID=u.ID AND p.ID=?",picID);
+	}
 }

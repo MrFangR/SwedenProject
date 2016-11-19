@@ -80,6 +80,13 @@ function saveEval(){
 }
 
 function save(){
+	var content = $("#evaForm #CONTENT").val();
+	if(content == "我来说两句..."){
+		return false;
+	}
+	if (content.trim().length == 0) {
+		return false;
+	}
 	$.ajax({
 		type : "POST",
 		url : ctx + "/front/evaluation/addEva",

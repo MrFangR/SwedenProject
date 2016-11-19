@@ -40,14 +40,6 @@ public class Evaluation extends BaseEvaluation<Evaluation> {
 		}
 		List<Evaluation> replyList = searchChild(pIdList);
 		
-//		for(Evaluation c : replyList){
-//			for(Evaluation p : page.getList()){
-//				if(c.getInt("P_ID") == p.getInt("ID")){ //匹配到回复关系
-//					replyChildList.add(c);
-//					p.put("reply", c);
-//				}
-//			}
-//		}
 		for(Evaluation p : page.getList()){
 			List<Evaluation> replyChildList = new ArrayList<Evaluation>();
 			for(Evaluation c : replyList){

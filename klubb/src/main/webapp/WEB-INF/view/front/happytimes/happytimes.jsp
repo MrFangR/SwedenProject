@@ -73,7 +73,7 @@ function showHappyTimes(pageNum){
 				}
 				htmlStr += "<li class='listbox mr20'>"
 						+ "		<div class='listboximg'>"
-						+ "			<a href='"+ctx+"/front/happytimes/showHTdetails?picID="+pic.ID+"' target='_blank'><img src='"+uploadUrl+pic.url+"' class='attachment-thumbnail wp-post-image'></a>"
+						+ "			<a href='"+ctx+"/front/happytimes/showHTdetails?picID="+pic.ID+"' target='_blank'><img src='"+uploadUrl+pic.URL+"' class='attachment-thumbnail wp-post-image'></a>"
 						+ "		</div>"
 						+ "		<div class='listinfo'>"
 						+ "			<div class='listtitle'>"

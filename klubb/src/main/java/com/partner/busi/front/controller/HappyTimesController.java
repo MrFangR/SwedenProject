@@ -3,6 +3,7 @@ package com.partner.busi.front.controller;
 import com.jfinal.core.Controller;
 import com.jfinal.plugin.activerecord.Page;
 import com.partner.busi.model.Picture;
+import com.partner.busi.model.User;
 
 public class HappyTimesController  extends Controller { 
 	
@@ -19,7 +20,9 @@ public class HappyTimesController  extends Controller {
 	public void showHTdetails(){
 		String picID = getPara("picID");
 		Picture pic = Picture.dao.findById(picID);
+		User user = User.dao.findById(pic.getUserId());
 		setAttr("pic", pic);
+		setAttr("user", user);
 		render("happytimes/happytimescont.jsp");
 	}
 	
