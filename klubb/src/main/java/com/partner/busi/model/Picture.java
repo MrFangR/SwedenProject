@@ -2,6 +2,7 @@ package com.partner.busi.model;
 
 import java.util.List;
 
+import com.jfinal.plugin.activerecord.Page;
 import com.partner.busi.model.base.BasePicture;
 
 /**
@@ -13,5 +14,10 @@ public class Picture extends BasePicture<Picture> {
 	
 	public List<Picture> findAll(){
 		return dao.find("select URL, DESCRIPTION, USER_ID from t_picture order by CREATE_TIME desc ");
+	}
+	
+	public Page<Picture> findPic(int pageNum, int pageSize) {
+		Page<Picture> page = paginate(pageNum, pageSize, "select * ", " from t_picture p order by p.CREATE_TIME desc");
+		return page;
 	}
 }

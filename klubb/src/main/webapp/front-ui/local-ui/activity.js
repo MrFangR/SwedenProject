@@ -30,7 +30,7 @@ function showResultList(data){
 		htmlStr += "<p class='date'>"+act.ACT_TIME.substr(8,2)+"</p><p class='month'>"+act.ACT_TIME.substr(5,2)+"</p><p class='Category'>活动</p>";
 		htmlStr += "</div>";
 		htmlStr += "<div class='zixun_content'>";
-		htmlStr += "<div class='pic'><a href='javascript:viewAct("+act.ID+");' target='_blank'><img src='"+act.IMG+"'></a></div>";
+		htmlStr += "<div class='pic'><a href='javascript:viewAct("+act.ID+");' target='_blank'><img src='"+uploadUrl+act.IMG+"'></a></div>";
 		htmlStr += "<div class='title'><a href='javascript:viewAct("+act.ID+");' target='_blank' >"+act.TITLE+"</a></div>";
 		htmlStr += "<div class='intro'><a href='javascript:viewAct("+act.ID+");' target='_blank'>"+act.CONTENT+"</a></div>";
 		htmlStr += "</div>";
