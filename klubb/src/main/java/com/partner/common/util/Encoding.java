@@ -317,6 +317,6 @@ public class Encoding {
 	public static void main(String[] args) {
 		System.out.println(Encoding.encoding("123456"));
 		System.out.println(Encoding.md5Encoding("123456"));
-		
+		System.out.println(Encoding.decoding("06ffd393b6230e8c"));
 	}
 }
