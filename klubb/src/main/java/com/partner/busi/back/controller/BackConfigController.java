@@ -33,6 +33,7 @@ public class BackConfigController extends Controller {
 		
 		Config config = getModel(Config.class);
 		config.setID(1);
+//		config.setBusinessTime(config.getBusinessTime().replaceAll("\n", "<br/>"));
 		rsFlag = config.update();
 		
 		if(rsFlag){ //保存成功
