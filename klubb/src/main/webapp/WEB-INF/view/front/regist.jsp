@@ -38,8 +38,8 @@
 									</dl>
 									<dl  class="us-info-dl clearfix">
 										<dt class="fl"><span class="rose">*</span>昵称：</dt>
-										<dd class="fl"><input  type="text" id="niceName" placeholder="请输入您的昵称"/></dd>
-										<dd id="niceName_notice" class="notice"></dd>
+										<dd class="fl"><input  type="text" id="nickName" placeholder="请输入您的昵称"/></dd>
+										<dd id="nickName_notice" class="notice"></dd>
 									</dl>
                                     <dl  class="us-info-dl clearfix">
 										<dt class="fl"><span class="rose">*</span>人口号：</dt>
@@ -64,8 +64,8 @@
 									<dl  class="us-info-dl clearfix">
 										<dt class="fl"><span class="rose">*</span>性别：</dt>
 										<dd class="fl">
-											<input  type="radio"  name="sex" value="1" checked="checked"/>男
-											<input  type="radio"  name="sex" value="0"/>女
+											<input name="sex" type="radio" value="1" style="width:30px;" checked="checked">男  
+											<input name="sex" type="radio" value="0" style="width:30px; margin-left:50px"> 女</dd>
 										</dd>
 										<dd id="sex_notice" class="notice"></dd>
 									</dl>	
@@ -95,25 +95,26 @@
 </body>
 </html>
 <script type="text/javascript">
-$("#submitRegist").click(function(){
-	$("#submitRegist").attr('disabled', true);
+
+function userRegist(){
+	$("#submitRegist").unbind("click");
 	var name = $("#name").val();
 	if(name.trim().length==0){
 		$("#name_notice").html("姓名不能为空！");
 		return false;
 	}
-	var niceName = $("#niceName").val();
+	var niceName = $("#nickName").val();
 	if(niceName.trim().length==0){
-		$("#niceName_notice").html("昵称不能为空！");
+		$("#nickName_notice").html("昵称不能为空！");
 		return false;
 	}
 	var idNum = $("#idNum").val();
-	if(idNum.trim().length()==0){
+	if(idNum.trim().length==0){
 		$("#idNum_notice").html("人口号不能为空！");
 		return false;
 	}
 	var email = $("#email").val();
-	if(email.trim().length()==0){
+	if(email.trim().length==0){
 		$("#email_notice").html("邮箱不能为空！");
 		return false;
 	}else if(!jST.isEmail(email)){
@@ -121,7 +122,7 @@ $("#submitRegist").click(function(){
 		return false;
 	}
 	var pwd = $("#pwd").val();
-	if(pwd.trim().length()==0){
+	if(pwd.trim().length==0){
 		$("#pwd_notice").html("密码不能为空！");
 		return false;
 	}
@@ -140,7 +141,7 @@ $("#submitRegist").click(function(){
 		url : "${ctx}/front/regist",
 		data : {
 			"name" : $("#name").val(),
-			"niceName" : $("#niceName").val(),
+			"nickName" : $("#nickName").val(),
 			"idNum" : $("#idNum").val(),
 			"email" : $("#email").val(),
 			"sex" : $("input[name='sex']:checked").val(),
@@ -151,19 +152,20 @@ $("#submitRegist").click(function(){
 		success : function(json) {
 			var mark = json.retCode;
 			if (mark == 0) {
+				alert(json.retMsg);
 				window.location.href = '${ctx}/front/toLogin';
 			} else {
 				var tip = json.retMsg.split(":");
 				$("#"+tip[0]+"_notice").html(tip[1]);
-				$("#submitRegist").attr('disabled', false);
-				window.location.href = '${ctx}/front/toRegist';
+				$("#submitRegist").bind("click",userRegist);
 			}
 		},
 		error : function() {
 			alert("注册失败");
-			$("#submitRegist").attr('disabled', false);
+			$("#submitRegist").bind("click",userRegist);
 		}
 	});
-});
+}
+$("#submitRegist").bind("click",userRegist);
 </script>
 

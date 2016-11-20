@@ -8,6 +8,7 @@ import java.util.Date;
 import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
 import com.partner.busi.front.validator.LoginValidator;
+import com.partner.busi.front.validator.RegistValidator;
 import com.partner.busi.model.User;
 import com.partner.common.base.ResultInfo;
 import com.partner.common.util.Encoding;
@@ -59,25 +60,27 @@ public class LoginController extends Controller {
 		retInfo.setRetMsg("退出成功");
 		renderJson(retInfo);
 	}
-	
+	@Before(RegistValidator.class)
 	public void regist(){
 		ResultInfo retInfo = new ResultInfo();
 		String nickName = getPara("nickName");
-		String idNumber = getPara("idNumber");
+		String idNum = getPara("idNum");
 		String name = getPara("name");
-		String gender = getPara("gender");
 		String email = getPara("email");
 		String phone = getPara("phone");
 		User user = new User();
 		user.setEMAIL(email);
 		user.setNAME(name);
 		user.setNICKNAME(nickName);
-		user.setIdNumber(idNumber);
-		user.setGENDER(getParaToInt("gender"));
+		user.setIdNumber(idNum);
+		user.setGENDER(getParaToInt("sex"));
 		user.setPHONE(phone);
-		user.setPASSWORD(getPara("password"));
+		user.setPASSWORD(Encoding.encoding(getPara("pwd")));
 		user.setCreateTime(new Date());
 		user.setSTATUS(0);
 		user.save();
+		retInfo.setRetCode(0);
+		retInfo.setRetMsg("注册成功");
+		renderJson(retInfo);
 	}
 }

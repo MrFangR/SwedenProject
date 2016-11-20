@@ -1,14 +1,13 @@
 package com.partner.busi.front.controller;
 
 import java.util.Date;
-import java.util.List;
 
+import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
 import com.jfinal.plugin.activerecord.Page;
+import com.partner.busi.front.validator.ActivityValidator;
 import com.partner.busi.model.ActUser;
 import com.partner.busi.model.Activity;
-import com.partner.busi.model.Evaluation;
-import com.partner.busi.model.Evaluation.OBJ_TYPE;
 
 public class ActivityController extends Controller {
 
@@ -54,6 +53,7 @@ public class ActivityController extends Controller {
 	/**
 	 * join activity
 	 */
+	@Before(ActivityValidator.class)
 	public void addAct(){
 		boolean rsFlag = false;
 		String rsMsg = "发布失败，请稍后再试";

@@ -36,11 +36,7 @@
   </div>
 <!--ist-con E-->	
 <!--bottom S-->
-		<div class="bottombg">
-           <p>Copyright © you name 2016 公司信息</p>
-           <p>使用本网站即构成接受本网站的条款和条件以及隐私政策</p>
-           
-        </div>
+<%@ include file="/ninclude/frontMember/footer.jsp"%>
 <!--bottom E-->
 </body>
 	<script type="text/javascript" src="${ctx}/front-ui/local-ui/activity.js"></script>
