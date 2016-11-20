@@ -1,0 +1,240 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>登录页面</title>
+<script  type="text/javascript"  src="../pub-ui/js/jquery1.9.0.min.js"></script>
+<script  type="text/javascript" src="../pub-ui/js/ands-popAlert.js"></script>
+<link rel="stylesheet" type="text/css" href="../pub-ui/css/ands-popAlert.css"/>
+<link rel="stylesheet" type="text/css" href="../pub-ui/css/reset.css">
+<link rel="stylesheet" type="text/css" href="../pub-ui/css/component.css" />
+
+<style>
+.tab_cz tr td {
+    line-height: 50px;
+    padding: 8px 0;
+	font-family: Microsoft YaHei;
+}
+
+.fl {
+    float: left;
+}
+.cz_two_text {
+    background: none repeat scroll 0 0 #fff;
+    border: 1px solid #cccccc;
+    color: #333;
+    font-size: 18px;
+    height: 20px;
+    line-height: 20px;
+    margin-right: 10px;
+    min-width: 300px;
+    padding: 19px 10px;
+}
+
+.fl {
+    float: left;
+}
+.yanzheng {
+    color: #ff6918;
+    font-size: 17px;
+    line-height: 50px;
+    padding-left: 35px;
+}
+.wid30 {
+    min-width: 200px;
+}
+
+p.cz_two {
+    color: #666;
+    font-size: 18px;
+    line-height: 50px;
+}
+.hq_yzm {
+    background: none repeat scroll 0 0 #8ec320;
+    border: medium none;
+    color: #fff;
+    cursor: pointer;
+    float: left;
+    font-size: 20px;
+    height: 50px;
+    line-height: 50px;
+    margin-left: 10px;
+    margin-top: 5px;
+    text-align: center;
+    width: 38%;
+	display:inline-block;
+}
+</style>
+</head>
+
+<body>
+<div class="ands-top">
+	<div id="sx_head"></div>
+</div>
+
+<div style="padding:20px; text-align:center;"><a href="#"  class="js_undoing" >关闭</a></div>
+<div style="padding:20px; text-align:center;"><a href="#"  class="js_collect" >进度条</a></div>
+<div style="padding:20px; text-align:center;"><a href="#"  class="js_collect2" >确认框</a></div>
+<div style="padding:20px; text-align:center;"><a href="#"  class="js_collect3" >提示框</a></div>
+<div style="padding:20px; text-align:center;"><a href="#"  class="js_collect4" >银行协议</a></div>
+<div style="padding:20px; text-align:center;"><a href="#"  class="js_collect5" >改变弹框大小</a></div>
+<div style="padding:20px; text-align:center;"><a href="#"  class="js_collect6" >纯净版弹框</a></div>
+<div style="padding:20px; text-align:center;"><a href="#"  class="js_collect7" >pad版综合受理平台弹框</a></div>
+<div style="height:1000px;"></div>
+<!--footer start-->
+<div class="ands-footer mgt-10">
+	<div id= sx_tail > </div>
+    <div class="clear"></div>
+</div>
+<!--footer end-->
+ <!--选号码 star-->
+ <div id="numbernone"  style="display:none">
+    <div class="select-wrap first-step  mgt-10" style="width:800px; overflow:auto">
+    	
+    
+       </div>
+    </div>
+    <!--选号码 end-->
+<!--pad start-->
+<div id="tcbl" style="display:none">
+  <table cellspacing="0" cellpadding="0" border="0" class="tab_cz">
+                <tbody><tr>
+                    <td width="100" valign="top" align="right"><p class="cz_two">手机号：</p></td>
+                    <td><input type="text" class="cz_two_text fl" placeholder="请输入主卡手机号码">
+                    <!-- 手机号码输入正确时的提示 -->
+                    <!-- <p class="yz_right fl"></p> -->
+                    <!-- 手机号码输入错误时的提示 -->
+                    <p class="yanzheng fl" >手机号码 不可为空白</p></td>
+                </tr>
+                <tr>
+                    <td valign="middle" align="right"><p class="cz_two">验证码：</p></td>
+                    <td>
+                        <input type="text"  id="123" class="cz_two_text wid30 fl" placeholder="请输入收到的短信验证码" ><input type="button" value="点击获取验证码" class="hq_yzm" style="height:50px; line-height:50px; border:0px;">
+                    </td>
+                </tr>
+            </tbody></table>
+</div>
+<!--pad end-->
+</body>
+<script>
+// type:5适用于改弹出框大小，其他几个类型可以改弹出框大小，因为有左右结构限制建议不要改弹框大小
+$(function(){
+	
+	$("#butval").live("click",function(){
+		ui_com_hallpop(".js_collect","#ands_misoAlert_close","#ands-miso-popAlert",{type:1,text:'页面加载中请稍后.....'});
+		  
+		
+		})
+	//进度关闭实例
+      ui_com_hallpop("","","#ands-miso-popAlert",{type:4});	
+
+	
+	//进度 text为页面友好性提示话语
+	$(".js_collect").live("click",function(){
+			ui_com_hallpop(".js_collect","#ands_misoAlert_close","#ands-miso-popAlert",{type:1,text:'页面加载中请稍后.....'});
+		})
+
+
+		
+	//确认框
+	$(".js_collect2").live("click",function(){
+			ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+						   {type:2,
+							info:'我是确认框',
+							text:'<div style=" font-size:18px; color:#ff0000;"> 我是div标签可以传html标签</div>您好，山西移动欢迎您您好，山西移动欢迎您您好，山西移动欢迎您您好，山西移动欢迎您您好，山西移动欢迎您',
+							'ok':function(){alert('kangjy')},
+							tag:'cw-ring'}
+			               );
+		})
+	
+	
+	//提示框  info为标题信息   title为业务名称    text为提示文字   ok 为确定按钮上执行的方法   cancle 为取消按钮上的方法 tag-- zq为成功 cw为失败  tx 提示信息yw为疑问	ywsmall为小兔子图标   btntext1 为橘色按钮文字 btntext1 为灰色按钮文字  ok1 只回调函数不执行关闭
+	
+		$(".js_collect3").live("click",function(){
+			ui_com_hallpop(".js_collect3","#ands_misoAlert_close","#ands-miso-popAlert",
+								{type:3,info:'我是提示信息',
+								 title:'<div style=" font-size:18px; color:#32bf2a;font-family:Microsoft YaHei;line-height:36px;font-weight:bold"> 请在新打开页面完成支付</div>',
+								 text:'<div style="padding-bottom:20px">支付完成前请<span style="color:#ff6b00">不要关闭此窗口</span>，完成支付后根据您的情况点击下面按钮</div>',
+								 'ok':function(){alert('queding')},
+								 'cancle':function(){alert('cancleq')},
+								 tag:'tx-ring',btntext1:'支付已完成',
+								 btntext2:'支付遇到问题'}
+						   );
+ 
+		})
+	
+//弹出协议
+			$(".js_collect4").live("click",function(){
+				
+				var _text = ' <div class="font-20 font-YaHei font-blue align-center pdb-20">中国移动通信集团山西有限公司电子渠道入网服务电子协议</div><p>友好提示：</p>1．甲方应具有完全民事行为能力。无民事行为能力或限制民事行为能力的甲方入网时应经过其有监护能力的法定监护人的同意并签名确认。<br />2．在签署本协议之前，请甲方或其代理人（或监护人）仔细阅读本协议各条款，如有疑问请及时咨询。<br />3．甲方所需的业务、办理手续以及资费标准请参见乙方的相关业务说明。<br /><b>4．本协议中的黑体字部分为提示性条款，请仔细阅读。</b><br /><p class="font-16">一、服务内容及服务承诺</p><p style="text-indent:24px">1．甲方愿意使用乙方提供的号码，并接受乙方提供的电信服务，乙方愿意在现有技术条件下网络覆盖范围内以及签订有漫游协议的电信运营商的网络覆盖范围内为甲方提供电信服务，具体服务内容由甲乙双方通过签署业务受理单或其他方式另行约定。</p><p style="text-indent:24px">2．甲方可以自主选择是否订购第三方服务商提供的由乙方代收服务费的增值电信业务（以下简称"代收费业务"）。</p></p>'
+				
+					ui_com_hallpop(".js_collect4","#ands_misoAlert_close","#ands-miso-popAlert",
+									{type:5,info:'中国移动入网协议',
+									 text:_text,
+									 'ok':function(){alert('queding')},
+									 'cancle':function(){alert('cancleq')},
+									 tag:'cw',
+									 btntext1:'同意',
+									 btntext2:'不同意'}
+									);
+		
+				})
+
+
+//改变弹框大小
+		$(".js_collect5").live("click",function(){
+			ui_com_hallpop(".js_collect5","#ands_misoAlert_close","#ands-miso-popAlert",
+								{type:5,info:'短信验证码',
+								 text:'<div style="padding:10px"><input type="text" class="input-w1 input-w1-90" style="height:26px;line-height:26px;margin-right:10px"  id="lijh"><input type="button" class="btn-yzm" value="免费获取验证码" style="height:28px;line-height:28px;font-size:12px" id="butval"><p class="font-rose pdt-10">验证失败，请核对手机号和验证码，必要是重新获取</p></div>',
+								 'ok1':function(){ui_val($("#lijh").val());},
+								 mywidth:"400"}
+								);
+
+		})
+		function ui_val(ss){
+			
+			alert(ss);
+			
+			}
+
+
+var _text = $("#numbernone").html();
+	$("#numbernone").html("");
+	//纯净版弹框
+		$(".js_collect6").live("click",function(){
+			ui_com_hallpop(".js_collect6","#ands_misoAlert_close","#ands-miso-popAlert",{type:6,info:'地图定位',text:_text,mywidth:"800"});
+
+		})
+
+//pad版综合受理平台弹框
+       var _text2 = $("#tcbl").html();
+		$(".js_collect7").live("click",function(){
+			
+			 $("#tcbl").html("");
+             ui_com_hallpop(".js_collect5","#ands_misoAlert_close","#ands-miso-popAlert",
+							 {type:5,
+							  skin:{bgcolor:"#ff8a00",
+									height:"56",
+									size:"20",
+									color:"#fff",
+									btnwidth:"220",
+									btnheight:"40",
+									btncolorl:"#ffbc6d",
+									btncolorr:"#ff8a00"},
+							  info:'请确认你要办理的套餐',
+							  text:_text2,
+							  'ok':function(){alert('kkk')},
+							  'cancle':function(){alert('cancleq')},
+							  tag:'tx-ring',
+							  btntext1:'取消',
+							  btntext2:'确定',
+							  mywidth:"600"}
+			  );
+		})
+
+
+})
+	
+    	
+</script>
+</html>

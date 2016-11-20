@@ -59,13 +59,12 @@ p{ margin:0; padding:0;}
 button, input, select, textarea {
     margin: 0;
     resize: none;
-    font-size: 100%;
     vertical-align: middle;
     line-height: normal;
 	outline:none;
 	padding:0;
 	font-family: "microsoft yahei", "Droid Sans", "Droid Sans Fallback", "Lucida Grande", "Hiragino Sans GB", "Hiragino Sans GB W3";
-	-webkit-appearance: none;
+	
 }
 input::-webkit-input-placeholder {color: #ccc;-webkit-transition: color .5s;font-size:16px;}
 input:focus::-webkit-input-placeholder{color: #626262;-webkit-transition: color .5s; }

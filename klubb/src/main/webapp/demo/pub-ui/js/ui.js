@@ -34,8 +34,20 @@ $(function(){
 					}
 	   
 	   })
+  //左侧菜单
+	$(".us-menu li").click(function(){
+		 
+		     $(this).find("a").addClass("curr").end().siblings().find("a").removeClass("curr");
+		
+		})
 	   
-
+//tab
+	$(".us-nav-box ul li").live("click",function(){
+		
+		 var indexnum = $(this).index();
+		  $(this).addClass("curr").siblings().removeClass("curr");
+		  $(this).parent().parent().next(".us-body").find(".box").eq(indexnum).show().siblings().hide();
+		})
 })
 
 function amLunBo(){
