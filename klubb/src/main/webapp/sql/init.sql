@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50626
 File Encoding         : 65001
 
-Date: 2016-11-17 00:10:11
+Date: 2016-11-21 21:50:25
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -122,13 +122,15 @@ CREATE TABLE `t_contact` (
   `PHONE` varchar(20) DEFAULT NULL COMMENT '手机号',
   `CONTENT` varchar(500) DEFAULT NULL COMMENT '内容',
   `CREATE_TIME` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
-  `STATUS` tinyint(2) DEFAULT NULL COMMENT '状态：0：未读，1：已读',
+  `STATUS` tinyint(2) NOT NULL DEFAULT '0' COMMENT '状态：0：未读，1：已读',
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='联系我们';
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='联系我们';
 
 -- ----------------------------
 -- Records of t_contact
 -- ----------------------------
+INSERT INTO `t_contact` VALUES ('1', '测试', '13711111111', '阿里斯顿附件为io\r\n王府井欧文', '2016-11-18 23:18:01', '0');
+INSERT INTO `t_contact` VALUES ('2', '测试', '13711111111', '阿里斯顿附件为io\r\n王府井欧文', '0000-00-00 00:00:00', '0');
 
 -- ----------------------------
 -- Table structure for t_evaluation
@@ -202,6 +204,22 @@ CREATE TABLE `t_picture` (
 
 -- ----------------------------
 -- Records of t_picture
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for t_reset_rec
+-- ----------------------------
+DROP TABLE IF EXISTS `t_reset_rec`;
+CREATE TABLE `t_reset_rec` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `EMAIL` varchar(50) NOT NULL COMMENT '邮箱',
+  `UUID` varchar(64) NOT NULL,
+  `CREATE_TIME` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of t_reset_rec
 -- ----------------------------
 
 -- ----------------------------
