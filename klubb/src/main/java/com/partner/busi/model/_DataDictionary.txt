@@ -72,7 +72,7 @@ Table: t_contact
  PHONE       | VARCHAR(20)   | YES  |     |         | 手机号     
  CONTENT     | VARCHAR(500)  | YES  |     |         | 内容      
  CREATE_TIME | TIMESTAMP(19) | YES  |     |         | 创建时间    
- STATUS      | TINYINT(3)    | YES  |     |         | 状态：0：未读，1：已读
+ STATUS      | TINYINT(3)    | NO   |     | 0       | 状态：0：未读，1：已读
 -------------+---------------+------+-----+---------+---------
 
 Table: t_evaluation
@@ -119,6 +119,16 @@ Table: t_picture
  CREATE_TIME  | TIMESTAMP(19) | YES  |     |         | 创建时间    
  IS_RECOMMEND | TINYINT(3)    | NO   |     | 0       | 是否推荐：0，不推荐，1，推荐
 --------------+---------------+------+-----+---------+---------
+
+Table: t_reset_rec
+-------------+---------------+------+-----+---------------------+---------
+ Field       | Type          | Null | Key | Default             | Remarks 
+-------------+---------------+------+-----+---------------------+---------
+ ID          | INT(10)       | NO   | PRI |                     | 主键      
+ EMAIL       | VARCHAR(50)   | NO   |     |                     | 邮箱      
+ UUID        | VARCHAR(64)   | NO   |     |                     |         
+ CREATE_TIME | TIMESTAMP(19) | NO   |     | 0000-00-00 00:00:00 |         
+-------------+---------------+------+-----+---------------------+---------
 
 Table: t_user
 -------------+---------------+------+-----+---------+---------

@@ -26,6 +26,7 @@ public class _MappingKit {
 		arp.addMapping("t_introduce", "ID", Introduce.class);
 		arp.addMapping("t_notice", "ID", Notice.class);
 		arp.addMapping("t_picture", "ID", Picture.class);
+		arp.addMapping("t_reset_rec", "ID", ResetRec.class);
 		arp.addMapping("t_user", "ID", User.class);
 	}
 }
