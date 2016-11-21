@@ -8,4 +8,8 @@ import com.partner.busi.model.base.BaseResetRec;
 @SuppressWarnings("serial")
 public class ResetRec extends BaseResetRec<ResetRec> {
 	public static final ResetRec dao = new ResetRec();
+	
+	public ResetRec findByUid(String uid){
+		return dao.findFirst("select *  from t_reset_rec where UUID = ?",uid);
+	}
 }

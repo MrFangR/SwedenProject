@@ -13,9 +13,11 @@ import com.jfinal.core.Controller;
 import com.partner.busi.front.validator.LoginValidator;
 import com.partner.busi.front.validator.RegistValidator;
 import com.partner.busi.front.validator.SendEmailValidator;
+import com.partner.busi.model.ResetRec;
 import com.partner.busi.model.User;
 import com.partner.common.base.ResultInfo;
 import com.partner.common.constant.Constants;
+import com.partner.common.util.DateUtil;
 import com.partner.common.util.Encoding;
 import com.partner.common.util.FrontSessionUtil;
 import com.partner.common.util.SendMail;
@@ -96,13 +98,18 @@ public class LoginController extends Controller {
 	
 	@Before(SendEmailValidator.class)
 	public void sendEmail(){
-		String content = getRequest().getScheme()+"://"+getRequest().getServerName()+":"+getRequest().getServerPort()+getRequest().getContextPath()+"/front/toModifyPwd";
+		String content = getRequest().getScheme()+"://"+getRequest().getServerName()+":"+getRequest().getServerPort()+getRequest().getContextPath()+"/front/toModifyPwd?uid=";
 		UUID uid = UUID.randomUUID();
+		ResetRec rec = new ResetRec();
+		rec.setEMAIL(getPara("email"));
+		rec.setUUID(uid.toString());
+		rec.setCreateTime(new Date());
+		rec.save();
 		ResultInfo retInfo = new ResultInfo();
 		try {
 			SendMail.sendMessage(Constants.STMP, Constants.EMAIL_USER,
 					Constants.EMAIL_PASSWORD, getPara("email"), "密码修改",
-						content,
+						content+uid.toString(),
 						"text/html;charset=utf-8");
 			retInfo.setRetCode(0);
 			retInfo.setRetMsg("修改密码邮件发送成功，请查看");
@@ -117,7 +124,24 @@ public class LoginController extends Controller {
 	
 	public void toModifyPwd(){
 		//缺失修改密码请求有效性判断
-		render("*.jsp");
+		ResultInfo retInfo = new ResultInfo();
+		String uid = getPara("uid");
+		ResetRec rec = ResetRec.dao.findByUid(uid);
+		if(rec == null ){
+			retInfo.setRetCode(1);
+			retInfo.setRetMsg("非法请求链接，请重新获取。");
+		}else{
+			if(DateUtil.toRemind(new Date(), rec.getCreateTime(), 30, "HH")){
+				retInfo.setRetCode(1);
+				retInfo.setRetMsg("请求链接已失效，请重新获取。");
+			}else{
+				retInfo.setRetCode(0);
+				retInfo.setRetMsg("请修改密码");
+				setAttr("email",rec.getEMAIL());
+			}
+		}
+		
+		renderJson(retInfo);
 	}
 	
 	public void modifyPwd(){

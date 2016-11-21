@@ -64,8 +64,8 @@
 									<dl  class="us-info-dl clearfix">
 										<dt class="fl"><span class="rose">*</span>性别：</dt>
 										<dd class="fl">
-											<input name="sex" type="radio" value="1" style="width:30px;" checked="checked">男  
-											<input name="sex" type="radio" value="0" style="width:30px; margin-left:50px"> 女</dd>
+											<input name="sex" type="radio" value="1" style="width:30px;border: 0;">男   
+											<input name="sex" type="radio" value="0" style="width:30px; margin-left:50px;border: 0;"> 女
 										</dd>
 										<dd id="sex_notice" class="notice"></dd>
 									</dl>	

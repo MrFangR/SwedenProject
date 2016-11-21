@@ -453,16 +453,26 @@ public class DateUtil {
 
 	/**
 	 * 判断日期 date1-当前时间 date2-失效时间 delay-时间阀值（天数） return true-即将失效，提醒 false-未失效
+	 * type : day天      HH时    mm分
 	 */
-	public static boolean toRemind(Date date1, Date date2, int delay) {
-
+	public static boolean toRemind(Date date1, Date date2, int delay, String type) {
 		Long time = DateUtil.diffDate(date1, date2);
-		if (delay > time / (60 * 60 * 24 * 1000)) {
+		int dataStand = 0;
+		if(type.equals("day")){
+			dataStand = 60 * 60 * 24 * 1000;
+		}else if(type.equals("HH")){
+			dataStand = 60 * 60 * 1000;
+		}else if(type.equals("mm")){
+			dataStand = 60 *  1000;
+		}
+		if (delay > time / dataStand) {
 			return false;// 未失效
 		} else {
 			return true;// 即将失效，提醒
 		}
 	}
+	
+	
 
 	/**
 	 * 获得上一个月的月份
