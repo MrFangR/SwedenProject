@@ -4,15 +4,21 @@
 package com.partner.busi.front.controller;
 
 import java.util.Date;
+import java.util.UUID;
+
+import javax.mail.MessagingException;
 
 import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
 import com.partner.busi.front.validator.LoginValidator;
 import com.partner.busi.front.validator.RegistValidator;
+import com.partner.busi.front.validator.SendEmailValidator;
 import com.partner.busi.model.User;
 import com.partner.common.base.ResultInfo;
+import com.partner.common.constant.Constants;
 import com.partner.common.util.Encoding;
 import com.partner.common.util.FrontSessionUtil;
+import com.partner.common.util.SendMail;
 
 /**
  * @author fangrui
@@ -82,5 +88,47 @@ public class LoginController extends Controller {
 		retInfo.setRetCode(0);
 		retInfo.setRetMsg("注册成功");
 		renderJson(retInfo);
+	}
+	
+	public void toForget(){
+		render("forget.jsp");
+	}
+	
+	@Before(SendEmailValidator.class)
+	public void sendEmail(){
+		String content = getRequest().getScheme()+"://"+getRequest().getServerName()+":"+getRequest().getServerPort()+getRequest().getContextPath()+"/front/toModifyPwd";
+		UUID uid = UUID.randomUUID();
+		ResultInfo retInfo = new ResultInfo();
+		try {
+			SendMail.sendMessage(Constants.STMP, Constants.EMAIL_USER,
+					Constants.EMAIL_PASSWORD, getPara("email"), "密码修改",
+						content,
+						"text/html;charset=utf-8");
+			retInfo.setRetCode(0);
+			retInfo.setRetMsg("修改密码邮件发送成功，请查看");
+		} catch (MessagingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			retInfo.setRetCode(0);
+			retInfo.setRetMsg("邮件发送失败");
+		}
+		renderJson(retInfo);
+	}
+	
+	public void toModifyPwd(){
+		//缺失修改密码请求有效性判断
+		render("*.jsp");
+	}
+	
+	public void modifyPwd(){
+		ResultInfo retInfo  = new ResultInfo();
+		//业务应该从页面获取uuid，根据 uuid 查询到 email，再根据 email 获取到 user 信息
+		String pwd = getPara("password");
+		String email = getPara("email");
+		User user = User.dao.findByEmail(email);
+		user.setPASSWORD(pwd);
+		user.update();
+		retInfo.setRetCode(0);
+		retInfo.setRetMsg("修改成功！");
 	}
 }

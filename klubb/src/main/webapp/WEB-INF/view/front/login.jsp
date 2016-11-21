@@ -58,14 +58,16 @@
 					<dd class="fl">
 						<input type="text" id="imgcode" name="imgcode" maxlength="4" class="ued-input fl" style="width:110px;" /> 
 						<img id="randCodeImage" class="mgl-10" style="height: 40px;" src="${ctx}/sys/randCodeImage" /> 
+						<!-- 
 						<a href="javascript:getRandImg();" class="fr login-a mgt-10">看不清?换一张</a>
+						 -->
 					</dd>
 					<dd id="imgcode_notice" class="notice"></dd>
 				</dl>
 				<dl class="us-info-dl clearfix">
 					<dt class="fl">&nbsp;</dt>
 					<dd class="fl">
-						<div class="us-btn" id="submitLogin">立即登录</div>
+						<div class="us-btn" id="submitLogin">立即登录</div><a href="${ctx }/front/toForget">忘记密码</a>
 					</dd>
 				</dl>
 
@@ -136,6 +138,6 @@ $("#submitLogin").click(function(){
 function getRandImg(){
 	$('#randCodeImage').attr('src', "${ctx}/sys/randCodeImage?"+Math.random());
 }
-
+$("#randCodeImage").click(getRandImg);
 </script>
 

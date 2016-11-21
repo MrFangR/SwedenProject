@@ -18,6 +18,10 @@ public class User extends BaseUser<User> {
 		return dao.findFirst("select * from t_user where status = 0 and EMAIL = ? and password = ?", email, pwd);
 	}
 	
+	public User findByEmail(String email){
+		return dao.findFirst("select * from t_user where status = 0 and EMAIL = ? ", email);
+	}
+	
 	public Page<User> findUserLst(int pageNumber,int pageSize, String email, String idNumber){
 		String selSql = "select * from t_user ";
 		List<Object> paramList=new ArrayList<Object>();

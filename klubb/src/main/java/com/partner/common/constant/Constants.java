@@ -32,5 +32,6 @@ public class Constants {
     public static final String  EMAIL_PASSWORD = PropKit.use("config.properties").get("email_password");
     
     public static final String UPLOAD_SERVER_URL = PropKit.use("config.properties").get("uploadServerUrl");  //上传文件url
+    
 
 }
