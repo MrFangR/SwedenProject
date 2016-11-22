@@ -194,6 +194,8 @@ nav ul li.line{
 .contact-con{ width:900px; margin:30px auto 0 auto;}
 .contactlef{ float:left;width:470;height:400px}
 .contactright{ color:#000; font-size:18px; float:left; margin-left:30px; line-height:46px}
+.contactright table th{ text-align:right; height:40px; font-weight:normal; width:30%}
+.contactright table td{ text-align:left;height:40px;; width:70%}
 /*contact end*/ 
 
 
@@ -208,11 +210,17 @@ nav ul li.line{
 .w1000{ width:1000px; margin:0 auto; text-align:center;}
 .w1000 .inputfont{ height:52px; line-height:52px; color:#5d5d5d; border:1px solid #333333; width:560px; padding-left:30px;}
 .w1000 .inputbut{ height:52px; line-height:42px;border:1px solid #333333; text-align:center; background:#333333; width:90px; color:#fff; cursor:pointer;}
-.list-con{ width:1200px; margin:0 auto; background:#fff;}
+.list-con{ width:1200px; margin:0 auto; background:#fff; position:relative;}
 .list-contitle{ height:58px; line-height:58px; width:260px; background:#eb003b; color:#fff; font-size:24px; padding-left:30px;}
 
 .list-con ul li {
     margin: 15px;
+}
+.list-condel{ width:880px;}
+.list-del{ background:#000; color:#fff; position:absolute; top:0px; right:0px; height:40px; line-height:40px; width:120px; text-align:center; cursor:pointer;opacity: 0.9;filter:alpha(opacity=90);}
+.list-del i.delico{ height:13px; width:13px; background:url(../images/del.png) no-repeat; z-index:9; display:inline-block; margin-right:10px;}
+.list-condel ul li {
+    margin: 10px;
 }
 .riqi {
     height: 34px;
@@ -928,6 +936,9 @@ nav ul li.line{
 }
 .mr20 {
     margin-right: 20px;
+}
+.mr10 {
+    margin-right: 10px;
 }
 .listinfo {
     line-height: 22px;
