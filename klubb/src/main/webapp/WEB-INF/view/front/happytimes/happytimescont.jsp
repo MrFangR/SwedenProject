@@ -27,8 +27,22 @@
           ${pic.DESCRIPTION}
         <p><img src="${uploadUrl}${pic.URL}"></p>
        		 <div class="contentprevnextbox">
-      			<div class="contentprev">上一篇:<a href="#none" rel="prev">中式台球锦标赛落户顺义</a></div>
-      			<div class="contentnext">下一篇:<a href="#none" rel="next">国际台球比赛精彩时刻</a></div>
+      			<div class="contentprev">上一篇:
+      				<c:if test="${empty prevPic}">
+						没有上一篇
+					</c:if>
+      				<c:if test="${not empty prevPic}">
+						<a href="${ctx}/front/happytimes/showHTdetails?picID=${prevPic.ID}" rel="prev">${prevPic.DESCRIPTION}</a>
+					</c:if>
+      			</div>
+      			<div class="contentnext">下一篇:
+      				<c:if test="${empty nextPic}">
+						没有下一篇
+					</c:if>
+      				<c:if test="${not empty nextPic}">
+						<a href="${ctx}/front/happytimes/showHTdetails?picID=${nextPic.ID}" rel="next">${nextPic.DESCRIPTION}</a>
+					</c:if>
+      			</div>
    			 </div>
         </div>
 </div>

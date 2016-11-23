@@ -21,7 +21,11 @@ public class Picture extends BasePicture<Picture> {
 		return page;
 	}
 
-	public List<Picture> findByPicId(String picID) {
-		return dao.find("select p.ID, p.url, p.CREATE_TIME, p.DESCRIPTION, u.NICKNAME from t_picture p,t_user u where p.USER_ID=u.ID AND p.ID=?",picID);
+	public Picture findPrevPic(String picID) {
+		return dao.findFirst("select * from t_picture where id<? order by id desc limit 0,1;",picID);
+	}
+
+	public Picture findNextPic(String picID) {
+		return dao.findFirst("select * from t_picture where id>? order by id asc limit 0,1",picID);
 	}
 }

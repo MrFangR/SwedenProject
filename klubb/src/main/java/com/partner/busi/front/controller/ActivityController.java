@@ -8,6 +8,8 @@ import com.jfinal.plugin.activerecord.Page;
 import com.partner.busi.front.validator.ActivityValidator;
 import com.partner.busi.model.ActUser;
 import com.partner.busi.model.Activity;
+import com.partner.busi.model.User;
+import com.partner.common.util.FrontSessionUtil;
 
 public class ActivityController extends Controller {
 

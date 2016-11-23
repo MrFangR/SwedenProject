@@ -72,7 +72,7 @@
 <div class="tc">
 	<%@include file="/ninclude/back/page.jsp"%>
 </div>
-<script>
+<script type="text/javascript">
 $(".b-radio").click(function(){
 	$(this).closest("tbody").find(".b-radio").removeClass("bon-radio");
 	$(this).addClass("bon-radio");

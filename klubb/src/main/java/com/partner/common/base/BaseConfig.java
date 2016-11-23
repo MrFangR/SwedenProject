@@ -26,6 +26,7 @@ import com.partner.busi.front.controller.EvaluationController;
 import com.partner.busi.front.controller.HappyTimesController;
 import com.partner.busi.front.controller.IndexController;
 import com.partner.busi.front.controller.LoginController;
+import com.partner.busi.front.controller.UserCenterController;
 import com.partner.busi.model._MappingKit;
 import com.partner.common.plugin.PropertiesPlugin;
 import com.partner.common.tag.I18nTag;
@@ -76,6 +77,7 @@ public class BaseConfig extends JFinalConfig {
 		me.add("/front/evaluation",EvaluationController.class,"/front");
 		me.add("/front/happytimes",HappyTimesController.class,"/front");
 		me.add("/contact",ContactController.class,"/front");
+		me.add("/userCenter",UserCenterController.class,"/front/usercenter");
 	}
 
 	/*

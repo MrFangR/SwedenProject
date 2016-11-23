@@ -21,7 +21,14 @@ public class HappyTimesController  extends Controller {
 		String picID = getPara("picID");
 		Picture pic = Picture.dao.findById(picID);
 		User user = User.dao.findById(pic.getUserId());
+		//取上一篇
+		Picture prevPic = Picture.dao.findPrevPic(picID);
+		//取下一篇
+		Picture nextPic = Picture.dao.findNextPic(picID);
+		
 		setAttr("pic", pic);
+		setAttr("prevPic", prevPic);
+		setAttr("nextPic", nextPic);
 		setAttr("user", user);
 		render("happytimes/happytimescont.jsp");
 	}
