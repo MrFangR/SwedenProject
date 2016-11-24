@@ -74,14 +74,38 @@
                          <!--us-bd-base E-->
         </div>
         <div class="contact-right">
-           <h2><i18n:get key="portal.contact.info.title"></i18n:get></h2>
-           <div class="contactright">
-                <p><i18n:get key="portal.contact.info.company"></i18n:get>：${config.NAME }</p>
-                <p  class="mg0-30"><i18n:get key="portal.contact.info.phone"></i18n:get>: ${config.PHONE }</p>
-                <p><i18n:get key="portal.contact.info.business"></i18n:get>：${config.businessTime }</p>
-                <p><i18n:get key="portal.contact.info.address"></i18n:get>：${config.ADDRESS }</p>
-              </div>
-        </div>
+			<h2><i18n:get key="portal.contact.info.title"></i18n:get></h2>
+			<div class="contactright">
+			<table width="100%" border="0">
+                      <tr>
+                        <th><i18n:get key="portal.contact.info.company"></i18n:get>：</th>
+                        <td>Sundsvalls BiljardKlubb</td>
+                      </tr>
+                      <tr>
+                        <th><i18n:get key="portal.contact.info.phone"></i18n:get>：</th>
+                        <td>${config.PHONE }</td>
+                      </tr>
+                      <c:forEach items="${busiList }" var="busi" varStatus="status">
+                      	<c:if test="${status.index == 0 }" var="first">
+                      		<tr>
+		                        <th><i18n:get key="portal.contact.info.business"></i18n:get>：</th>
+		                        <td>${busi }</td>
+		                      </tr>
+                      	</c:if>
+                      	<c:if test="${not first }">
+                      		<tr>
+		                        <th></th>
+		                        <td>${busi }</td>
+		                      </tr>
+                      	</c:if>
+                      </c:forEach>
+                      <tr>
+                        <th><i18n:get key="portal.contact.info.address"></i18n:get>：</th>
+                        <td>${config.ADDRESS }</td>
+                      </tr>
+                </table>
+
+           </div>
         <div class="clearfix"></div>
 </div>
  

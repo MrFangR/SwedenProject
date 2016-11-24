@@ -8,12 +8,6 @@
 <div class="ued-title">
 	<h4>查询结果</h4>
 </div>
-<div class="clearfix pdl-10 pdr-10">
-	<ul class="ued-keys fl js_keys">
-		<li><a class="start" href="javascript:updateStatus(0);">标记为未读</a></li>
-		<li><a class="del" href="javascript:updateStatus(1);">标记为已读</a></li>
-	</ul>
-</div>
 <table width="100%" cellspacing="0" cellpadding="0" border="0" class="ued-table mgt-20">
 	<colgroup>
 		<col width="5%" />
@@ -26,12 +20,12 @@
 	</colgroup>
 	<tbody>
 		<tr class="ued-tr-even">
-			<th></th>
 			<th>姓名</th>
 			<th>手机号</th>
 			<th>留言内容</th>
 			<th>创建时间</th>
 			<th>状态</th>
+			<th>操作</th>
 		</tr>
 		
 		<c:if test="${empty paginate.list}">
@@ -40,10 +34,6 @@
 		<c:if test="${not empty paginate.list}">
 			<c:forEach items="${paginate.list}" var="contact">
 				<tr class="ued-tr-odd">
-					<td class="pdl-10">
-						<input type="radio" name="contactId" class="inp-radio" value="${contact.ID}"/>
-						<span class="b-radio"><b></b></span>
-					</td>
 					<td>${contact.NAME}</td>
 					<td>${contact.PHONE}</td>
 					<td>${contact.CONTENT}</td>
@@ -55,6 +45,16 @@
 							</c:when>
 							<c:when test="${contact.STATUS eq 1}">
 								<font class="color-5">已读</font>
+							</c:when>
+						</c:choose>
+					</td>
+					<td>
+						<c:choose>
+							<c:when test="${contact.STATUS eq 0}">
+								<a class="mgr-10" href="javascript:;" onclick="updateStatus(1, '${contact.ID}')">[标记为已读]</a>
+							</c:when>
+							<c:when test="${contact.STATUS eq 1}">
+								<a class="mgr-10" href="javascript:;" onclick="updateStatus(0, '${contact.ID}')">[标记为未读]</a>
 							</c:when>
 						</c:choose>
 					</td>
