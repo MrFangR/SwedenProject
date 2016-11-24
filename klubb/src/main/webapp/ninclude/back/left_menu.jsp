@@ -11,14 +11,17 @@
 			<a tabid="1-1" url="${ctx}/back/user">
 				<b class="b-t6"></b><span>用户管理</span>
 			</a>
-			<a tabid="1-1" url="${ctx}/back/introduce">
+			<a tabid="1-2" url="${ctx}/back/introduce">
 				<b class="b-t6"></b><span>介绍管理</span>
 			</a>
-			<a tabid="1-1" url="${ctx}/back/activity">
+			<a tabid="1-3" url="${ctx}/back/activity">
 				<b class="b-t6"></b><span>活动管理</span>
 			</a>
-			<a tabid="1-1" url="${ctx}/back/config">
-				<b class="b-t6"></b><span>台球厅管理</span>
+			<a tabid="1-4" url="${ctx}/back/config">
+				<b class="b-t6"></b><span>台球厅配置</span>
+			</a>
+			<a tabid="1-5" url="${ctx}/back/contact">
+				<b class="b-t6"></b><span>留言管理</span>
 			</a>
 		</li>
 	</ul>
