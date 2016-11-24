@@ -3,7 +3,12 @@
  */
 package com.partner.busi.front.controller;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
+
+import org.apache.commons.lang.StringUtils;
 
 import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
@@ -22,6 +27,12 @@ public class ContactController extends Controller {
 	public void index(){
 		Config config = Config.dao.findById(1);
 		setAttr("config", config);
+		String busi = config.getBusinessTime();
+		List<String> busiList = new ArrayList<String>();
+		if(StringUtils.isNotEmpty(busi)){
+			busiList = Arrays.asList(busi.split("\n"));
+		}
+		setAttr("busiList", busiList);
 		render("contact/contact_us.jsp");
 	}
 	

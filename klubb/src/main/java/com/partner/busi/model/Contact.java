@@ -35,6 +35,7 @@ public class Contact extends BaseContact<Contact> {
 			sql.append(" and c.STATUS = ? ");
 			params.add(status);
 		}
+		sql.append(" order by c.CREATE_TIME desc");
 		return paginate(pageNum, pageSize, select, sql.toString(), params.toArray());
 	}
 }
