@@ -36,9 +36,9 @@ function qry4Page(pageNum){
 }
 
 // 置为 可用/不可用
-function updateStatus(f){
-	var newsId = $(":radio[name='contactId']:checked").val();
-	if (newsId==null || newsId==undefined || newsId=="") {
+function updateStatus(f, contactId){
+//	var newsId = $(":radio[name='contactId']:checked").val();
+	if (contactId==null || contactId==undefined || contactId=="") {
 		pop.fail("请选择要操作的记录");
 		return;
 	}
@@ -65,7 +65,7 @@ function updateStatus(f){
 			success : function(json){
 				if (json.flag == 0) {
 					pop.success(json.msg, function(){
-						qry();
+						qry(1);
 					});
 				} else {
 					pop.fail(json.msg);
