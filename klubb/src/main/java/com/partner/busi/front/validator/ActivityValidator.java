@@ -8,7 +8,7 @@ public class ActivityValidator extends Validator {
 	@Override
 	protected void validate(Controller c) {
 		validateRequiredString("actUser.NAME", "name_notice", "请输入姓名!");
-		validateRequiredString("actUser.PHONE", "phone_notice", "请输入手机号!");
+		validateRequiredString("actUser.phone", "phone_notice", "请输入手机号!");
 		validateEmail("actUser.EMAIL", "email_notice", "请输入正确用户邮箱!");
 		
 	}

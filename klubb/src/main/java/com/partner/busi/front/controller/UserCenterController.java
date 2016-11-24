@@ -4,7 +4,9 @@ import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
 import com.jfinal.plugin.activerecord.Page;
 import com.partner.busi.front.validator.CenterValidator;
+import com.partner.busi.model.ActUser;
 import com.partner.busi.model.Activity;
+import com.partner.busi.model.Picture;
 import com.partner.busi.model.User;
 import com.partner.common.base.ResultInfo;
 import com.partner.common.util.FrontSessionUtil;
@@ -16,6 +18,20 @@ public class UserCenterController extends Controller {
 	 */
 	public void toActMan(){
 		render("activity_manage.jsp");
+	}
+	
+	/**
+	 * to user center happytimes
+	 */
+	public void toHappytimes(){
+		render("userht.jsp");
+	}
+	
+	/**
+	 * to user center happytimes upload
+	 */
+	public void toHappytimesUpload(){
+		render("userhtupload.jsp");
 	}
 	
 	/**
@@ -61,6 +77,37 @@ public class UserCenterController extends Controller {
 		retInfo.setRetCode(0);
 		retInfo.setRetMsg("修改成功");
 		renderJson(retInfo);
+	}
+	
+	/**
+	 * cancle activity
+	 */
+	public void cancleAct(){
+		boolean rsFlag = false;
+		String rsMsg = "取消活动失败，请稍后再试";
+		
+		int actId = getParaToInt("actId");
+		//String userId = FrontSessionUtil.getUserNo(getRequest());
+		String userId = "1";
+		rsFlag = ActUser.dao.deleteByUserIdAndActId(userId,actId);
+		
+		setAttr("rsFlag", rsFlag);
+		setAttr("rsMsg", rsMsg);
+		renderJson();
+	}
+	
+	/**
+	 * show user happytimes
+	 */
+	public void showUserHappy(){
+		int pageNum = getParaToInt("pageNum");
+		int pageSize = getParaToInt("pageSize");
+		User user = FrontSessionUtil.getSession(getRequest());
+		
+		//Page<Picture> page = Picture.dao.findUserPic(user.getID(),pageNum,pageSize);
+		Page<Picture> page = Picture.dao.findUserPic(1,pageNum,pageSize);
+		setAttr("page", page);
+		renderJson();
 	}
 
 }

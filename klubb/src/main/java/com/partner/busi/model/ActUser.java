@@ -53,4 +53,13 @@ public class ActUser extends BaseActUser<ActUser> {
 		sql.append("and ACT_ID="+actID+" order by a.CREATE_TIME desc");
 		return paginate(pageNum, pagesize, select, sql.toString(), params.toArray());
 	}
+
+	public boolean deleteByUserIdAndActId(String userId, int actId) {
+		int rs = Db.update("delete from t_act_user where USER_ID = ? and ACT_ID = ?",userId,actId);
+		if(rs==0){
+			return false;
+		}else{
+			return true;
+		}
+	}
 }

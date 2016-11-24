@@ -49,7 +49,7 @@ public class Activity extends BaseActivity<Activity> {
 
 	public Page<Activity> findAllActByUser(String userNo, int pageNum, int pageSize) {
 		String select = "select a.*";
-		StringBuilder sql = new StringBuilder(" SELECT u.ACT_ID FROM t_act_user u where u.USER_ID=?) ORDER BY a.CREATE_TIME DESC ");
+		StringBuilder sql = new StringBuilder(" from t_activity a where a.ID in ( SELECT u.ACT_ID FROM t_act_user u where u.USER_ID=?) ORDER BY a.CREATE_TIME DESC ");
 		List<Object> params = new ArrayList<Object>();
 		params.add(userNo);
 		return paginate(pageNum, pageSize, select, sql.toString(), params.toArray());

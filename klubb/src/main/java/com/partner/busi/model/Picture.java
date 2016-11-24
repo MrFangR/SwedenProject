@@ -28,4 +28,9 @@ public class Picture extends BasePicture<Picture> {
 	public Picture findNextPic(String picID) {
 		return dao.findFirst("select * from t_picture where id>? order by id asc limit 0,1",picID);
 	}
+
+	public Page<Picture> findUserPic(Integer id, int pageNum, int pageSize) {
+		Page<Picture> page = paginate(pageNum, pageSize, "select * ", " from t_picture p where p.USER_ID=? order by p.CREATE_TIME desc",id);
+		return page;
+	}
 }
