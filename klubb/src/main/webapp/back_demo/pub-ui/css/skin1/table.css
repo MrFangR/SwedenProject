@@ -1,0 +1,64 @@
+@charset "utf-8";
+/*
+ * @Filename: table.css
+ * @Description: table style
+ * @Version: 1.0.0
+ * @Author: hanlx
+ * @Update: hanlx
+*/
+/* ued-table-nobor s*/
+.ued-table-nobor {
+    border: 0 none !important;
+}
+.ued-table-nobor th {
+    font-size: 14px;
+    text-align: right;
+	color:#535356 !important;
+	font-weight:400;
+    padding: 5px 5px 5px 10px;
+    border: 0 none !important;
+    background:transparent!important;
+}
+.ued-table-nobor td {
+    font-size: 14px;
+    padding: 5px 5px 5px 10px;
+    border: 0 none !important;
+    background:transparent!important;
+}
+.ued-table-nobor tr{ background:transparent!important;}
+/* ued-table-nobor d*/
+
+
+.ued-table{width:100%;/*overflow:hidden;*/}
+.ued-table th,.ued-table td{
+	border: 1px solid #e4e4e4;
+    height: 38px;
+    text-align: center;
+    font-size: 14px;
+}
+.ued-table th{background-color:#30b3e7; color:#fff;font-weight:normal; border: none;}
+
+.ued-tr-even {
+    background: #f8f8f8 none repeat scroll 0 0;
+}
+.ued-tr-odd {
+    background: #fff none repeat scroll 0 0;
+}
+.nobor-r{ border-right:0 none !important;}
+
+.ued-table-2{width:100%;}
+.ued-table-2 th,.ued-table-2 td{
+    border: 1px solid #cecece;
+    font-size: 14px;
+    padding:8px 5px 8px 10px;
+    font-weight: 400;
+}
+
+.ued-table-3{width:100%;}
+.ued-table-3 th,.ued-table-3 td{
+    border: 1px solid #ccc;
+    font-size: 12px;
+    font-weight: 400;
+    height: 30px;
+}
+.ued-table-3 th{background: #e3effd; text-align: center;color: #535459;}

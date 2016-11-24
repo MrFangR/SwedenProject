@@ -1,0 +1,99 @@
+<!DOCTYPE HTML>
+<html>
+    
+<head>
+    <title>角色管理</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" type="text/css" href="../pub-ui/css/skin1/all.css">
+    <link rel="stylesheet" type="text/css" href="../pub-ui/css/skin1/zTreeStyle.css">
+</head>
+
+<body>
+
+<div class="ued-layout relative" data-role="ued-layout" data-rel="isLeftCollapse:'false',isRightCollapse:'false'">
+    <div class="ued-layoutLeft absolute" position="left">
+    	<h4 class="ued-title-2 mgt-20 pdl-15">角色管理</h4>
+        <div class="ued-lay-search"><input type="text" value="请输入角色关键字" /><input class="ued-in-btn" type="button" value="" /></div>
+        <ul class="ztree" id="ued-ztree" data-role="ued_tree" data-url="ztree.json"></ul>
+    </div>
+    <div class="ued-layoutRight" position="center" style="margin-left:181px; margin-right: 0px; margin-bottom: 0px; height: 478px; ">
+        <!--面包屑  s-->
+        <div class="ued-location mgb-20">我的位置：<a href="#none">系统管理</a>&nbsp;&gt;&nbsp;账号管理</div>
+        <!--面包屑  d-->
+        <div class="ued-title"><h4>综合监控角色添加</h4></div>
+        <table width="100%" cellspacing="0" cellpadding="0" class="ued-table-nobor mgt-15">
+            <colgroup><col width="105"><col><col width="105"><col></colgroup>
+            <tbody>
+                <tr>
+                    <th><font color="color-3">*&nbsp;</font>角色名称：</th>
+                    <td>
+                        <input type="text" maxlength="30" class="ued-text-2" value="">             
+                    </td>
+                    <th><font color="color-3">*&nbsp;</font>角色状态：</th>
+                    <td>
+                        <div class="ued-select-2 js_select" style="width:180px;">
+                            <span class="ued-sel-txt">有效</span>
+                            <a class="ued-sel-open"></a>
+                            <div style="display: none;" class="ued-option">
+                                <a class="">失效</a>
+                                <a class="">过期</a>
+                            </div>
+                        </div> 
+                    </td>
+                </tr>
+                <tr>
+                    <th><font color="color-3">*&nbsp;</font>功能：</th>
+                    <td colspan="3">
+                        <input type="text" maxlength="30" class="ued-text-2" value="">
+                        <button class="ued-button-5 js_dialog mgl-25">变更</button>
+                        <span class="fs-12 color-4 mgl-15">注：灰色项目不可选</span>       
+                    </td>
+                </tr>
+                <tr>
+                    <th><font color="color-3">*&nbsp;</font>备注：</th>
+                    <td colspan="3">
+                        <textarea class="ued-textarea" style="width:80%;">请输入关键字</textarea>            
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="mgt-25 tc"><button class="ued-button-2 mgr-25">保存</button><button class="ued-button-3">取消</button></div>
+    </div>
+</div>
+
+<div data-role="ued-dialog" class="ued-dialog" id="btn-dialog">
+    <div class="dialog-header">
+        <h3>提示标题</h3>
+        <span class="dialog-tool">
+            <a title="关闭" class="dialog-close">X</a>
+        </span>
+    </div>
+    <div>
+        <p class="pd-20 dialog-tipInfo clearfix"><i class="ued-icon fl ued-icon-error"></i> <span>确认要加密码锁吗？</span></p>
+        <div class="pd-10 tc">
+            <button type="button" class="ued-button-2 mgr-25">确定</button>
+            <button type="button" class="ued-button-3 dialog-close">取消</button>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="../pub-ui/js/lib/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="../pub-ui/js/plugin/sysLayout.js"></script>
+<script type="text/javascript" src="../pub-ui/js/plugin/ui.js"></script>
+<script type="text/javascript" src="../pub-ui/js/plugin/jquery.ztree.all-3.5.js"></script>
+<script type="text/javascript" src="../pub-ui/js/plugin/dialog.js"></script>
+<script type="text/javascript">
+$(function(){
+    //高度设置
+    var contWrapH = $("div.ued-layout").height();
+    $("#ued-ztree").css("height",contWrapH-94);
+	//ztree.json为你的url
+	$("#ued-ztree").UED_tree();
+	
+	//弹出框
+	$(".js_dialog").bind("click",function(){		
+        $("#btn-dialog").trigger("dialog-open");
+	})
+})
+</script>
+</body>
+</html>

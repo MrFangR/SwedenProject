@@ -4,11 +4,13 @@ import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
 import com.jfinal.plugin.activerecord.Page;
 import com.partner.busi.front.validator.CenterValidator;
+import com.partner.busi.front.validator.PwdValidator;
 import com.partner.busi.model.ActUser;
 import com.partner.busi.model.Activity;
 import com.partner.busi.model.Picture;
 import com.partner.busi.model.User;
 import com.partner.common.base.ResultInfo;
+import com.partner.common.util.Encoding;
 import com.partner.common.util.FrontSessionUtil;
 
 public class UserCenterController extends Controller {
@@ -108,6 +110,27 @@ public class UserCenterController extends Controller {
 		Page<Picture> page = Picture.dao.findUserPic(1,pageNum,pageSize);
 		setAttr("page", page);
 		renderJson();
+	}
+	
+	/**
+	 * 密码修改功能
+	 */
+	@Before(PwdValidator.class)
+	public void submitPwd(){
+		ResultInfo retInfo = new ResultInfo();
+		String oldPwd = getPara("oldPwd");
+		String newPwd = getPara("newPwd");
+		User user = FrontSessionUtil.getSession(getRequest());
+		if(!user.getPASSWORD().equals(Encoding.encoding(oldPwd))){
+			retInfo.setRetCode(1);
+			retInfo.setRetMsg("oldPwd:旧密码输入错误！");
+		}else{
+			user.setPASSWORD(Encoding.encoding(newPwd));
+			user.update();
+			retInfo.setRetCode(0);
+			retInfo.setRetMsg("密码修改成功！");
+		}
+		renderJson(retInfo);
 	}
 
 }

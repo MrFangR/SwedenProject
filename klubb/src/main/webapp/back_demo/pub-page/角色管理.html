@@ -1,0 +1,155 @@
+<!DOCTYPE HTML>
+<html>
+    
+<head>
+    <title>角色管理</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" type="text/css" href="../pub-ui/css/skin1/all.css">
+    <link rel="stylesheet" type="text/css" href="../pub-ui/css/skin1/zTreeStyle.css">
+</head>
+
+<body>
+
+<div class="ued-layout relative" data-role="ued-layout" data-rel="isLeftCollapse:'false',isRightCollapse:'false'">
+    <div class="ued-layoutLeft absolute" position="left">
+    	<h4 class="ued-title-2 mgt-20 pdl-15">角色管理</h4>
+        <div class="ued-lay-search"><input type="text" value="请输入角色关键字" /><input class="ued-in-btn" type="button" value="" /></div>
+        <ul class="ztree" id="ued-ztree" data-role="ued_tree" data-url="ztree.json"></ul>
+    </div>
+    <div class="ued-layoutRight" position="center">
+        <!--面包屑  s-->
+        <div class="ued-location mgb-20">我的位置：<a href="#none">系统管理</a>&nbsp;&gt;&nbsp;账号管理</div>
+        <!--面包屑  d-->
+        <div class="ued-title clearfix"><button class="ued-button-2 fr mgr-25">添加角色</button><h4>综合监控角色列表</h4></div>
+        <div class="clearfix pdl-10 pdr-10">
+            <ul class="ued-keys fl js_keys">
+                <li><a href="#none" class="amend">修改</a></li>
+                <li><a href="#none" class="del">删除</a></li>
+                <li><a href="#none" class="deblock">密码解锁</a></li>
+                <li><a href="#none" class="reset">密码重置</a></li>
+                <li><a href="#none" class="forbidden">禁用</a></li>
+                <li><a href="#none" class="start">启用</a></li>
+            </ul>
+        </div>
+        <table width="100%" cellspacing="0" cellpadding="0" border="0" class="ued-table mgt-20">
+            <colgroup><col width="40"><col width="70"><col><col><col></colgroup>
+            <tbody>
+                <tr class="ued-tr-even">
+                    <th></th>
+                    <th>序号<i class="ued-cor-d"></i></th>
+                    <th>角色ID<i class="ued-cor-d"></i></th>
+                    <th>角色名称<i class="ued-cor-up"></i></th>
+                    <th>角色状态</th>
+                    <th>功能</th>
+                </tr>
+                <tr class="ued-tr-odd">
+                    <td>
+                        <input type="radio" class="inp-radio" checked="checked" name="sex"><span class="b-radio"><b></b></span>
+                    </td>
+                    <td>2</td>
+                    <td>A0001</td>
+                    <td>电子渠道</td>
+                    <td>有效</td>
+                    <td>综合监控、公告管理、采集参数管理</td>
+                </tr>
+                <tr class="ued-tr-even">
+                    <td>
+                        <input type="radio" class="inp-radio" checked="checked" name="sex"><span class="b-radio"><b></b></span>
+                    </td>
+                    <td>1</td>
+                    <td>A0001</td>
+                    <td>电子渠道</td>
+                    <td>有效</td>
+                    <td>综合监控、公告管理、采集参数管理</td>
+                </tr>
+                <tr class="ued-tr-odd">
+                    <td>
+                        <input type="radio" class="inp-radio" checked="checked" name="sex"><span class="b-radio bon-radio"><b></b></span>
+                    </td>
+                    <td>3</td>
+                    <td>A0001</td>
+                    <td>电子渠道</td>
+                    <td>有效</td>
+                    <td>综合监控、公告管理、采集参数管理</td>
+                </tr>
+                <tr class="ued-tr-even">
+                    <td>
+                        <input type="radio" class="inp-radio" checked="checked" name="sex"><span class="b-radio"><b></b></span>
+                    </td>
+                    <td>4</td>
+                    <td>A0001</td>
+                    <td>电子渠道</td>
+                    <td>有效</td>
+                    <td>综合监控、公告管理、采集参数管理</td>
+                </tr>
+                <tr class="ued-tr-odd">
+                    <td>
+                        <input type="radio" class="inp-radio" checked="checked" name="sex"><span class="b-radio bon-radio"><b></b></span>
+                    </td>
+                    <td>5</td>
+                    <td>A0001</td>
+                    <td>电子渠道</td>
+                    <td>有效</td>
+                    <td>综合监控、公告管理、采集参数管理</td>
+                </tr>
+                <tr class="ued-tr-even">
+                    <td>
+                        <input type="radio" class="inp-radio" checked="checked" name="sex"><span class="b-radio"><b></b></span>
+                    </td>
+                    <td>6</td>
+                    <td>A0001</td>
+                    <td>电子渠道</td>
+                    <td>有效</td>
+                    <td>综合监控、公告管理、采集参数管理</td>
+                </tr>
+                <tr class="ued-tr-odd">
+                    <td>
+                        <input type="radio" class="inp-radio" checked="checked" name="sex"><span class="b-radio bon-radio"><b></b></span>
+                    </td>
+                    <td>7</td>
+                    <td>A0001</td>
+                    <td>电子渠道</td>
+                    <td>有效</td>
+                    <td>综合监控、公告管理、采集参数管理</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="mgt-25 tc"><button class="ued-button-2 mgr-25">保存</button><button class="ued-button-3">取消</button></div>
+    </div>
+</div>
+
+<div data-role="ued-dialog" class="ued-dialog" id="btn-dialog">
+    <div class="dialog-header">
+        <h3>弹出框</h3>
+        <span class="dialog-tool">
+            <a title="关闭" class="dialog-close">X</a>
+        </span>
+    </div>
+    <div>
+        <p class="pd-20 dialog-tipInfo clearfix"><i class="ued-icon fl ued-icon-error"></i> <span>确认要加密码锁吗？</span></p>
+        <div class="pd-10 tc">
+            <button type="button" class="ued-button-2 mgr-25">确定</button>
+            <button type="button" class="ued-button-3 dialog-close">取消</button>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="../pub-ui/js/lib/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="../pub-ui/js/plugin/sysLayout.js"></script>
+<script type="text/javascript" src="../pub-ui/js/plugin/ui.js"></script>
+<script type="text/javascript" src="../pub-ui/js/plugin/jquery.ztree.all-3.5.js"></script>
+<script type="text/javascript" src="../pub-ui/js/plugin/dialog.js"></script>
+<script type="text/javascript">
+$(function(){
+    //高度设置
+    var contWrapH = $("div.ued-layout").height();
+    $("#ued-ztree").css("height",contWrapH-94);
+	//ztree.json为你的url
+	$("#ued-ztree").UED_tree();
+    //弹出框
+    $(".js_dialog").bind("click",function(){        
+        $("#btn-dialog").trigger("dialog-open");
+    })
+})
+</script>
+</body>
+</html>

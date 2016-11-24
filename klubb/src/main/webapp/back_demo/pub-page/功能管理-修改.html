@@ -1,0 +1,134 @@
+<!DOCTYPE HTML>
+<html>
+    
+<head>
+    <title>角色管理</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" type="text/css" href="../pub-ui/css/skin1/all.css">
+    <link rel="stylesheet" type="text/css" href="../pub-ui/css/skin1/zTreeStyle.css">
+</head>
+
+<body>
+
+<div class="ued-layout relative" data-role="ued-layout" data-rel="isLeftCollapse:'false',isRightCollapse:'false'">
+    <div class="ued-layoutLeft absolute" position="left">
+    	<h4 class="ued-title-2 mgt-20 pdl-15">功能管理</h4>
+        <div class="ued-lay-search"><input type="text" value="请输入角色关键字" /><input class="ued-in-btn" type="button" value="" /></div>
+        <ul class="ztree" id="ued-ztree" data-role="ued_tree" data-url="ztree.json"></ul>
+    </div>
+    <div class="ued-layoutRight" position="center">
+        <!--面包屑  s-->
+        <div class="ued-location mgb-20">我的位置：<a href="#none">系统管理</a>&nbsp;&gt;&nbsp;功能管理</div>
+        <!--面包屑  d-->
+        <div class="ued-title"><h4>功能菜单管理修改</h4></div>
+        <table width="100%" cellspacing="0" cellpadding="0" class="ued-table-nobor mgt-15">
+            <colgroup><col width="105"><col><col width="105"><col></colgroup>
+            <tbody>
+                <tr>
+                    <th><font color="color-3">*&nbsp;</font>菜单编码：</th>
+                    <td>
+                        60             
+                    </td>
+                    <th><font color="color-3">*&nbsp;</font>菜单名称：</th>
+                    <td>
+                        <input type="text" maxlength="30" class="ued-text-2" value=""> 
+                    </td>
+                </tr>
+                <tr>
+                    <th><font color="color-3">*&nbsp;</font>菜单类型：</th>
+                    <td>                        
+                        <div class="ued-select-2 js_select" style="width:180px;">
+                            <span class="ued-sel-txt">有效</span>
+                            <a class="ued-sel-open"></a>
+                            <div style="display: none;" class="ued-option">
+                                <a class="">失效</a>
+                                <a class="">过期</a>
+                            </div>
+                        </div>   
+                    </td>
+                    <th><font color="color-3">*&nbsp;</font>菜单URL：</th>
+                    <td>
+                        <input type="text" maxlength="30" class="ued-text-2" value="">   
+                    </td>
+                </tr>
+                <tr>
+                    <th><font color="color-3">*&nbsp;</font>是否有效：</th>
+                    <td>                        
+                        <div class="ued-select-2 js_select" style="width:180px;">
+                            <span class="ued-sel-txt">有效</span>
+                            <a class="ued-sel-open"></a>
+                            <div style="display: none;" class="ued-option">
+                                <a class="">失效</a>
+                                <a class="">过期</a>
+                            </div>
+                        </div>   
+                    </td>
+                    <th><font color="color-3">*&nbsp;</font>是否刷新：</th>
+                    <td>
+                        <div class="ued-select-2 js_select" style="width:180px;">
+                            <span class="ued-sel-txt">不刷新</span>
+                            <a class="ued-sel-open"></a>
+                            <div style="display: none;" class="ued-option">
+                                <a class="">失效</a>
+                                <a class="">过期</a>
+                            </div>
+                        </div>   
+                    </td>
+                </tr>
+                <tr>
+                    <th><font color="color-3">*&nbsp;</font>系统名称：</th>
+                    <td>                        
+                        <div class="ued-select-2 js_select" style="width:180px;">
+                            <span class="ued-sel-txt">运营平台2.0</span>
+                            <a class="ued-sel-open"></a>
+                            <div style="display: none;" class="ued-option">
+                                <a class="">失效</a>
+                                <a class="">过期</a>
+                            </div>
+                        </div>   
+                    </td>
+                    <th><font color="color-3">*&nbsp;</font>创建人：</th>
+                    <td>
+                        <div class="ued-select-2 js_select" style="width:180px;">
+                            <span class="ued-sel-txt">超级管理员</span>
+                            <a class="ued-sel-open"></a>
+                            <div style="display: none;" class="ued-option">
+                                <a class="">普通用户</a>
+                                <a class="">过期</a>
+                            </div>
+                        </div>   
+                    </td>
+                </tr>
+                <tr>
+                    <th><font color="color-3">*&nbsp;</font>功能描述：</th>
+                    <td colspan="3">                        
+                        <input type="text" maxlength="30" class="ued-text-2" value="">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="mgt-25 tc"><button class="ued-button-2 mgr-25">保存</button><button class="ued-button-3">重置</button></div>
+    </div>
+</div>
+
+<script type="text/javascript" src="../pub-ui/js/lib/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="../pub-ui/js/plugin/sysLayout.js"></script>
+<script type="text/javascript" src="../pub-ui/js/plugin/ui.js"></script>
+<script type="text/javascript" src="../pub-ui/js/plugin/jquery.ztree.all-3.5.js"></script>
+<script type="text/javascript" src="../pub-ui/js/plugin/dialog.js"></script>
+<script type="text/javascript">
+$(function(){
+    //高度设置
+    var contWrapH = $("div.ued-layout").height();
+    $("#ued-ztree").css("height",contWrapH-94);
+	//ztree.json为你的url
+	$("#ued-ztree").UED_tree();
+	
+	//弹出框
+	$(".js_dialog").bind("click",function(){		
+        $("#btn-dialog").trigger("dialog-open");
+	})
+})
+</script>
+</body>
+</html>

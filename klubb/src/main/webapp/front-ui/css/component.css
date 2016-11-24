@@ -1254,10 +1254,13 @@ nav ul li.line{
 .upload_wrap .localUpload_wrap {
     border: 1px solid #ececec;
     float: left;
-    height: 172px;
-    width: 236px;
+    height: 370px;
+    width: 536px;
 	margin-bottom:30px;
 }
+.upload_wrap .imgsc img{
+    height: 370px;
+    width: 536px;}
 .upload_wrap .localTitle {
     background-color: #f5f5f5;
     border-bottom: 1px solid #ececec;
@@ -1270,6 +1273,6 @@ nav ul li.line{
 .upload_wrap .localUpload {
     background: rgba(0, 0, 0, 0) url("../images/icons_edit.png") no-repeat scroll -106px 0;
     height: 90px;
-    margin: 30px auto 30px auto;
+    margin: 120px auto 30px auto;
     width: 99px;
 }

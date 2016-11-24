@@ -1,0 +1,326 @@
+<!DOCTYPE HTML>
+<html>
+    
+<head>
+    <title>APP上线管理</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" type="text/css" href="../pub-ui/css/skin1/all.css">
+    <link rel="stylesheet" type="text/css" href="../pub-ui/css/skin1/zTreeStyle.css">
+</head>
+
+<body>
+<!--面包屑  s-->
+<div class="ued-location mgb-20">我的位置：<a href="#none">系统管理</a><a href="#none">应用中心</a>&nbsp;&gt;&nbsp;APP门户线上管理</div>
+<!--面包屑  d-->
+<div class="ued-tab js_tab">
+    <div class="ued-tab-tit clearfix js_tab_tit">
+        <div class="ued-pack fr" id="ued-pack">收起查询条件</div>
+        <ul class="ued-tab-1 fl clearfix">
+            <li class="on1 "><a class="ued-add" href="javascript:void(0)">添加</a></li>
+            <li class="liQuery"><a class="ued-see" href="javascript:void(0)">查询</a></li>
+        </ul>
+
+    </div>
+    <div class="ued-tab-con">	
+        <div class="box-n on1">
+            
+            <table width="100%" cellspacing="0" cellpadding="0" class="ued-table-nobor mgt-15">
+                <colgroup><col width="105"><col><col width="105"><col></colgroup>
+                <tbody>
+                	<tr>
+                        <th><font color="color-3">*&nbsp;</font>账号编号：</th>
+                        <td>
+                            <input type="text" value="" class="ued-text-2" maxlength="30">             
+                        </td>
+                        <th><font color="color-3">*&nbsp;</font>账号名称：</th>
+                        <td>
+                            <input type="text" value="" class="ued-text-2" maxlength="30"> 
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><font color="color-3">*&nbsp;</font>密码：</th>
+                        <td>
+                            <input type="text" value="" class="ued-text-2" maxlength="30">             
+                        </td>
+                        <th><font color="color-3">*&nbsp;</font>密码确认：</th>
+                        <td>
+                            <input type="text" value="" class="ued-text-2" maxlength="30"> 
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><font color="color-3">*&nbsp;</font>手机号码：</th>
+                        <td>
+                            <input type="text" value="" class="ued-text-2" maxlength="30">             
+                        </td>
+                        <th>账号状态：</th>
+                        <td>
+                            <div style="width:180px;" class="ued-select-2 js_select">
+                                <span class="ued-sel-txt">开通</span>
+                                <a class="ued-sel-open"></a>
+                                <div class="ued-option" style="display: none;">
+                                    <a class="">固1话</a>
+                                    <a class="">固2话</a>
+                                    <a class="">固3话</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><font color="color-3">*&nbsp;</font>邮箱地址：</th>
+                        <td>
+                            <input type="text" value="" class="ued-text-2" maxlength="30">             
+                        </td>
+                        <th><font color="color-3">*&nbsp;</font>失效规则：</th>
+                        <td>
+                            <div style="width:180px;" class="ued-select-2 js_select">
+                                <span class="ued-sel-txt">超级管理员</span>
+                                <a class="ued-sel-open"></a>
+                                <div class="ued-option" style="display: none;">
+                                    <a class="">固1话</a>
+                                    <a class="">固2话</a>
+                                    <a class="">固3话</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><font color="color-3">*&nbsp;</font>角色：</th>
+                        <td>
+                            <input type="text" value="" class="ued-text-2" maxlength="30">
+                            <button class="ued-button-4 js_dialog mgl-25">选择角色</button>            
+                        </td>
+                        <th></th>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th><font color="color-3">*&nbsp;</font>组织机构：</th>
+                        <td>
+                            <div style="width:180px;" class="ued-select-2 js_select">
+                                <span class="ued-sel-txt">电子渠道</span>
+                                <a class="ued-sel-open"></a>
+                                <div class="ued-sleOp" style="display: none;">
+                                    <ul class="ztree" id="ued-ztree" data-role="ued_tree" data-url="ztree.json" style="width:170px;height:190px; overflow:auto;"></ul>
+                                </div>
+                            </div>
+                        </td>
+                        <th></th>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th class="vt"><font color="color-3">*&nbsp;</font>业务区域：</th>
+                        <td>
+                            <div class="bord-3" style="width:180px;height: 200px;">
+                                <ul class="ztree" id="ued-ztree2"  data-rel="check:{enable:true}" data-role="ued_tree" data-url="ztree.json" style="width:170px;height: 190px; overflow: auto;"></ul>
+                            </div>
+                        </td>
+                        <th></th>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="mgt-25 tc"><button class="ued-button-2 mgr-25">保存</button><button class="ued-button-3">重置</button></div>
+        </div>
+        <div class="box-n">
+            <div id="ued-packBox">
+                <table width="100%" cellspacing="0" cellpadding="0" class="ued-table-nobor mgt-15">
+                    <colgroup><col width="105"><col><col width="105"><col></colgroup>
+                    <tbody>
+                        <tr>
+                            <th>账号编号：</th>
+                            <td>
+                                <input type="text" value="" class="ued-text-2" maxlength="30">             
+                            </td>
+                            <th>电话：</th>
+                            <td>
+                                <input type="text" value="" class="ued-text-2" maxlength="30"> 
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>修改人编码：</th>
+                            <td>
+                                <input type="text" value="" class="ued-text-2" maxlength="30">             
+                            </td>
+                            <th>组织：</th>
+                            <td>
+                                <div style="width:180px;" class="ued-select-2 js_select">
+                                    <span class="ued-sel-txt">13311364587</span>
+                                    <a class="ued-sel-open"></a>
+                                    <div class="ued-option" style="display: none;">
+                                        <a class="">固1话</a>
+                                        <a class="">固2话</a>
+                                        <a class="">固3话</a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>账号状态：</th>
+                            <td>
+                                <input type="text" value="" class="ued-text-2" maxlength="30">             
+                            </td>
+                            <th></th>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="mgt-25 tc"><button class="ued-button-2 mgr-25">提交</button><button class="ued-button-3">重置</button></div>
+            </div>
+            
+            <!-- ued-title -->
+            <div class="ued-title"><h4>查询结果</h4></div>
+            <div class="clearfix pdl-10 pdr-10">
+                <div class="fr mgt-2">
+                    <a class="ued-perv" title="上一步" href=""></a><a class="ued-next" title="下一步" href=""></a>
+                </div>
+                <div class="fr mgt-2">
+                    <a class="ued-perv ued-perv-on" href=""></a><a class="ued-next ued-next-on" href=""></a>
+                </div>
+                <ul class="ued-keys fl js_keys">
+                    <li><a class="amend js_amend" href="#none">修改</a></li>
+                    <li><a class="del" href="#none">删除</a></li>
+                    <li><a class="deblock" href="#none">密码解锁</a></li>
+                    <li><a class="reset" href="#none">密码重置</a></li>
+                    <li><a class="forbidden" href="#none">禁用</a></li>
+                    <li><a class="start" href="#none">启用</a></li>
+                </ul>
+
+            </div>
+            <table width="100%" cellspacing="0" cellpadding="0" border="0" class="ued-table mgt-20">
+                <colgroup><col width="30" /><col width="50" /><col /><col /><col /><col /><col /></colgroup>
+                <tbody>
+                    <tr class="ued-tr-even">
+                        <th></th>
+                        <th>序号<i class="ued-cor-d"></i></th>
+                        <th>账号编号<i class="ued-cor-d"></i></th>
+                        <th>账号名称<i class="ued-cor-up"></i></th>
+                        <th>组织</th>
+                        <th>电话</th>
+                        <th>邮箱地址</th>
+                        <th>修改人</th>
+                    </tr>
+                    <tr class="ued-tr-odd">
+                        <td>
+                            <input type="radio" name="sex" checked="checked" class="inp-radio"><span class="b-radio bon-radio"><b></b></span>
+                        </td>
+                        <td>2</td>
+                        <td>A0001</td>
+                        <td>积分查询</td>
+                        <td>电子渠道</td>
+                        <td>13700515151</td>
+                        <td>lijhd@si-tech.com.cn</td>
+                        <td>lijhd</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="tc">
+                <!--paging star-->
+                <div class="ued-pading mgt-15 clearfix">
+                    <a href="#" class="prev">上一页</a>
+                    <a href="#">1</a>
+                    <a href="#">3</a>
+                    <a href="#">4</a>
+                    <a href="#" class="on">5</a>
+                    <a href="#">6</a>
+                    <a href="#">7</a>
+                    <em>...</em>
+                    <a href="#">380</a>
+                    <a href="#" class="next">下一页</a>
+                    <span>到<input type="text" class="ued-pading-text" />页</span>
+                    <a href="#" class="bg-on">确定</a>
+                </div>
+                <!--ued-pading end-->
+            </div>
+        </div>
+        
+    </div>
+</div>
+<div id="editDiv" style="display:none">
+<div class="box-n js_copy">
+    <table width="100%" cellspacing="0" cellpadding="0" class="ued-table-nobor mgt-15">
+        <colgroup><col width="105"><col></colgroup>
+        <tbody>
+            <tr>
+                <th><font color="color-3">*&nbsp;</font>APP门户：</th>
+                <td>
+                    <input type="text" value="" class="ued-text-2" maxlength="30">             
+                </td>
+            </tr>
+            <tr>
+                <th class="vt"><font color="color-3">*&nbsp;</font>上线门户：</th>
+                <td>
+                    <div class="ued-tab-3 js_htab">
+                        <div class="title-bg clearfix">
+                            <ul class="nav-tabs js_checkDiv">
+                                <li class="active"><input class="inp-chb" type="checkbox" name="interest"><label class="lab-ckb mgr-20 fl"><i style="top:3px;" class="check-box"></i>网厅</label></li>
+                                <li class=""><input class="inp-chb" type="checkbox" name="interest"><label class="lab-ckb mgr-20 fl"><i style="top:3px;" class="check-box"></i>触屏版营业厅</label></li>
+                                <li class=""><input class="inp-chb" type="checkbox" name="interest"><label class="lab-ckb mgr-20 fl"><i style="top:3px;" class="check-box"></i>授权帖子</label></li>
+                            </ul>
+                        </div>
+                        <div class="tab-content">
+                            <div class="tab-pane active">
+                                <table width="100%" cellspacing="0" cellpadding="0" class="ued-table-nobor mgt-10">
+                                    <colgroup><col width="105"><col></colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <th>已上线版本：</th>
+                                            <td>v2.0</td>
+                                        </tr>                    
+                                        <tr>
+                                            <th>公告货品：</th>
+                                            <td>
+                                                <div class="js_radioDiv">
+                                                    <input type="radio" name="sex" class="inp-radio"><span class="b-radio mgr-30"><b></b>v3.0</span>
+
+                                                    <input type="radio" checked="checked" name="sex" class="inp-radio"><span class="b-radio"><b></b>v3.1</span>
+                                                </div>                                                         
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>上线时间：</th>
+                                            <td>
+                                                 <div class="ued-time-2 fl"><input type="text" class="Wdate" onclick="WdatePicker()"></div><span class="pdl-5 pdr-5">到</span><div class="ued-time-2 inline-block"><input type="text" class="Wdate" onclick="WdatePicker()"></div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th class="vt">发布位置：</th>
+                                            <td>
+                                                 <div class="bord-3" style="width:180px;height: 200px;">
+                                                    <ul class="ztree" id="ued-ztree3"  data-rel="check:{enable:true}" data-role="ued_tree" data-url="ztree.json" style="width:170px;height: 190px; overflow: auto;"></ul>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                
+                            </div>
+                            <div class="tab-pane">2222</div>
+                            <div class="tab-pane">333</div>
+                        </div>
+                    </div>
+
+                    
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="mgt-25 tc"><button class="ued-button-2 mgr-25">保存</button><button class="ued-button-3">重置</button></div>
+</div>
+</div>
+<script type="text/javascript" src="../pub-ui/js/lib/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="../pub-ui/js/plugin/ui.js"></script>
+<script type="text/javascript" src="../pub-ui/js/plugin/jquery.ztree.all-3.5.js"></script>
+<script type="text/javascript" src="../pub-ui/js/plugin/dialog.js"></script>
+<script type="text/javascript" src="../pub-ui/js/plugin/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript">
+$(function(){
+	//ztree.json为你的url
+	$("#ued-ztree").UED_tree();
+    $("#ued-ztree3").UED_tree();
+    //弹出框
+    $(".js_dialog").bind("click",function(){        
+        $("#btn-dialog").trigger("dialog-open");
+    })
+})
+</script>
+</body>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE HTML>
+<html>
+    
+<head>
+    <title>APP上线管理</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" type="text/css" href="../pub-ui/css/skin1/all.css">
+    <link rel="stylesheet" type="text/css" href="../pub-ui/css/skin1/zTreeStyle.css">
+</head>
+
+<body>
+<!--面包屑  s-->
+<div class="ued-location mgb-20">我的位置：<a href="#none">系统管理</a>&nbsp;&gt;&nbsp;<a href="#none">应用中心</a>&nbsp;&gt;&nbsp;添加上线信息</div>
+<!--面包屑  d-->
+<div class="ued-tab js_tab">
+    <div class="ued-tab-tit clearfix js_tab_tit">
+        <div class="ued-pack fr" id="ued-pack">收起查询条件</div>
+        <ul class="ued-tab-1 fl clearfix">
+            <li class="on1 "><a class="ued-add" href="javascript:void(0)">添加</a></li>
+            <li class="liQuery"><a class="ued-see" href="javascript:void(0)">查询</a></li>
+        </ul>
+
+    </div>
+    <div class="ued-tab-con">	
+        <div class="box-n on1">
+            <table width="100%" cellspacing="0" cellpadding="0" class="ued-table-nobor mgt-15">
+                <colgroup><col width="135"><col><col width="125"><col></colgroup>
+                <tbody>
+                	<tr>
+                        <th><font color="color-3">*&nbsp;</font>APP名称：</th>
+                        <td colspan="3">
+                            <input type="text" value="积分查询" class="ued-text-2" maxlength="30">     
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>已上线门户：</th>
+                        <td colspan="3">
+                            <p class="inline-block mgr-50"><span class="color-3">网厅</span>（状态：已上线   版本：订单管理V2.0.0)</p>
+                            <p class="inline-block"><span class="color-3">wap厅</span>（状态：已上线  版本：订单管理V2.0.0)</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><font color="color-3">*&nbsp;</font>本次上线门户：</th>
+                        <td colspan="3">
+                             <input class="inp-radio" type="radio" name="sex" /><span class="b-radio"><b class="mgr-10"></b>触屏版</span>    
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><font color="color-3">*&nbsp;</font>归属门户分类：</th>
+                        <td colspan="3">
+                             <input class="inp-chb" type="checkbox" name="interest" /><label class="lab-ckb"><i class="check-box" style="top:3px;"></i>综合查询</label>
+
+                             <input class="inp-chb" type="checkbox" name="interest" /><label class="lab-ckb mgl-30"><i class="check-box" style="top:3px;"></i>业务办理</label>  
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><font color="color-3">*&nbsp;</font>本次上线门户：</th>
+                        <td colspan="3">
+                             <input class="inp-radio" type="radio" name="sex2" /><span class="b-radio"><b class="mgr-10"></b>已上线</span>
+
+                             <input class="inp-radio" type="radio" name="sex2" /><span class="b-radio mgl-30"><b class="mgr-10"></b>已下线</span>    
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><font color="color-3">*&nbsp;</font>优惠开始时间：</th>
+                        <td>
+                             <div class="ued-time-2 fl"><input type="text" onclick="WdatePicker()" class="Wdate"></div>
+                        </td>
+                        <th><font color="color-3">*&nbsp;</font>优惠结束时间：</th>
+                        <td>
+                             <div class="ued-time-2 fl"><input type="text" onclick="WdatePicker()" class="Wdate"></div>  
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><font color="color-3">*&nbsp;</font>版本说明：</th>
+                        <td colspan="3">
+                            <textarea style="width:80%;" class="ued-textarea">请输入关键字</textarea>
+                            <p class="color-3 fs-14">优惠说明中请勿包含回车字符</p>  
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="mgt-25 tc"><button class="ued-button-2 mgr-25">保存</button><button class="ued-button-3">重置</button></div>
+        </div>
+        <div class="box-n">
+            <div id="ued-packBox">
+                <table width="100%" cellspacing="0" cellpadding="0" class="ued-table-nobor mgt-15">
+                    <colgroup><col width="105"><col><col width="105"><col></colgroup>
+                    <tbody>
+                        <tr>
+                            <th>APP分类：</th>
+                            <td>
+                                <div style="width:180px;" class="ued-select-2 js_select">
+                                    <span class="ued-sel-txt">管理APP</span>
+                                    <a class="ued-sel-open"></a>
+                                    <div class="ued-option" style="display: none;">
+                                        <a class="">无效</a>
+                                    </div>
+                                </div>
+                            </td>
+                            <th>状态：</th>
+                            <td>
+                                <div style="width:180px;" class="ued-select-2 js_select">
+                                    <span class="ued-sel-txt">待审核</span>
+                                    <a class="ued-sel-open"></a>
+                                    <div class="ued-option" style="display: none;">
+                                        <a class="">无效</a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="mgt-25 tc"><button class="ued-button-2 mgr-25">查询</button><button class="ued-button-3">重置</button></div>
+            </div>
+            
+            
+            <!-- ued-title -->
+            <div class="ued-title"><h4>查询结果</h4></div>
+            <div class="clearfix pdl-10 pdr-10">
+                <div class="fr mgt-2">
+                    <a class="ued-perv" title="上一步" href=""></a><a class="ued-next" title="下一步" href=""></a>
+                </div>
+                <div class="fr mgt-2">
+                    <a class="ued-perv ued-perv-on" href=""></a><a class="ued-next ued-next-on" href=""></a>
+                </div>
+                <ul class="ued-keys fl js_keys">
+                    <li><a class="amend" href="#none">修改</a></li>
+                    <li><a class="del" href="#none">删除</a></li>
+                    <li><a class="deblock" href="#none">密码解锁</a></li>
+                    <li><a class="reset" href="#none">密码重置</a></li>
+                    <li><a class="forbidden" href="#none">禁用</a></li>
+                    <li><a class="start" href="#none">启用</a></li>
+                </ul>
+
+            </div>
+            <table width="100%" cellspacing="0" cellpadding="0" border="0" class="ued-table mgt-20">
+                <colgroup><col width="30" /><col width="50" /><col /><col /><col /><col /><col /></colgroup>
+                <tbody>
+                    <tr class="ued-tr-even">
+                        <th></th>
+                        <th>序号<i class="ued-cor-d"></i></th>
+                        <th>APP标识<i class="ued-cor-d"></i></th>
+                        <th>APP名称<i class="ued-cor-up"></i></th>
+                        <th>APP分类</th>
+                        <th>APP显示名称</th>
+                        <th>版本清单</th>
+                        <th>状态</th>
+                    </tr>
+                    <tr class="ued-tr-odd">
+                        <td>
+                            <input type="radio" name="sex" checked="checked" class="inp-radio"><span class="b-radio bon-radio"><b></b></span>
+                        </td>
+                        <td>2</td>
+                        <td>A0001</td>
+                        <td>积分查询</td>
+                        <td>电子渠道</td>
+                        <td>13700515151</td>
+                        <td>lijhd@si-tech.com.cn</td>
+                        <td>lijhd</td>
+                    </tr>
+                    <tr class="ued-tr-even">
+                        <td>
+                            <input type="radio" name="sex" checked="checked" class="inp-radio"><span class="b-radio bon-radio"><b></b></span>
+                        </td>
+                        <td>1</td>
+                        <td>A0001</td>
+                        <td>积分查询</td>
+                        <td>电子渠道</td>
+                        <td>13700515151</td>
+                        <td>lijhd@si-tech.com.cn</td>
+                        <td>lijhd</td>
+                    </tr>
+                    <tr class="ued-tr-odd">
+                        <td>
+                            <input type="radio" name="sex" checked="checked" class="inp-radio"><span class="b-radio bon-radio"><b></b></span>
+                        </td>
+                        <td>3</td>
+                        <td>A0001</td>
+                        <td>积分查询</td>
+                        <td>电子渠道</td>
+                        <td>13700515151</td>
+                        <td>lijhd@si-tech.com.cn</td>
+                        <td>lijhd</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="tc">
+                <!--paging star-->
+                <div class="ued-pading mgt-15 clearfix">
+                    <a href="#" class="prev">上一页</a>
+                    <a href="#">1</a>
+                    <a href="#">3</a>
+                    <a href="#">4</a>
+                    <a href="#" class="on">5</a>
+                    <a href="#">6</a>
+                    <a href="#">7</a>
+                    <em>...</em>
+                    <a href="#">380</a>
+                    <a href="#" class="next">下一页</a>
+                    <span>到<input type="text" class="ued-pading-text" />页</span>
+                    <a href="#" class="bg-on">确定</a>
+                </div>
+                <!--ued-pading end-->
+            </div>
+        </div>
+        
+    </div>
+</div>
+<script type="text/javascript" src="../pub-ui/js/lib/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="../pub-ui/js/plugin/ui.js"></script>
+<script type="text/javascript" src="../pub-ui/js/plugin/My97DatePicker/WdatePicker.js"></script>
+
+</body>
+</html>

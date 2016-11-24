@@ -1,0 +1,584 @@
+<!DOCTYPE HTML>
+<html>
+    
+<head>
+    <title>电子商务_商品管理</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" type="text/css" href="../pub-ui/css/skin1/all.css">
+    <link rel="stylesheet" type="text/css" href="../pub-ui/css/skin1/zTreeStyle.css">
+</head>
+
+<body>
+<!--面包屑  s-->
+<div class="ued-location mgb-20">我的位置：<a href="#none">APP</a>&nbsp;&gt;&nbsp;<a href="#none">商品管理</a>&nbsp;&gt;&nbsp;编辑</div>
+<!--面包屑  d-->
+<div class="ued-tab js_tab">
+    <div class="ued-tab-tit clearfix js_tab_tit">
+        <ul class="ued-tab-1 ued-tab-2 fl clearfix">
+            <li class="on1"><a href="javascript:void(0)">基本信息</a></li>
+            <li class=""><a href="javascript:void(0)">商品介绍</a></li>
+            <li class=""><a href="javascript:void(0)">商品图片</a></li>
+            <li class=""><a href="javascript:void(0)">商品规格</a></li>
+            <li class=""><a href="javascript:void(0)">商品合约</a></li>
+        </ul>
+
+    </div>
+    <div class="ued-tab-con">	
+        <div class="box-n on1">
+            <h4 class="ued-title-3 mgt-10">基本信息</h4>
+            <div class="ued-pannel">
+                <table width="100%" cellspacing="0" cellpadding="0" class="ued-table-nobor">
+                    <colgroup><col width="135"><col><col width="135"><col></colgroup>
+                    <tbody>
+                        <tr>
+                            <th><font color="color-3">*&nbsp;</font>名称：</th>
+                            <td>
+                                <input type="text" value="" class="ued-text-2" maxlength="30">             
+                            </td>
+                            <th><font color="color-3">*&nbsp;</font>编码：</th>
+                            <td>
+                                <input type="text" value="" class="ued-text-2" maxlength="30"> 
+                            </td>
+                        </tr>                    
+                        <tr>
+                            <th><font color="color-3">*&nbsp;</font>公告货品：</th>
+                            <td>
+                                 <input class="inp-radio" type="radio" name="sex" checked="checked"><span class="b-radio mgr-30"><b></b>是</span>
+                                 <input class="inp-radio" type="radio" name="sex" checked="checked"><span class="b-radio"><b></b>否</span>            
+                            </td>
+                            <th>实物配送：</th>
+                            <td>
+                                <input class="inp-radio" type="radio" name="sex1" checked="checked"><span class="b-radio mgr-30"><b></b>是</span>
+                                 <input class="inp-radio" type="radio" name="sex1" checked="checked"><span class="b-radio"><b></b>否</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h4 class="ued-title-3 mgt-10">基本信息2</h4>
+            <div class="ued-pannel">
+                <table width="100%" cellspacing="0" cellpadding="0" class="ued-table-nobor">
+                    <colgroup><col width="135"><col><col width="135"><col></colgroup>
+                    <tbody>
+                        <tr>
+                            <th><font color="color-3">*&nbsp;</font>商品类目：</th>
+                            <td>
+                                <input type="text" value="" class="ued-text-2" maxlength="30">             
+                            </td>
+                            <th><font color="color-3">*&nbsp;</font>归属商户：</th>
+                            <td>
+                                <input type="text" value="" class="ued-text-2" maxlength="30"> 
+                            </td>
+                        </tr>                    
+                        <tr>
+                            <th><font color="color-3">*&nbsp;</font>商品名称：</th>
+                            <td>
+                                <input type="text" value="" class="ued-text-2" maxlength="30">           
+                            </td>
+                            <th>商品亮点：</th>
+                            <td>
+                                <input type="text" value="" class="ued-text-2" maxlength="30">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><font color="color-3">*&nbsp;</font>商品描述：</th>
+                            <td>
+                                <input type="text" value="" class="ued-text-2" maxlength="30">           
+                            </td>
+                            <th></th>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th><font color="color-3">*&nbsp;</font>价格单位：</th>
+                            <td>
+                                <div class="ued-select-2 js_select" style="width:180px;">
+                                    <span class="ued-sel-txt">元</span>
+                                    <a class="ued-sel-open"></a>
+                                    <div style="display: none;" class="ued-option">
+                                        <a class="">美元</a>
+                                    </div>
+                                </div>           
+                            </td>
+                            <th>商城价格：</th>
+                            <td>
+                                <input type="text" value="" class="ued-text-2" maxlength="30">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><font color="color-3">*&nbsp;</font>价格模板：</th>
+                            <td>
+                                <div class="ued-select-2 js_select" style="width:180px;">
+                                    <span class="ued-sel-txt">元</span>
+                                    <a class="ued-sel-open"></a>
+                                    <div style="display: none;" class="ued-option">
+                                        <a class="">美元</a>
+                                    </div>
+                                </div>           
+                            </td>
+                            <th>市场价格：</th>
+                            <td>
+                                <input type="text" value="" class="ued-text-2" maxlength="30">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><font color="color-3">*&nbsp;</font>市场管控价格：</th>
+                            <td>
+                                <input type="text" value="" class="ued-text-2" maxlength="30">    
+                            </td>
+                            <th></th>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th>是否可做为主商品销售：</th>
+                            <td>
+                                <input class="inp-radio" type="radio" name="sex2" checked="checked"><span class="b-radio mgr-30"><b></b>是</span>
+                                 <input class="inp-radio" type="radio" name="sex2" checked="checked"><span class="b-radio"><b></b>否</span>
+                            </td>
+                            <th>库存数量：</th>
+                            <td><input type="text" value="" class="ued-text-2" maxlength="30"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h4 class="ued-title-3 mgt-10">基本信息3</h4>
+            <div class="ued-pannel">
+                <table width="100%" cellspacing="0" cellpadding="0" class="ued-table-nobor">
+                    <colgroup><col width="135"><col></colgroup>
+                    <tbody>
+                        <tr>
+                            <th>供货商：</th>
+                            <td>
+                                 <input class="inp-radio" type="radio" checked="checked" name="sex3"><span class="b-radio mgr-20"><b></b>顺丰物流</span>
+                                 <input class="inp-radio" type="radio" checked="checked" name="sex3"><span class="b-radio mgr-20"><b></b>中邮设备</span>
+                                 <input class="inp-radio" type="radio" checked="checked" name="sex3"><span class="b-radio mgr-20"><b></b>信通创新</span>
+                                 <input class="inp-radio" type="radio" checked="checked" name="sex3"><span class="b-radio mgr-20"><b></b>北京电信</span>
+                                 <input class="inp-radio" type="radio" checked="checked" name="sex3"><span class="b-radio mgr-20"><b></b>恒宇运通</span>
+
+                            </td>
+                        </tr>                    
+                        <tr>
+                            <th>支付方式：</th>
+                            <td>
+                            <input class="inp-chb" type="checkbox" name="interest" checked="checked"><label class="lab-ckb mgr-20 fl"><i class="check-box check-boxs" style="top:3px;"></i>货到付款</label>
+
+                            <input class="inp-chb" type="checkbox" name="interest" checked="checked"><label class="lab-ckb mgr-20 fl"><i class="check-box check-boxs" style="top:3px;"></i>在线支付</label>
+
+                            <input class="inp-chb" type="checkbox" name="interest" checked="checked"><label class="lab-ckb mgr-20 fl"><i class="check-box check-boxs" style="top:3px;"></i>用户自提</label>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>可配送方式：</th>
+                            <td>
+                                <input class="inp-chb" type="checkbox" name="interest" checked="checked" /><label class="lab-ckb mgr-20 fl"><i class="check-box check-boxs" style="top:3px;"></i>顺丰物流</label>
+
+                                <input class="inp-chb" type="checkbox" name="interest" checked="checked" /><label class="lab-ckb mgr-20 fl"><i class="check-box check-boxs" style="top:3px;"></i>中邮设备</label>
+
+                                <input class="inp-chb" type="checkbox" name="interest" checked="checked" /><label class="lab-ckb mgr-20 fl"><i class="check-box check-boxs" style="top:3px;"></i>信通创新</label> 
+
+                                <input class="inp-chb" type="checkbox" name="interest" checked="checked"><label class="lab-ckb mgr-20 fl"><i class="check-box check-boxs" style="top:3px;"></i>北京电信</label>
+
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="mgt-25 tc"><button class="ued-button-2 mgr-25">确定</button><button class="ued-button-3">返回</button></div>
+        </div>
+        <div class="box-n">
+            <div class="ued-tab mgt-20" data-role="ued-tabs" data-rel="trigger:'click',activeIndex:0">
+                <div class="title-bg clearfix">
+                    <ul class="nav-tabs">
+                        <li class=""><a href="#list1">商品详情1</a></li>
+                        <li class=""><a href="#chart1">商品详情2</a></li>
+                        <li class=""><a href="#manage1">商品详情3</a></li>
+                    </ul>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane" id="list1"><img src="../pub-ui/images/icon-bjq.png" /></div>
+                    <div class="tab-pane" id="chart1"></div>
+                    <div class="tab-pane" id="manage1"></div>
+                </div>
+            </div>
+            
+        </div>
+        <!-- box-n star -->
+        <div class="box-n">
+            <div class="pd-20"><button class="ued-button-6">添加图片</button></div>
+            <table width="100%" cellspacing="0" cellpadding="0" border="0" class="ued-table">
+                <tbody>
+                    <tr class="ued-tr-even">
+                        <th>文件</th>
+                        <th>尺寸</th>
+                        <th>属性</th>
+                        <th>用途</th>
+                        <th>操作</th>
+                    </tr>
+                    <tr class="ued-tr-odd">
+                        <td><input type="file" class="ued-file"></td>
+                        <td>340*340</td>
+                        <td>商城：大图</td>
+                        <td>(商城：大图详细信息页面)*(团购:大图-商品)</td>
+                        <td></td>
+                    </tr>
+                    <tr class="ued-tr-even">
+                        <td><input type="file" class="ued-file"></td>
+                        <td>340*340</td>
+                        <td>商城：大图</td>
+                        <td>(商城：大图详细信息页面)*(团购:大图-商品)</td>
+                        <td></td>
+                    </tr>
+                    <tr class="ued-tr-odd">
+                        <td><input type="file" class="ued-file"></td>
+                        <td>340*340</td>
+                        <td>商城：大图</td>
+                        <td>(商城：大图详细信息页面)*(团购:大图-商品)</td>
+                        <td><a class="mgr-10">[删除]</a></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="mgt-25 tc"><button class="ued-button-2 mgr-25">确定</button><button class="ued-button-3">返回</button></div>
+        </div>
+        <!-- box-n end -->
+        <!-- box-n star -->
+        <div class="box-n">
+            <div class="pd-20"><button class="ued-button-6">重置规格</button></div>
+            <table width="100%" cellspacing="0" cellpadding="0" class="ued-table-nobor">
+                <colgroup><col width="135"><col></colgroup>
+                <tbody>              
+                    <tr>
+                        <th>SIM卡类型：</th>
+                        <td>
+                        <input type="checkbox" checked="checked" name="interest" class="inp-chb"><label class="lab-ckb mgr-20"><i style="top:3px;" class="check-box check-boxs"></i>大SIM卡</label>
+
+                        <input type="checkbox" checked="checked" name="interest" class="inp-chb"><label class="lab-ckb mgr-20"><i style="top:3px;" class="check-box check-boxs"></i>USIM卡</label>
+
+                        <input type="checkbox" checked="checked" name="interest" class="inp-chb"><label class="lab-ckb mgr-20"><i style="top:3px;" class="check-box check-boxs"></i>小SIM卡</label>
+                        <button class="ued-button-6 ued-btn-small">添加</button>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>新用户：</th>
+                        <td>
+                            <input type="checkbox" checked="checked" name="interest" class="inp-chb"><label class="lab-ckb mgr-20"><i style="top:3px;" class="check-box check-boxs"></i>新用户</label>
+
+                            <input type="checkbox" checked="checked" name="interest" class="inp-chb"><label class="lab-ckb mgr-20"><i style="top:3px;" class="check-box check-boxs"></i>新用户</label>
+
+                            <input type="checkbox" checked="checked" name="interest" class="inp-chb"><label class="lab-ckb mgr-20"><i style="top:3px;" class="check-box check-boxs"></i>新用户</label>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="mgt-25 tc"><button class="ued-button-2 mgr-25">确定</button><button class="ued-button-3">返回</button></div>
+        </div>
+        <!-- box-n end -->
+        <!-- box-n star -->
+        <div class="box-n pd-20-10">
+
+            <div class="clearfix">
+                <ul class="ued-keys fl mgr-10">
+                    <li><a href="#none" class="del">删除</a></li>
+                    <li><a href="#none" class="start">刷新</a></li>
+                </ul>
+                <div class="ued-select fl mgr-15">
+                    <a class="ued-lbtn">修改状态</a>
+                </div>
+                <div class="ued-sea-much fl">
+                    <span class="ued-sea-span fl"></span>
+                    <input type="text" value="请输入.." />
+                    <div class="ued-sea-list">
+                        <p>编号</p>
+                        <p>收货人</p>
+                        <p>地址</p>
+                        <p>电话</p>
+                    </div>
+                </div>
+                <button class="ued-button-5">搜索</button>
+            </div>
+
+            <table width="100%" cellspacing="0" cellpadding="0" border="0" class="ued-table mgt-20">
+                <colgroup><col width="40"><col><col><col><col><col><col><col><col></colgroup>
+                <tbody>
+                    <tr class="ued-tr-even">
+                        <th></th>
+                        <th>编号</th>
+                        <th>名称</th>
+                        <th>类型</th>
+                        <th>号卡类型</th>
+                        <th>状态</th>
+                    </tr>
+                    <tr class="ued-tr-odd">
+                        <td>
+                            <input type="radio" class="inp-radio" checked="checked" name="sex"><span class="b-radio"><b></b></span>
+                        </td>
+                        <td><a href="">2334456753467</a>
+                        </td>
+                        <td><a href="">购机送费-59元/月-24个月</a></td>
+                        <td>合约机</td>
+                        <td>合约</td>
+                        <td>生效</td>
+                    </tr>
+                    <tr class="ued-tr-even">
+                        <td>
+                            <input type="radio" class="inp-radio" checked="checked" name="sex"><span class="b-radio"><b></b></span>
+                        </td>
+                        <td><a href="">2334456753467</a>
+                        </td>
+                        <td><a href="">购机送费-59元/月-24个月</a></td>
+                        <td>合约机</td>
+                        <td>合约</td>
+                        <td>生效</td>
+                    </tr>
+                    <tr class="ued-tr-odd">
+                        <td>
+                            <input type="radio" class="inp-radio" checked="checked" name="sex"><span class="b-radio"><b></b></span>
+                        </td>
+                        <td><a href="">2334456753467</a>
+                        </td>
+                        <td><a href="">购机送费-59元/月-24个月</a></td>
+                        <td>合约机</td>
+                        <td>合约</td>
+                        <td>生效</td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- 第2页商品合约 star -->
+            <div class="ued-pannel-2 mgt-10">
+                <table width="100%" cellspacing="0" cellpadding="0" class="ued-table-nobor">
+                    <colgroup><col width="135"><col><col width="135"><col></colgroup>
+                    <tbody>
+                        <tr>
+                            <th><font color="color-3">*&nbsp;</font>合约名称：</th>
+                            <td>
+                                <input type="text" maxlength="30" class="ued-text-2" value="">             
+                            </td>
+                            <th><font color="color-3">*&nbsp;</font>合约编码：</th>
+                            <td>
+                                <input type="text" maxlength="30" class="ued-text-2" value=""> 
+                            </td>
+                        </tr>                    
+                        <tr>
+                            <th><font color="color-3">*&nbsp;</font>合约类型：</th>
+                            <td>
+                                 <div style="width:180px;" class="ued-select-2 js_select">
+                                    <span class="ued-sel-txt">请选择类型</span>
+                                    <a class="ued-sel-open"></a>
+                                    <div class="ued-option" style="display: none;">
+                                        <a class="">美元</a>
+                                    </div>
+                                </div>          
+                            </td>
+                            <th>卡号类型：</th>
+                            <td>
+                                <div style="width:180px;" class="ued-select-2 js_select">
+                                    <span class="ued-sel-txt">请选择类型</span>
+                                    <a class="ued-sel-open"></a>
+                                    <div class="ued-option" style="display: none;">
+                                        <a class="">美元</a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- 左右布局 star -->
+            <div class="ued-grid mgt-15">
+                <div class="ued-g50 ued-gl">
+                    <div class="ued-gbox">
+                        <div class="pdr-10">
+                           <div class="ued-pannel-2">
+                                <table width="100%" cellspacing="0" cellpadding="0" class="ued-table-nobor">
+                                    <colgroup><col width="135"><col></colgroup>
+                                    <tbody>                 
+                                        <tr>
+                                            <th>政策名称：</th>
+                                            <td>
+                                                 <div style="width:180px;" class="ued-select-2 fl js_select">
+                                                    <span class="ued-sel-txt">请选择类型</span>
+                                                    <a class="ued-sel-open"></a>
+                                                    <div class="ued-option" style="display: none;">
+                                                        <a class="">美元</a>
+                                                    </div>
+                                                </div>
+                                                <button class="ued-button-5 mgl-10">新建</button>          
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>政策档位：</th>
+                                            <td>
+                                                <div class="ued-span js_choose">
+                                                    <span>199元</span>
+                                                    <span>299元</span>
+                                                    <span>399元</span>
+                                                    <span>499元</span>
+                                                    <span>599元</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ued-g50 ued-gr">
+                    <div class="ued-gbox">
+                        <div class="pdl-10">
+                            <div class="ued-pannel-2">
+                                <table width="100%" cellspacing="0" cellpadding="0" class="ued-table-nobor">
+                                    <colgroup><col width="135"><col></colgroup>
+                                    <tbody>                 
+                                        <tr>
+                                            <th>套餐名称：</th>
+                                            <td>
+                                                <div style="width:180px;" class="ued-select-2 fl js_select">
+                                                    <span class="ued-sel-txt">请选择类型</span>
+                                                    <a class="ued-sel-open"></a>
+                                                    <div class="ued-option" style="display: none;">
+                                                        <a class="">美元</a>
+                                                    </div>
+                                                </div>
+                                                <button class="ued-button-5 mgl-10">新建</button>          
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>套餐档位：</th>
+                                            <td>
+                                                <div class="ued-span ued-span-2 js_choose">
+                                                    <span>199元</span>
+                                                    <span>299元</span>
+                                                    <span>399元</span>
+                                                    <span>499元</span>
+                                                    <span>599元</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 左右布局 end -->
+            <h4 class="ued-title-3 pdl-0 mgt-10">已选档位</h4>
+            <div class="bgcolor-5">
+                <table width="100%" cellspacing="0" cellpadding="0" border="0" class="ued-table-2">
+                <colgroup><col width="135"><col /></colgroup>
+                <tbody>
+                    <tr>
+                        <th>政策档位</th>
+                        <th class="tl">套餐档位</th>
+                    </tr>
+                    <tr>
+                        <td class="tc"><span class="ued-span-3">199元</span></td>
+                        <td>
+                            <div class="ued-span-4 fl js_choose">
+                                <span>199元</span>
+                                <span>299元</span>
+                                <span>399元</span>
+                                <span>499元</span>
+                                <span>599元</span>
+                            </div>
+                            <button class="ued-button-5 ued-btn-small mgl-10">全选/反选</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tc"><span class="ued-span-3">299元</span></td>
+                        <td>
+                            <div class="ued-span-4 fl js_choose">
+                                <span>199元</span>
+                                <span>299元</span>
+                                <span>399元</span>
+                                <span>499元</span>
+                                <span>599元</span>
+                            </div>
+                            <button class="ued-button-5 ued-btn-small mgl-10">全选/反选</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tc"><span class="ued-span-3">399元</span></td>
+                        <td>
+                            <div class="ued-span-4 fl js_choose">
+                                <span>199元</span>
+                                <span>299元</span>
+                                <span>399元</span>
+                                <span>499元</span>
+                                <span>599元</span>
+                            </div>
+                            <button class="ued-button-5 ued-btn-small mgl-10">全选/反选</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            </div>
+
+            <!-- 第2页商品合约 star -->
+            <!-- 预约及号池 star-->
+            <h4 class="ued-title-3 pdl-0 mgt-10">预约及号池</h4>
+            <table width="100%" cellspacing="0" cellpadding="0" border="0" class="ued-table">
+                
+                <tbody>
+                    <tr class="ued-tr-even">
+                        <th class="tl" colspan="3">
+                            <span class="mgl-20">预存名称：</span><input type="text" class="ued-text-2 mgr-30" value="" />
+                            <span>预存金额：</span><input type="text" class="ued-text-2 mgr-30" value="" />
+                            <span>实收金额：</span><input type="text" class="ued-text-2 mgr-30" value="" />
+                        </th>
+                        <th><button class="ued-button-6 ued-btn-small js_tr_add">添加</button></th>
+                    </tr>
+                    <tr class="ued-tr-odd">
+                        <td>199</td>
+                        <td>199元</td>
+                        <td>4999元</td>
+                        <td><a class="js_tr_del" href="javascript:void(0)">删除</a></td>
+                    </tr>
+                    <tr class="ued-tr-even">
+                        <td>199</td>
+                        <td>199元</td>
+                        <td>4999元</td>
+                        <td><a class="js_tr_del" href="javascript:void(0)">删除</a></td>
+                    </tr>
+                </tbody>
+            </table>
+            <h4 class="ued-title-3 pdl-0 mgt-10">基本信息3</h4>
+            <div class="ued-pannel">
+                <table width="100%" cellspacing="0" cellpadding="0" class="ued-table-nobor">
+                    <colgroup><col width="135"><col></colgroup>
+                    <tbody>                 
+                        <tr>
+                            <th class="vt">支付方式：</th>
+                            <td>
+                            <input type="checkbox" checked="checked" name="interest" class="inp-chb"><label class="lab-ckb mgr-20 fl"><i style="top:3px;" class="check-box check-boxs"></i>货到付款</label>
+
+                            <input type="checkbox" checked="checked" name="interest" class="inp-chb"><label class="lab-ckb mgr-20 fl"><i style="top:3px;" class="check-box check-boxs"></i>在线支付</label>
+
+                            <input type="checkbox" checked="checked" name="interest" class="inp-chb"><label class="lab-ckb mgr-20 fl"><i style="top:3px;" class="check-box"></i>用户自提</label>
+                            
+                            <input type="checkbox" checked="checked" name="interest" class="inp-chb"><label class="lab-ckb mgr-20 fl"><i style="top:3px;" class="check-box check-boxs"></i>顺丰物流</label>
+
+                                <input type="checkbox" checked="checked" name="interest" class="inp-chb"><label class="lab-ckb mgr-20 fl"><i style="top:3px;" class="check-box check-boxs"></i>中邮设备</label>
+
+                                <input type="checkbox" checked="checked" name="interest" class="inp-chb"><label class="lab-ckb mgr-20 fl"><i style="top:3px;" class="check-box"></i>信通创新</label> 
+
+                                <input type="checkbox" checked="checked" name="interest" class="inp-chb"><label class="lab-ckb mgr-20 fl"><i style="top:3px;" class="check-box check-boxs"></i>北京电信</label>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- 预约及号池 end-->
+        </div>
+        <!-- box-n end -->
+    </div>
+</div>
+</div>
+<script type="text/javascript" src="../pub-ui/js/lib/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="../pub-ui/js/plugin/ui.js"></script>
+</body>
+</html>

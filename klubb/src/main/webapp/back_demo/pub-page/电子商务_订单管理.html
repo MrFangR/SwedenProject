@@ -1,0 +1,154 @@
+<!DOCTYPE HTML>
+<html>
+    
+<head>
+    <title>电子商务_订单管理</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" type="text/css" href="../pub-ui/css/skin1/all.css">
+    <link rel="stylesheet" type="text/css" href="../pub-ui/css/skin1/zTreeStyle.css">
+</head>
+
+<body>
+<!--面包屑  s-->
+<div class="ued-location mgb-20">我的位置：<a href="#none">APP</a>&nbsp;&gt;&nbsp;订单管理</div>
+<!--面包屑  d-->
+
+<div class="clearfix pdl-10 pdr-10">
+    <ul class="ued-keys fl">
+        <li><a href="#none" class="del">删除</a></li>
+        <li><a href="#none" class="start">刷新</a></li>
+    </ul>
+    <div class="ued-select fl mgl-10">
+    	<a class="ued-lbtn">订单筛选</a>
+        <div class="ued-s-list">
+            <p class="bor-n">货到付款</p>
+            <p class="pdb-10">网上付款</p>
+            <p class="mgt-10 bor-n">已支付</p>
+            <p class="pdb-10">未支付</p>
+            <p class="mgt-10 bor-n">已配送</p>
+            <p class="pdb-10">未配送</p>
+            <p class="mgt-10 bor-n">正常账单</p>
+            <p class="pdb-10">失效账单</p>
+      	</div>
+    </div>
+    <div class="ued-time fl mgl-10"><span>开始时间</span><input type="text" class="Wdate" onClick="WdatePicker()" /></div>
+    <div class="ued-time fl mgl-10"><span>结束时间</span><input type="text" class="Wdate" onClick="WdatePicker()" /></div>
+    <button class="ued-button-5">搜索</button>
+</div>
+<table width="100%" cellspacing="0" cellpadding="0" border="0" class="ued-table mgt-20">
+    <colgroup><col width="40"><col><col><col><col><col><col><col></colgroup>
+    <tbody>
+        <tr class="ued-tr-even">
+            <th></th>
+            <th>订单号<i class="ued-cor-d"></i></th>
+            <th>金额<i class="ued-cor-d"></i></th>
+            <th>支付方式<i class="ued-cor-up"></i></th>
+            <th>状态</th>
+            <th>联系电话</th>
+            <th>收获<i class="ued-cor-up"></i></th>
+            <th>创建时间</th>
+            <th>操作</th>
+        </tr>
+        <tr class="ued-tr-odd">
+            <td>
+                <input type="radio" class="inp-radio" checked="checked" name="sex"><span class="b-radio"><b></b></span>
+            </td>
+            <td>10002020039</td>
+            <td>1000.00</td>
+            <td>货到付款</td>
+            <td>等待配送</td>
+            <td>13932793201</td>
+            <td>王小二</td>
+            <td>2015-8-23 15:20:23</td>
+            <td><a class="mgr-10">[查看]</a><a class="mgr-10">[操作]</a><a class="mgr-10">[备注]</a></td>
+        </tr>
+        <tr class="ued-tr-even">
+            <td>
+                <input type="radio" class="inp-radio" checked="checked" name="sex"><span class="b-radio"><b></b></span>
+            </td>
+            <td>10002020039</td>
+            <td>1000.00</td>
+            <td>货到付款</td>
+            <td>等待配送</td>
+            <td>13932793201</td>
+            <td>王小二</td>
+            <td>2015-8-23 15:20:23</td>
+            <td><a class="mgr-10">[查看]</a><a class="mgr-10">[操作]</a><a class="mgr-10">[备注]</a></td>
+        </tr>
+        <tr class="ued-tr-odd">
+            <td>
+                <input type="radio" class="inp-radio" checked="checked" name="sex"><span class="b-radio bon-radio"><b></b></span>
+            </td>
+            <td>10002020039</td>
+            <td>1000.00</td>
+            <td>货到付款</td>
+            <td>等待配送</td>
+            <td>13932793201</td>
+            <td>王小二</td>
+            <td>2015-8-23 15:20:23</td>
+            <td><a class="mgr-10">[查看]</a><a class="mgr-10">[操作]</a><a class="mgr-10">[备注]</a></td>
+        </tr>
+        <tr class="ued-tr-even">
+            <td>
+                <input type="radio" class="inp-radio" checked="checked" name="sex"><span class="b-radio"><b></b></span>
+            </td>
+            <td>10002020039</td>
+            <td>1000.00</td>
+            <td>货到付款</td>
+            <td>等待配送</td>
+            <td>13932793201</td>
+            <td>王小二</td>
+            <td>2015-8-23 15:20:23</td>
+            <td><a class="mgr-10">[查看]</a><a class="mgr-10">[操作]</a><a class="mgr-10">[备注]</a></td>
+        </tr>
+        <tr class="ued-tr-odd">
+            <td>
+                <input type="radio" class="inp-radio" checked="checked" name="sex"><span class="b-radio bon-radio"><b></b></span>
+            </td>
+            <td>10002020039</td>
+            <td>1000.00</td>
+            <td>货到付款</td>
+            <td>等待配送</td>
+            <td>13932793201</td>
+            <td>王小二</td>
+            <td>2015-8-23 15:20:23</td>
+            <td><a class="mgr-10">[查看]</a><a class="mgr-10">[操作]</a><a class="mgr-10">[备注]</a></td>
+        </tr>
+        <tr class="ued-tr-even">
+            <td>
+                <input type="radio" class="inp-radio" checked="checked" name="sex"><span class="b-radio"><b></b></span>
+            </td>
+            <td>10002020039</td>
+            <td>1000.00</td>
+            <td>货到付款</td>
+            <td>等待配送</td>
+            <td>13932793201</td>
+            <td>王小二</td>
+            <td>2015-8-23 15:20:23</td>
+            <td><a class="mgr-10">[查看]</a><a class="mgr-10">[操作]</a><a class="mgr-10">[备注]</a></td>
+        </tr>
+        <tr class="ued-tr-odd">
+            <td>
+                <input type="radio" class="inp-radio" checked="checked" name="sex"><span class="b-radio bon-radio"><b></b></span>
+            </td>
+            <td>10002020039</td>
+            <td>1000.00</td>
+            <td>货到付款</td>
+            <td>等待配送</td>
+            <td>13932793201</td>
+            <td>王小二</td>
+            <td>2015-8-23 15:20:23</td>
+            <td><a class="mgr-10">[查看]</a><a class="mgr-10">[操作]</a><a class="mgr-10">[备注]</a></td>
+        </tr>
+    </tbody>
+</table>
+<div class="mgt-25 tc"><button class="ued-button-2 mgr-25">保存</button><button class="ued-button-3">取消</button></div>
+
+
+<script type="text/javascript" src="../pub-ui/js/lib/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="../pub-ui/js/plugin/sysLayout.js"></script>
+<script type="text/javascript" src="../pub-ui/js/plugin/ui.js"></script>
+<script type="text/javascript" src="../pub-ui/js/plugin/My97DatePicker/WdatePicker.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE HTML>
+<html>
+    
+<head>
+    <title>首页框架</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" type="text/css" href="../pub-ui/css/skin1/all.css">
+    <link rel="stylesheet" type="text/css" href="../pub-ui/css/skin1/navtab.css">
+    <link rel="stylesheet" type="text/css" href="../pub-ui/css/skin1/contextMenu.css">
+    <link rel="stylesheet" type="text/css" href="../pub-ui/css/skin1/jquery.jscrollpane.css" />
+</head>
+
+<body>
+<!-- ued-head -->
+<div class="ued-head clearfix">
+	<div class="ued-nav fr">
+		<ul class="root_ul">
+			<li><a class="home" href="javascript:void(0)">首页</a></li>
+			<li><a class="circle" href="javascript:void(0)">圈子</a></li>
+			<li><a class="book" href="javascript:void(0)">通讯录</a></li>
+			<li><a class="news" href="javascript:void(0)">系统消息<span class="num">0</span></a></li>
+            <li class="relative js_pass">
+                <a class="pdl-10 user" href="javascript:void(0)">13700***30</a>
+                <div class="ued-password">
+                    <h4>修改密码</h4>
+                    <div class="ued-inp">
+                        <div class="ued-p">
+                            <input type="text" value="请输入原密码" name="username" />
+                        </div>
+                        <div class="ued-p">
+                            <input type="password" value="请输入新密码" name="username" />
+                        </div>
+                        <div class="ued-p noborder">
+                            <input type="text" value="确认密码" name="username" />
+                        </div>
+                    </div>
+                    <p class="color-3">输入框提示语输入错误颜色用#e4007f</p>
+                    <div class="tc">
+                        <button class="ued-button-2 ued-btn-small mgr-25">保存</button>
+                        <button class="ued-button-3 ued-btn-small">重置</button>
+                    </div>
+                </div>
+            </li>
+			<li><a class="end" href="javascript:void(0)">退出</a></li>
+		</ul>
+	</div>
+    <div class="ued-search mgt-12 fr">
+        <input type="text" class="search-input" placeholder="" />
+        <input type="button" value="" class="search-btn" />
+    </div>
+	<div class="ued-logo fl">Sundsvalls BiljardKlubb</div>
+</div>
+<!-- ued-head d-->
+
+<!-- ued-control-con  s -->
+<div class="ued-control-con clearfix ued-navtab-2" data-role="navtab" id="navtab">
+    <!-- ued-tabs s -->
+    <div class="navtab-title clearfix">
+        <ul class="nav-tabs" style="margin-left: 0px; ">
+            <li class="active">
+                <a tabid="201" href="账号管理.html">工作台</a>
+            </li>
+        </ul>
+    </div>
+    <!-- ued-tabs d -->
+	<!-- left-control  s -->
+    <div class="left-control" id="left-control">
+    	<div class="side-fold js_side_fold"></div>
+        <h4 class="ued-side-tit">我的系统功能</h4>
+    	<ul class="list-c1 js_list_active">
+        	<li>
+            	<a ><b class="b-t1"></b><span>系统管理</span><i></i></a>
+                <ul class="list-c1-son">
+                    <li>
+                        <a class="li-active" tabid="1" url="APP管理.html"><b></b><span>工号管理</span></a>
+                    </li>
+                    <li>
+                        <a tabid="2" url="角色管理.html"><b></b><span>部门管理</span></a>
+                    </li>
+                    <li>
+                        <a tabid="3" url="APP上线管理.html"><b></b><span>功能管理</span></a>
+                    </li>
+                    <li>
+                        <a tabid="4" url="账号管理.html"><b></b><span>角色管理</span></a>
+                    </li>
+                    <li>
+                        <a tabid="5" url="HappyTimes.html"><b></b><span>HappyTimes</span></a>
+                    </li>                   
+                 </ul>
+            </li>
+            <li>
+                <a href="#"><b class="b-t2"></b><span>应用中心</span><i></i></a>
+                <ul class="list-c1-son">
+                    <li>
+                        <a><b></b><span>APP管理</span></a>
+                    </li>
+                    <li>
+                        <a><b></b><span>门户角色管理</span></a>
+                    </li>
+                    <li>
+                        <a><b></b><span>门户-APP上线管理</span></a>
+                    </li>              
+                 </ul>
+            </li>
+            <li>
+                <a><b class="b-t3"></b><span>公告管理</span></a>
+            </li>
+            <li>
+                <a><b class="b-t4"></b><span>广告管理</span></a>
+            </li>
+          </ul>
+         <h4 class="ued-side-tit">我的APP</h4>
+            <ul class="list-c1 js_list_active">
+                <li>
+                    <a><b class="b-t5"></b><span>网厅数据配置</span></a>
+                </li>
+                <li>
+                    <a><b class="b-t6"></b><span>工作流管理</span></a>
+                </li>
+                <li>
+                    <a><b class="b-t7"></b><span>合作伙伴管理</span></a>
+                </li>
+                <li>
+                    <a><b class="b-t8"></b><span>网上调查管理</span></a>
+                </li>
+                <li>
+                    <a><b class="b-t9"></b><span>商品管理</span></a>
+                </li>
+                <li>
+                    <a><b class="b-t10"></b><span>订单管理</span></a>
+                </li>
+                <li>
+                    <a><b class="b-t11"></b><span>支付管理</span></a>
+                </li>
+                <li>
+                    <a><b class="b-t3"></b><span>报表管理</span></a>
+                </li>
+                <li>
+                    <a><b class="b-t12"></b><span>用户管理</span></a>
+                </li>
+          </ul>
+    </div>
+    <!-- left-control  D -->
+    <!-- left-control  s -->
+    <div class="right-control navtab-content">
+        <div class="mask"></div>
+    	<iframe width="100%" height="auto" src="账号管理.html" frameborder="0" tabid="201" style="display: inline;"></iframe>
+    </div>
+    <!-- left-control  D -->
+<!-- ued-control-con  d -->
+</div>
+
+
+<script type="text/javascript" src="../pub-ui/js/lib/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="../pub-ui/js/plugin/ui.js"></script>
+<script type="text/javascript" src="../pub-ui/js/plugin/navtab.js"></script>
+<script type="text/javascript" src="../pub-ui/js/plugin/contextMenu.js"></script>
+<script type="text/javascript" src="../pub-ui/js/plugin/jquery.mousewheel.js"></script>
+<script type="text/javascript" src="../pub-ui/js/plugin/mwheelIntent.js.js"></script>
+<script type="text/javascript" src="../pub-ui/js/plugin/jquery.jscrollpane.js"></script>
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+    $('.list-c1 li a').click(function(){
+        var url=$(this).attr('url');
+        var txt=$(this).text();
+        var tabid=$(this).attr('tabid');
+        if(!$(this).attr('url')){
+            return false;
+        }
+        $('#navtab').UED_navtab.open(tabid,txt,url);
+    })
+
+    setTimeout(function(){
+        var api=null;
+        api = $("#left-control").jScrollPane();
+        
+        api=$("left-control").data('jsp');
+        api.reinitialise();                        
+    },80)
+});
+</script>
+</body>
+</html>
