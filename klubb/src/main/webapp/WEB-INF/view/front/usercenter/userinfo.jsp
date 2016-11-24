@@ -23,47 +23,7 @@
      <div class="main_body" style="margin-top:110px;">
           <div class="us-set mgt-30 clearfix">
           		 <!--us-set-lf start-->
-          		<div class="us-set-lf fl">
-                	<div class="us-set-top">
-						<dl class="info clearfix">
-							<dd>
-								<h3 class="nic">用户名 ： ${user.NAME }</h3>
-							</dd>
-                            <dd>
-								<h3 >绑定手机号：${user.PHONE }</h3>
-							</dd>
-						</dl>
-						
-
-						
-					</div>
-					<ul class="us-menu mgt-25">
-					    <li>
-							<a href="#none" class="link curr clearfix">
-								<i class="icon fl diyi"></i>
-								<h5 class="name fl">信息管理</h5>
-							</a>
-						</li>
-						<li>
-							<a href="#none" class="link clearfix">
-								<i class="icon fl diliu"></i>
-								<h5 class="name fl">活动管理</h5>
-							</a>
-						</li>
-						<li>
-							<a href="#none" class="link clearfix">
-								<i class="icon fl disan"></i>
-								<h5 class="name fl">happytimes</h5>
-							</a>
-						</li>
-						<li>
-							<a href="#none" class="link clearfix">
-								<i class="icon fl disi"></i>
-								<h5 class="name fl">参赛管理</h5>
-							</a>
-						</li>
-					</ul>
-                </div>
+          			<%@include file="/ninclude/frontMember/memLeft.jsp"%>
                  <!--us-set-lf end-->
                  <!--us-set-rt start-->
           		<div class="us-set-rt fl">
@@ -141,7 +101,7 @@
 						</div>
 						<!--基本信息 E-->
                         <!--更改密码 S-->
-						<div class="box hidden">
+						<div class="box" style="display: none;">
                         
                             	<dl class="us-base-info  mgt-30">
 								
@@ -149,18 +109,18 @@
                                     
                                      
                                         <dl  class="us-info-dl clearfix">
-                                            <dt class="fl">原始密码：</dt>
-                                            <dd class="fl"><input class="iph" type="password" id="oldPwd" /></dd>
+                                            <dt class="fl"><span class="brown">*</span>原始密码：</dt>
+                                            <dd class="fl"><input type="password" id="oldPwd" placeholder="请输入原始密码"/></dd>
                                             <dd class="notice"></dd>
                                         </dl>
                                         <dl  class="us-info-dl clearfix">
                                             <dt class="fl"><span class="brown">*</span>新密码：</dt>
-                                            <dd class="fl"><input  type="password" id="newPwd" /></dd>
+                                            <dd class="fl"><input  type="password" id="newPwd" placeholder="请输入新密码"/></dd>
                                             <dd class="notice"></dd>
                                         </dl>
                                         <dl  class="us-info-dl clearfix">
                                             <dt class="fl"><span class="brown">*</span>再次输入：</dt>
-                                            <dd class="fl"><input  type="password" id="surePwd" /></dd>
+                                            <dd class="fl"><input  type="password" id="repwd" placeholder="请再 次输入新密码"/></dd>
                                             <dd class="notice"></dd>
                                         </dl>
                                        
@@ -197,16 +157,19 @@ function submitInfo(){
 	var name = $("#name").val();
 	if(name.trim().length==0){
 		$("#name_notice").html("姓名不能为空！");
+		$("#submitInfo").bind("click",submitInfo);
 		return false;
 	}
 	var niceName = $("#nickName").val();
 	if(niceName.trim().length==0){
 		$("#nickName_notice").html("昵称不能为空！");
+		$("#submitInfo").bind("click",submitInfo);
 		return false;
 	}
 	var idNum = $("#idNum").val();
 	if(idNum.trim().length==0){
 		$("#idNum_notice").html("人口号不能为空！");
+		$("#submitInfo").bind("click",submitInfo);
 		return false;
 	}
 	/* var email = $("#email").val();
@@ -239,12 +202,66 @@ function submitInfo(){
 			} else {
 				var tip = json.retMsg.split(":");
 				$("#"+tip[0]+"_notice").html(tip[1]);
-				$("#submitInfo").bind("click",userRegist);
+				$("#submitInfo").bind("click",submitInfo);
 			}
 		},
 		error : function() {
 			alert("修改失败");
-			$("#submitInfo").bind("click",userRegist);
+			$("#submitInfo").bind("click",submitInfo);
+		}
+	});
+}
+$("#submitPwd").bind("click",submitPwd);
+function submitPwd(){
+	
+	$("#submitPwd").unbind("click");
+	var oldpwd = $("#oldPwd").val();
+	if(oldpwd.trim().length == 0){
+		$("#oldPwd").parent().next(".notice").html("旧密码不能为空！");
+		$("#submitPwd").bind("click",submitPwd);
+		return false;
+	}
+	var newpwd = $("#newPwd").val();
+	if(newpwd.trim().length==0){
+		$("#newPwd").parent().next(".notice").html("新密码不能为空！");
+		$("#submitPwd").bind("click",submitPwd);
+		return false;
+	}
+	var repwd = $("#repwd").val();
+	if(repwd.trim().length==0){
+		$("#repwd").parent().next(".notice").html("确认密码不能为空！");
+		$("#submitPwd").bind("click",submitPwd);
+		return false;
+	}else if(newpwd!=repwd){
+		$("#repwd").parent().next(".notice").html("两次密码输入不一致！");
+		$("#submitPwd").bind("click",submitPwd);
+		return false;
+	}
+	
+	$.ajax({
+		type: "post",
+		cache: false,
+		dataType : "json",
+		url : "${ctx}/userCenter/submitPwd",
+		data : {
+			"oldPwd" : $("#oldPwd").val(),
+			"newPwd" : $("#newPwd").val(),
+			"repwd" : $("#repwd").val()
+		},
+		success : function(json) {
+			var mark = json.retCode;
+			if (mark == 0) {
+				alert(json.retMsg);
+				window.location.href = '${ctx}/userCenter';
+			} else {
+				var tip = json.retMsg.split(":");
+				$("#"+tip[0]).parent().next(".notice").html(tip[1]);
+				$("#submitPwd").bind("click",submitPwd);
+			}
+		},
+		error : function() {
+			alert("修改失败");
+			$("#submitPwd").bind("click",submitPwd);
 		}
 	});
 }

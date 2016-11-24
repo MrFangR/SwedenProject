@@ -101,37 +101,45 @@ function userRegist(){
 	var name = $("#name").val();
 	if(name.trim().length==0){
 		$("#name_notice").html("姓名不能为空！");
+		$("#submitRegist").bind("click",userRegist);
 		return false;
 	}
 	var niceName = $("#nickName").val();
 	if(niceName.trim().length==0){
 		$("#nickName_notice").html("昵称不能为空！");
+		$("#submitRegist").bind("click",userRegist);
 		return false;
 	}
 	var idNum = $("#idNum").val();
 	if(idNum.trim().length==0){
 		$("#idNum_notice").html("人口号不能为空！");
+		$("#submitRegist").bind("click",userRegist);
 		return false;
 	}
 	var email = $("#email").val();
 	if(email.trim().length==0){
 		$("#email_notice").html("邮箱不能为空！");
+		$("#submitRegist").bind("click",userRegist);
 		return false;
 	}else if(!jST.isEmail(email)){
 		$("#email_notice").html("请输入全法邮箱地址！");
+		$("#submitRegist").bind("click",userRegist);
 		return false;
 	}
 	var pwd = $("#pwd").val();
 	if(pwd.trim().length==0){
 		$("#pwd_notice").html("密码不能为空！");
+		$("#submitRegist").bind("click",userRegist);
 		return false;
 	}
 	var repwd = $("#repwd").val();
 	if(repwd.trim().length==0){
 		$("#repwd_notice").html("确认密码不能为空！");
+		$("#submitRegist").bind("click",userRegist);
 		return false;
 	}else if(pwd!=repwd){
 		$("#repwd_notice").html("两次密码不一致，请重新输入！");
+		$("#submitRegist").bind("click",userRegist);
 		return false;
 	}
 	$.ajax({
