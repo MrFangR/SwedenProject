@@ -48,6 +48,21 @@ $(function(){
 		  $(this).addClass("curr").siblings().removeClass("curr");
 		  $(this).parent().parent().next(".us-body").find(".box").eq(indexnum).show().siblings().hide();
 		})
+		
+	//删除happytimes相片	
+	
+	$(".list-condel	ul li").live("mouseenter",function(){
+		 $(this).append("<div class='list-del'><i class='delico'></i>删除相片</div>");
+		
+		})
+	$(".list-condel	ul li").live("mouseleave ",function(){
+		 $(this).find(".list-del").remove();
+		
+		})
+	$(".list-condel	ul li").find(".list-del").live("click",function(){
+		$(this).parents(".listbox").remove();
+		
+		})
 })
 
 function amLunBo(){

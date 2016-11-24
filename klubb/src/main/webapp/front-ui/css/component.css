@@ -1225,12 +1225,6 @@ nav ul li.line{
 }
 
 
-*, *::before, *::after {
-    box-sizing: border-box;
-}
-*, *::before, *::after {
-    box-sizing: border-box;
-}
 .contbtn {
     background: #eb003b none repeat scroll 0 0;
     border: 0 none;
@@ -1241,4 +1235,41 @@ nav ul li.line{
     height: 36px;
     line-height: 36px;
     width: 114px;
+}
+/*上传照片*/
+
+.upload_wrap .localUpload  input {
+    cursor: pointer;
+    height: 90px;
+    opacity: 0;
+    width: 96px;
+}
+.upload_wrap .upload {
+    height: 174px;
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+    width: 600px;
+}
+.upload_wrap .localUpload_wrap {
+    border: 1px solid #ececec;
+    float: left;
+    height: 172px;
+    width: 236px;
+	margin-bottom:30px;
+}
+.upload_wrap .localTitle {
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #ececec;
+    color: #9a9a9a;
+    font-size: 14px;
+    height: 32px;
+    line-height: 32px;
+    padding: 0 12px;
+}
+.upload_wrap .localUpload {
+    background: rgba(0, 0, 0, 0) url("../images/icons_edit.png") no-repeat scroll -106px 0;
+    height: 90px;
+    margin: 30px auto 30px auto;
+    width: 99px;
 }
