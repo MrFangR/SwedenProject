@@ -1,5 +1,7 @@
 package com.partner.busi.front.controller;
 
+import java.util.Date;
+
 import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
 import com.jfinal.plugin.activerecord.Page;
@@ -132,5 +134,24 @@ public class UserCenterController extends Controller {
 		}
 		renderJson(retInfo);
 	}
-
+	
+	/**
+	 * upload happytimes
+	 */
+	public void uploadHappyTimes(){
+		boolean rsFlag = false;
+		String rsMsg = "发布失败，请稍后再试";
+		
+		Picture pic = getModel(Picture.class);
+		pic.set("USER_ID", FrontSessionUtil.getSession(getRequest()).getID());
+		pic.set("CREATE_TIME", new Date());
+		rsFlag = pic.save();
+		if(rsFlag){
+			rsMsg = "成功";
+		}
+		
+		setAttr("rsFlag", rsFlag);
+		setAttr("rsMsg", rsMsg);
+		renderJson();
+	}
 }

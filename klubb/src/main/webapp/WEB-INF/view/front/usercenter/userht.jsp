@@ -53,9 +53,8 @@
 			</div>
 			<!--us-set-lf end-->
 			<!--us-set-rt start-->
-			<div class="us-set-rt fl"
-				style="padding-left:10px; position:relative">
-				<input name="" class="contbtn" value="+添加图片" type="button" style=" position:absolute; right:40px; top:40px">
+			<div class="us-set-rt fl" style="padding-left:10px; position:relative">
+				<input name="uploadIMG" class="contbtn" value="+添加图片" type="button" style=" position:absolute; right:40px; top:40px">
 				<div class="xmfb_title" style="width:200px;margin:10px auto 30px auto">
 					<h2>HappyTimes</h2>
 				</div>
@@ -91,6 +90,10 @@
 </body>
 <script type="text/javascript">
 $(function(){
+	$(".contbtn").click(function(){
+		location.href=ctx + "/userCenter/toHappytimesUpload";
+	});
+
 	showHappyTimes(1);
 });
 function showHappyTimes(pageNum){
