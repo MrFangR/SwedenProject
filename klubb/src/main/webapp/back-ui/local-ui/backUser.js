@@ -1,7 +1,5 @@
 $(function(){
-	qryUser();
-	$('#userNo_a_tip').text(format_userNo);
-	$('#pwd_a_tip').text(format_pwd);
+	qryUser("1");
 });
 
 var status_q = 0;
@@ -17,19 +15,14 @@ function resetQry(){
 }
 // 查询
 function qryUser(pageNum){
-	$('.liQuery').click();
 	$.ajax({
 		type : 'get',
 		cache : false,
 		async : true,
 		url : ctx + "/back/user/getUserPage",
 		data: {
-			'qryUser.USER_NO' : $('#userNo_q').val(),
-			'qryUser.USER_NAME' : $('#userName_q').val(),
-			'qryUser.PHONE' : $('#phone_q').val(),
-			'qryUser.STATUS' : status_q,
-			pageNum : ((pageNum==undefined || pageNum=="")?1:pageNum),
-			pageSize : 6
+			'title' : $('#titleIn').val(),
+			'pageNum' : ((pageNum==undefined || pageNum=="")?1:pageNum)
 		},
 		dataType : "html",
 		success : function(data){
@@ -58,53 +51,21 @@ function resetAdd(){
 	$('#roleName_a').text("");
 }
 
-function add(){
-	var uNo = $("#userNo_a").val();
-	if (uNo == "") {
-		pop.fail("账号不可为空", function(){$("#userNo_a").focus();});
-		return;
-	} else if(!valid_userNo(uNo)){
-		pop.fail("账号格式错误！"+format_userNo, function(){$("#userNo_a").focus();});
-		return;
-	}
-	var uName = $("#userName_a").val();
-	if (uName == "") {
-		pop.fail("姓名不可为空", function(){$("#userName_a").focus();});
-		return;
-	}
-	var rId = $('#roleId_a').val();
-	if (rId == "") {
-		pop.fail("请选择角色");
-		return;
-	}
-	var uPwd = $("#pwd_a").val();
-	if (uPwd == "") {
-		pop.fail("密码不可为空", function(){$("#pwd_a").focus();});
-		return;
-	} else if (!valid_pwd(uPwd)){
-		pop.fail("密码格式错误！"+format_pwd, function(){$("#pwd_a").focus();});
-		return;
-	}
-
+function delUser(id){
 	$.ajax({
 		type : 'post',
 		cache : false,
 		async : true,
-		url : ctx + "/back/user/save",
+		url : ctx + "/back/user/delUser",
 		data: {
-			optType : "A",
-			"user.USER_NO" : uNo,
-			"user.USER_NAME" : uName,
-			"user.PASSWORD" : uPwd,
-			"user.PHONE" : $("#phone_a").val(),
-			"role.ROLE_ID" : rId
+			"userId" : id
 		},
 		dataType : "json",
 		success : function(json){
 			var flag = json.flag;
 			if (flag == 0) {
 				pop.success(json.msg, function(){
-					qryUser();
+					qryUser(1);
 				});
 			} else {
 				pop.fail(json.msg);
@@ -116,4 +77,8 @@ function add(){
 			return;
 		}
 	});
+}
+
+function viewUser(id){
+	location.href=ctx + "/back/user/viewUser?userId=" + id;
 }

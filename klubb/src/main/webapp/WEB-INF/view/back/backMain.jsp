@@ -8,6 +8,8 @@
 
 <body>
 	<div class="ued-location mgb-20">我的位置：首页</div>
+	<!-- 
+	
 	<div class="index-wap">
 		<ul>
 			<li><i class="ico1"></i>
@@ -73,6 +75,7 @@
 		</div>
 		<div class="clear"></div>
 	</div>
+	 -->
 </body>
 
 </html>

@@ -18,11 +18,14 @@ import com.partner.common.util.StringUtil;
  */
 public class BackUserController extends Controller {
 
+	public void index(){
+		render("user_list.jsp");
+	}
 	/**
 	 * 展示注册用户 t_user表记录
 	 */
-	public void index(){
-		String pageNumber = this.getPara("pageNumber");
+	public void getUserPage(){
+		String pageNumber = this.getPara("pageNum");
 		String pageSize = this.getPara("pageSize");
 		int pageNumberInt = Constants.PAGENUMBER;
 		int pageSizeInt = Constants.PAGESIZE;
@@ -33,14 +36,14 @@ public class BackUserController extends Controller {
 			pageSizeInt = Integer.parseInt(pageSize);
 		}
 		
-		String email = this.getPara("email");
-		String idNumber = this.getPara("idNumber");
+		String title = this.getPara("title");
 		
-		Page<User> userLst = User.dao.findUserLst(Integer.parseInt(pageNumber), Integer.parseInt(pageSize), email, idNumber);
-		renderJson(JFinalJson.getJson().toJson(userLst));
+		Page<User> userLst = User.dao.findUserLst(pageNumberInt, pageSizeInt, title);
+		setAttr("paginate", userLst);
+		render("user_list_result.jsp");
 	}
 	
-	public void userDetail(){
+	public void viewUser(){
 		Integer userId = getParaToInt("userId");
 		User user = User.dao.findById(userId);
 		setAttr("user",user);

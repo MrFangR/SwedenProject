@@ -22,17 +22,17 @@ public class User extends BaseUser<User> {
 		return dao.findFirst("select * from t_user where status = 0 and EMAIL = ? ", email);
 	}
 	
-	public Page<User> findUserLst(int pageNumber,int pageSize, String email, String idNumber){
-		String selSql = "select * from t_user ";
+	public Page<User> findUserLst(int pageNumber,int pageSize, String title){
+		String selSql = "select *  ";
 		List<Object> paramList=new ArrayList<Object>();
-		StringBuffer whereSql = new StringBuffer(" where status = 0 ");
-		if(!StringUtil.isBlank(email)){
-			whereSql.append(" and EMAIL like concat('%',?,'%')");
-			paramList.add(email);
-		}
-		if(!StringUtil.isBlank(idNumber)){
-			whereSql.append(" and ID_NUMBER = ? ");
-			paramList.add(idNumber);
+		StringBuffer whereSql = new StringBuffer(" from t_user where STATUS = 0 ");
+		if(!StringUtil.isBlank(title)){
+			whereSql.append(" and ( EMAIL like concat('%',?,'%')");
+			paramList.add(title);
+			whereSql.append(" or  NAME like concat('%',?,'%')");
+			paramList.add(title);
+			whereSql.append(" or  NICKNAME like concat('%',?,'%'))");
+			paramList.add(title);
 		}
 		return paginate(pageNumber, pageSize, true, selSql, whereSql.toString(),paramList.toArray());
 	}
