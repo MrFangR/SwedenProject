@@ -5,8 +5,10 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
+import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
 import com.jfinal.plugin.activerecord.Page;
+import com.partner.busi.back.validator.ActivityValidator;
 import com.partner.busi.back.validator.IntroduceValidator;
 import com.partner.busi.model.ActUser;
 import com.partner.busi.model.Activity;
@@ -50,6 +52,7 @@ public class BackActivityController extends Controller {
 	/**
      * 活动 新增/更新
      */
+	@Before(ActivityValidator.class)
 	public void saveOrUpdate(){
     	boolean rsFlag = false;
 		String rsMsg = "发布失败，请稍后再试";

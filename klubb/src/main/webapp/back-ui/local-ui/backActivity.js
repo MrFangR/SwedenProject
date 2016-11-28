@@ -12,7 +12,7 @@ function qryAct(pageNum){
 		data: $("#qryForm").serialize(),
 		dataType : "html",
 		success : function(data){
-			$('#showLst').html(data);
+			$('#showList').html(data);
 			return;
 		},
 		error : function(json){
