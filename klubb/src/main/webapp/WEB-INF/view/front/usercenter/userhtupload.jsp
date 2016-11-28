@@ -81,6 +81,7 @@
 								<img id="showImg" src="">
 							</div>
 						</dd>
+						<dd class="notice" id="url_notice"></dd>
 					</dl>
 					<dl class="us-info-dl clearfix" style="width:auto">
 						<dt class="fl">
@@ -89,7 +90,7 @@
 						<dd class="fl">
 							<textarea name="picture.DESCRIPTION" cols="" rows="3" style="width:540px"></textarea>
 						</dd>
-						<dd class="notice"></dd>
+						<dd class="notice" id="description_notice"></dd>
 					</dl>
 					<dl class="us-info-dl clearfix" style="width:auto">
 						<dt class="fl">&nbsp;</dt>
@@ -116,6 +117,9 @@
 </body>
 <script type="text/javascript">
 $(function(){
+	$(".us-btn").click(function(){
+		uploadHT();
+	});
 	initUpload();
 });
 
@@ -147,20 +151,25 @@ function validData(){
 	return true;
 }
 //保存
-function update(status){
+function uploadHT(){
 	if(validData()){
 		$.ajax({
 			type : "POST",
-			url : "${ctx}/back/activity/saveOrUpdate",
+			url : "${ctx}/userCenter/uploadHappyTimes",
 			dataType : "json",
-			data : $("#activityForm").serialize(),
+			data : $("#pictureFrom").serialize(),
 			success: function(data){
 				if(data.rsFlag){
-					pop.success(data.rsMsg, function(){
-						back();
-					});
+					ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+					   {type:2,
+						info:'提示信息',
+						text:'<div style=" font-size:18px; color:#ff0000;">上传成功</div>您好，上传happytimes成功！',
+						'ok':function(){location.href=ctx + "/userCenter/toHappytimes";},
+						tag:'zq-ring'}
+		               );
 				}else{
 					showNotice(data);
+					enableBtn();
 				}
 			}
 		});
@@ -168,7 +177,7 @@ function update(status){
 }
 //显示提示信息
 function showNotice(data){
-	$(".color-3").each(function(){
+	$(".notice").each(function(){
 		var tip = eval("data." + this.id);
 		if(tip != null && tip != "" && tip != undefined && tip != "undefined"){
 			$(this).html(tip);
@@ -176,6 +185,9 @@ function showNotice(data){
 			$(this).html("");
 		}
 	});
+}
+function enableBtn(){
+	$(".us-btn").attr("disabled", "");
 }
 </script>
 </html>

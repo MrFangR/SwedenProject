@@ -97,7 +97,7 @@ function joinAct(){
 }
 //显示提示信息
 function showNotice(data){
-	if(data.isRepeat){
+	if(!data.rsFlag){
 		ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
 				   {type:2,
 					info:'提示信息',

@@ -6,6 +6,7 @@ import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
 import com.jfinal.plugin.activerecord.Page;
 import com.partner.busi.front.validator.CenterValidator;
+import com.partner.busi.front.validator.HappyValidator;
 import com.partner.busi.front.validator.PwdValidator;
 import com.partner.busi.model.ActUser;
 import com.partner.busi.model.Activity;
@@ -45,8 +46,8 @@ public class UserCenterController extends Controller {
 		int pageNum = getParaToInt("pageNum");
 		int pageSize = getParaToInt("pageSize");
 		
-		//Page<Activity> page = Activity.dao.findAllActByUser(FrontSessionUtil.getUserNo(getRequest()),pageNum,pageSize);
-		Page<Activity> page = Activity.dao.findAllActByUser("1",pageNum,pageSize);
+		Page<Activity> page = Activity.dao.findAllActByUser(FrontSessionUtil.getUserNo(getRequest()),pageNum,pageSize);
+		//Page<Activity> page = Activity.dao.findAllActByUser("1",pageNum,pageSize);
 		renderJson(page);
 	}
 	
@@ -91,8 +92,8 @@ public class UserCenterController extends Controller {
 		String rsMsg = "取消活动失败，请稍后再试";
 		
 		int actId = getParaToInt("actId");
-		//String userId = FrontSessionUtil.getUserNo(getRequest());
-		String userId = "1";
+		String userId = FrontSessionUtil.getUserNo(getRequest());
+		//String userId = "1";
 		rsFlag = ActUser.dao.deleteByUserIdAndActId(userId,actId);
 		
 		setAttr("rsFlag", rsFlag);
@@ -108,8 +109,8 @@ public class UserCenterController extends Controller {
 		int pageSize = getParaToInt("pageSize");
 		User user = FrontSessionUtil.getSession(getRequest());
 		
-		//Page<Picture> page = Picture.dao.findUserPic(user.getID(),pageNum,pageSize);
-		Page<Picture> page = Picture.dao.findUserPic(1,pageNum,pageSize);
+		Page<Picture> page = Picture.dao.findUserPic(user.getID(),pageNum,pageSize);
+		//Page<Picture> page = Picture.dao.findUserPic(1,pageNum,pageSize);
 		setAttr("page", page);
 		renderJson();
 	}
@@ -138,6 +139,7 @@ public class UserCenterController extends Controller {
 	/**
 	 * upload happytimes
 	 */
+	@Before(HappyValidator.class)
 	public void uploadHappyTimes(){
 		boolean rsFlag = false;
 		String rsMsg = "发布失败，请稍后再试";
@@ -149,6 +151,21 @@ public class UserCenterController extends Controller {
 		if(rsFlag){
 			rsMsg = "成功";
 		}
+		
+		setAttr("rsFlag", rsFlag);
+		setAttr("rsMsg", rsMsg);
+		renderJson();
+	}
+	
+	/**
+	 * delete happytimes picture
+	 */
+	public void deletePic(){
+		boolean rsFlag = false;
+		String rsMsg = "取消活动失败，请稍后再试";
+		
+		int picID = getParaToInt("picID");
+		rsFlag = Picture.dao.deleteById(picID);
 		
 		setAttr("rsFlag", rsFlag);
 		setAttr("rsMsg", rsMsg);

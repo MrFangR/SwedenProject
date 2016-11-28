@@ -18,7 +18,7 @@
 	</header >
 	<div class="search">
 		<p class="w1000">
-          <input name="title" id="title" type="text"  class="inputfont" value=""><input name="" onclick="searchAct()" type="button" class="inputbut" value="搜索">
+          <input name="title" id="title" type="text"  class="inputfont" value=""><input name="" onclick="searchAct(1)" type="button" class="inputbut" value="搜索">
        </p>
   </div>
 <!--ist-con S-->		
