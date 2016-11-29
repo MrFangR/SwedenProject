@@ -4,7 +4,7 @@
 	/* 后台管理系统 页面统一引用 - 顶部菜单 */
 %>
 <div class="ued-head clearfix">
-	<div class="ued-logo fl">精简开店后台管理系统</div>
+	<div class="ued-logo fl">后台管理系统</div>
 	<div class="ued-nav fr">
 		<ul class="root_ul">
 			<li id="topMenu_1">

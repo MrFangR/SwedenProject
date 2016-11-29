@@ -1,18 +1,6 @@
 $(function(){
-	qryUser("1");
+	qryUser(1);
 });
-
-var status_q = 0;
-// 切换状态
-function chgStatus(status){
-	status_q = status;
-}
-// 查询面板重置
-function resetQry(){
-	$('#userNo_q, #userName_q, #phone_q').val("");
-	chgStatus(0);
-	$('#statusName_q').text("正常");
-}
 // 查询
 function qryUser(pageNum){
 	$.ajax({
@@ -62,13 +50,12 @@ function delUser(id){
 		},
 		dataType : "json",
 		success : function(json){
-			var flag = json.flag;
+			var flag = json.retCode;
 			if (flag == 0) {
-				pop.success(json.msg, function(){
-					qryUser(1);
-				});
+				alert(json.retMsg);
+				qryUser(1);
 			} else {
-				pop.fail(json.msg);
+				alert(json.retMsg);
 			}
 			return;
 		},
