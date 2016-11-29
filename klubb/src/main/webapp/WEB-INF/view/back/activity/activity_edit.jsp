@@ -51,13 +51,20 @@
 		                        <tr>
 		                            <th><font color="color-3">*&nbsp;</font>图片：</th>
 		                            <td>
-		                                 <input type="hidden" name="activity.IMG" id="imgPath" class="ued-text-2" maxlength="30" >
+		                                 <input type="hidden" name="activity.IMG" id="imgPath" class="ued-text-2" maxlength="30" value='${act.IMG}'>
 		                                 <input id="imgForUpload" name="imgForUpload" type="file" multiple="multiple">
 		                                 <p class="color-3 fs-14" id="img_path_msg"></p>  
 		                            </td>
 		                            <th>图片预览：</th>
 		                            <td>
 		                            	<img id="showImg" src="${uploadUrl}${act.IMG}" path="${act.IMG}" style="width:130px; height:100px;"/>
+		                            </td>
+		                        </tr>
+		                        <tr>
+		                            <th><font color="color-3">*&nbsp;</font>活动摘要：</th>
+		                            <td colspan="4">
+		                                <textarea rows="3" cols="100" class="bord-3" name="activity.ABSTRACT" style="color: #535356;padding-left: 10px;font-family: 'microsoft yahei';">${act.ABSTRACT}</textarea>  
+		                                <p class="color-3 fs-14" id="abstract_msg"></p>           
 		                            </td>
 		                        </tr>
 		                    </tbody>

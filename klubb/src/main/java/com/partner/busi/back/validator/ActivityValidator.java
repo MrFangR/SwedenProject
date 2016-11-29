@@ -16,7 +16,8 @@ public class ActivityValidator extends Validator {
 		validateRequiredString("activity.TITLE", "content_msg", "请填写标题");
 		validateDate("activity.ACT_TIME", "content_msg", "请填写正确时间");
 		validateRequiredString("activity.IMG", "content_msg", "请填加图片");
-		validateRequiredString("activity.CONTENT", "content_msg", "请填写内容");
+		validateString("activity.ABSTRACT", 1, 200, "abstract_msg", "请输入1~200描述内容");
+		validateString("activity.CONTENT", 1, 200, "content_msg", "请输入1~1000字描述内容");
 	}
 
 }

@@ -23,35 +23,8 @@
 	<div class="main_body" style="margin-top:110px;">
 		<div class="us-set mgt-30 clearfix">
 			<!--us-set-lf start-->
-			<div class="us-set-lf fl">
-				<div class="us-set-top">
-					<dl class="info clearfix">
-						<dd>
-							<h3 class="nic">
-								用户名 ： <a href="">成成成</a>
-							</h3>
-						</dd>
-						<dd>
-							<h3 class="num">绑定手机号：13700012130</h3>
-						</dd>
-					</dl>
-				</div>
-				<ul class="us-menu mgt-25">
-					<li><a href="#none" class="link  clearfix"> <i
-							class="icon fl diyi"></i>
-							<h5 class="name fl">信息管理</h5> </a></li>
-					<li><a href="#none" class="link  clearfix"> <i
-							class="icon fl diliu"></i>
-							<h5 class="name fl">活动管理</h5> </a></li>
-					<li><a href="#none" class="link curr clearfix"> <i
-							class="icon fl disan"></i>
-							<h5 class="name fl">happytimes</h5> </a></li>
-					<li><a href="#none" class="link clearfix"> <i
-							class="icon fl disi"></i>
-							<h5 class="name fl">参赛管理</h5> </a></li>
-				</ul>
-			</div>
-			<!--us-set-lf end-->
+          		<%@include file="/ninclude/frontMember/memLeft.jsp"%>
+            <!--us-set-lf end-->
 			<!--us-set-rt start-->
 			<div class="us-set-rt fl"
 				style="padding-left:10px; position:relative">

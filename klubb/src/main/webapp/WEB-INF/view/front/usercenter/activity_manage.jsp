@@ -23,49 +23,9 @@
 <!--内容 start-->
      <div class="main_body" style="margin-top:110px;">
           <div class="us-set mgt-30 clearfix">
-          		 <!--us-set-lf start-->
-          		<div class="us-set-lf fl">
-                	<div class="us-set-top">
-						<dl class="info clearfix">
-							<dd>
-								<h3 class="nic">用户名 ： <a href="">成成成</a></h3>
-							</dd>
-                            <dd>
-								<h3 class="num">绑定手机号：13700012130</h3>
-							</dd>
-						</dl>
-						
-
-						
-					</div>
-					<ul class="us-menu mgt-25">
-					    <li>
-							<a href="#none" class="link  clearfix">
-								<i class="icon fl diyi"></i>
-								<h5 class="name fl">信息管理</h5>
-							</a>
-						</li>
-						<li>
-							<a href="#none" class="link curr clearfix">
-								<i class="icon fl diliu"></i>
-								<h5 class="name fl">活动管理</h5>
-							</a>
-						</li>
-						<li>
-							<a href="#none" class="link clearfix">
-								<i class="icon fl disan"></i>
-								<h5 class="name fl">happytimes</h5>
-							</a>
-						</li>
-						<li>
-							<a href="#none" class="link clearfix">
-								<i class="icon fl disi"></i>
-								<h5 class="name fl">参赛管理</h5>
-							</a>
-						</li>
-					</ul>
-                </div>
-                 <!--us-set-lf end-->
+          		<!--us-set-lf start-->
+          			<%@include file="/ninclude/frontMember/memLeft.jsp"%>
+           	 	<!--us-set-lf end-->
                  <!--us-set-rt start-->
           		<div class="us-set-rt fl">
                 	 <!--活动列表start-->
@@ -107,7 +67,7 @@ function showUserAct(pageNum){
 						+ "	<dt class='img position-rel fl'><a target='_blank' href='#none'><img src='"+uploadUrl+act.IMG+"' width='340' height='310'></a></dt>"
 						+ "	<dd class='info  position-rel fr'>"
 						+ "		<p class='title'><a target='_blank' href='#none'>"+act.TITLE+"</a></p>"
-						+ "		<p class='gray6 mgt-12'>"+act.CONTENT+"</p>"
+						+ "		<p class='gray6 mgt-12'>"+act.ABSTRACT+"</p>"
 						+ "		<div class='moreInfo'><input name='cancleAct' onclick='cancleAct("+act.ID+")' class='contbtn' value='—取消报名' type='button'></div>"
 						+ "	</dd>"
 						+ "</dl>";

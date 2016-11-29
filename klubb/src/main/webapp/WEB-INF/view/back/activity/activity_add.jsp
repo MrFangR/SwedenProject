@@ -57,6 +57,13 @@
 		                            <th>图片预览：</th>
 		                            <td><img id="showImg" alt="" src=""></td>
 		                        </tr>
+		                        <tr>
+		                            <th><font color="color-3">*&nbsp;</font>活动摘要：</th>
+		                            <td colspan="4">
+		                                <textarea rows="3" cols="100" class="bord-3" name="activity.ABSTRACT" style="color: #535356;padding-left: 10px;font-family: 'microsoft yahei';"></textarea>  
+		                                <p class="color-3 fs-14" id="abstract_msg"></p>           
+		                            </td>
+		                        </tr>
 		                    </tbody>
 		                </table>
 		            </div>

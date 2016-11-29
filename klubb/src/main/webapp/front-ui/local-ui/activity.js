@@ -32,7 +32,7 @@ function showResultList(data){
 		htmlStr += "<div class='zixun_content'>";
 		htmlStr += "<div class='pic'><a href='javascript:viewAct("+act.ID+");' target='_blank'><img src='"+uploadUrl+act.IMG+"'></a></div>";
 		htmlStr += "<div class='title'><a href='javascript:viewAct("+act.ID+");' target='_blank' >"+act.TITLE+"</a></div>";
-		htmlStr += "<div class='intro'><a href='javascript:viewAct("+act.ID+");' target='_blank'>"+act.CONTENT+"</a></div>";
+		htmlStr += "<div class='intro'><a href='javascript:viewAct("+act.ID+");' target='_blank'>"+act.ABSTRACT+"</a></div>";
 		htmlStr += "</div>";
 		htmlStr += "</li>";
 	});

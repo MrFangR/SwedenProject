@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -19,7 +20,7 @@
 <!--cont-con S-->
   	<div class="cont-con">
     	<h1 class="contitle">${act.TITLE}</h1>
-    	<p class="confutitle"><input name="addAct"  class="contbtn" type="button" value="+参加活动" onclick="addAct(${act.ID})"><span>时间：${act.actTime}</span><span class="mgl-200">地点：大南门**台球厅</span></p>
+    	<p class="confutitle"><input name="addAct"  class="contbtn" type="button" value="+参加活动" onclick="addAct(${act.ID})"><span>时间：${fn:substring(act.actTime, 0, 16)}</span></p>
       	<p class="conline"></p>
       	<div class="cont-text">
       		${act.CONTENT}

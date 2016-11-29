@@ -50,6 +50,12 @@
 		                            <th></th>
 		                            <td></td>
 		                        </tr>
+		                        <tr>
+		                            <th><font color="color-3">*&nbsp;</font>活动摘要：</th>
+		                            <td colspan="4">
+		                                ${act.ABSTRACT}          
+		                            </td>
+		                        </tr>
 		                    </tbody>
 		                </table>
 		            </div>
