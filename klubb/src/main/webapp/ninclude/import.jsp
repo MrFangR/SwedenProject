@@ -12,7 +12,7 @@
 	</script>
 <%/* 设置公用js变量 end */%>
 <%/* 引入css start */%>
-	<link rel="stylesheet" type="text/css" href="${ctx}/back-ui/pub-ui/css/skin1/all.css" />
+	<!-- <link rel="stylesheet" type="text/css" href="${ctx}/back-ui/pub-ui/css/skin1/all.css" /> -->
     <link rel="stylesheet" type="text/css" href="${ctx}/back-ui/pub-ui/css/skin1/navtab.css" />
     <link rel="stylesheet" type="text/css" href="${ctx}/back-ui/pub-ui/css/skin1/contextMenu.css" />
     <link rel="stylesheet" type="text/css" href="${ctx}/back-ui/pub-ui/css/skin1/jquery.jscrollpane.css" />
