@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
+<%@ taglib prefix="i18n" uri="/i18n-taglib" %>
 <%/* 设置公用js变量 start */%>
 	<c:set var="ctx" value="${CONTEXT_PATH}"/>
 	<c:set var="uploadUrl" value="${UPLOAD_SERVER_URL}"/>

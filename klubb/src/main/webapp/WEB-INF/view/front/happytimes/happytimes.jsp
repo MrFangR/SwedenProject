@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 <meta name="format-detection" content="telephone=no,email=no">
-<title>HappyTimes</title>
+<title><i18n:get key="portal.menu.happytimes"></i18n:get></title>
 <script src="${ctx}/front-ui/js/jquery1.9.0.min.js"></script>
 <script src="${ctx}/front-ui/js/ui.js"></script>
 <link rel="stylesheet" type="text/css" href="${ctx}/front-ui/css/reset.css">
@@ -26,7 +26,7 @@
 	</div>
 	<!--ist-con S-->
 	<div class="list-con">
-		<div class="list-contitle">HappyTimes</div>
+		<div class="list-contitle"><i18n:get key="portal.menu.happytimes"></i18n:get></div>
 		<ul id="showHTDiv">
 		</ul>
 		<!--分页 start-->
@@ -68,7 +68,7 @@ function showHappyTimes(pageNum){
 						+ "<div class='riqi'>"
 						+ "<p class='date'>"+dateStrNext.substr(8,2)+"</p>"
 						+ "<p class='month'>"+dateStrNext.substr(5,2)+"月</p>"
-						+ "<p class='Category'>happytimes</p>"
+						+ "<p class='Category'><i18n:get key='portal.menu.happytimes'></i18n:get></p>"
 						+ "</div>"
 				}
 				htmlStr += "<li class='listbox mr20'>"

@@ -2,11 +2,12 @@
 <html lang="zh-CN">
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/ninclude/import.jsp"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <meta name="format-detection" content="telephone=no,email=no">
-    <title>happytimescont</title>
+    <title><i18n:get key="portal.menu.happytimes"></i18n:get></title>
     <script  src="${ctx}/front-ui/js/jquery1.9.0.min.js"></script>
     <script  src="${ctx}/front-ui/js/ui.js"></script>
     <link rel="stylesheet" type="text/css" href="${ctx}/front-ui/css/reset.css">
@@ -18,26 +19,26 @@
   </header >
 
   
-<!--cont-con S-->		
+<!--cont-con S-->
   <div class="cont-con">
-    <h1 class="happytitle">作者：${user.NICKNAME}</h1>
-    <p class="confutitle">时间：${pic.createTime}</span></p>
+    <h1 class="happytitle"><i18n:get key="portal.happytimes.author"></i18n:get>:${user.NICKNAME}</h1>
+    <p class="confutitle"><i18n:get key="portal.activity.detail.date"></i18n:get>:${fn:substring(pic.createTime, 0, 16)}</span></p>
        <p class="conline"></p>
        <div class="cont-text">
           ${pic.DESCRIPTION}
         <p><img src="${uploadUrl}${pic.URL}"></p>
        		 <div class="contentprevnextbox">
-      			<div class="contentprev">上一篇:
+      			<div class="contentprev"><i18n:get key="portal.happytimes.prev"></i18n:get>:
       				<c:if test="${empty prevPic}">
-						没有上一篇
+						<i18n:get key="portal.happytimes.noprev"></i18n:get>
 					</c:if>
       				<c:if test="${not empty prevPic}">
 						<a href="${ctx}/front/happytimes/showHTdetails?picID=${prevPic.ID}" rel="prev">${prevPic.DESCRIPTION}</a>
 					</c:if>
       			</div>
-      			<div class="contentnext">下一篇:
+      			<div class="contentnext"><i18n:get key="portal.happytimes.next"></i18n:get>:
       				<c:if test="${empty nextPic}">
-						没有下一篇
+						<i18n:get key="portal.happytimes.nonext"></i18n:get>
 					</c:if>
       				<c:if test="${not empty nextPic}">
 						<a href="${ctx}/front/happytimes/showHTdetails?picID=${nextPic.ID}" rel="next">${nextPic.DESCRIPTION}</a>

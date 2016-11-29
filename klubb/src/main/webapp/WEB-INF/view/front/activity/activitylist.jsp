@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <meta name="format-detection" content="telephone=no,email=no">
-    <title>活的列表页</title>
+    <title><i18n:get key="portal.activity.title"></i18n:get></title>
     <script  src="${ctx}/front-ui/js/jquery1.9.0.min.js"></script>
     <script  src="${ctx}/front-ui/js/ui.js"></script>
     <link rel="stylesheet" type="text/css" href="${ctx}/front-ui/css/reset.css">
@@ -18,12 +18,12 @@
 	</header >
 	<div class="search">
 		<p class="w1000">
-          <input name="title" id="title" type="text"  class="inputfont" value=""><input name="" onclick="searchAct(1)" type="button" class="inputbut" value="搜索">
+          <input name="title" id="title" type="text"  class="inputfont" value=""><input name="" onclick="searchAct(1)" type="button" class="inputbut" value="<i18n:get key='portal.activity.search.button'></i18n:get>">
        </p>
   </div>
 <!--ist-con S-->		
   <div class="list-con">
-     <div class="list-contitle">活动列表</div>
+     <div class="list-contitle"><i18n:get key="portal.activity.title"></i18n:get></div>
      <!-- activity-list-statr -->
       <ul id="resultDIV">
       </ul>

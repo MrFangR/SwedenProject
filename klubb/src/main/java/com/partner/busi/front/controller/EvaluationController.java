@@ -1,8 +1,11 @@
 package com.partner.busi.front.controller;
 
 import java.util.Date;
+
+import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
 import com.jfinal.plugin.activerecord.Page;
+import com.partner.busi.front.validator.EvaluationValidator;
 import com.partner.busi.model.Evaluation;
 
 public class EvaluationController extends Controller {
@@ -10,6 +13,7 @@ public class EvaluationController extends Controller {
 	/**
 	 * 发表评论
 	 */
+	@Before(EvaluationValidator.class)
 	public void addEva(){
 		boolean rsFlag = false;
 		String rsMsg = "发布失败，请稍后再试";

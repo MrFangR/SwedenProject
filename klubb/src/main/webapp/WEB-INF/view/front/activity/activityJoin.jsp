@@ -22,7 +22,7 @@
    		<!--内容 start-->
      <div class="main_body xmfb_con">
          <div class="xmfb_title">
-           <h2>请填写参加活动信息</h2>
+           <h2><i18n:get key="portal.contact.form.title"></i18n:get></h2>
          </div>
          <div class="xmfb_xx"></div>
          <form enctype="multipart/form-data" action="" id="userFrom">
@@ -30,17 +30,17 @@
 						<div class="us-bd-base xmfb_con_text">
 							
                                     <dl  class="us-info-dl clearfix">
-										<dt class="fl">姓名：</dt>
+										<dt class="fl"><i18n:get key="portal.contact.form.name"></i18n:get>:</dt>
 										<dd class="fl"><input  type="text" name="actUser.NAME" /></dd>
 										<dd class="notice" id="name_notice"></dd>
 									</dl>
                                     <dl  class="us-info-dl clearfix">
-										<dt class="fl">手机号码：</dt>
+										<dt class="fl"><i18n:get key="portal.contact.form.phone"></i18n:get>:</dt>
 										<dd class="fl"><input  type="text" name="actUser.phone" /></dd>
 										<dd class="notice" id="phone_notice"></dd>
 									</dl>
                                     <dl  class="us-info-dl clearfix">
-										<dt class="fl">邮箱地址：</dt>
+										<dt class="fl"><i18n:get key="portal.contact.form.email"></i18n:get>:</dt>
 										<dd class="fl"><input  type="text" name="actUser.EMAIL" /></dd>
 										<dd class="notice" id="email_notice"></dd>
 									</dl>
@@ -49,7 +49,7 @@
                                     <dl class="us-info-dl clearfix">
 										<dt class="fl">&nbsp;</dt>
 										<dd class="fl">
-										<div class="us-btn">提交</div>
+										<div class="us-btn"><i18n:get key="portal.contact.form.submit"></i18n:get></div>
 										</dd>
 									</dl>
                                   

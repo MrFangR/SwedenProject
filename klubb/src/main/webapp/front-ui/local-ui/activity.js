@@ -27,7 +27,7 @@ function showResultList(data){
 	$.each(data.list, function(i, act){
 		htmlStr += "<li>";
 		htmlStr += "<div class='riqi'>";
-		htmlStr += "<p class='date'>"+act.ACT_TIME.substr(8,2)+"</p><p class='month'>"+act.ACT_TIME.substr(5,2)+"</p><p class='Category'>活动</p>";
+		htmlStr += "<p class='date'>"+act.ACT_TIME.substr(8,2)+"</p><p class='month'>"+act.ACT_TIME.substr(5,2)+"</p><p class='Category'><i18n:get key='portal.menu.activity'></i18n:get></p>";
 		htmlStr += "</div>";
 		htmlStr += "<div class='zixun_content'>";
 		htmlStr += "<div class='pic'><a href='javascript:viewAct("+act.ID+");' target='_blank'><img src='"+uploadUrl+act.IMG+"'></a></div>";

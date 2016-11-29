@@ -8,13 +8,14 @@ public class EvaluationValidator extends Validator {
 	@Override
 	protected void validate(Controller c) {
 		// TODO Auto-generated method stub
-		validateRequiredString("evaluation.CONTENT", "content_msg", "请填写项目内容");
+		validateString("evaluation.CONTENT", 1, 200, "content_msg", "请输入1~150字内容");
 	}
 
 	@Override
 	protected void handleError(Controller c) {
 		// TODO Auto-generated method stub
-		
+		c.setAttr("rsFlag", false);
+    	c.renderJson();
 	}
 
 }
