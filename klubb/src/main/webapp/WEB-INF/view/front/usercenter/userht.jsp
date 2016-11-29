@@ -23,35 +23,8 @@
 	<div class="main_body" style="margin-top:110px;">
 		<div class="us-set mgt-30 clearfix">
 			<!--us-set-lf start-->
-			<div class="us-set-lf fl">
-				<div class="us-set-top">
-					<dl class="info clearfix">
-						<dd>
-							<h3 class="nic">
-								用户名 ： <a href="">成成成</a>
-							</h3>
-						</dd>
-						<dd>
-							<h3 class="num">绑定手机号：13700012130</h3>
-						</dd>
-					</dl>
-				</div>
-				<ul class="us-menu mgt-25">
-					<li><a href="#none" class="link  clearfix"> <i
-							class="icon fl diyi"></i>
-							<h5 class="name fl">信息管理</h5> </a></li>
-					<li><a href="#none" class="link  clearfix"> <i
-							class="icon fl diliu"></i>
-							<h5 class="name fl">活动管理</h5> </a></li>
-					<li><a href="#none" class="link curr clearfix"> <i
-							class="icon fl disan"></i>
-							<h5 class="name fl">happytimes</h5> </a></li>
-					<li><a href="#none" class="link clearfix"> <i
-							class="icon fl disi"></i>
-							<h5 class="name fl">参赛管理</h5> </a></li>
-				</ul>
-			</div>
-			<!--us-set-lf end-->
+          		<%@include file="/ninclude/frontMember/memLeft.jsp"%>
+            <!--us-set-lf end-->
 			<!--us-set-rt start-->
 			<div class="us-set-rt fl" style="padding-left:10px; position:relative">
 				<input name="uploadIMG" class="contbtn" value="+添加图片" type="button" style=" position:absolute; right:40px; top:40px">
@@ -90,10 +63,24 @@
 </body>
 <script type="text/javascript">
 $(function(){
+	//删除happytimes相片	
+	
+	$(".list-condel	ul li").live("mouseenter",function(){
+		 $(this).append("<div class='list-del'><i class='delico'></i>删除相片</div>");
+		
+		})
+	$(".list-condel	ul li").live("mouseleave ",function(){
+		 $(this).find(".list-del").remove();
+		
+		})
+	$(".list-condel	ul li").find(".list-del").live("click",function(){
+		deletePic($(this).parents(".listbox").find("[name='picID']").val());
+		$(this).parents(".listbox").remove();
+	})
+		
 	$(".contbtn").click(function(){
 		location.href=ctx + "/userCenter/toHappytimesUpload";
 	});
-
 	showHappyTimes(1);
 });
 function showHappyTimes(pageNum){
@@ -121,12 +108,13 @@ function showHappyTimes(pageNum){
 						+ "</div>"
 				}
 				htmlStr += "<li class='listbox'>"
+						+ "		<input id='' name='picID' type='hidden' value='"+pic.ID+"'/>"
 						+ "		<div class='listboximg'>"
 						+ "			<a href='"+ctx+"/front/happytimes/showHTdetails?picID="+pic.ID+"' target='_blank'><img src='"+uploadUrl+pic.URL+"' class='attachment-thumbnail wp-post-image'></a>"
 						+ "		</div>"
 						+ "		<div class='listinfo'>"
 						+ "			<div class='listtitle'>"
-						+ "				<a href='#none' target='_blank'>"+pic.DESCRIPTION+"</a>"
+						+ "				<a href='"+ctx+"/front/happytimes/showHTdetails?picID="+pic.ID+"' target='_blank'>"+pic.DESCRIPTION+"</a>"
 						+ "			</div>"
 						+ "			<div class='listdate'>"+dateStrNext+"</div>"
 						+ "		</div>"
@@ -138,6 +126,20 @@ function showHappyTimes(pageNum){
 			setPageInfo("pageDiv", data.page, showHappyTimes);
 		},
 	});
+}
+function deletePic(picID){
+	$.ajax({
+		type : 'POST',
+		url : ctx + "/userCenter/deletePic",
+		data: {
+			picID : picID
+		},
+		dataType : "json",
+		success : function(data){
+			alert(data.rsFlag);
+		},
+	});
+
 }
 </script>
 </html>

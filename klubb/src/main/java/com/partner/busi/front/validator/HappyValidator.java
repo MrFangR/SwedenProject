@@ -3,13 +3,12 @@ package com.partner.busi.front.validator;
 import com.jfinal.core.Controller;
 import com.jfinal.validate.Validator;
 
-public class ActivityValidator extends Validator {
+public class HappyValidator extends Validator {
 
 	@Override
 	protected void validate(Controller c) {
-		validateRequiredString("actUser.NAME", "name_notice", "请输入姓名!");
-		validateRequiredString("actUser.phone", "phone_notice", "请输入手机号!");
-		validateEmail("actUser.EMAIL", "email_notice", "请输入正确用户邮箱!");
+		validateRequiredString("picture.URL", "url_notice", "请上传图片!");
+		validateString("picture.DESCRIPTION", 1, 200, "description_notice", "请输入1~200描述内容");
 	}
 
 	@Override

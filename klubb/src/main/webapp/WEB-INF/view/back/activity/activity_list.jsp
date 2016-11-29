@@ -30,8 +30,6 @@
 	                            <th>活动标题：</th>
 	                            <td>
 	                            	<input id="titleIn" type="text" name="title" class="ued-text-2" maxlength="30"/>
-	                            	<button class="ued-button-2 mgr-25" onclick="qryAct(1)">查询</button>
-	                            	<button class="ued-button-3" onclick="reset()">重置</button>
 	                            </td>
 	                        </tr>
 	                    </tbody>
@@ -39,8 +37,12 @@
 	                <input id="pageNumIn" name="pageNum" type="hidden" value="1"/>
 	                <input id="pageSizeIn" name="pageSize" type="hidden" value="3"/>
 	                </form>
+	                <div class="mgt-25 tc">
+	                	<button class="ued-button-2 mgr-25" onclick="qryAct(1)">查询</button>
+	                            	<button class="ued-button-3" onclick="reset()">重置</button>
+	                </div>
 	            </div>
-	            <div id="showLst">
+	            <div id="showList">
 	            </div>
 	        </div>
 	    </div>
