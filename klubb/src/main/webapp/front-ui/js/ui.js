@@ -59,10 +59,10 @@ $(function(){
 		 $(this).find(".list-del").remove();
 		
 		})
-//	$(".list-condel	ul li").find(".list-del").live("click",function(){
-//		$(this).parents(".listbox").remove();
-//		
-//		})
+	$(".list-condel	ul li").find(".list-del").live("click",function(){
+		$(this).parents(".listbox").remove();
+		
+		})
 })
 
 function amLunBo(){

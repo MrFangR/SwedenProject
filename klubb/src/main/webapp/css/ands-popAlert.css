@@ -6,7 +6,7 @@
 #ands-miso-popAlert a:hover{ text-decoration:underline}
 
 .ands-miso-cover{ position:fixed;_position:absolute;top:0;left:0;z-index:999990;background:#000;opacity:0.5;filter:alpha(opacity=50);width:100%;height:100%; }
-#ands-miso-popAlert  .ands-loadbar{width:208px; padding-bottom:20px; margin:0 auto;
+#ands-miso-popAlert  .ands-loadbar{width:258px; padding-bottom:20px; margin:0 auto;
  border:2px solid #dedede;
  -moz-border-radius: 5px;     
     -webkit-border-radius: 5px;   
@@ -56,7 +56,7 @@
 	}
 #ands-miso-popAlert .ands-misoAlert-content input{ border:1px solid #cccccc; height:24px; line-height:24px; width:160px;}
 #ands-miso-popAlert .ands-misoAlert-content-alert{ padding:10px; line-height:24px;}
-#ands-miso-popAlert .ands-misoAlert-content-pop{ padding-left:10px;padding-right:10px; line-height:24px;}
+#ands-miso-popAlert .ands-misoAlert-content-pop{ line-height:24px;}
 #ands-miso-popAlert .ands-misoAlert-content-pop .ands-misoAlert-content-popleft{
 	vertical-align:top;
 	zoom:1; 
