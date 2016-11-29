@@ -19,6 +19,7 @@ import com.partner.busi.back.controller.BackContactController;
 import com.partner.busi.back.controller.BackIntroduceController;
 import com.partner.busi.back.controller.BackLoginController;
 import com.partner.busi.back.controller.BackMainController;
+import com.partner.busi.back.controller.BackNoticeController;
 import com.partner.busi.back.controller.BackUserController;
 import com.partner.busi.front.controller.ActivityController;
 import com.partner.busi.front.controller.ContactController;
@@ -69,6 +70,7 @@ public class BaseConfig extends JFinalConfig {
 		me.add("/back/contact",BackContactController.class,"/back");
 		me.add("/back/introduce",BackIntroduceController.class,"/back");
 		me.add("/back/activity",BackActivityController.class,"/back");
+		me.add("/back/notice", BackNoticeController.class,"/back/notice");
 		me.add("/upload",UploadController.class);
 		me.add("/back/user",BackUserController.class,"/back/user");
 		me.add("/back/config",BackConfigController.class,"/back");

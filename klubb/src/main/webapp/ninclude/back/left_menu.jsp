@@ -23,6 +23,9 @@
 			<a tabid="1-5" url="${ctx}/back/contact">
 				<b class="b-t6"></b><span>留言管理</span>
 			</a>
+			<a tabid="1-6" url="${ctx}/back/notice">
+				<b class="b-t6"></b><span>通告配置</span>
+			</a>
 		</li>
 	</ul>
 	
