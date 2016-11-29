@@ -33,6 +33,14 @@ public abstract class BaseActivity<M extends BaseActivity<M>> extends Model<M> i
 		return get("IMG");
 	}
 
+	public void setABSTRACT(java.lang.String ABSTRACT) {
+		set("ABSTRACT", ABSTRACT);
+	}
+
+	public java.lang.String getABSTRACT() {
+		return get("ABSTRACT");
+	}
+
 	public void setCONTENT(java.lang.String CONTENT) {
 		set("CONTENT", CONTENT);
 	}
