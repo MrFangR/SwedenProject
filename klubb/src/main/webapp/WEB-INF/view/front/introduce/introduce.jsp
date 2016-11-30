@@ -16,6 +16,9 @@
   <header >
     <%@include file="/ninclude/frontMember/header.jsp"%>
   </header >
+  <div class="search">
+       
+  </div>
   <!--ist-con S-->		
   <div class="list-con">
        <div class="list-tab"> 
