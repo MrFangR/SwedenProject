@@ -15,12 +15,12 @@
         <nav class="menu-body">
           <ul>
 			<li class="jsli" width="15"><a href="${ctx }" ><i18n:get key="portal.menu.index"></i18n:get></a></li>
-            <li class="jsli" width="134"><a href="#none"><i18n:get key="portal.menu.introduce"></i18n:get></a></li>
-            <li class="jsli" width="254"><a href="${ctx}/front/happytimes"><i18n:get key="portal.menu.happytimes"></i18n:get></a></li>
-            <li class="jsli" width="376"><a href="${ctx}/front/activity"><i18n:get key="portal.menu.activity"></i18n:get></a></li>
-            <li class="jsli" width="500"><a href="#none"><i18n:get key="portal.menu.game"></i18n:get></a></li>
-            <li class="jsli" width="614"><a href="#none"><i18n:get key="portal.menu.contact"></i18n:get></a></li>
-            <li class="jsli" width="738"><a href="${ctx }/userCenter"><i18n:get key="portal.menu.center"></i18n:get></a></li>
+            <li class="jsli" width="134" url="introduce"><a href="${ctx}/introduce"><i18n:get key="portal.menu.introduce"></i18n:get></a></li>
+            <li class="jsli" width="254" url="happytimes"><a href="${ctx}/front/happytimes"><i18n:get key="portal.menu.happytimes"></i18n:get></a></li>
+            <li class="jsli" width="376" url="activity"><a href="${ctx}/front/activity"><i18n:get key="portal.menu.activity"></i18n:get></a></li>
+            <li class="jsli" width="500"><a href="javascript:;" onclick="showAlert();"><i18n:get key="portal.menu.game"></i18n:get></a></li>
+            <li class="jsli" width="614" url="contact"><a href="${ctx}/contact"><i18n:get key="portal.menu.contact"></i18n:get></a></li>
+            <li class="jsli" width="738" url="userCenter"><a href="${ctx }/userCenter"><i18n:get key="portal.menu.center"></i18n:get></a></li>
             <li class="line"></li>
            </ul>
         </nav>
@@ -28,6 +28,21 @@
      </div>   
      
 <script type="text/javascript">
+$(function(){
+	var url = window.location.href;
+	var widthno = $(".menu-body li.jsli:first").attr("width");
+	$(".menu-body li.jsli").each(function(){
+		if(url.indexOf($(this).attr("url")) != -1){
+			widthno = $(this).attr("width");
+		}
+	});
+	$(".menu-body").find(".line").css({marginLeft:widthno+"px"});	
+});
+
+function showAlert(){
+	alert("正在建设中，敬请期待...");
+}
+
 function logout(){
 	$.ajax({
 		type : "post",
