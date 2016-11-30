@@ -61,6 +61,12 @@ public class ActivityController extends Controller {
 		String rsMsg = "发布失败，请稍后再试";
 		
 		ActUser actUser = getModel(ActUser.class);
+		//判断是否为登录状态
+		if(FrontSessionUtil.isLogin(getRequest())){
+			//获取用户登录信息
+			User user = FrontSessionUtil.getSession(getRequest());
+			actUser.set("USER_ID", user.getID());
+		}
 		actUser.set("CREATE_TIME", new Date());
 		rsFlag = actUser.save();
 		if(rsFlag){

@@ -73,11 +73,10 @@
     					</div>
 		            </div>
 		            
-		            <input type="hidden" name="activity.ID" value="${activity.ID }" />
 					<input type="hidden" id="CONTENT" name="activity.CONTENT" value=""/>
    					<input type="hidden" id="type" name="type" value=""/>
    					</form>
-					<div id="contentStr" style="visibility: hidden;">${activity.CONTENT }</div>
+					<div id="contentStr" style="visibility: hidden;"></div>
 		            <div class="mgt-25 tc"><button class="ued-button-2 mgr-25"  onclick="update(3)">保存</button><button class="ued-button-2 mgr-25"  onclick="update(4)">发布</button><button class="ued-button-3" onclick="back()">返回</button></div>
 		        </div>
 		    </div>
@@ -108,9 +107,13 @@ function update(status){
 			data : $("#activityForm").serialize(),
 			success: function(data){
 				if(data.rsFlag){
-					pop.success(data.rsMsg, function(){
-						back();
-					});
+					ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+					   {type:2,
+						info:'提示信息',
+						text:'<div style=" font-size:18px; color:#ff0000;">添加活动成功</div>',
+						'ok':function(){back();},
+						tag:'zq-ring'}
+		              );
 				}else{
 					showNotice(data);
 				}

@@ -47,11 +47,11 @@ public class Activity extends BaseActivity<Activity> {
 		return paginate(pageNum, pagesize, select, sql.toString(), params.toArray());
 	}
 
-	public Page<Activity> findAllActByUser(String userNo, int pageNum, int pageSize) {
+	public Page<Activity> findAllActByUser(Integer userID, int pageNum, int pageSize) {
 		String select = "select a.*";
 		StringBuilder sql = new StringBuilder(" from t_activity a where a.ID in ( SELECT u.ACT_ID FROM t_act_user u where u.USER_ID=?) ORDER BY a.CREATE_TIME DESC ");
 		List<Object> params = new ArrayList<Object>();
-		params.add(userNo);
+		params.add(userID);
 		return paginate(pageNum, pageSize, select, sql.toString(), params.toArray());
 	}
 	

@@ -46,7 +46,7 @@ public class UserCenterController extends Controller {
 		int pageNum = getParaToInt("pageNum");
 		int pageSize = getParaToInt("pageSize");
 		
-		Page<Activity> page = Activity.dao.findAllActByUser(FrontSessionUtil.getUserNo(getRequest()),pageNum,pageSize);
+		Page<Activity> page = Activity.dao.findAllActByUser(FrontSessionUtil.getSession(getRequest()).getID(),pageNum,pageSize);
 		//Page<Activity> page = Activity.dao.findAllActByUser("1",pageNum,pageSize);
 		renderJson(page);
 	}
@@ -92,7 +92,7 @@ public class UserCenterController extends Controller {
 		String rsMsg = "取消活动失败，请稍后再试";
 		
 		int actId = getParaToInt("actId");
-		String userId = FrontSessionUtil.getUserNo(getRequest());
+		Integer userId = FrontSessionUtil.getSession(getRequest()).getID();
 		//String userId = "1";
 		rsFlag = ActUser.dao.deleteByUserIdAndActId(userId,actId);
 		

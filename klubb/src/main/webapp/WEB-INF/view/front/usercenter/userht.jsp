@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 <meta name="format-detection" content="telephone=no,email=no">
-<title>活动管理</title>
+<title>user happytimes</title>
 <script src="${ctx}/front-ui/js/jquery1.9.0.min.js"></script>
 <script src="${ctx}/front-ui/js/ui.js"></script>
 <script type="text/javascript" src="${ctx}/front-ui/js/ands-popAlert.js"></script>
@@ -98,15 +98,6 @@ function showHappyTimes(pageNum){
 			var dateStrNext = "";
 			$.each(data.page.list, function(i, pic){
 				dateStrNext = pic.CREATE_TIME.substr(0,10);
-				if(dateStrPre != dateStrNext){
-				dateStrPre = pic.CREATE_TIME.substr(0,10);
-				htmlStr += "<div class='clearfix'></div>"
-						+ "<div class='riqi'>"
-						+ "<p class='date'>"+dateStrNext.substr(8,2)+"</p>"
-						+ "<p class='month'>"+dateStrNext.substr(5,2)+"月</p>"
-						+ "<p class='Category'>happytimes</p>"
-						+ "</div>"
-				}
 				htmlStr += "<li class='listbox'>"
 						+ "		<input id='' name='picID' type='hidden' value='"+pic.ID+"'/>"
 						+ "		<div class='listboximg'>"
@@ -136,10 +127,17 @@ function deletePic(picID){
 		},
 		dataType : "json",
 		success : function(data){
-			alert(data.rsFlag);
+			if(data.rsFlag){
+				ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+				   {type:2,
+					info:'提示信息',
+					text:'<div style=" font-size:18px; color:#ff0000;">删除成功</div>',
+					'ok':function(){showHappyTimes(1);},
+					tag:'zq-ring'}
+	               );
+			}
 		},
 	});
-
 }
 </script>
 </html>

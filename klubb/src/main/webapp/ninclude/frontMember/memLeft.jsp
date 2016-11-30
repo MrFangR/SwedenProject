@@ -24,7 +24,7 @@
 				class="icon fl diliu"></i>
 				<h5 class="name fl">活动管理</h5>
 		</a></li>
-		<li id="happyMgr"><a href="#none" class="link clearfix"> <i
+		<li id="happyMgr"><a href="javascript:myLoadLeft('happyMgr','${ctx}/userCenter/toHappytimes');" class="link clearfix"> <i
 				class="icon fl disan"></i>
 				<h5 class="name fl">happytimes</h5>
 		</a></li>
