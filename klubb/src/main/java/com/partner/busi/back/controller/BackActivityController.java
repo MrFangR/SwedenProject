@@ -9,7 +9,6 @@ import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
 import com.jfinal.plugin.activerecord.Page;
 import com.partner.busi.back.validator.ActivityValidator;
-import com.partner.busi.back.validator.IntroduceValidator;
 import com.partner.busi.model.ActUser;
 import com.partner.busi.model.Activity;
 import com.partner.common.util.BackSessionUtil;

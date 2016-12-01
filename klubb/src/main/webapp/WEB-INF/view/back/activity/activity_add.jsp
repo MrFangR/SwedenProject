@@ -28,7 +28,6 @@
 					<form enctype="multipart/form-data" id="activityForm">
 		            
 		            <h4 class="ued-title-3 mgt-10">主要内容</h4>
-                    <p class="color-3 fs-14" id="content_msg"></p>
 		            <div class="ued-pannel">
 		            	<table width="100%" cellspacing="0" cellpadding="0" class="ued-table-nobor">
 		                    <colgroup><col width="135"><col><col width="135"><col></colgroup>
@@ -71,6 +70,7 @@
 		            	<div style="margin-left: 10px">
     						<script id="editor" type="text/plain" style="width:98%;height:500px;"></script>
     					</div>
+    					<p class="color-3 fs-14" id="content_msg"></p>
 		            </div>
 		            
 					<input type="hidden" id="CONTENT" name="activity.CONTENT" value=""/>
