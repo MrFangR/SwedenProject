@@ -14,7 +14,7 @@
          </span>
         <nav class="menu-body">
           <ul>
-			<li class="jsli" width="15"><a href="${ctx }" ><i18n:get key="portal.menu.index"></i18n:get></a></li>
+			<li class="jsli" width="15"><a href="${ctx }/home" ><i18n:get key="portal.menu.index"></i18n:get></a></li>
             <li class="jsli" width="134" url="introduce"><a href="${ctx}/introduce"><i18n:get key="portal.menu.introduce"></i18n:get></a></li>
             <li class="jsli" width="254" url="happytimes"><a href="${ctx}/front/happytimes"><i18n:get key="portal.menu.happytimes"></i18n:get></a></li>
             <li class="jsli" width="376" url="activity"><a href="${ctx}/front/activity"><i18n:get key="portal.menu.activity"></i18n:get></a></li>

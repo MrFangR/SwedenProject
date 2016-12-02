@@ -20,6 +20,7 @@ import com.partner.busi.back.controller.BackIntroduceController;
 import com.partner.busi.back.controller.BackLoginController;
 import com.partner.busi.back.controller.BackMainController;
 import com.partner.busi.back.controller.BackNoticeController;
+import com.partner.busi.back.controller.BackPictureController;
 import com.partner.busi.back.controller.BackUserController;
 import com.partner.busi.front.controller.ActivityController;
 import com.partner.busi.front.controller.ContactController;
@@ -64,14 +65,15 @@ public class BaseConfig extends JFinalConfig {
 	public void configRoute(Routes me) {
 		// TODO Auto-generated method stub
 		this.routes = me;
-		me.add("/", IndexController.class);
-		me.add("/sys", SysController.class);
+		me.add("/home", IndexController.class, "/");
+		me.add("/sys", SysController.class, "/");
 		me.add("/back", BackLoginController.class, "/back");
 		me.add("/back/main",BackMainController.class,"/back");
 		me.add("/back/contact",BackContactController.class,"/back");
 		me.add("/back/introduce",BackIntroduceController.class,"/back");
 		me.add("/back/activity",BackActivityController.class,"/back");
 		me.add("/back/notice", BackNoticeController.class,"/back/notice");
+		me.add("/back/happytimes", BackPictureController.class,"/back/happytimes");
 		me.add("/upload",UploadController.class);
 		me.add("/back/user",BackUserController.class,"/back/user");
 		me.add("/back/config",BackConfigController.class,"/back");
