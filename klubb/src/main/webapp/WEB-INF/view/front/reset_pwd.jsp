@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<%@ page language="java" contentType="text/html;charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ include file="/ninclude/import.jsp"%>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no,email=no">
+<title>忘记密码</title>
+<script src="${ctx }/front-ui/js/jquery1.9.0.min.js"></script>
+<script src="${ctx }/front-ui/js/ui.js"></script>
+<script src="${ctx }/js/jST.v0.1.4.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	var retCode = '${retInfo.retCode}';
+	if(retCode != 0){
+		ui_com_hallpop(".js_collect3","#ands_misoAlert_close","#ands-miso-popAlert",
+				{type:3,info:'密码修改',
+				 title:'<div style=" font-size:18px; color:#32bf2a;font-family:Microsoft YaHei;line-height:36px;font-weight:bold"> ${retInfo.retMsg} </div>',
+				 'ok':function(){window.location.href = '${ctx}/front/toForget';},
+				 tag:'cw'}
+		   );
+		
+	}else{
+		$("#subPwd").click(subPwd);
+	}
+});
+
+function subPwd() {
+	var pwd = $("#new_pwd").val();
+	if(pwd.trim().length==0){
+		$("#new_pwd_notice").html("密码不能为空！");
+		$("#subPwd").bind("click",subPwd);
+		return false;
+	}
+	var repwd = $("#re_new_pwd").val();
+	if(repwd.trim().length==0){
+		$("#renew_notice").html("确认密码不能为空！");
+		$("#subPwd").bind("click",subPwd);
+		return false;
+	}else if(pwd!=repwd){
+		$("#repwd_notice").html("两次密码不一致，请重新输入！");
+		$("#subPwd").bind("click",subPwd);
+		return false;
+	}
+	$.ajax({
+		type : "post",
+		cache : false,
+		dataType : "json",
+		url : "${ctx}/front/modifyPwd",
+		data : {
+			"pwd" : $("#new_pwd").val(),
+			"email" : $("#hiddenEmail").val()
+		},
+		success : function(json) {
+			var mark = json.retCode;
+			if (mark == 0) {
+				pop.success(json.retMsg,function(){
+					window.location.href = '${ctx}/front/toLogin';
+				});
+			} else {
+				pop.fail("修改失败",function(){
+					window.location.href = '${ctx}/front/toForget';
+				});
+			}
+		},
+		error : function() {
+			pop.fail("修改失败",function(){
+				window.location.href = '${ctx}/front/toForget';
+			});
+		}
+	});
+}
+
+</script>
+<link rel="stylesheet" type="text/css"
+	href="${ctx }/front-ui/css/reset.css">
+<link rel="stylesheet" type="text/css"
+	href="${ctx }/front-ui/css/component.css" />
+</head>
+<body class="tm-background">
+	<header>
+		<%@include file="/ninclude/frontMember/header.jsp"%>
+	</header>
+
+
+	<!--cont-con S-->
+	<div class="cont-con" >
+		<!--内容 start-->
+		<div class="main_body xmfb_con" >
+			<div class="xmfb_title">
+				<h2 style="margin-left:60px;">设置新密码</h2>
+			</div>
+			<div class="xmfb_xx"></div>
+			
+			<div class="us-bd-base xmfb_con_text">
+			<c:if test="${retInfo.retCode==0 }">
+				<input type="input" value="${email }" id="hiddenEmail"/>
+				<dl class="us-info-dl clearfix">
+					<dt class="fl">
+						<span class="rose">*</span>新密码：
+					</dt>
+					<dd class="fl">
+						<input type="password" id="new_pwd"/>
+					</dd>
+					<dd class="notice" id="new_notice"></dd>
+				</dl>
+				<dl class="us-info-dl clearfix">
+					<dt class="fl">
+						<span class="rose">*</span>确认密码：
+					</dt>
+					<dd class="fl">
+						<input type="password" id="re_new_pwd"/>
+					</dd>
+					<dd class="notice" id="renew_notice"></dd>
+				</dl>
+
+				<dl class="us-info-dl clearfix">
+					<dt class="fl">&nbsp;</dt>
+					<dd class="fl">
+						<div class="us-btn" id="subPwd">提交</div>
+					</dd>
+				</dl>
+
+				<div class="clearfix"></div>
+			</c:if>
+			</div>
+		</div>
+		<!--内容 end-->
+	</div>
+	<!--cont-con E-->
+	<!--bottom S-->
+	<%@ include file="/ninclude/frontMember/footer.jsp"%>
+	<!--bottom E-->
+</body>
+</html>
+

@@ -1,5 +1,8 @@
 package com.partner.busi.back.validator;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.apache.commons.lang.StringUtils;
 
 import com.jfinal.core.Controller;
@@ -28,7 +31,10 @@ public class LoginValidator extends Validator{
 	protected void handleError(Controller c) {
 		// TODO Auto-generated method stub
 		c.keepPara();
-		c.renderJson(new ResultInfo(Constants.FLAG_FAIL,(String)c.getAttr("showMsg")));
+		Map<String, Object> json = new HashMap<String, Object>();
+		json.put("flag", Constants.FLAG_FAIL);
+		json.put("msg", (String)c.getAttr("showMsg"));
+		c.renderJson(json);
 	}
 
 	

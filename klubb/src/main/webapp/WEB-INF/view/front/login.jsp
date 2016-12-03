@@ -67,7 +67,10 @@
 				<dl class="us-info-dl clearfix">
 					<dt class="fl">&nbsp;</dt>
 					<dd class="fl">
-						<div class="us-btn" id="submitLogin">立即登录</div><a href="${ctx }/front/toForget">忘记密码</a>
+						<div class="us-btn" id="submitLogin">立即登录</div>
+					</dd>
+					<dd class="notice" style="padding-top:8px">
+						<a href="${ctx }/front/toForget" style="font-size:12px; color:#03F; margin-left:20px;">忘记密码？</a>
 					</dd>
 				</dl>
 
