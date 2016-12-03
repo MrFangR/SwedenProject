@@ -107,7 +107,7 @@ public class LoginController extends Controller {
 		User user = User.dao.findByEmail(email);
 		if (user == null) {
 			retInfo.setRetCode(1);
-			retInfo.setRetMsg("此邮箱未进行过注册，请注册。");
+			retInfo.setRetMsg("此邮箱账号不存在，请先注册。");
 		} else {
 			String content = getRequest().getScheme() + "://"
 					+ getRequest().getServerName() + ":"

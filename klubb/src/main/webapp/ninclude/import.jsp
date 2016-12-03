@@ -21,4 +21,5 @@
 <%/* 引入css end */%>
 <%/* 引入js start */%>
 	<script type="text/javascript" src="${ctx}/front-ui/js/page.js"></script>
+	<script type="text/javascript" src="${ctx}/front-ui/js/ands-popAlert.js"></script>
 <%/* 引入js end */%>

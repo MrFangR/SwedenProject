@@ -119,7 +119,7 @@
                                             <dd class="notice"></dd>
                                         </dl>
                                         <dl  class="us-info-dl clearfix">
-                                            <dt class="fl"><span class="brown">*</span>再次输入：</dt>
+                                            <dt class="fl"><span class="brown">*</span>确认密码：</dt>
                                             <dd class="fl"><input  type="password" id="repwd" placeholder="请再 次输入新密码"/></dd>
                                             <dd class="notice"></dd>
                                         </dl>
@@ -197,8 +197,14 @@ function submitInfo(){
 		success : function(json) {
 			var mark = json.retCode;
 			if (mark == 0) {
-				alert(json.retMsg);
-				window.location.href = '${ctx}/userCenter';
+				ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+				   {type:2,
+					info:'个人资料',
+					text:'<div style=" font-size:18px; color:#ff0000;">'+json.retMsg+'</div>',
+					'ok':function(){window.location.href = '${ctx}/userCenter';},
+					tag:'zq-ring'}
+	               );
+				
 			} else {
 				var tip = json.retMsg.split(":");
 				$("#"+tip[0]+"_notice").html(tip[1]);
@@ -206,8 +212,16 @@ function submitInfo(){
 			}
 		},
 		error : function() {
-			alert("修改失败");
-			$("#submitInfo").bind("click",submitInfo);
+			ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+			   {type:2,
+				info:'个人资料',
+				text:'<div style=" font-size:18px; color:#ff0000;"> 修改失败 </div>',
+				'ok':function(){
+					$("#submitInfo").bind("click",submitInfo);
+					},
+				tag:'cw-ring'}
+               );
+			return;
 		}
 	});
 }
@@ -251,17 +265,31 @@ function submitPwd(){
 		success : function(json) {
 			var mark = json.retCode;
 			if (mark == 0) {
-				alert(json.retMsg);
-				window.location.href = '${ctx}/userCenter';
+				ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+				   {type:2,
+					info:'个人资料',
+					text:'<div style=" font-size:18px; color:#ff0000;">'+json.retMsg+'</div>',
+					'ok':function(){window.location.href = '${ctx}/userCenter';},
+					tag:'zq-ring'}
+	               );
 			} else {
 				var tip = json.retMsg.split(":");
 				$("#"+tip[0]).parent().next(".notice").html(tip[1]);
 				$("#submitPwd").bind("click",submitPwd);
+				return;
 			}
 		},
 		error : function() {
-			alert("修改失败");
-			$("#submitPwd").bind("click",submitPwd);
+			ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+			   {type:2,
+				info:'个人资料',
+				text:'<div style=" font-size:18px; color:#ff0000;"> 修改失败 </div>',
+				'ok':function(){
+					$("#submitPwd").bind("click",submitPwd);
+					},
+				tag:'cw-ring'}
+               );
+			return;
 		}
 	});
 }

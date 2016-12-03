@@ -16,12 +16,13 @@
 $(function(){
 	var retCode = '${retInfo.retCode}';
 	if(retCode != 0){
-		ui_com_hallpop(".js_collect3","#ands_misoAlert_close","#ands-miso-popAlert",
-				{type:3,info:'密码修改',
-				 title:'<div style=" font-size:18px; color:#32bf2a;font-family:Microsoft YaHei;line-height:36px;font-weight:bold"> ${retInfo.retMsg} </div>',
-				 'ok':function(){window.location.href = '${ctx}/front/toForget';},
-				 tag:'cw'}
-		   );
+		ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+		   {type:2,
+			info:'忘记密码',
+			text:'<div style=" font-size:18px; color:#ff0000;"> ${retInfo.retMsg}</div>',
+			'ok':function(){window.location.href = '${ctx}/front/toForget';},
+			tag:'cw-ring'}
+              );
 		
 	}else{
 		$("#subPwd").click(subPwd);
@@ -57,19 +58,32 @@ function subPwd() {
 		success : function(json) {
 			var mark = json.retCode;
 			if (mark == 0) {
-				pop.success(json.retMsg,function(){
-					window.location.href = '${ctx}/front/toLogin';
-				});
+				ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+				   {type:2,
+					info:'忘记密码',
+					text:'<div style=" font-size:18px; color:#ff0000;">'+json.retMsg+'</div>',
+					'ok':function(){window.location.href = '${ctx}/front/toLogin';},
+					tag:'zq-ring'}
+	               );
 			} else {
-				pop.fail("修改失败",function(){
-					window.location.href = '${ctx}/front/toForget';
-				});
+				ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+				   {type:2,
+					info:'忘记密码',
+					text:'<div style=" font-size:18px; color:#ff0000;"> 修改失败 </div>',
+					'ok':function(){window.location.href = '${ctx}/front/toForget';},
+					tag:'cw-ring'}
+	               );
 			}
 		},
 		error : function() {
-			pop.fail("修改失败",function(){
-				window.location.href = '${ctx}/front/toForget';
-			});
+			ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+			   {type:2,
+				info:'忘记密码',
+				text:'<div style=" font-size:18px; color:#ff0000;"> 修改失败 </div>',
+				'ok':function(){window.location.href = '${ctx}/front/toForget';},
+				tag:'cw-ring'}
+               );
+			return;
 		}
 	});
 }

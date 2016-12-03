@@ -40,7 +40,13 @@ $(function(){
 });
 
 function showAlert(){
-	alert("正在建设中，敬请期待...");
+	ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+	   {type:2,
+		info:'比赛',
+		text:'<div style=" font-size:18px; color:#ff0000;"> 正在建设中，敬请期待...</div>',
+		'ok':function(){},
+		tag:'tx-ring'}
+          );
 }
 
 function logout(){
@@ -52,14 +58,34 @@ function logout(){
 		success : function(json) {
 			var mark = json.retCode;
 			if (mark == 0) {
-				alert("退出成功");
-				window.location.href = '${ctx}';
+				ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+				   {type:2,
+					info:'',
+					text:'<div style=" font-size:18px; color:#ff0000;"> 退出成功</div>',
+					'ok':function(){window.location.href = '${ctx}/home';},
+					tag:'zq-ring'}
+	               );
+				
 			} else {
-				alert("退出失败");
+				ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+				   {type:2,
+					info:'',
+					text:'<div style=" font-size:18px; color:#ff0000;"> 退出失败 </div>',
+					'ok':function(){$("#submitRegist").bind("click",userRegist);},
+					tag:'cw-ring'}
+	               );
+				return;
 			}
 		},
 		error : function() {
-			alert("退出失败");
+			ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+			   {type:2,
+				info:'',
+				text:'<div style=" font-size:18px; color:#ff0000;"> 退出失败 </div>',
+				'ok':function(){$("#submitRegist").bind("click",userRegist);},
+				tag:'cw-ring'}
+               );
+			return;
 		}
 
 	});

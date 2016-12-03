@@ -160,8 +160,13 @@ function userRegist(){
 		success : function(json) {
 			var mark = json.retCode;
 			if (mark == 0) {
-				alert(json.retMsg);
-				window.location.href = '${ctx}/front/toLogin';
+				ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+				   {type:2,
+					info:'注册',
+					text:'<div style=" font-size:18px; color:#ff0000;">'+json.retMsg+'</div>',
+					'ok':function(){window.location.href = '${ctx}/front/toLogin';},
+					tag:'zq-ring'}
+	               );
 			} else {
 				var tip = json.retMsg.split(":");
 				$("#"+tip[0]+"_notice").html(tip[1]);
@@ -169,8 +174,14 @@ function userRegist(){
 			}
 		},
 		error : function() {
-			alert("注册失败");
-			$("#submitRegist").bind("click",userRegist);
+			ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+			   {type:2,
+				info:'忘记密码',
+				text:'<div style=" font-size:18px; color:#ff0000;"> 注册失败 </div>',
+				'ok':function(){$("#submitRegist").bind("click",userRegist);},
+				tag:'cw-ring'}
+               );
+			
 		}
 	});
 }

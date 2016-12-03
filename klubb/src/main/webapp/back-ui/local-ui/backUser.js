@@ -18,7 +18,13 @@ function qryUser(pageNum){
 			return;
 		},
 		error : function(json){
-			pop.fail("系统异常，请稍后重试");
+			ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+			   {type:2,
+				info:'用户管理',
+				text:'<div style=" font-size:18px; color:#ff0000;"> 系统异常，请稍后重试 </div>',
+				'ok':function(){},
+				tag:'cw-ring'}
+               );
 			return;
 		}
 	});
@@ -52,15 +58,33 @@ function delUser(id){
 		success : function(json){
 			var flag = json.retCode;
 			if (flag == 0) {
-				alert(json.retMsg);
-				qryUser(1);
+				ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+				   {type:2,
+					info:'用户管理',
+					text:'<div style=" font-size:18px; color:#ff0000;">'+json.retMsg+'</div>',
+					'ok':function(){qryUser(1);},
+					tag:'zq-ring'}
+	               );
+				
 			} else {
-				alert(json.retMsg);
+				ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+				   {type:2,
+					info:'用户管理',
+					text:'<div style=" font-size:18px; color:#ff0000;">'+json.retMsg+'</div>',
+					'ok':function(){},
+					tag:'cw-ring'}
+	               );
 			}
 			return;
 		},
 		error : function(){
-			pop.fail("系统异常，请稍后重试");
+			ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+			   {type:2,
+				info:'用户管理',
+				text:'<div style=" font-size:18px; color:#ff0000;"> 系统异常，请稍后重试 </div>',
+				'ok':function(){},
+				tag:'cw-ring'}
+               );
 			return;
 		}
 	});

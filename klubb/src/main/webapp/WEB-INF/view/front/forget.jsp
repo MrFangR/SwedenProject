@@ -100,14 +100,40 @@
 			success : function(json) {
 				var mark = json.retCode;
 				if (mark == 0) {
-					alert(json.retMsg);
+					//alert(json.retMsg);
+					ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+					   {type:2,
+						info:'忘记密码',
+						text:'<div style=" font-size:18px; color:#ff0000;">'+json.retMsg+'</div>',
+						'ok':function(){},
+						tag:'zq-ring'}
+		               );
 				} else {
-					alert(json.retMsg);
+					//alert(json.retMsg);
+					
+					var tip = json.retMsg.split(":");
+					if(tip.length>1){
+						$("#"+tip[0]+"_notice").html(tip[1]);
+					}else{
+						ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+						   {type:2,
+							info:'忘记密码',
+							text:'<div style=" font-size:18px; color:#ff0000;">'+json.retMsg+'</div>',
+							'ok':function(){window.location.href = '${ctx}/front/toRegist';},
+							tag:'cw-ring'}
+			               );
+					}
 				}
 			},
 			error : function() {
-				alert("修改失败");
-				window.location.href = '${ctx}/front/toForget';
+				ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+				   {type:2,
+					info:'忘记密码',
+					text:'<div style=" font-size:18px; color:#ff0000;"> 修改失败 </div>',
+					'ok':function(){window.location.href = '${ctx}/front/toForget';},
+					tag:'cw-ring'}
+	               );
+				
 			}
 		});
 	}
