@@ -606,3 +606,193 @@
 	font-style:normal;
 }
 .index-wap2  ul li{ line-height:40px; font-size:16px; padding:0 20px; border-bottom:1px dashed #e5e5e5;}
+
+
+
+/*happytimes*/
+.list-con{ width:1100px; margin:0 auto; background:#fff; position:relative;}
+.list-contitle{ height:58px; line-height:58px; width:260px; background:#eb003b; color:#fff; font-size:24px; padding-left:30px;}
+
+.list-con ul li {
+    margin: 15px;
+}
+.list-del{ background:#000; color:#fff; position:absolute; top:0px; right:0px; height:40px; line-height:40px; width:120px; text-align:center; cursor:pointer;opacity: 0.9;filter:alpha(opacity=90);}
+.list-del i.delico{ height:13px; width:13px; background:url(../../images/del.png) no-repeat; z-index:9; display:inline-block; margin-right:10px;}
+.list-condel ul li {
+    margin: 10px;
+}
+.riqi {
+    height: 34px;
+    margin-left: 11px;
+	width:500px;
+	position:relative;
+	margin-top:30px;
+}
+.date {
+    font-size: 40px;
+    height: 40px;
+    line-height: 40px;
+    width: 52px;
+	color:#333333;
+	position:absolute;
+	top:0px;
+	left:0px;
+}
+ .month {
+    font-size: 18px;
+    height: 18px;
+    line-height: 18px;
+    width: 52px;
+	display:block;
+	position:absolute;
+	top:0px;
+	left:50px;
+}
+.Category {
+    color: #909090;
+    font-size: 12px;
+    height: 18px;
+    line-height: 18px;
+	display:block;
+	position:absolute;
+	top:20px;
+	left:50px;
+}
+.list-con ul li .zixun_content .title, .list-con ul li .zixun_content .title a {
+    font-family: 微软雅黑;
+    font-size: 26px;
+    height: 60px;
+    line-height: 30px;
+    text-align: left;
+	color:#333333;
+}
+
+.cont-con .contbtn{ height:36px; line-height:36px; width:114px; background:#eb003b; color:#fff; border:0px; font-size:16px; float:right; cursor:pointer; border-radius:4px;}
+
+.cont-con .contitle{ color:#333333; font-size:26px; font-weight:normal; text-align:center; height:100px; line-height:100px;}
+.cont-con .happytitle{ color:#333333; font-size:20px; font-weight:normal;  height:60px; line-height:60px; padding-left:40px;}
+.cont-con .confutitle{ color:#5d5d5d; font-size:14px; padding:0 40px;}
+.cont-con .conline{height:1px; background:#dfdfdf; width:1140px; margin:30px auto; font-size:1px;}
+
+.cont-text{font-size:14px; line-height:28px; width:1100px; margin:0 auto; padding-bottom:40px;}
+.cont-text p{text-align:center}
+.cont-text img{ margin:10px auto; max-width:1000px;}
+/**分页 **/	
+.paging {
+    width: 600px;
+	margin:30px auto;
+	
+	
+}
+.paging a, .paging em, .paging span {
+    font-size: 12px;
+}
+.paging a {
+    border: 1px solid #ddd;
+    display: inline-block;
+    float: left;
+    font-size: 12px;
+    line-height: 28px;
+    margin-left: -1px;
+    padding: 0 13px;
+	background:#fff;
+}
+.paging a.on, .paging a.bg-on {
+    background: #f8f8f8 none repeat scroll 0 0;
+}
+.paging a:hover {
+    text-decoration: none;
+}
+.paging em, .paging span {
+    display: inline-block;
+    float: left;
+    line-height: 28px;
+    padding: 0 13px;
+}
+.paging em {
+    font-style: normal;
+    padding: 0 8px;
+}
+.paging-text {
+    border: 1px solid #ddd;
+    height: 26px;
+    line-height: 26px;
+    margin: 0 4px;
+    text-align: center;
+    width: 30px;
+}
+.paging .all-lead {
+    background: #0085d0 none repeat scroll 0 0;
+    border: 0 none;
+    color: #fff;
+    height: 26px;
+    line-height: 26px;
+    margin-left: 25px;
+    padding: 0;
+    text-align: center;
+    width: 86px;
+}
+.paging a.prev {
+    padding-left: 20px;
+	
+}
+.paging a.next {
+    padding-right: 20px;
+}
+
+.paging-new {
+    margin: 15px;
+    width: 95%;
+}
+.paging-new a, .paging-new span, .paging-new em {
+    float: right;
+}
+/*happytimes列表页*/
+.listbox {
+    background: #f5f5f5 none repeat scroll 0 0;
+    float: left;
+    margin-bottom: 20px;
+    position: relative;
+    width: 250px;
+	overflow:hidden;
+}
+.listboximg {
+    height: 211px;
+    position: relative;
+    width: 250px;
+}
+.listbox img {
+    height: 211px;
+    width: 250px;
+}
+.mr20 {
+    margin-right: 20px;
+}
+.mr10 {
+    margin-right: 10px;
+}
+.listinfo {
+    line-height: 22px;
+    width: 250px;
+}
+
+.listtitle {
+    float: left;
+    margin-top: 8px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 250px;	
+    margin-left: 10px;
+}
+.listdate {
+    color: #999;
+    font-size: 12px;
+    margin-top: 2px;
+	margin-bottom:4px;
+    text-align: left;
+	margin-left: 10px;
+}
+.listdate .riq{ margin-left:90px;}
+.listinfo .xs{ height:32px; line-height:32px; border-top:1px solid #CCC;margin-left: 10px; color:#333}
+.listinfo .xs input{}
