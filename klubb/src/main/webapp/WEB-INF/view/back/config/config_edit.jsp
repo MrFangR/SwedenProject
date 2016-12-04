@@ -28,17 +28,23 @@
 		                <table width="100%" cellspacing="0" cellpadding="0" class="ued-table-nobor">
 		                    <colgroup><col width="135"><col><col width="135"><col></colgroup>
 		                    <tbody>
+		                    	<tr>
+		                            <th><font color="color-3">*&nbsp;</font>联系电话：</th>
+		                            <td colspan="3">
+		                                 <input type="text"  id="address" name="config.PHONE"  class="ued-text-2" maxlength="100"  value="${config.PHONE }"  style="width: 560px">
+		                            </td>
+		                        </tr>
+		                        <tr>
+		                            <th><font color="color-3">*&nbsp;</font>详细地址：</th>
+		                            <td colspan="3">
+		                                 <input type="text"  id="address" name="config.ADDRESS"  class="ued-text-2" maxlength="100"  value="${config.ADDRESS }"  style="width: 560px">
+		                            </td>
+		                        </tr>
 		                        <tr>
 		                            <th><font color="color-3">*&nbsp;</font>营业时间：</th>
 		                            <td colspan="3">
 		                            	<textarea rows="5" cols="80" class="bord-3" name="config.BUSINESS_TIME" style="color: #535356;padding-left: 10px;font-family: 'microsoft yahei';">${config.businessTime }</textarea>  
 		                                 <p class="color-3 fs-14" id="business_time_msg"></p>  
-		                            </td>
-		                        </tr>
-		                        <tr>
-		                            <th>详细地址：</th>
-		                            <td colspan="3">
-		                                 <input type="text"  id="address" name="config.ADDRESS"  class="ued-text-2" maxlength="100"  value="${config.ADDRESS }"  style="width: 560px">
 		                            </td>
 		                        </tr>
 		                    </tbody>

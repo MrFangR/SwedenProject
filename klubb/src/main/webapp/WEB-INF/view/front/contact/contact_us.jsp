@@ -20,7 +20,7 @@
   <div class="list-con">
     
         <div class="mapcon">
-        	<!-- <iframe style="width: 1200px;height: 685px;" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJH3bGnUxnZEYRIGEWn6ybP2g&zoom=17&key=AIzaSyAnSqMOGPqI615A_ASt5pWkDqDP987OdaM"></iframe> -->
+        	<iframe style="width: 1200px;height: 685px;" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJH3bGnUxnZEYRIGEWn6ybP2g&zoom=17&key=AIzaSyAnSqMOGPqI615A_ASt5pWkDqDP987OdaM"></iframe>
         </div>
    
   

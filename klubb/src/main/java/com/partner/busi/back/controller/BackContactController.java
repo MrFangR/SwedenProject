@@ -52,8 +52,9 @@ public class BackContactController extends Controller {
 				msg = "标记成功";
 			}
 		}
-		renderJson("flag", flag);
-		renderJson("msg", msg);
+		setAttr("flag", flag);
+		setAttr("msg", msg);
+		renderJson();
 	}
     
 }

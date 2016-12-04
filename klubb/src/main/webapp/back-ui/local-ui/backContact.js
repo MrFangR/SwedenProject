@@ -64,12 +64,9 @@ function updateStatus(f, contactId){
 			dataType : "json",
 			success : function(json){
 				if (json.flag == 0) {
-					pop.success(json.msg, function(){
-						qry(1);
-					});
-				} else {
-					pop.fail(json.msg);
+					qry(1);
 				}
+				alert(json.msg);
 				return;
 			},
 			error : function(){
