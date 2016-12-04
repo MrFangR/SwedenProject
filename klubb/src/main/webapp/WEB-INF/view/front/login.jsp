@@ -8,7 +8,7 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, user-scalable=no">
 <meta name="format-detection" content="telephone=no,email=no">
-<title>登录</title>
+<title><i18n:get key="portal.menu.login"></i18n:get></title>
 <script src="${ctx }/front-ui/js/jquery1.9.0.min.js"></script>
 <script src="${ctx }/front-ui/js/ui.js"></script>
 <link rel="stylesheet" type="text/css"
@@ -27,33 +27,33 @@
 		<!--内容 start-->
 		<div class="main_body xmfb_con">
 			<div class="xmfb_title" style="width:200px;">
-				<h2>用户登录</h2>
+				<h2><i18n:get key="portal.user.login"></i18n:get></h2>
 			</div>
 			<div class="xmfb_xx"></div>
 
 			<div class="us-bd-base xmfb_con_text">
 				<dl class="us-info-dl clearfix">
 					<dt class="fl">
-						<span class="rose">*</span>用户名：
+						<span class="rose">*</span><i18n:get key="portal.user.name"></i18n:get>：
 					</dt>
 					<dd class="fl">
-						<input type="text" name="loginname" id="loginname" placeholder="邮箱"/>
+						<input type="text" name="loginname" id="loginname" placeholder=""/>
 					</dd>
 					<dd id="loginname_notice" class="notice"></dd>
 				</dl>
 
 				<dl class="us-info-dl clearfix">
 					<dt class="fl">
-						<span class="rose">*</span>密码：
+						<span class="rose">*</span><i18n:get key="portal.user.password"></i18n:get>：
 					</dt>
 					<dd class="fl">
-						<input type="password" id="loginpwd" name="loginpwd" placeholder="密码"/>
+						<input type="password" id="loginpwd" name="loginpwd" placeholder=""/>
 					</dd>
 					<dd id="loginpwd_notice" class="notice"></dd>
 				</dl>
 				<dl class="us-info-dl clearfix">
 					<dt class="fl">
-						<span class="rose">*</span>验证码：
+						<span class="rose">*</span><i18n:get key="portal.contact.form.code"></i18n:get>：
 					</dt>
 					<dd class="fl">
 						<input type="text" id="imgcode" name="imgcode" maxlength="4" class="ued-input fl" style="width:110px;" /> 
@@ -67,10 +67,10 @@
 				<dl class="us-info-dl clearfix">
 					<dt class="fl">&nbsp;</dt>
 					<dd class="fl">
-						<div class="us-btn" id="submitLogin">立即登录</div>
+						<div class="us-btn" id="submitLogin"><i18n:get key="portal.menu.login"></i18n:get></div>
 					</dd>
 					<dd class="notice" style="padding-top:8px">
-						<a href="${ctx }/front/toForget" style="font-size:12px; color:#03F; margin-left:20px;">忘记密码？</a>
+						<a href="${ctx }/front/toForget" style="font-size:12px; color:#03F; margin-left:20px;"><i18n:get key="portal.user.forget"></i18n:get>？</a>
 					</dd>
 				</dl>
 

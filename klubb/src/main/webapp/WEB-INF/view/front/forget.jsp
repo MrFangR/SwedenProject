@@ -8,7 +8,7 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, user-scalable=no">
 <meta name="format-detection" content="telephone=no,email=no">
-<title>忘记密码</title>
+<title><i18n:get key="portal.user.forget"></i18n:get></title>
 <script src="${ctx }/front-ui/js/jquery1.9.0.min.js"></script>
 <script src="${ctx }/front-ui/js/ui.js"></script>
 <script src="${ctx }/js/jST.v0.1.4.min.js"></script>
@@ -28,14 +28,14 @@
 		<!--内容 start-->
 		<div class="main_body xmfb_con">
 			<div class="xmfb_title">
-				<h2 style="margin-left:60px;">邮箱验证</h2>
+				<h2 style="margin-left:60px;"><i18n:get key="portal.user.forget.verify"></i18n:get></h2>
 			</div>
 			<div class="xmfb_xx"></div>
 			<div class="us-bd-base xmfb_con_text">
 
 				<dl class="us-info-dl clearfix">
 					<dt class="fl">
-						<span class="rose">*</span>邮箱地址：
+						<span class="rose">*</span><i18n:get key="portal.user.forget.email"></i18n:get>：
 					</dt>
 					<dd class="fl">
 						<input type="text" id="email"/>
@@ -44,7 +44,7 @@
 				</dl>
 				<dl class="us-info-dl clearfix">
 					<dt class="fl">
-						<span class="rose">*</span>验证码：
+						<span class="rose">*</span><i18n:get key="portal.contact.form.code"></i18n:get>：
 					</dt>
 					<dd class="fl">
 						<input type="text" id="imgcode" name="imgcode" maxlength="4"
@@ -58,7 +58,7 @@
 				<dl class="us-info-dl clearfix">
 					<dt class="fl">&nbsp;</dt>
 					<dd class="fl">
-						<div class="us-btn" id="nextStep">下一步</div>
+						<div class="us-btn" id="nextStep"><i18n:get key="portal.user.forget.next"></i18n:get></div>
 					</dd>
 				</dl>
 

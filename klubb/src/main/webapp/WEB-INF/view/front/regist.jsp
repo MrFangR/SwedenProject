@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <meta name="format-detection" content="telephone=no,email=no">
-    <title>注册</title>
+    <title><i18n:get key="portal.menu.regist"></i18n:get></title>
     <script  src="${ctx }/front-ui/js/jquery1.9.0.min.js"></script>
     <script  src="${ctx }/front-ui/js/ui.js"></script>
     <script  src="${ctx }/js/jST.v0.1.4.min.js"></script>
@@ -24,7 +24,7 @@
    		<!--内容 start-->
      <div class="main_body xmfb_con">
          <div class="xmfb_title">
-           <h2>注册通行证</h2>
+           <h2><i18n:get key="portal.regist.title"></i18n:get></h2>
          </div>
          <div class="xmfb_xx"></div>
           
@@ -32,37 +32,37 @@
 						
 							
                                     <dl  class="us-info-dl clearfix">
-										<dt class="fl"><span class="rose">*</span>姓名：</dt>
+										<dt class="fl"><span class="rose">*</span><i18n:get key="portal.contact.form.name"></i18n:get>：</dt>
 										<dd class="fl"><input  type="text" id="name" placeholder="请输入您的姓名"/></dd>
 										<dd id="name_notice" class="notice"></dd>
 									</dl>
 									<dl  class="us-info-dl clearfix">
-										<dt class="fl"><span class="rose">*</span>昵称：</dt>
+										<dt class="fl"><span class="rose">*</span><i18n:get key="portal.regist.nickname"></i18n:get>：</dt>
 										<dd class="fl"><input  type="text" id="nickName" placeholder="请输入您的昵称"/></dd>
 										<dd id="nickName_notice" class="notice"></dd>
 									</dl>
                                     <dl  class="us-info-dl clearfix">
-										<dt class="fl"><span class="rose">*</span>人口号：</dt>
+										<dt class="fl"><span class="rose">*</span><i18n:get key="portal.regist.number"></i18n:get>：</dt>
 										<dd class="fl"><input  type="text" id="idNum" placeholder="请输入您的人口号"/></dd>
 										<dd id="idNum_notice" class="notice"></dd>
 									</dl>
                                     <dl  class="us-info-dl clearfix">
-										<dt class="fl"><span class="rose">*</span>邮箱：</dt>
+										<dt class="fl"><span class="rose">*</span><i18n:get key="portal.regist.email"></i18n:get>：</dt>
 										<dd class="fl"><input  type="text" id="email" placeholder="请输入您的邮箱"/></dd>
 										<dd id="email_notice" class="notice"></dd>
 									</dl>
 									<dl  class="us-info-dl clearfix">
-										<dt class="fl"><span class="rose">*</span>密码：</dt>
+										<dt class="fl"><span class="rose">*</span><i18n:get key="portal.regist.password"></i18n:get>：</dt>
 										<dd class="fl"><input  type="password" id="pwd" placeholder="建议使用两种字符组合"/></dd>
 										<dd id="pwd_notice" class="notice"></dd>
 									</dl>
 									<dl  class="us-info-dl clearfix">
-										<dt class="fl"><span class="rose">*</span>确认密码：</dt>
+										<dt class="fl"><span class="rose">*</span><i18n:get key="portal.regist.repassword"></i18n:get>：</dt>
 										<dd class="fl"><input  type="password" id="repwd" placeholder="请再次输入密码"/></dd>
 										<dd id="repwd_notice" class="notice"></dd>
 									</dl>
 									<dl  class="us-info-dl clearfix">
-										<dt class="fl"><span class="rose">*</span>性别：</dt>
+										<dt class="fl"><span class="rose">*</span><i18n:get key="portal.regist.gender"></i18n:get>：</dt>
 										<dd class="fl">
 											<input name="sex" type="radio" value="1" style="width:30px;border: 0;">男   
 											<input name="sex" type="radio" value="0" style="width:30px; margin-left:50px;border: 0;"> 女
@@ -70,14 +70,14 @@
 										<dd id="sex_notice" class="notice"></dd>
 									</dl>	
                                     <dl  class="us-info-dl clearfix">
-										<dt class="fl">手机号码：</dt>
+										<dt class="fl"><i18n:get key="portal.regist.phone"></i18n:get>：</dt>
 										<dd class="fl"><input  type="text" id="phone" placeholder="请输入您的手机号"/></dd>
 										<dd id="phone_notice" class="notice"></dd>
 									</dl>
                                     <dl class="us-info-dl clearfix">
 										<dt class="fl">&nbsp;</dt>
 										<dd class="fl">
-										<div class="us-btn" id="submitRegist">注册</div>
+										<div class="us-btn" id="submitRegist"><i18n:get key="portal.menu.regist"></i18n:get></div>
 										</dd>
 									</dl>
                                  <div class="clearfix"></div>
