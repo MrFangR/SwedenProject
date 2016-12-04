@@ -12,7 +12,7 @@
 			<div class="listboximg"><a href="javascript:;"  target="_blank"><img  src="${uploadUrl}/${pic.URL}" class="attachment-thumbnail wp-post-image" ></a></div>
 				<div class="listinfo">
 	          	<div class="listtitle"><a href="#none"  target="_blank">${pic.DESCRIPTION }</a></div>
-	          	<div class="listdate">作者：${pic.userId }   <span class="riq"><fmt:formatDate value="${pic.createTime}" type="date"/></span></div>
+	          	<div class="listdate">作者：${pic.NICKNAME }   <span class="riq"><fmt:formatDate value="${pic.createTime}" type="date"/></span></div>
 	         	<div class="xs"><input name="" type="checkbox" value="" onclick="updateRecommend(this, '${pic.ID }');"> 设为首页展示</div>
 	         </div>
 	  	</li>
