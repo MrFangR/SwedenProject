@@ -26,6 +26,9 @@
 			<a tabid="1-6" url="${ctx}/back/notice">
 				<b class="b-t6"></b><span>通告配置</span>
 			</a>
+			<a tabid="1-7" url="${ctx}/back/happytimes">
+				<b class="b-t6"></b><span>Happytimes管理</span>
+			</a>
 		</li>
 	</ul>
 	
