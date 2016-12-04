@@ -8,23 +8,18 @@
 <div class="ued-title">
 	<h4>查询结果</h4>
 </div>
-<div class="clearfix pdl-10 pdr-10">
-	<ul class="ued-keys fl js_keys">
-		<li><a class="amend" href="javascript:edit();">编辑</a></li>
-	</ul>
-</div>
 <table width="100%" cellspacing="0" cellpadding="0" border="0" class="ued-table mgt-20">
 	<colgroup>
-		<col width="5%" />
 		<col width="30%" />
 		<col width="40%" />
+		<col width="20%" />
 		<col />
 	</colgroup>
 	<tbody>
 		<tr class="ued-tr-even">
-			<th></th>
 			<th>类型</th>
 			<th>创建时间</th>
+			<th>操作</th>
 		</tr>
 		
 		<c:if test="${empty list}">
@@ -33,10 +28,6 @@
 		<c:if test="${not empty list}">
 			<c:forEach items="${list}" var="intro">
 				<tr class="ued-tr-odd">
-					<td class="pdl-10">
-						<input type="radio" name="introduceId" class="inp-radio" value="${intro.ID}"/>
-						<span class="b-radio"><b></b></span>
-					</td>
 					<td>
 						<c:choose>
 							<c:when test="${intro.TYPE eq 1}">
@@ -48,6 +39,9 @@
 						</c:choose>
 					</td>
 					<td><fmt:formatDate value="${intro.createTime}" type="both"/></td>
+					<td>
+						<a class="mgr-10" href="javascript:;" onclick="edit('${intro.ID}')">[编辑]</a>
+					</td>
 				</tr>
 			</c:forEach>
 		</c:if>

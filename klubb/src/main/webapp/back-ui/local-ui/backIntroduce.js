@@ -24,11 +24,11 @@ function qry(){
 
 
 // 详情
-function edit(){
-	var introId = $(":radio[name='introduceId']:checked").val();
-	if (introId==null || introId==undefined || introId=="") {
-		pop.fail("请选择要操作的记录");
-		return;
-	}
+function edit(introId){
+//	var introId = $(":radio[name='introduceId']:checked").val();
+//	if (introId==null || introId==undefined || introId=="") {
+//		pop.fail("请选择要操作的记录");
+//		return;
+//	}
 	location.href=ctx + "/back/introduce/edit?type=" + introId;
 }

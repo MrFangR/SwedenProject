@@ -28,11 +28,11 @@
        
        </div>
        <div class="tabsub1">
-            ${poolIntro.CONTENT }
+       		 ${personIntro.CONTENT }
        </div>
        
        <div class="tabsub2 cont-con"   style="display:none; margin:0px;">
-       		 ${personIntro.CONTENT }
+            ${poolIntro.CONTENT }
        </div>
       
       
