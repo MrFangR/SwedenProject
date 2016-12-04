@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <meta name="format-detection" content="telephone=no,email=no">
-    <title>个人资料</title>
+    <title><i18n:get key="portal.user.center.info"></i18n:get></title>
     <script  src="${ctx}/front-ui/js/jquery1.9.0.min.js"></script>
     <script  src="${ctx}/front-ui/js/ui.js"></script>
     <script  src="${ctx }/js/jST.v0.1.4.min.js"></script>
@@ -29,8 +29,8 @@
           		<div class="us-set-rt fl">
                 		<div class="us-nav-box">
                             <ul class="us-nav-ul clearfix">
-                                <li class="nav curr">个人信息配置</li>
-                                <li class="nav">更改密码</li>
+                                <li class="nav curr"><i18n:get key="portal.user.center.setinfo"></i18n:get></li>
+                                <li class="nav"><i18n:get key="portal.user.center.resetpwd"></i18n:get></li>
                             </ul>
 					    </div>
                         <div  class="us-body">
@@ -42,22 +42,22 @@
 								<dd class="info-box">
                                 	
                                     <dl  class="us-info-dl clearfix">
-										<dt class="fl">姓名：</dt>
+										<dt class="fl"><i18n:get key="portal.contact.form.name"></i18n:get>：</dt>
 										<dd class="fl"><input  type="text" id="name" value="${user.NAME }"/></dd>
 										<dd class="notice" id="name_notice"></dd>
 									</dl>
                                     <dl  class="us-info-dl clearfix">
-										<dt class="fl">昵称：</dt>
+										<dt class="fl"><i18n:get key="portal.regist.nickname"></i18n:get>：</dt>
 										<dd class="fl"><input  type="text" id="nickName" value="${user.NICKNAME }"/></dd>
 										<dd class="notice" id="nickName_notice"></dd>
 									</dl>
 									<dl  class="us-info-dl clearfix">
-										<dt class="fl">人口号：</dt>
+										<dt class="fl"><i18n:get key="portal.regist.number"></i18n:get>：</dt>
 										<dd class="fl"><input  type="text" id="idNum" value="${user.idNumber }"/></dd>
 										<dd class="notice" id="idNum_notice"></dd>
 									</dl>
                                     <dl class="us-info-dl clearfix">
-										<dt class="fl">性别：</dt>
+										<dt class="fl"><i18n:get key="portal.regist.gender"></i18n:get>：</dt>
 										<dd class="fl sex-box">
 											<c:if test="${user.GENDER==0 }">
 												<label><input name="sex" type="radio" value="1" />男生</label>  
@@ -78,12 +78,12 @@
 									</dl>
 									 -->
                                     <dl  class="us-info-dl clearfix">
-										<dt class="fl">手机号码：</dt>
+										<dt class="fl"><i18n:get key="portal.regist.phone"></i18n:get>：</dt>
 										<dd class="fl"><input  type="text" id="phone" value="${user.PHONE }"/></dd>
 										<dd class="notice"></dd>
 									</dl>
                                     <dl class="us-info-dl clearfix">
-										<dt class="fl">验证码：</dt>
+										<dt class="fl"><i18n:get key="portal.contact.form.code"></i18n:get>：</dt>
 										<dd class="fl">
 									    	<input type="text" id="imgcode" name="imgcode" maxlength="4" class="ued-input fl" style="width:100px;" /> 
 											<img id="randCodeImage" class="mgl-10" style="height: 40px;" src="${ctx}/sys/randCodeImage" /> 
@@ -93,7 +93,7 @@
 									<dl class="us-info-dl clearfix">
 										<dt class="fl">&nbsp;</dt>
 										<dd class="fl">
-										<div class="us-btn" id="submitInfo">保存个人信息</div>
+										<div class="us-btn" id="submitInfo"><i18n:get key="portal.user.center.save"></i18n:get></div>
 										</dd>
 									</dl>		
 								</dd>
@@ -109,17 +109,17 @@
                                     
                                      
                                         <dl  class="us-info-dl clearfix">
-                                            <dt class="fl"><span class="brown">*</span>原始密码：</dt>
+                                            <dt class="fl"><span class="brown">*</span><i18n:get key="portal.user.center.oldpwd"></i18n:get>：</dt>
                                             <dd class="fl"><input type="password" id="oldPwd" placeholder="请输入原始密码"/></dd>
                                             <dd class="notice"></dd>
                                         </dl>
                                         <dl  class="us-info-dl clearfix">
-                                            <dt class="fl"><span class="brown">*</span>新密码：</dt>
+                                            <dt class="fl"><span class="brown">*</span><i18n:get key="portal.user.forget.newpwd"></i18n:get>：</dt>
                                             <dd class="fl"><input  type="password" id="newPwd" placeholder="请输入新密码"/></dd>
                                             <dd class="notice"></dd>
                                         </dl>
                                         <dl  class="us-info-dl clearfix">
-                                            <dt class="fl"><span class="brown">*</span>确认密码：</dt>
+                                            <dt class="fl"><span class="brown">*</span><i18n:get key="portal.regist.repassword"></i18n:get>：</dt>
                                             <dd class="fl"><input  type="password" id="repwd" placeholder="请再 次输入新密码"/></dd>
                                             <dd class="notice"></dd>
                                         </dl>
@@ -127,7 +127,7 @@
                                         <dl class="us-info-dl clearfix">
                                             <dt class="fl">&nbsp;</dt>
                                             <dd class="fl">
-                                            <div class="us-btn" id="submitPwd">确定</div>
+                                            <div class="us-btn" id="submitPwd"><i18n:get key="portal.contact.form.submit"></i18n:get></div>
                                             </dd>
 									   </dl>
                                     </dd>

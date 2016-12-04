@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 <meta name="format-detection" content="telephone=no,email=no">
-<title>用户中心-happytimes上传</title>
+<title><i18n:get key="portal.user.happytime.upload"></i18n:get></title>
 <script src="${ctx}/front-ui/js/jquery1.9.0.min.js"></script>
 <script src="${ctx}/front-ui/js/ui.js"></script>
 <script type="text/javascript" src="${ctx}/front-ui/js/ands-popAlert.js"></script>
@@ -41,10 +41,10 @@
 				<div class="us-bd-base xmfb_con_text">
 					<form enctype="multipart/form-data" id="pictureFrom">
 					<dl class="us-info-dl clearfix" style="width:auto">
-						<dt class="fl">上传图片：</dt>
+						<dt class="fl"><i18n:get key="portal.user.happytime.upimg"></i18n:get>：</dt>
 						<dd class="fl upload_wrap">
 							<div class="localUpload_wrap" id="uploadPic">
-								<div class="localTitle">上传电脑中图片</div>
+								<div class="localTitle"><i18n:get key="portal.user.happytime.upload.computer"></i18n:get></div>
 								<div class="localUpload">
 									<input type="hidden" name="picture.URL" id="imgPath" class="ued-text-2" maxlength="30" >
 									<input id="imgForUpload" name="imgForUpload" multiple="multiple" type="file">
@@ -58,7 +58,7 @@
 					</dl>
 					<dl class="us-info-dl clearfix" style="width:auto">
 						<dt class="fl">
-							<span class="rose">*</span>图片描述：
+							<span class="rose">*</span><i18n:get key="portal.user.happytime.upload.imgdesc"></i18n:get>：
 						</dt>
 						<dd class="fl">
 							<textarea name="picture.DESCRIPTION" cols="" rows="3" style="width:540px"></textarea>
@@ -68,7 +68,7 @@
 					<dl class="us-info-dl clearfix" style="width:auto">
 						<dt class="fl">&nbsp;</dt>
 						<dd class="fl">
-							<div class="us-btn" style=" margin-left:160px">确定</div>
+							<div class="us-btn" style=" margin-left:160px"><i18n:get key="portal.user.happytime.upload.sure"></i18n:get></div>
 						</dd>
 					</dl>
 					</form>

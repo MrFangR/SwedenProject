@@ -19,7 +19,7 @@
   <div class="gonggao">
     <div class="ggfont">
     	<marquee id=go1 onMouseOver=go1.stop() onMouseOut=go1.start() scrollamount=2 scrolldelay=2 direction=left hspace="80px">
-    	<p class="mgl-200">最新公告：${notice.CONTENT }</p>
+    	<p class="mgl-200"><i18n:get key="portal.index.notice"></i18n:get>：${notice.CONTENT }</p>
     	</marquee>
     </div>
   </div>
@@ -78,7 +78,7 @@
 			<!--轮播 E-->
             <!--最新比赛  注意为实现全屏自适应采用了特殊布局方式有些地方不能加空格 S-->
 			<div class="hactivity">
-				<div class="hacfist">最新比赛</div><div class="image2"><a href="#none"><img src="${ctx }/front-ui/images/at1.jpg" ></a><p class="atc">大师赛第二阶段王岩邱</p></div>
+				<div class="hacfist"><i18n:get key="portal.index.game"></i18n:get></div><div class="image2"><a href="#none"><img src="${ctx }/front-ui/images/at1.jpg" ></a><p class="atc">大师赛第二阶段王岩邱</p></div>
             </div>
             <div class="hactivity">
                 <div class="secleft"><a href="#none"><img src="${ctx }/front-ui/images/at2.jpg"></a><p class="atc2">大师赛第二阶段王岩邱</p></div><div class="secright">

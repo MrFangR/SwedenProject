@@ -8,7 +8,7 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, user-scalable=no">
 <meta name="format-detection" content="telephone=no,email=no">
-<title>忘记密码</title>
+<title><i18n:get key="portal.user.forget"></i18n:get></title>
 <script src="${ctx }/front-ui/js/jquery1.9.0.min.js"></script>
 <script src="${ctx }/front-ui/js/ui.js"></script>
 <script src="${ctx }/js/jST.v0.1.4.min.js"></script>
@@ -105,7 +105,7 @@ function subPwd() {
 		<!--内容 start-->
 		<div class="main_body xmfb_con" >
 			<div class="xmfb_title">
-				<h2 style="margin-left:60px;">设置新密码</h2>
+				<h2 style="margin-left:60px;"><i18n:get key="portal.user.forget.reset"></i18n:get></h2>
 			</div>
 			<div class="xmfb_xx"></div>
 			
@@ -114,7 +114,7 @@ function subPwd() {
 				<input type="input" value="${email }" id="hiddenEmail"/>
 				<dl class="us-info-dl clearfix">
 					<dt class="fl">
-						<span class="rose">*</span>新密码：
+						<span class="rose">*</span><i18n:get key="portal.user.forget.newpwd"></i18n:get>：
 					</dt>
 					<dd class="fl">
 						<input type="password" id="new_pwd"/>
@@ -123,7 +123,7 @@ function subPwd() {
 				</dl>
 				<dl class="us-info-dl clearfix">
 					<dt class="fl">
-						<span class="rose">*</span>确认密码：
+						<span class="rose">*</span><i18n:get key="portal.regist.repassword"></i18n:get>：
 					</dt>
 					<dd class="fl">
 						<input type="password" id="re_new_pwd"/>
@@ -134,7 +134,7 @@ function subPwd() {
 				<dl class="us-info-dl clearfix">
 					<dt class="fl">&nbsp;</dt>
 					<dd class="fl">
-						<div class="us-btn" id="subPwd">提交</div>
+						<div class="us-btn" id="subPwd"><i18n:get key="portal.contact.form.submit"></i18n:get></div>
 					</dd>
 				</dl>
 
