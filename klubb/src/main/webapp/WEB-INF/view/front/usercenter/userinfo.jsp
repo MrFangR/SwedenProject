@@ -231,7 +231,7 @@ function submitPwd(){
 	$("#submitPwd").unbind("click");
 	var oldpwd = $("#oldPwd").val();
 	if(oldpwd.trim().length == 0){
-		$("#oldPwd").parent().next(".notice").html("旧密码不能为空！");
+		$("#oldPwd").parent().next(".notice").html("原始密码不能为空！");
 		$("#submitPwd").bind("click",submitPwd);
 		return false;
 	}

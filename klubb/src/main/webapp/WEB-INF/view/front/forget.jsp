@@ -85,7 +85,7 @@
 			$("#email_notice").html("邮箱不能为空！");
 			return false;
 		} else if (!jST.isEmail(email)) {
-			$("#email_notice").html("请输入全法邮箱地址！");
+			$("#email_notice").html("请输入正确邮箱地址！");
 			return false;
 		}
 		$.ajax({

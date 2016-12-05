@@ -27,11 +27,12 @@ public class LoginValidator extends Validator {
 		validateRequiredString("loginpwd", "loginpwdMsg", "请输入密码!");
 		validateRequiredString("loginname", "loginnameMsg", "请输入用户邮箱!");
 		validateEmail("loginname", "loginnameMsg", "请输入正确用户邮箱!");
-		String inputRandomCode = c.getPara("imgCode");
+		validateRequiredString("imgcode", "imgcodeMsg", "验证码不能为空!");
+		String inputRandomCode = c.getPara("imgcode");
 		if(StringUtils.isNotBlank(inputRandomCode)){
-	        boolean loginSuccess = c.validateCaptcha("imgCode");
+	        boolean loginSuccess = c.validateCaptcha("imgcode");
 	        if(!loginSuccess){
-	        	addError("imgCodeMsg", "验证码错误,请重新输入!");
+	        	addError("imgcodeMsg", "验证码错误,请重新输入!");
 	        }
 		}
 	}
