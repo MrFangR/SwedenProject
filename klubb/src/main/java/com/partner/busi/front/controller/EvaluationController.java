@@ -7,6 +7,8 @@ import com.jfinal.core.Controller;
 import com.jfinal.plugin.activerecord.Page;
 import com.partner.busi.front.validator.EvaluationValidator;
 import com.partner.busi.model.Evaluation;
+import com.partner.busi.model.User;
+import com.partner.common.util.FrontSessionUtil;
 
 public class EvaluationController extends Controller {
 
@@ -20,11 +22,19 @@ public class EvaluationController extends Controller {
 		
 		Evaluation eva = getModel(Evaluation.class);
 		
-		eva.set("USER_ID", 1);//xianxiesi
-		eva.set("CREATE_TIME", new Date());
-		rsFlag = eva.save();
-		if(rsFlag){
-			rsMsg = "评论成功！";
+		//判断是否为登录状态
+		if(FrontSessionUtil.isLogin(getRequest())){
+			//获取用户登录信息
+			User user = FrontSessionUtil.getSession(getRequest());
+			eva.set("USER_ID", user.getID());
+			eva.set("CREATE_TIME", new Date());
+			rsFlag = eva.save();
+			if(rsFlag){
+				rsMsg = "评论成功！";
+			}
+		}else{
+			rsFlag = false;
+			rsMsg = "登陆之后才可以评论！";
 		}
 		setAttr("rsFlag", rsFlag);
 		setAttr("rsMsg", rsMsg);

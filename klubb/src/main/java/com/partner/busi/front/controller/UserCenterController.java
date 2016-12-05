@@ -22,21 +22,33 @@ public class UserCenterController extends Controller {
 	 * to activity_manage
 	 */
 	public void toActMan(){
-		render("activity_manage.jsp");
+		if(FrontSessionUtil.isLogin(getRequest())){
+			render("activity_manage.jsp");
+		}else{
+			redirect("/front/toLogin");
+		}
 	}
 	
 	/**
 	 * to user center happytimes
 	 */
 	public void toHappytimes(){
-		render("userht.jsp");
+		if(FrontSessionUtil.isLogin(getRequest())){
+			render("userht.jsp");
+		}else{
+			redirect("/front/toLogin");
+		}
 	}
 	
 	/**
 	 * to user center happytimes upload
 	 */
 	public void toHappytimesUpload(){
-		render("userhtupload.jsp");
+		if(FrontSessionUtil.isLogin(getRequest())){
+			render("userhtupload.jsp");
+		}else{
+			redirect("/front/toLogin");
+		}
 	}
 	
 	/**

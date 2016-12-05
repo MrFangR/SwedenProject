@@ -11,6 +11,7 @@ import com.jfinal.plugin.activerecord.Page;
 import com.partner.busi.back.validator.ActivityValidator;
 import com.partner.busi.model.ActUser;
 import com.partner.busi.model.Activity;
+import com.partner.common.constant.Constants;
 import com.partner.common.util.BackSessionUtil;
 import com.partner.common.util.EmailUtil;
 
@@ -31,7 +32,7 @@ public class BackActivityController extends Controller {
 	public void list(){
 		String title = getPara("title");
 		int pageNum = getParaToInt("pageNum");
-		int pageSize = getParaToInt("pageSize");
+		int pageSize = Constants.PAGESIZE;
 		
 		Page<Activity> page = Activity.dao.findList(title, pageNum, pageSize);
 		setAttr("paginate", page);
@@ -122,7 +123,7 @@ public class BackActivityController extends Controller {
 //        theMessage.append("<p>台球厅管理团队.http://www.baidu.com/</p>");
 		
         for(int i=0;i<actUserList.size();i++){
-        	if("".equals(actUserList.get(i).getEMAIL())){
+        	if(!"".equals(actUserList.get(i).getEMAIL())){
         		//EmailUtil.send(subject, theMessage.toString(), actUserList.get(i).getEMAIL());
         		EmailUtil.sendCancleActEmail(subject, actUserList.get(i).getEMAIL(), obj);
         	}
@@ -219,7 +220,7 @@ public class BackActivityController extends Controller {
 		int actID = getParaToInt("actID");
 		int pageNum = getParaToInt("pageNum");
 		
-		Page<ActUser> page = ActUser.dao.findList(userName, actID, pageNum, pageSize);
+		Page<ActUser> page = ActUser.dao.findList(userName, actID, pageNum, Constants.PAGESIZE*2);
 		setAttr("paginate", page);
 		render("activity/activity_view_result.jsp");
 	}
@@ -245,15 +246,12 @@ public class BackActivityController extends Controller {
         theMessage.append("<p>此致<br></p>");
         theMessage.append("<p>台球厅管理团队.http://www.baidu.com/</p>");
 		
-		sendFlag = EmailUtil.send(subject, theMessage.toString(), actUser.getEMAIL());
-				
-		if(sendFlag){
-			rsFlag = ActUser.dao.deleteById(ID);
-		}else{
-			rsMsg = "由于邮件未发送成功，不能取消用户参加";
-		}
-		if(rsFlag){
-			rsMsg = "删除成功";
+        if(!"".equals(actUser.getEMAIL())){
+        	sendFlag = EmailUtil.send(subject, theMessage.toString(), actUser.getEMAIL());
+    	}
+        rsFlag = ActUser.dao.deleteById(ID);
+		if(!sendFlag){
+			rsMsg = "由于邮件未发送,无法通知用户取消资格";
 		}
 		setAttr("rsFlag", rsFlag);
 		setAttr("rsMsg", rsMsg);
