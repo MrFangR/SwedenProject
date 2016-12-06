@@ -22,7 +22,7 @@
 <!--cont-con S-->
   <div class="cont-con">
     <h1 class="happytitle"><i18n:get key="portal.happytimes.author"></i18n:get>:${user.NICKNAME}</h1>
-    <p class="confutitle"><i18n:get key="portal.activity.detail.date"></i18n:get>:${fn:substring(pic.createTime, 0, 16)}</span></p>
+    <p class="confutitle"><i18n:get key="portal.activity.detail.date"></i18n:get>:${fn:substring(pic.createTime, 0, 19)}</span></p>
        <p class="conline"></p>
        <div class="cont-text">
           ${pic.DESCRIPTION}

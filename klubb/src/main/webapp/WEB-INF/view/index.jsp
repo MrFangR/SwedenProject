@@ -103,7 +103,7 @@
                        <div class="poster-btn poster-prev-btn"></div> 
                        <ul class="poster-list"> 
                        		<c:forEach items="${pictures }"  var="picture">
-                        			<li class="poster-item"><a href="#"><p class="font-title">${picture.DESCRIPTION}</p><img src="${uploadUrl }${picture.URL}" alt="" width="100%" /></a></li>
+                        			<li class="poster-item"><a href="${ctx}/front/happytimes/showHTdetails?picID=${picture.ID}"><p class="font-title">${picture.DESCRIPTION}</p><img src="${uploadUrl }${picture.URL}" alt="" width="100%" /></a></li>
                             </c:forEach>
                             <!-- 
 						<li class="poster-item"><a href="#"><p class="font-title">花式第一人打响头炮</p><img src="${ctx }/front-ui/images/happytimes1.jpg" alt="" width="100%" /></a></li> 

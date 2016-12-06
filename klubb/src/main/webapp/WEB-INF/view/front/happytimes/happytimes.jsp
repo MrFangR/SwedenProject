@@ -77,10 +77,11 @@ function showHappyTimes(pageNum){
 						+ "		</div>"
 						+ "		<div class='listinfo'>"
 						+ "			<div class='listtitle'>"
+						+ "				<a href=''#none'  target='_blank'>"+pic.DESCRIPTION+"</a>"	
 						+ "			</div>"
 						+ "			<div class='listdate'>"+dateStrNext+"</div>"
 						+ "		</div>"
-						+ "</li>"
+						+ "</li>";
 			});
 			$("#showHTDiv").html(htmlStr);
 				

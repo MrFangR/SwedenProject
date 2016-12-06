@@ -20,7 +20,7 @@
 <!--cont-con S-->
   	<div class="cont-con">
     	<h1 class="contitle">${act.TITLE}</h1>
-    	<p class="confutitle"><input name="addAct"  class="contbtn" type="button" value="+<i18n:get key='portal.activity.detail.join'></i18n:get>" onclick="addAct(${act.ID})"><span><i18n:get key="portal.activity.detail.date"></i18n:get>:${fn:substring(act.actTime, 0, 16)}</span></p>
+    	<p class="confutitle"><input name="addAct"  class="contbtn" type="button" value="+<i18n:get key='portal.activity.detail.join'></i18n:get>" onclick="addAct(${act.ID})"><span><i18n:get key="portal.activity.detail.date"></i18n:get>:${fn:substring(act.actTime, 0, 19)}</span></p>
       	<p class="conline"></p>
       	<div class="cont-text">
       		${act.CONTENT}

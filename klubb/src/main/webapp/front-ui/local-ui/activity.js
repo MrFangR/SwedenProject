@@ -30,17 +30,13 @@ function showResultList(data){
 		htmlStr += "<p class='date'>"+act.ACT_TIME.substr(8,2)+"</p><p class='month'>"+act.ACT_TIME.substr(5,2)+"</p><p class='Category'><i18n:get key='portal.menu.activity'></i18n:get></p>";
 		htmlStr += "</div>";
 		htmlStr += "<div class='zixun_content'>";
-		htmlStr += "<div class='pic'><a href='javascript:viewAct("+act.ID+");' target='_blank'><img src='"+uploadUrl+act.IMG+"'></a></div>";
-		htmlStr += "<div class='title'><a href='javascript:viewAct("+act.ID+");' target='_blank' >"+act.TITLE+"</a></div>";
-		htmlStr += "<div class='intro'><a href='javascript:viewAct("+act.ID+");' target='_blank'>"+act.ABSTRACT+"</a></div>";
+		htmlStr += "<div class='pic'><a href='"+ctx+"/front/activity/viewAct?type="+act.ID+"' target='_blank'><img src='"+uploadUrl+act.IMG+"'></a></div>";
+		htmlStr += "<div class='title'><a href='"+ctx+"/front/activity/viewAct?type="+act.ID+"' target='_blank' >"+act.TITLE+"</a></div>";
+		htmlStr += "<div class='intro'><a href='"+ctx+"/front/activity/viewAct?type="+act.ID+"' target='_blank'>"+act.ABSTRACT+"</a></div>";
 		htmlStr += "</div>";
 		htmlStr += "</li>";
 	});
 	$("#resultDIV").html(htmlStr);
 	
 	setPageInfo("pageDiv", data, searchAct);
-}
-
-function viewAct(ID){
-	location.href=ctx + "/front/activity/viewAct?type=" + ID;
 }

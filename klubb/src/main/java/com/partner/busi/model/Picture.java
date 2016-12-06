@@ -13,7 +13,7 @@ public class Picture extends BasePicture<Picture> {
 	public static final Picture dao = new Picture();
 	
 	public List<Picture> findAll(){
-		return dao.find("select URL, DESCRIPTION, USER_ID from t_picture order by CREATE_TIME desc ");
+		return dao.find("select ID, URL, DESCRIPTION, USER_ID from t_picture order by CREATE_TIME desc ");
 	}
 	
 	public Page<Picture> findPic(int pageNum, int pageSize) {
