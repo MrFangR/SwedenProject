@@ -25,7 +25,8 @@ public class UserCenterController extends Controller {
 		if(FrontSessionUtil.isLogin(getRequest())){
 			render("activity_manage.jsp");
 		}else{
-			redirect("/front/toLogin");
+			forwardAction("/front/toLogin");
+//			redirect("/front/toLogin");
 		}
 	}
 	
@@ -36,7 +37,7 @@ public class UserCenterController extends Controller {
 		if(FrontSessionUtil.isLogin(getRequest())){
 			render("userht.jsp");
 		}else{
-			redirect("/front/toLogin");
+			forwardAction("/front/toLogin");
 		}
 	}
 	
@@ -47,7 +48,7 @@ public class UserCenterController extends Controller {
 		if(FrontSessionUtil.isLogin(getRequest())){
 			render("userhtupload.jsp");
 		}else{
-			redirect("/front/toLogin");
+			forwardAction("/front/toLogin");
 		}
 	}
 	
@@ -72,7 +73,8 @@ public class UserCenterController extends Controller {
 			setAttr("user",user);
 			render("userinfo.jsp");
 		}else{
-			redirect("/front/toLogin");
+			forwardAction("/front/toLogin");
+//			redirect("/front/toLogin");
 		}
 	}
 	@Before(CenterValidator.class)

@@ -122,7 +122,12 @@ $("#submitLogin").click(function(){
 		success : function(json) {
 			var mark = json.retCode;
 			if (mark == 0) {
-				window.location.href = '${ctx}/home';
+				var url = window.location.href;
+				if(url.indexOf("toLogin") != -1){
+					window.location.href = '${ctx}/home';
+				}else{
+					window.location.reload();
+				}
 			} else {
 				var tip = json.retMsg.split(":");
 				
