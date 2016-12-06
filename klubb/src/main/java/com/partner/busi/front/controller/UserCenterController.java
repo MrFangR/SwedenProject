@@ -23,6 +23,8 @@ public class UserCenterController extends Controller {
 	 */
 	public void toActMan(){
 		if(FrontSessionUtil.isLogin(getRequest())){
+			User user = FrontSessionUtil.getSession(getRequest());
+			setAttr("user",user);
 			render("activity_manage.jsp");
 		}else{
 			forwardAction("/front/toLogin");
@@ -35,6 +37,8 @@ public class UserCenterController extends Controller {
 	 */
 	public void toHappytimes(){
 		if(FrontSessionUtil.isLogin(getRequest())){
+			User user = FrontSessionUtil.getSession(getRequest());
+			setAttr("user",user);
 			render("userht.jsp");
 		}else{
 			forwardAction("/front/toLogin");
@@ -46,6 +50,8 @@ public class UserCenterController extends Controller {
 	 */
 	public void toHappytimesUpload(){
 		if(FrontSessionUtil.isLogin(getRequest())){
+			User user = FrontSessionUtil.getSession(getRequest());
+			setAttr("user",user);
 			render("userhtupload.jsp");
 		}else{
 			forwardAction("/front/toLogin");
