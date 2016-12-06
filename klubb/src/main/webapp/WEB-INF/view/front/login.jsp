@@ -130,8 +130,11 @@ $("#submitLogin").click(function(){
 				}
 			} else {
 				var tip = json.retMsg.split(":");
-				
-				$("#"+tip[0]+"_notice").html(tip[1]);
+				if(tip.length>1){
+					$("#"+tip[0]+"_notice").html(tip[1]);
+				}else{
+					$("#loginpwd_notice").html("用户登录密码错误，请重新输入！");
+				}
 				$("#submitLogin").attr('disabled', false);
 				getRandImg();
 			}
@@ -146,6 +149,17 @@ $("#submitLogin").click(function(){
 function getRandImg(){
 	$('#randCodeImage').attr('src', "${ctx}/sys/randCodeImage?"+Math.random());
 }
-$("#randCodeImage").click(getRandImg);
+$(function(){
+	$("#randCodeImage").click(getRandImg);
+	$("#loginname").focus(function(){
+		$("#loginname_notice").html("");
+	});
+	$("#loginpwd").focus(function(){
+		$("#loginpwd_notice").html("");
+	});
+	$("#imgcode").focus(function(){
+		$("#imgcode_notice").html("");
+	});
+});
 </script>
 

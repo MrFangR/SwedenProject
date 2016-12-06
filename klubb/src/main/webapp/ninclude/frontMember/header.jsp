@@ -9,7 +9,7 @@
          		<a href="${ctx }/front/toLogin"><i18n:get key="portal.menu.login"></i18n:get></a> | <a href="${ctx }/front/toRegist"><i18n:get key="portal.menu.regist"></i18n:get></a>
          	</c:if>
          	<c:if test="${FRONT_SESSION_USER.EMAIL != null }">
-         		<a href="#none">${FRONT_SESSION_USER.NICKNAME }</a> | <a href="javascript:logout();"><i18n:get key="portal.menu.logout"></i18n:get></a>
+         		<a href="${ctx }/userCenter">${FRONT_SESSION_USER.NICKNAME }</a> | <a href="javascript:logout();"><i18n:get key="portal.menu.logout"></i18n:get></a>
          	</c:if>
          </span>
         <nav class="menu-body">

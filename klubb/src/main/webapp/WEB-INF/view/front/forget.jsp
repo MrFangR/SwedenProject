@@ -74,7 +74,14 @@
 </body>
 </html>
 <script type="text/javascript">
-	getRandImg();
+	$(function(){
+		getRandImg();
+		$("#randCodeImage").click(getRandImg);
+		$("#nextStep").click(stepNext);
+		$("#email").focus(function(){
+			$("#email_notice").html("");
+		});	
+	});
 	function getRandImg() {
 		$('#randCodeImage').attr('src',
 				"${ctx}/sys/randCodeImage?" + Math.random());
@@ -137,7 +144,6 @@
 			}
 		});
 	}
-	$("#randCodeImage").click(getRandImg);
-	$("#nextStep").click(stepNext);
+	
 </script>
 

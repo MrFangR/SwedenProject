@@ -185,6 +185,26 @@ function userRegist(){
 		}
 	});
 }
-$("#submitRegist").bind("click",userRegist);
+$(function(){
+	$("#submitRegist").bind("click",userRegist);
+	$("#name").focus(function(){
+		$("#name_notice").html("");
+	});
+	$("#nickName").focus(function(){
+		$("#nickName_notice").html("");
+	});
+	$("#idNum").focus(function(){
+		$("#idNum_notice").html("");
+	});
+	$("#email").focus(function(){
+		$("#email_notice").html("");
+	});
+	$("#pwd").focus(function(){
+		$("#pwd_notice").html("");
+	});
+	$("#repwd").focus(function(){
+		$("#repwd_notice").html("");
+	});
+});
 </script>
 

@@ -27,6 +27,13 @@ $(function(){
 	}else{
 		$("#subPwd").click(subPwd);
 	}
+	
+	$("#new_pwd").focus(function(){
+		$("#new_pwd_notice").html("");
+	});
+	$("#re_new_pwd").focus(function(){
+		$("#renew_notice").html("");
+	});
 });
 
 function subPwd() {

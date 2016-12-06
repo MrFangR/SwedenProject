@@ -63,7 +63,7 @@
 												<label><input name="sex" type="radio" value="1" />男生</label>  
 												<label><input name="sex" type="radio" value="0" checked="checked"/>女生</label>
 											</c:if>
-											<c:if test="${user.GENDER==1 }">
+											<c:if test="${user.GENDER!=0 }">
 												<label><input name="sex" type="radio" value="1" checked="checked"/>男生</label>  
 												<label><input name="sex" type="radio" value="0" />女生</label>
 											</c:if>
@@ -150,8 +150,33 @@
 </body>
 </html>
 <script type="text/javascript">
-
-$("#submitInfo").bind("click",submitInfo);
+$(function(){
+	
+	$("#submitInfo").bind("click",submitInfo);
+	$("#submitPwd").bind("click",submitPwd);
+	$("#randCodeImage").click(getRandImg);
+	$("#name").focus(function(){
+		$("#name_notice").html("");
+	});
+	$("#nickName").focus(function(){
+		$("#nickName_notice").html("");
+	});
+	$("#idNum").focus(function(){
+		$("#idNum_notice").html("");
+	});
+	$("#imgcode").focus(function(){
+		$("#imgcode_notice").html("");
+	});
+	$("#oldPwd").focus(function(){
+		$("#oldPwd").parent().next(".notice").html("");
+	});
+	$("#newPwd").focus(function(){
+		$("#newPwd").parent().next(".notice").html("");
+	});
+	$("#repwd").focus(function(){
+		$("#repwd").parent().next(".notice").html("");
+	});
+});
 function submitInfo(){
 	$("#submitInfo").unbind("click");
 	var name = $("#name").val();
@@ -225,7 +250,7 @@ function submitInfo(){
 		}
 	});
 }
-$("#submitPwd").bind("click",submitPwd);
+
 function submitPwd(){
 	
 	$("#submitPwd").unbind("click");
@@ -296,6 +321,6 @@ function submitPwd(){
 function getRandImg(){
 	$('#randCodeImage').attr('src', "${ctx}/sys/randCodeImage?"+Math.random());
 }
-$("#randCodeImage").click(getRandImg);
+
 </script>
 
