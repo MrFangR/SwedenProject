@@ -16,6 +16,10 @@ public class Picture extends BasePicture<Picture> {
 		return dao.find("select ID, URL, DESCRIPTION, USER_ID from t_picture order by CREATE_TIME desc ");
 	}
 	
+	public List<Picture> findRecommendPic(){
+		return dao.find("select ID, URL, DESCRIPTION, USER_ID from t_picture where IS_RECOMMEND = 1 order by CREATE_TIME desc ");
+	}
+	
 	public Page<Picture> findPic(int pageNum, int pageSize) {
 		Page<Picture> page = paginate(pageNum, pageSize, "select * ", " from t_picture p order by p.CREATE_TIME desc");
 		return page;

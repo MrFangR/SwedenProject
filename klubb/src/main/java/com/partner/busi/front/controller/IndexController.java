@@ -22,7 +22,7 @@ public class IndexController extends Controller {
 		Notice notice = Notice.dao.findNotice();
 		setAttr("notice",notice);
 		//获取 happytime 数据
-		List<Picture> pictures = Picture.dao.findAll();
+		List<Picture> pictures = Picture.dao.findRecommendPic();
 		setAttr("pictures",pictures);
 		//获取联系我们数据
 		Config config = Config.dao.findById(1);
