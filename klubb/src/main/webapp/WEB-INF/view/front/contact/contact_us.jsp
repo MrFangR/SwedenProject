@@ -130,7 +130,13 @@ function save(){
 			data : $("#contactForm").serialize(),
 			success: function(data){
 				if(data.rsFlag){
-					pop.success(data.rsMsg, function(){});
+					ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+							   {type:2,
+								info:'',
+								text:'<div style=" font-size:18px; color:#ff0000;"> ' + data.rsMsg + '</div>',
+								'ok':function(){$("#contactForm")[0].reset();},
+								tag:'zq-ring'}
+				               );
 				}else{
 					showNotice(data);
 				}
