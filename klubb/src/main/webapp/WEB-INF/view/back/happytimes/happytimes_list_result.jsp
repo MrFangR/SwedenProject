@@ -4,12 +4,12 @@
 <%
 	/* happytimes查询结果 */
 %>
-
+<c:set var="uploadUrl" value="${UPLOAD_SERVER_URL}"/>
 
 <ul>
 	<c:forEach items="${paginate.list}" var="pic">
 		<li class="listbox" id="${pic.ID }">
-			<div class="listboximg"><a href="javascript:;"  target="_blank"><img  src="${uploadUrl}/${pic.URL}" class="attachment-thumbnail wp-post-image" ></a></div>
+			<div class="listboximg"><a href="javascript:;"  target="_blank"><img  src="${uploadUrl}${pic.URL}" class="attachment-thumbnail wp-post-image" ></a></div>
 				<div class="listinfo">
 	          	<div class="listtitle"><a href="#none"  target="_blank">${pic.DESCRIPTION }</a></div>
 	          	<div class="listdate">作者：${pic.NICKNAME }   <span class="riq"><fmt:formatDate value="${pic.createTime}" type="date"/></span></div>
