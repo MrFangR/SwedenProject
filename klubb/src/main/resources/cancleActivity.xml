@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml-body>    
+    <html>    
+        <head>    
+        </head>    
+        <body>    
+            <div id="main" style="width:966px; height:330px; text-align:left;    
+                margin:3px 26px; background-color:#F5F5F5; border:1px    
+                #E1E1E1 solid;">    
+                <p>您好</p>    
+                <p>
+                ----------------------------------------------------------------------<br></br>
+                </p>
+                <p>您报名参加的活动：{0}已取消，特此通知</p>  
+                <p>
+                ----------------------------------------------------------------------<br></br>
+                </p>    
+                	<p>
+                	此致<br></br>
+                	</p>  
+                <p>台球厅管理团队.http://www.XXX.com/</p> 
+            </div>    
+        </body>    
+    </html>    
+</xml-body>

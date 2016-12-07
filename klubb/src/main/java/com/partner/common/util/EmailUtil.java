@@ -1,24 +1,20 @@
 package com.partner.common.util;
 
 import java.io.File;
+import java.io.IOException;
 import java.text.MessageFormat;
 import java.util.Date;
 import java.util.Properties;
 
 import javax.mail.Authenticator;
 import javax.mail.Message;
-import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-import javax.servlet.ServletContext;
 
-import com.jfinal.ext.handler.ContextPathHandler;
-import com.partner.common.base.BaseConfig;
 import com.partner.common.constant.Constants;
-import com.sun.corba.se.impl.orbutil.closure.Constant;
 
 import org.apache.log4j.Logger;
 import org.dom4j.*;
@@ -151,7 +147,8 @@ public class EmailUtil {
 	
 	/**
 	  * 发送取消活动邮件
-	  * 
+	  * @param type
+	  *   邮件类型 取消活动 1 取消用户报名2
 	  * @param subject
 	  *   标题
 	  * @param content
@@ -160,9 +157,19 @@ public class EmailUtil {
 	  *   发件人邮箱
 	  * @param to
 	  *   收件人邮箱
+	 * @throws IOException 
 	  */
-	public static boolean sendCancleActEmail(String subject, String to, Object[] obj) {
-		String filePath = "C:/apache-tomcat-7.0.55/webapps/klubb/email/cancleActivity.xml"; 
+	public static boolean sendTypeEmail(String type, String subject, String to, Object[] obj){
+		//String filePath = "C:/apache-tomcat-7.0.55/webapps/klubb/email/cancleActivity.xml"; 
+		String caFilePath = EmailUtil.class.getClassLoader().getResource("cancleActivity.xml").getPath();
+		String cuFilePath = EmailUtil.class.getClassLoader().getResource("cancleUser.xml").getPath();
+		String filePath = "";
+		if("1".equals(cuFilePath)){
+			filePath = caFilePath;
+		}else if("2".equals(cuFilePath)){
+			filePath = cuFilePath;
+		}
+		
 		try {
 			Properties props = new Properties();
 			props.put("mail.smtp.host", Constants.STMP);
@@ -234,5 +241,6 @@ public class EmailUtil {
             return str;  
         }  
   
-    }  
+    }
+	
 }

@@ -1,5 +1,6 @@
 package com.partner.busi.back.controller;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
@@ -101,6 +102,7 @@ public class BackActivityController extends Controller {
 	
 	/**
 	 * 删除活动
+	 * @throws IOException 
 	 */
 	public void deleteAct(){
 		boolean rsFlag = false;
@@ -125,7 +127,7 @@ public class BackActivityController extends Controller {
         for(int i=0;i<actUserList.size();i++){
         	if(!"".equals(actUserList.get(i).getEMAIL())){
         		//EmailUtil.send(subject, theMessage.toString(), actUserList.get(i).getEMAIL());
-        		EmailUtil.sendCancleActEmail(subject, actUserList.get(i).getEMAIL(), obj);
+        		EmailUtil.sendTypeEmail("1",subject, actUserList.get(i).getEMAIL(), obj);
         	}
         }
 		
@@ -169,7 +171,7 @@ public class BackActivityController extends Controller {
 			
 	        for(int i=0;i<actUserList.size();i++){
 	        	if(!"".equals(actUserList.get(i).getEMAIL())){
-	        		EmailUtil.sendCancleActEmail(subject, actUserList.get(i).getEMAIL(), obj);
+					EmailUtil.sendTypeEmail("1",subject, actUserList.get(i).getEMAIL(), obj);
 	        		//EmailUtil.send(subject, theMessage.toString(), actUserList.get(i).getEMAIL());
 	        	}
 	        }
@@ -238,16 +240,18 @@ public class BackActivityController extends Controller {
 		Activity act = Activity.dao.findById(actUser.getActId());
 		//发送邮件
 		String subject = "[台球厅]取消报名说明";
-		StringBuffer theMessage = new StringBuffer();
-        theMessage.append("<p>"+actUser.getNAME()+"，您好</p>");
-        theMessage.append("<p>----------------------------------------------------------------------<br></p>");
-        theMessage.append("<p>您报名参加的活动："+act.getTITLE()+"，管理员已将您取消报名资格，特此通知</p>");
-        theMessage.append("<p>----------------------------------------------------------------------<br></p>");
-        theMessage.append("<p>此致<br></p>");
-        theMessage.append("<p>台球厅管理团队.http://www.baidu.com/</p>");
+		Object[] obj = new Object[]{act.getTITLE()};
+//		StringBuffer theMessage = new StringBuffer();
+//        theMessage.append("<p>"+actUser.getNAME()+"，您好</p>");
+//        theMessage.append("<p>----------------------------------------------------------------------<br></p>");
+//        theMessage.append("<p>您报名参加的活动："+act.getTITLE()+"，管理员已将您取消报名资格，特此通知</p>");
+//        theMessage.append("<p>----------------------------------------------------------------------<br></p>");
+//        theMessage.append("<p>此致<br></p>");
+//        theMessage.append("<p>台球厅管理团队.http://www.baidu.com/</p>");
 		
         if(!"".equals(actUser.getEMAIL())){
-        	sendFlag = EmailUtil.send(subject, theMessage.toString(), actUser.getEMAIL());
+        	sendFlag = EmailUtil.sendTypeEmail("2",subject, actUser.getEMAIL(), obj);
+        	//sendFlag = EmailUtil.send(subject, theMessage.toString(), actUser.getEMAIL());
     	}
         rsFlag = ActUser.dao.deleteById(ID);
 		if(!sendFlag){
