@@ -36,6 +36,9 @@ $(function(){
 			widthno = $(this).attr("width");
 		}
 	});
+	$(".menu-body li.jsli").click(function(){
+		$(this).children("a")[0].click();
+	});
 	$(".menu-body").find(".line").css({marginLeft:widthno+"px"});	
 });
 
