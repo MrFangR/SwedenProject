@@ -570,7 +570,7 @@
 .ued-back{background:url(../../images/icon-6.png) 0 -12px no-repeat;}
 
 .index-wap{height:150px; width:1100px; border:1px solid #e5e5e5; margin:20px auto;}
-.index-wap ul li{ border-right:1px solid #e5e5e5; width:33%; float:left; height:150px; display:inline-block; position:relative;}
+.index-wap ul li{ border-right:1px solid #e5e5e5; width:49%; float:left; height:150px; display:inline-block; position:relative;}
 .index-wap ul li.last{ border-right:0px;}
 .index-wap ul li i{ background:url(../../images/floor-package.png) 0 0 no-repeat; height:50px; width:50px; position:absolute; top:10px; left:10px;}
 .index-wap ul li p{ background:url(../../images/floor-package.png) 0 0 no-repeat; height:120px; width:140px;position:absolute; top:20px;left:90px;}
@@ -580,10 +580,10 @@
 .index-wap ul li p.tup1{background-position:0 0;}
 .index-wap ul li p.tup2{background-position:0 -130px;}
 .index-wap ul li p.tup3{background-position:0 -260px;}
-.index-wap ul li .text-x{ position:absolute; top:70px; right:20px; font-size:16px;}
+.index-wap ul li .text-x{ position:absolute; top:30px; left:120px; font-size:16px; color:#d26b66; font-size:20px}
 .index-wap ul li .text-x .number{ font-size:24px; color:#eb3583;}
-.index-wap ul li .text-z{ position:absolute; bottom:20px; right:20px;font-size:16px;}
-.index-wap ul li .text-z .number{color:#9cc813;}
+.index-wap ul li .text-z{ position:absolute; bottom:40px; left:120px;font-size:16px;}
+.index-wap ul li .text-z .number{color:#eb003b;font-size:36px;}
 
 .index-wap2{ width:1100px; border:1px solid #e5e5e5; margin:20px auto;
 

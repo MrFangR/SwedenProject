@@ -11,6 +11,7 @@
 .rose {
     color: #de3457;
 }
+.us-info-dl .btn-error{ border:1px solid #de3457;box-shadow:0 0 5px #de3457 }
 .tm-background {
 	background-image: url(../images/bgbody.png);
 	background-repeat: repeat;
@@ -27,7 +28,7 @@
     text-decoration: none;
 	font-size:14px;
 }
-header{ background:#1e1e1e; height:96px; width:100%;}
+header{ background:#1e1e1e; height:96px; width:100%; min-width:1000px}
 
 .header-con{ 
     margin-left: auto;
@@ -52,7 +53,10 @@ nav ul li.line{
 	width:90px;
 	margin-left:15px;
 }
-.header-con span{color:#eb003b;  margin-top:42px; position:absolute; right:40px; z-index:8}
+.menu-body{position:relative;}
+.login{ position:absolute; top:0px; right:30px;color:#eb003b;}
+.login a{color:#eb003b;}
+.header-con span{color:#eb003b;  margin-top:42px; position:absolute; left:1100px; z-index:8}
 .header-con span a{color:#eb003b;}
 .gonggao{background:#282828; height:65px; width:100%; line-height:65px}
 .ggfont{ margin-left: auto;
