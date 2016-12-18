@@ -28,8 +28,8 @@
         this.setting = {
             "width": 1000,//幻灯片总宽
             "height": 270,//幻灯片总高
-            "posterWidth": 640, //第一帧宽度 --> 当前显示
-            "posterHeight": 270, //第一帧高度 --> 当前显示
+            "posterWidth": 600, //第一帧宽度 --> 当前显示
+            "posterHeight": 295, //第一帧高度 --> 当前显示
             "scale": 0.8, //记录显示比例关系	
             "speed": 1000,
             "autoPlay": true,
@@ -85,7 +85,7 @@
                 this.posterItems.each(function() {
                     var self = $(this),
                     prev = self.prev().get(0) ? self.prev() : _this_.posterLastItem,
-                    width = prev.width(),
+					width = prev.width(),
                     height = prev.height(),
                     zIndex = prev.css("z-index"),
                     opacity = prev.css("opacity"),
@@ -105,6 +105,7 @@
                         _this_.rotateFlag = true;
                     });
                 });
+			
                 //zIndex需要单独保存再设置，防止循环时候设置再取的时候值永远是最后一个的zindex
                 this.posterItems.each(function(i) {
                     $(this).css("zIndex", zIndexArr[i]);
@@ -167,6 +168,7 @@
                 level--; //z-index 逐个递减
                 rw = rw * self.setting.scale; //缩放
                 rh = rh * self.setting.scale; //缩放
+					
                 var j = i;
                 $(this).css({
                     zIndex: level,
@@ -204,6 +206,7 @@
                 });
                 lw = lw / self.setting.scale;
                 lh = lh / self.setting.scale;
+				
                 oloop--;
             });
         },

@@ -169,6 +169,7 @@ nav ul li.line{
 		margin: 20px auto 40px auto;
 	}
 .poster-main .poster-list .poster-item{
+	overflow:hidden;
 	position: absolute;
 	left: 0;
 	top: 0;
