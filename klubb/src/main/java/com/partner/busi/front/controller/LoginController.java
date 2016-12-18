@@ -87,13 +87,56 @@ public class LoginController extends Controller {
 		user.setPHONE(phone);
 		user.setPASSWORD(Encoding.encoding(getPara("pwd")));
 		user.setCreateTime(new Date());
-		user.setSTATUS(0);
+		user.setSTATUS(1);
 		user.save();
+		//下发激活邮件
+		UUID uid = UUID.randomUUID();
+		ResetRec rec = new ResetRec();
+		rec.setEMAIL(getPara("email"));
+		rec.setUUID(uid.toString());
+		rec.setCreateTime(new Date());
+		rec.save();
+		String url = getRequest().getScheme() + "://"
+				+ getRequest().getServerName() + ":"
+				+ getRequest().getServerPort()
+				+ getRequest().getContextPath() + "/front/activate?uid=";
+		
+		String emailContent = generateHtml(email, url+uid.toString());
+		EmailUtil.send("注册激活", emailContent, email);
 		retInfo.setRetCode(0);
-		retInfo.setRetMsg("注册成功");
+		retInfo.setRetMsg("注册成功 ，请到注册邮箱进行激活操作。");
 		renderJson(retInfo);
 	}
 
+	public void activate(){
+		ResultInfo retInfo = new ResultInfo();
+		String uid = getPara("uid");
+		ResetRec rec = ResetRec.dao.findByUid(uid);
+		if (rec == null) {
+			retInfo.setRetCode(1);
+			retInfo.setRetMsg("非法请求链接，请重新获取。");
+		} else {
+			if (DateUtil.toRemind(new Date(), rec.getCreateTime(), 30, "HH")) {
+				retInfo.setRetCode(1);
+				retInfo.setRetMsg("请求链接已失效，请重新获取。");
+			} else {
+				String email = rec.getEMAIL();
+				User user = User.dao.findByEmailAndStatus(email, 1);
+				if(user != null){
+					user.setSTATUS(0);
+					user.update();
+					retInfo.setRetCode(0);
+					retInfo.setRetMsg("激活成功。");
+				}else{
+					retInfo.setRetCode(1);
+					retInfo.setRetMsg("查无此用户，请重新注册 。");
+				}
+			}
+		}
+		setAttr("retInfo", retInfo);
+		render("activate.jsp");
+	}
+	
 	public void toForget() {
 		render("forget.jsp");
 	}
@@ -164,5 +207,17 @@ public class LoginController extends Controller {
 		retInfo.setRetCode(0);
 		retInfo.setRetMsg("修改成功，请重新登录！");
 		renderJson(retInfo);
+	}
+	
+	public String generateHtml(String email, String url){
+		StringBuffer htmlText = new StringBuffer("<!DOCTYPE html><html lang=\"en\"><head><meta http-equiv=\"content-type\" content=\"text/html; charset=utf-8\">");
+		htmlText.append("<style type=\"text/css\">body {border-width:0;margin:0}  img {border:0;margin:0;padding:0} </style> <base target=\"_blank\" /> </head>");
+		htmlText.append("<body> <div style=\"width: 600px; text-align: left; margin: 0 auto;\"> <h1 style=\"color: #005da7;\">Billiards</h1>");
+		htmlText.append("<div style=\"border-bottom: 5px solid #005da7; height: 2px; width: 100%;\"></div><div style=\"border: 1px solid #005da7; font-size: 16px; line-height: 50px; padding: 20px;\"><div>");
+		htmlText.append(email).append("，您好！您已经成功注册为会员！</div><div>请点击  <a href=\"").append(url).append("\">账户激活</a> 完成注册或点击以下链接激活账户</div>");
+		htmlText.append("<div style=\"color: #005da7; font-weight: 800; word-break: break-all;\"><a href=\"").append(url);
+		htmlText.append("</a></div><div style=\"border-bottom: 2px solid #005da7; height: 2px; width: 100%;\"></div></div></div></body></html>");
+		
+		return htmlText.toString();
 	}
 }
