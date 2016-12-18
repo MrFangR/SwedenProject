@@ -164,7 +164,7 @@ function userRegist(){
 				   {type:2,
 					info:'注册',
 					text:'<div style=" font-size:18px; color:#ff0000;">'+json.retMsg+'</div>',
-					'ok':function(){window.location.href = '${ctx}/front/toLogin';},
+					'ok':function(){window.location.href = '${ctx}/home';},
 					tag:'zq-ring'}
 	               );
 			} else {
