@@ -100,7 +100,8 @@ public class UserCenterController extends Controller {
 		user.setPHONE(phone);
 		user.update();
 		retInfo.setRetCode(0);
-		retInfo.setRetMsg("修改成功");
+//		retInfo.setRetMsg("修改成功");
+		retInfo.setRetMsg("Lösenordet har ändrats.");
 		renderJson(retInfo);
 	}
 	
@@ -109,7 +110,8 @@ public class UserCenterController extends Controller {
 	 */
 	public void cancleAct(){
 		boolean rsFlag = false;
-		String rsMsg = "取消活动失败，请稍后再试";
+//		String rsMsg = "取消活动失败，请稍后再试";
+		String rsMsg = "Det gick inte att inställa aktiviteten. Vänligen försök senare.";
 		
 		int actId = getParaToInt("actId");
 		Integer userId = FrontSessionUtil.getSession(getRequest()).getID();
@@ -146,11 +148,13 @@ public class UserCenterController extends Controller {
 		User user = FrontSessionUtil.getSession(getRequest());
 		if(!user.getPASSWORD().equals(Encoding.encoding(oldPwd))){
 			retInfo.setRetCode(1);
-			retInfo.setRetMsg("oldPwd:旧密码输入错误！");
+//			retInfo.setRetMsg("oldPwd:旧密码输入错误！");
+			retInfo.setRetMsg("oldPwd:Felaktigt gammalt lösenord");
 		}else{
 			user.setPASSWORD(Encoding.encoding(newPwd));
 			user.update();
 			retInfo.setRetCode(0);
+//			retInfo.setRetMsg("密码修改成功！");
 			retInfo.setRetMsg("密码修改成功！");
 		}
 		renderJson(retInfo);
@@ -162,14 +166,16 @@ public class UserCenterController extends Controller {
 	@Before(HappyValidator.class)
 	public void uploadHappyTimes(){
 		boolean rsFlag = false;
-		String rsMsg = "发布失败，请稍后再试";
+//		String rsMsg = "发布失败，请稍后再试";
+		String rsMsg = "Det gick inte att publicera. Vänligen försök senare.";
 		
 		Picture pic = getModel(Picture.class);
 		pic.set("USER_ID", FrontSessionUtil.getSession(getRequest()).getID());
 		pic.set("CREATE_TIME", new Date());
 		rsFlag = pic.save();
 		if(rsFlag){
-			rsMsg = "成功";
+//			rsMsg = "成功";
+			rsMsg = "Laddat upp";
 		}
 		
 		setAttr("rsFlag", rsFlag);
@@ -182,7 +188,8 @@ public class UserCenterController extends Controller {
 	 */
 	public void deletePic(){
 		boolean rsFlag = false;
-		String rsMsg = "取消活动失败，请稍后再试";
+//		String rsMsg = "取消活动失败，请稍后再试";
+		String rsMsg = "Det gick inte att inställa aktiviteten. Vänligen försök igen.";
 		
 		int picID = getParaToInt("picID");
 		rsFlag = Picture.dao.deleteById(picID);

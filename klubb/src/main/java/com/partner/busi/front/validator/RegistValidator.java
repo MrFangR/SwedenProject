@@ -31,7 +31,8 @@ public class RegistValidator extends Validator {
 		String pwd = c.getPara("pwd");
 		String repwd = c.getPara("repwd");
 		if(!pwd.equals(repwd)){
-			addError("pwddiff", "两次密码不一致,请重新输入!");
+//			addError("pwddiff", "两次密码不一致,请重新输入!");
+			addError("pwddiff", "Lösenorden stämmer inte");
 		}
 	}
 

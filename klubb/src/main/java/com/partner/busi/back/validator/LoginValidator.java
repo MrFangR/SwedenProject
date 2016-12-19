@@ -22,7 +22,8 @@ public class LoginValidator extends Validator{
 		if(StringUtils.isNotBlank(inputRandomCode)){
 	        boolean loginSuccess = c.validateCaptcha("imgCode");
 	        if(!loginSuccess){
-	        	addError("showMsg", "验证码错误,请重新输入!");
+//	        	addError("showMsg", "验证码错误,请重新输入!");
+	        	addError("showMsg", "Felaktig verifieringskod");
 	        }
 		}
 	}

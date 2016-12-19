@@ -18,7 +18,8 @@ public class EvaluationController extends Controller {
 	@Before(EvaluationValidator.class)
 	public void addEva(){
 		boolean rsFlag = false;
-		String rsMsg = "发布失败，请稍后再试";
+//		String rsMsg = "发布失败，请稍后再试";
+		String rsMsg = "Det gick inte att publicera. Vänligen försök senare.";
 		
 		Evaluation eva = getModel(Evaluation.class);
 		

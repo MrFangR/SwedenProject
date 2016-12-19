@@ -26,7 +26,8 @@ public class PwdValidator extends Validator {
 		String pwd = c.getPara("newPwd");
 		String repwd = c.getPara("repwd");
 		if(!pwd.equals(repwd)){
-			addError("repwdMsg", "两次密码不一致,请重新输入!");
+//			addError("repwdMsg", "两次密码不一致,请重新输入!");
+			addError("repwdMsg", "Lösenorden stämmer inte");
 		}
 	}
 

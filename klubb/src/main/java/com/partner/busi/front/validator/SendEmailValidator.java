@@ -22,13 +22,16 @@ public class SendEmailValidator extends Validator {
 	@Override
 	protected void validate(Controller c) {
 		// TODO Auto-generated method stub
-		validateEmail("email", "emailMsg", "请输入正确用户邮箱!");
-		validateRequiredString("imgcode", "imgcodeMsg", "请输入验证码!");
+//		validateEmail("email", "emailMsg", "请输入正确用户邮箱!");
+		validateEmail("email", "emailMsg", "E-postadress");
+//		validateRequiredString("imgcode", "imgcodeMsg", "请输入验证码!");
+		validateRequiredString("imgcode", "imgcodeMsg", "ange verifieringskoden");
 		String inputRandomCode = c.getPara("imgcode");
 		if(StringUtils.isNotBlank(inputRandomCode)){
 	        boolean loginSuccess = c.validateCaptcha("imgcode");
 	        if(!loginSuccess){
-	        	addError("imgcodeMsg", "验证码错误,请重新输入!");
+//	        	addError("imgcodeMsg", "验证码错误,请重新输入!");
+	        	addError("imgcodeMsg", "Felaktig verifieringskod");
 	        }
 		}
 	}

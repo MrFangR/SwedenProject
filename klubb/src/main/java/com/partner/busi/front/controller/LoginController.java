@@ -51,10 +51,12 @@ public class LoginController extends Controller {
 			// 登录成功，将登录信息放到session当中，跳转到首页
 			FrontSessionUtil.setSession(getRequest(), user);
 			retInfo.setRetCode(0);
-			retInfo.setRetMsg("登录成功");
+//			retInfo.setRetMsg("登录成功");
+			retInfo.setRetMsg("Du är inloggad");
 		} else {// 登录失败，返回给前台
 			retInfo.setRetCode(1);
-			retInfo.setRetMsg("登录失败");
+//			retInfo.setRetMsg("登录失败");
+			retInfo.setRetMsg("Det gick inte att logga in.");
 		}
 		renderJson(retInfo);
 	}
@@ -66,7 +68,8 @@ public class LoginController extends Controller {
 		ResultInfo retInfo = new ResultInfo();
 		FrontSessionUtil.clearSession(getRequest());
 		retInfo.setRetCode(0);
-		retInfo.setRetMsg("退出成功");
+//		retInfo.setRetMsg("退出成功");
+		retInfo.setRetMsg("Du har loggat ut.");
 		renderJson(retInfo);
 	}
 
@@ -114,11 +117,13 @@ public class LoginController extends Controller {
 		ResetRec rec = ResetRec.dao.findByUid(uid);
 		if (rec == null) {
 			retInfo.setRetCode(1);
-			retInfo.setRetMsg("非法请求链接，请重新获取。");
+//			retInfo.setRetMsg("非法请求链接，请重新获取。");
+			retInfo.setRetMsg("Länken är ogitlig. Vänligen förskök igen.");
 		} else {
 			if (DateUtil.toRemind(new Date(), rec.getCreateTime(), 30, "HH")) {
 				retInfo.setRetCode(1);
-				retInfo.setRetMsg("请求链接已失效，请重新获取。");
+//				retInfo.setRetMsg("请求链接已失效，请重新获取。");
+				retInfo.setRetMsg("Länken har gått ut. Vänligen försök igen.");
 			} else {
 				String email = rec.getEMAIL();
 				User user = User.dao.findByEmailAndStatus(email, 1);
@@ -150,7 +155,8 @@ public class LoginController extends Controller {
 		User user = User.dao.findByEmail(email);
 		if (user == null) {
 			retInfo.setRetCode(1);
-			retInfo.setRetMsg("此邮箱账号不存在，请先注册。");
+//			retInfo.setRetMsg("此邮箱账号不存在，请先注册。");
+			retInfo.setRetMsg("e-postadressen är inte registrerad");
 		} else {
 			String content = getRequest().getScheme() + "://"
 					+ getRequest().getServerName() + ":"
@@ -167,9 +173,11 @@ public class LoginController extends Controller {
 			 * Constants.EMAIL_PASSWORD, getPara("email"), "密码修改",
 			 * content+uid.toString(), "text/html;charset=utf-8");
 			 */
-			EmailUtil.send("密码修改", content + uid.toString(), getPara("email"));
+//			EmailUtil.send("密码修改", content + uid.toString(), getPara("email"));
+			EmailUtil.send("ändra lösenordet", content + uid.toString(), getPara("email"));
 			retInfo.setRetCode(0);
-			retInfo.setRetMsg("修改密码邮件发送成功，请查看");
+//			retInfo.setRetMsg("修改密码邮件发送成功，请查看");
+			retInfo.setRetMsg("Ett mejl har skickats till din e-postadress. Vänligen bekräfta detta.");
 		}
 		renderJson(retInfo);
 	}
@@ -181,14 +189,17 @@ public class LoginController extends Controller {
 		ResetRec rec = ResetRec.dao.findByUid(uid);
 		if (rec == null) {
 			retInfo.setRetCode(1);
-			retInfo.setRetMsg("非法请求链接，请重新获取。");
+//			retInfo.setRetMsg("非法请求链接，请重新获取。");
+			retInfo.setRetMsg("Länken är ogitlig. Vänligen förskök igen.");
 		} else {
 			if (DateUtil.toRemind(new Date(), rec.getCreateTime(), 30, "HH")) {
 				retInfo.setRetCode(1);
-				retInfo.setRetMsg("请求链接已失效，请重新获取。");
+//				retInfo.setRetMsg("请求链接已失效，请重新获取。");
+				retInfo.setRetMsg("Länken har gått ut. Vänligen försök igen.");
 			} else {
 				retInfo.setRetCode(0);
-				retInfo.setRetMsg("请修改密码");
+//				retInfo.setRetMsg("请修改密码");
+				retInfo.setRetMsg("Nu kan du ändra lösenordet.");
 				setAttr("email", rec.getEMAIL());
 			}
 		}
@@ -206,6 +217,7 @@ public class LoginController extends Controller {
 		user.update();
 		retInfo.setRetCode(0);
 		retInfo.setRetMsg("修改成功，请重新登录！");
+		retInfo.setRetMsg("Lösenordet har ändrats. Vänligen logga in igen.");
 		renderJson(retInfo);
 	}
 	

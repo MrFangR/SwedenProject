@@ -32,7 +32,8 @@ public class CenterValidator extends Validator {
 		if(StringUtils.isNotBlank(inputRandomCode)){
 	        boolean loginSuccess = c.validateCaptcha("imgcode");
 	        if(!loginSuccess){
-	        	addError("imgcodeMsg", "验证码错误,请重新输入!");
+//	        	addError("imgcodeMsg", "验证码错误,请重新输入!");
+	        	addError("imgcodeMsg", "Felaktig verifieringskod");
 	        }
 		}
 	}

@@ -39,14 +39,16 @@ public class ContactController extends Controller {
 	@Before(ContactValidator.class)
 	public void contactUs(){
 		boolean rsFlag = false;
-		String rsMsg = "发送失败，请稍后再试";
+//		String rsMsg = "发送失败，请稍后再试";
+		String rsMsg = "Det gick inte att publicera. Vänligen försök senare.";
 	
 		Contact contact = getModel(Contact.class);
 		contact.setCreateTime(new Date());
 		rsFlag = contact.save();
 		
 		if(rsFlag){ //保存成功
-			rsMsg = "发送成功";
+//			rsMsg = "发送成功";
+			rsMsg = "Skickat";
 		}
 		setAttr("rsFlag", rsFlag);
 		setAttr("rsMsg", rsMsg);

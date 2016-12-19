@@ -30,11 +30,15 @@ public class ContactValidator extends Validator {
 	 */
 	@Override
 	protected void validate(Controller c) {
-		validateRequiredString("contact.NAME", "name_msg", "请填写姓名");
-		validateRequiredString("contact.PHONE", "phone_msg", "请填写电话");
-		validateRequiredString("contact.CONTENT", "content_msg", "请填写留言");
-//		validateRequiredString("code", "code_msg", "请填写验证码");
-		validateCaptcha("code", "code_msg", "验证码输入有误");
+//		validateRequiredString("contact.NAME", "name_msg", "请填写姓名");
+//		validateRequiredString("contact.PHONE", "phone_msg", "请填写电话");
+//		validateRequiredString("contact.CONTENT", "content_msg", "请填写留言");
+//		validateCaptcha("code", "code_msg", "验证码输入有误");
+		
+		validateRequiredString("contact.NAME", "name_msg", "Namn");
+		validateRequiredString("contact.PHONE", "phone_msg", "Telefonnummer");
+		validateRequiredString("contact.CONTENT", "content_msg", "Meddelande");
+		validateCaptcha("code", "code_msg", "Felaktig verifieringskod");
 	}
 
 }

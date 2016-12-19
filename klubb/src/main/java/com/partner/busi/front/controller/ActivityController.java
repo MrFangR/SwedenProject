@@ -58,7 +58,8 @@ public class ActivityController extends Controller {
 	@Before(ActivityValidator.class)
 	public void addAct(){
 		boolean rsFlag = false;
-		String rsMsg = "发布失败，请稍后再试";
+//		String rsMsg = "发布失败，请稍后再试";
+		String rsMsg = "Det gick inte att publicera. Vänligen försök senare.";
 		
 		ActUser actUser = getModel(ActUser.class);
 		//判断是否为登录状态
