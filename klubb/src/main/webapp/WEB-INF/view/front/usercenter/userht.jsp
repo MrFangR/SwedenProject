@@ -97,7 +97,7 @@ function showHappyTimes(pageNum){
 			var dateStrPre = "";
 			var dateStrNext = "";
 			$.each(data.page.list, function(i, pic){
-				dateStrNext = pic.CREATE_TIME.substr(0,10);
+				dateStrNext = FormatDate(pic.CREATE_TIME);
 				htmlStr += "<li class='listbox'>"
 						+ "		<input id='' name='picID' type='hidden' value='"+pic.ID+"'/>"
 						+ "		<div class='listboximg'>"
@@ -117,6 +117,10 @@ function showHappyTimes(pageNum){
 			setPageInfo("pageDiv", data.page, showHappyTimes);
 		},
 	});
+}
+function FormatDate (strTime) {
+    var date = new Date(strTime);
+    return date.getDate()+"-"+(date.getMonth()+1)+"-"+date.getFullYear();
 }
 function deletePic(picID){
 	$.ajax({

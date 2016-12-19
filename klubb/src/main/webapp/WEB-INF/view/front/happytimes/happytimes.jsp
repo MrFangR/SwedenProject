@@ -61,9 +61,9 @@ function showHappyTimes(pageNum){
 			var dateStrPre = "";
 			var dateStrNext = "";
 			$.each(data.page.list, function(i, pic){
-				dateStrNext = pic.CREATE_TIME.substr(0,10);
+				dateStrNext = FormatDate(pic.CREATE_TIME);
 				if(dateStrPre != dateStrNext){
-				dateStrPre = pic.CREATE_TIME.substr(0,10);
+				dateStrPre = FormatDate(pic.CREATE_TIME);
 				htmlStr += "<div class='clearfix'></div>"
 						+ "<div class='riqi'>"
 						+ "<p class='date'>"+dateStrNext.substr(8,2)+"</p>"
@@ -89,7 +89,10 @@ function showHappyTimes(pageNum){
 			setPageInfo("pageDiv", data.page, showHappyTimes);
 		},
 	});
-
+}
+function FormatDate (strTime) {
+    var date = new Date(strTime);
+    return date.getDate()+"/"+(date.getMonth()+1)+"/"+date.getFullYear();
 }
 </script>
 </html>

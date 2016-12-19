@@ -1,13 +1,12 @@
-<%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html lang="zh-CN">
+<%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="/ninclude/import.jsp"%>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <meta name="format-detection" content="telephone=no,email=no">
     <title>活的内容</title>
-    <%@include file="/ninclude/back/header.jsp"%>
     <script  src="${ctx}/front-ui/js/jquery1.9.0.min.js"></script>
     <script  src="${ctx}/front-ui/js/ui.js"></script>
     <link rel="stylesheet" type="text/css" href="${ctx}/front-ui/css/reset.css">
@@ -20,7 +19,7 @@
 <!--cont-con S-->
   	<div class="cont-con">
     	<h1 class="contitle">${act.TITLE}</h1>
-    	<p class="confutitle"><input name="addAct"  class="contbtn" type="button" value="+<i18n:get key='portal.activity.detail.join'></i18n:get>" onclick="addAct(${act.ID})"><span><i18n:get key="portal.activity.detail.date"></i18n:get>:${fn:substring(act.actTime, 0, 19)}</span></p>
+    	<p class="confutitle"><input name="addAct"  class="contbtn" type="button" value="+<i18n:get key='portal.activity.detail.join'></i18n:get>" onclick="addAct(${act.ID})"><span><i18n:get key="portal.activity.detail.date"></i18n:get>:<fmt:formatDate value="${act.actTime}" pattern="dd/MM/yyyy HH:mm:ss"/></span></p>
       	<p class="conline"></p>
       	<div class="cont-text">
       		${act.CONTENT}

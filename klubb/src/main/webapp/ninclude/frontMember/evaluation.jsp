@@ -124,7 +124,7 @@ function showEvaluation(pageNum){
 							+ "	<dd class='fr'>"
 							+ "		<div class='row clearfix'>"
 							+ "			<h5 class='nickname fl'><i18n:get key="portal.evaluation.name"></i18n:get>:" + eva.NICKNAME + "</h5>"
-							+ "			<span class='time fl'>" + eva.CREATE_TIME + "</span>"
+							+ "			<span class='time fl'>" + FormatDate(eva.CREATE_TIME) + "</span>"
 							+ "		</div>"
 							+ "		<input type='hidden' value='" + eva.ID + "' class='evaId'/>"
 							+ "		<div class='context'>" + eva.CONTENT + "</div>";
@@ -160,6 +160,10 @@ function showEvaluation(pageNum){
 			return;
 		}
 	});
+}
+function FormatDate (strTime) {
+    var date = new Date(strTime);
+    return date.getDate()+"/"+(date.getMonth()+1)+"/"+date.getFullYear()+" "+(date.getHours())+":"+date.getMinutes()+":"+date.getSeconds();
 }
 function replyEva(){
 	$.ajax({

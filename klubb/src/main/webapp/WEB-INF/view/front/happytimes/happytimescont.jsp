@@ -2,7 +2,6 @@
 <html lang="zh-CN">
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/ninclude/import.jsp"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
@@ -21,29 +20,24 @@
   
 <!--cont-con S-->
   <div class="cont-con">
+  	
     <h1 class="happytitle"><i18n:get key="portal.happytimes.author"></i18n:get>:${user.NICKNAME}</h1>
-    <p class="confutitle"><i18n:get key="portal.activity.detail.date"></i18n:get>:${fn:substring(pic.createTime, 0, 19)}</span></p>
+    <p class="confutitle"><i18n:get key="portal.activity.detail.date"></i18n:get>:<fmt:formatDate value="${pic.createTime}" pattern="dd/MM/yyyy HH:mm:ss"/></span></p>
        <p class="conline"></p>
        <div class="cont-text">
           ${pic.DESCRIPTION}
         <p><img src="${uploadUrl}${pic.URL}"></p>
        		 <div class="contentprevnextbox">
-      			<div class="contentprev"><i18n:get key="portal.happytimes.prev"></i18n:get>:
-      				<c:if test="${empty prevPic}">
-						<i18n:get key="portal.happytimes.noprev"></i18n:get>
-					</c:if>
-      				<c:if test="${not empty prevPic}">
-						<a href="${ctx}/front/happytimes/showHTdetails?picID=${prevPic.ID}" rel="prev">${prevPic.DESCRIPTION}</a>
-					</c:if>
-      			</div>
-      			<div class="contentnext"><i18n:get key="portal.happytimes.next"></i18n:get>:
-      				<c:if test="${empty nextPic}">
-						<i18n:get key="portal.happytimes.nonext"></i18n:get>
-					</c:if>
-      				<c:if test="${not empty nextPic}">
+     			<c:if test="${not empty nextPic}">
+					<div class="contentprev"><i18n:get key="portal.happytimes.prev"></i18n:get>:
 						<a href="${ctx}/front/happytimes/showHTdetails?picID=${nextPic.ID}" rel="next">${nextPic.DESCRIPTION}</a>
-					</c:if>
-      			</div>
+					</div>
+				</c:if>
+     			<c:if test="${not empty prevPic}">
+     				<div class="contentnext"><i18n:get key="portal.happytimes.next"></i18n:get>:
+						<a href="${ctx}/front/happytimes/showHTdetails?picID=${prevPic.ID}" rel="prev">${prevPic.DESCRIPTION}</a>
+					</div>
+				</c:if>
    			 </div>
         </div>
 </div>

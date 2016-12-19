@@ -64,9 +64,9 @@ function showUserAct(pageNum){
 			var htmlStr = "";
 			$.each(data.list, function(i, act){
 				htmlStr +="<dl style='display: block;'  class='list hiddenMap position-rel'>"
-						+ "	<dt class='img position-rel fl'><a target='_blank' href='#none'><img src='"+uploadUrl+act.IMG+"' width='340' height='310'></a></dt>"
+						+ "	<dt class='img position-rel fl'><a target='_blank' href='"+ctx+"/front/activity/viewAct?type="+act.ID+"'><img src='"+uploadUrl+act.IMG+"' width='340' height='310'></a></dt>"
 						+ "	<dd class='info  position-rel fr'>"
-						+ "		<p class='title'><a target='_blank' href='#none'>"+act.TITLE+"</a></p>"
+						+ "		<p class='title'><a target='_blank' href='"+ctx+"/front/activity/viewAct?type="+act.ID+"'>"+act.TITLE+"</a></p>"
 						+ "		<p class='gray6 mgt-12'>"+act.ABSTRACT+"</p>"
 						+ "		<div class='moreInfo'><input name='cancleAct' onclick='cancleAct("+act.ID+")' class='contbtn' value='—取消报名' type='button'></div>"
 						+ "	</dd>"
