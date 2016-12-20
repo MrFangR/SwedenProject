@@ -42,10 +42,10 @@ public class FrontSessionUtil {
 	 */
 	public static User getSession(HttpServletRequest request){
 		User frontSess = (User)request.getSession().getAttribute(Constants.FRONT_SESSION_USER);
-		if(frontSess == null){
+		/*if(frontSess == null){
 			frontSess = new User();
 			request.getSession().setAttribute(Constants.FRONT_SESSION_USER, frontSess);
-		}
+		}*/
 		return frontSess;
 	}
 

@@ -8,7 +8,7 @@ function valid_userNo(userNo){
 		return false;
 	}
 	// 格式校验
-	var reg = /^[A-Za-z]{1}[A-za-z0-9]{5,11}$/;
+	var reg = /^[A-Za-z]{1}[A-za-z0-9]{3,11}$/;
 	if (!reg.test(userNo)) {
 		return false;
 	}
