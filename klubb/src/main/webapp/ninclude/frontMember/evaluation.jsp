@@ -16,7 +16,6 @@
 				<p class="limit"><i18n:get key="portal.evaluation.150"></i18n:get></p>
 			</div>
 			<div class="ct-dt-pl-foot clearfix">
-				<a id="J_ctDtPlFaceBtn" class="face fl" href="javascript:;"><i class="icon"></i><i18n:get key="portal.evaluation.insert"></i18n:get></a>
 				<input id="objID" name="objID" type="hidden" value="${act.ID}"/>
 				<input id="objType" name="objType" type="hidden" value="2"/>
 				<input id="PID" name="PID" type="hidden" value="0"/>
