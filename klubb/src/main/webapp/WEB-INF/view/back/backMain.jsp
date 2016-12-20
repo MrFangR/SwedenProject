@@ -8,6 +8,22 @@
 
 <body>
 	<div class="ued-location mgb-20">我的位置：首页</div>
+	<div class="index-wap">
+		<ul>
+     <li>
+     	<i class="ico3"></i>
+        <div class="text-x">今日访问量</div>	
+        <div class="text-z"><span class="number">${todayNum }</span>次</div>	
+         
+     </li>
+    
+     <li class="last">
+     	<i class="ico3"></i>
+         <div class="text-x" style="color:#7aae87">累计访问量</div>	
+        <div class="text-z"><span class="number">${hisNum }</span>次</div>	
+     </li>
+   </ul>
+	</div>
 	<!-- 
 	
 	<div class="index-wap">

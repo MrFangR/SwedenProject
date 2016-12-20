@@ -1,5 +1,6 @@
 package com.partner.busi.model;
 
+import com.jfinal.plugin.activerecord.Db;
 import com.partner.busi.model.base.BaseSysAccessLog;
 
 /**
@@ -8,4 +9,15 @@ import com.partner.busi.model.base.BaseSysAccessLog;
 @SuppressWarnings("serial")
 public class SysAccessLog extends BaseSysAccessLog<SysAccessLog> {
 	public static final SysAccessLog dao = new SysAccessLog();
+	
+	public Long countTodayInterview(String dateFormat){
+		String sql = "select count(*) from sys_access_log where DATE_FORMAT(CREATE_TIME,";
+		if(dateFormat.length() == 8){
+			sql+="'%Y%m%d') = ? ";
+		}else if(dateFormat.length() == 6){
+			sql +=" '%Y%m') = ? ";
+		}
+		Long rs = Db.queryLong(sql, dateFormat);
+		return rs;
+	}
 }
