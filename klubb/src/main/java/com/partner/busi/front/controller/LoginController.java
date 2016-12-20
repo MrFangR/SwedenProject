@@ -216,7 +216,7 @@ public class LoginController extends Controller {
 		user.setPASSWORD(Encoding.encoding(pwd));
 		user.update();
 		retInfo.setRetCode(0);
-		retInfo.setRetMsg("修改成功，请重新登录！");
+//		retInfo.setRetMsg("修改成功，请重新登录！");
 		retInfo.setRetMsg("Lösenordet har ändrats. Vänligen logga in igen.");
 		renderJson(retInfo);
 	}

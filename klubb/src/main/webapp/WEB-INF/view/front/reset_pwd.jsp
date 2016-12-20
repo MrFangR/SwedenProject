@@ -49,7 +49,7 @@ function subPwd() {
 		$("#subPwd").bind("click",subPwd);
 		return false;
 	}else if(pwd!=repwd){
-		$("#repwd_notice").html("两次密码不一致，请重新输入！");
+		$("#repwd_notice").html("Lösenorden stämmer inte!");//两次密码不一致,请重新输入!	
 		$("#subPwd").bind("click",subPwd);
 		return false;
 	}
@@ -76,7 +76,7 @@ function subPwd() {
 				ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
 				   {type:2,
 					info:'忘记密码',
-					text:'<div style=" font-size:18px; color:#ff0000;"> 修改失败 </div>',
+					text:'<div style=" font-size:18px; color:#ff0000;">Det gick inte att ändra lösenordet.</div>',//修改失败 
 					'ok':function(){window.location.href = '${ctx}/front/toForget';},
 					tag:'cw-ring'}
 	               );
@@ -86,7 +86,7 @@ function subPwd() {
 			ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
 			   {type:2,
 				info:'忘记密码',
-				text:'<div style=" font-size:18px; color:#ff0000;"> 修改失败 </div>',
+				text:'<div style=" font-size:18px; color:#ff0000;">Det gick inte att ändra lösenordet.</div>',//修改失败 
 				'ok':function(){window.location.href = '${ctx}/front/toForget';},
 				tag:'cw-ring'}
                );

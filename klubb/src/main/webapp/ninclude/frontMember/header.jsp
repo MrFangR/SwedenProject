@@ -45,7 +45,7 @@ $(function(){
 function showAlert(){
 	ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
 	   {type:2,
-		info:'比赛',
+		info:'tävlingar',//比赛
 		text:'<div style=" font-size:18px; color:#ff0000;"> 正在建设中，敬请期待...</div>',
 		'ok':function(){},
 		tag:'tx-ring'}
@@ -64,7 +64,7 @@ function logout(){
 				ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
 				   {type:2,
 					info:'',
-					text:'<div style=" font-size:18px; color:#ff0000;"> 退出成功</div>',
+					text:'<div style=" font-size:18px; color:#ff0000;">Du har loggat ut.</div>',//退出成功
 					'ok':function(){window.location.href = '${ctx}/home';},
 					tag:'zq-ring'}
 	               );

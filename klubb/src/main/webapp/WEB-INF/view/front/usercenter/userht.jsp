@@ -27,7 +27,7 @@
             <!--us-set-lf end-->
 			<!--us-set-rt start-->
 			<div class="us-set-rt fl" style="padding-left:10px; position:relative">
-				<input name="uploadIMG" class="contbtn" value="+添加图片" type="button" style=" position:absolute; right:40px; top:40px">
+				<input name="uploadIMG" class="contbtn" value="+ladda upp bilder" type="button" style=" position:absolute; right:40px; top:40px">
 				<div class="xmfb_title" style="width:200px;margin:10px auto 30px auto">
 					<h2>HappyTimes</h2>
 				</div>
@@ -66,7 +66,7 @@ $(function(){
 	//删除happytimes相片	
 	
 	$(".list-condel	ul li").live("mouseenter",function(){
-		 $(this).append("<div class='list-del'><i class='delico'></i>删除相片</div>");
+		 $(this).append("<div class='list-del'><i class='delico'></i>radera bilden</div>");//删除相片
 		
 		})
 	$(".list-condel	ul li").live("mouseleave ",function(){
@@ -135,7 +135,7 @@ function deletePic(picID){
 				ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
 				   {type:2,
 					info:'提示信息',
-					text:'<div style=" font-size:18px; color:#ff0000;">删除成功</div>',
+					text:'<div style=" font-size:18px; color:#ff0000;">Du har raderat bilden.</div>',//删除成功
 					'ok':function(){showHappyTimes(1);},
 					tag:'zq-ring'}
 	               );

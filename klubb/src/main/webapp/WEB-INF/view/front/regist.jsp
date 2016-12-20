@@ -33,32 +33,32 @@
 							
                                     <dl  class="us-info-dl clearfix">
 										<dt class="fl"><span class="rose">*</span><i18n:get key="portal.contact.form.name"></i18n:get>：</dt>
-										<dd class="fl"><input  type="text" id="name" placeholder="请输入您的姓名"/></dd>
+										<dd class="fl"><input  type="text" id="name" placeholder="Ange ditt namn"/></dd><!-- 请输入您的姓名 -->
 										<dd id="name_notice" class="notice"></dd>
 									</dl>
 									<dl  class="us-info-dl clearfix">
 										<dt class="fl"><span class="rose">*</span><i18n:get key="portal.regist.nickname"></i18n:get>：</dt>
-										<dd class="fl"><input  type="text" id="nickName" placeholder="请输入您的昵称"/></dd>
+										<dd class="fl"><input  type="text" id="nickName" placeholder="Ange ditt smeknamn"/></dd><!-- 请输入您的昵称 -->
 										<dd id="nickName_notice" class="notice"></dd>
 									</dl>
                                     <dl  class="us-info-dl clearfix">
 										<dt class="fl"><span class="rose">*</span><i18n:get key="portal.regist.number"></i18n:get>：</dt>
-										<dd class="fl"><input  type="text" id="idNum" placeholder="请输入您的人口号"/></dd>
+										<dd class="fl"><input  type="text" id="idNum" placeholder="Ange ditt personnummer"/></dd><!-- 请输入您的人口号 -->
 										<dd id="idNum_notice" class="notice"></dd>
 									</dl>
                                     <dl  class="us-info-dl clearfix">
 										<dt class="fl"><span class="rose">*</span><i18n:get key="portal.regist.email"></i18n:get>：</dt>
-										<dd class="fl"><input  type="text" id="email" placeholder="请输入您的邮箱"/></dd>
+										<dd class="fl"><input  type="text" id="email" placeholder="ange din e-postadress"/></dd><!-- 请输入您的邮箱 -->
 										<dd id="email_notice" class="notice"></dd>
 									</dl>
 									<dl  class="us-info-dl clearfix">
 										<dt class="fl"><span class="rose">*</span><i18n:get key="portal.regist.password"></i18n:get>：</dt>
-										<dd class="fl"><input  type="password" id="pwd" placeholder="建议使用两种字符组合"/></dd>
+										<dd class="fl"><input  type="password" id="pwd" placeholder="建议使用两种字符组合"/></dd><!-- 建议使用两种字符组合 -->
 										<dd id="pwd_notice" class="notice"></dd>
 									</dl>
 									<dl  class="us-info-dl clearfix">
 										<dt class="fl"><span class="rose">*</span><i18n:get key="portal.regist.repassword"></i18n:get>：</dt>
-										<dd class="fl"><input  type="password" id="repwd" placeholder="请再次输入密码"/></dd>
+										<dd class="fl"><input  type="password" id="repwd" placeholder="bekräfta ditt nytt lösenord"/></dd><!-- 请再次输入密码 -->
 										<dd id="repwd_notice" class="notice"></dd>
 									</dl>
 									<dl  class="us-info-dl clearfix">
@@ -71,7 +71,7 @@
 									</dl>	
                                     <dl  class="us-info-dl clearfix">
 										<dt class="fl"><i18n:get key="portal.regist.phone"></i18n:get>：</dt>
-										<dd class="fl"><input  type="text" id="phone" placeholder="请输入您的手机号"/></dd>
+										<dd class="fl"><input  type="text" id="phone" placeholder="Mobilnummer"/></dd><!-- 请输入您的手机号 -->
 										<dd id="phone_notice" class="notice"></dd>
 									</dl>
                                     <dl class="us-info-dl clearfix">
@@ -122,7 +122,7 @@ function userRegist(){
 		$("#submitRegist").bind("click",userRegist);
 		return false;
 	}else if(!jST.isEmail(email)){
-		$("#email_notice").html("请输入全法邮箱地址！");
+		$("#email_notice").html("E-postadressen är ogiltlig!");//请输入正确邮箱地址!	
 		$("#submitRegist").bind("click",userRegist);
 		return false;
 	}
@@ -138,7 +138,7 @@ function userRegist(){
 		$("#submitRegist").bind("click",userRegist);
 		return false;
 	}else if(pwd!=repwd){
-		$("#repwd_notice").html("两次密码不一致，请重新输入！");
+		$("#repwd_notice").html("Lösenorden stämmer inte!");//两次密码不一致,请重新输入!	
 		$("#submitRegist").bind("click",userRegist);
 		return false;
 	}
@@ -162,7 +162,7 @@ function userRegist(){
 			if (mark == 0) {
 				ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
 				   {type:2,
-					info:'注册',
+					info:'registrera',//注册
 					text:'<div style=" font-size:18px; color:#ff0000;">'+json.retMsg+'</div>',
 					'ok':function(){window.location.href = '${ctx}/home';},
 					tag:'zq-ring'}

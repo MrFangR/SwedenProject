@@ -22,8 +22,8 @@
   <!--ist-con S-->		
   <div class="list-con">
        <div class="list-tab"> 
-       		<div class="list-title curr">人员简介</div>
-            <div class="list-title">公司简介</div>
+       		<div class="list-title curr">Om personalen/Om gruppen</div><!-- 人员简介 -->
+            <div class="list-title">Om företaget</div><!-- 公司简介 -->
             <div class=" clearfix"></div>
        
        </div>

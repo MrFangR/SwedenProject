@@ -141,7 +141,7 @@ function ui_com_hallpop(objShow,objHide,objhallpop,obj){
 									$(misoAlert_btnbr).css({'padding-left':'15px','padding-right':'15px'});
 								     $(misoAlert_btnbr).html(obj.btntext1);
 									}else{
-										$(misoAlert_btnbr).html("确定");
+										$(misoAlert_btnbr).html("bekräfta");
 										};
 
 								$(misoAlert_btnbr).live('click',function(){
@@ -158,7 +158,7 @@ function ui_com_hallpop(objShow,objHide,objhallpop,obj){
 								
 								var misoAlert_btnbr2 = document.createElement('span')
 			                	$(misoAlert_btnbr2).addClass("misoAlert-btnbr");
-								$(misoAlert_btnbr2).html("确定");
+								$(misoAlert_btnbr2).html("bekräfta");
 								$(misoAlert_btnbr2).live('click',function(){
 									$(".ands-miso-cover").remove();
 									$(objhallpop).hide();
@@ -169,7 +169,7 @@ function ui_com_hallpop(objShow,objHide,objhallpop,obj){
 								
 								var misoAlert_btnsb = document.createElement('span')
 			                	$(misoAlert_btnsb).addClass("misoAlert-btnsb");
-								$(misoAlert_btnsb).html("确定");
+								$(misoAlert_btnsb).html("bekräfta");
 								$(misoAlert_btnsb).live('click',function(){
 									$(".ands-miso-cover").remove();
 									$(objhallpop).hide();

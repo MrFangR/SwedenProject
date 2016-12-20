@@ -28,13 +28,11 @@
            	 	<!--us-set-lf end-->
                  <!--us-set-rt start-->
           		<div class="us-set-rt fl">
-                	 <!--活动列表start-->
-                	 <input id="pageSizeIn" name="pageSize" type="hidden" value="3"/>
+                	<!--活动列表start-->
+                	<input id="pageSizeIn" name="pageSize" type="hidden" value="3"/>
                 	<div class="shopslist_con houseList shopsc" id="actListDiv">
                   	</div>
-                        <!--活动列表end-->
-                    
-                
+                    <!--活动列表end-->
             </div>
            <!--us-set-rt end-->
            
@@ -96,7 +94,7 @@ function cancleAct(actId){
 				ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
 						   {type:2,
 							info:'取消成功',
-							text:'<div style=" font-size:18px; color:#ff0000;">取消活动成功</div>您好，您已取消参加活动',
+							text:'<div style=" font-size:18px; color:#ff0000;">Du har inställt aktiviteten.</div>',//取消活动成功，您好，您已取消参加活动
 							'ok':function(){location.href=ctx + "/userCenter/toActMan";},
 							tag:'cw-ring'}
 			               );

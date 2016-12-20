@@ -20,7 +20,7 @@
 	<div class="search">
 		<p class="w1000">
 			<input name="" type="text" class="inputfont" value="">
-			<input name="" type="button" class="inputbut" value="搜索">
+			<input name="" type="button" class="inputbut" value="<i18n:get key='portal.activity.search.button'></i18n:get>">
 			<input id="pageSizeIn" name="pageSize" type="hidden" value="12"/>
 		</p>
 	</div>

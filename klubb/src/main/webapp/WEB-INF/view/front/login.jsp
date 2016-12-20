@@ -34,7 +34,7 @@
 			<div class="us-bd-base xmfb_con_text">
 				<dl class="us-info-dl clearfix">
 					<dt class="fl">
-						<span class="rose">*</span><i18n:get key="portal.user.name"></i18n:get>：
+						<span class="rose">*</span><i18n:get key="portal.user.name"></i18n:get>:
 					</dt>
 					<dd class="fl">
 						<input type="text" name="loginname" id="loginname" placeholder=""/>
@@ -44,7 +44,7 @@
 
 				<dl class="us-info-dl clearfix">
 					<dt class="fl">
-						<span class="rose">*</span><i18n:get key="portal.user.password"></i18n:get>：
+						<span class="rose">*</span><i18n:get key="portal.user.password"></i18n:get>:
 					</dt>
 					<dd class="fl">
 						<input type="password" id="loginpwd" name="loginpwd" placeholder=""/>
@@ -53,7 +53,7 @@
 				</dl>
 				<dl class="us-info-dl clearfix">
 					<dt class="fl">
-						<span class="rose">*</span><i18n:get key="portal.contact.form.code"></i18n:get>：
+						<span class="rose">*</span><i18n:get key="portal.contact.form.code"></i18n:get>:
 					</dt>
 					<dd class="fl">
 						<input type="text" id="imgcode" name="imgcode" maxlength="4" class="ued-input fl" style="width:110px;" /> 
@@ -70,7 +70,7 @@
 						<div class="us-btn" id="submitLogin"><i18n:get key="portal.menu.login"></i18n:get></div>
 					</dd>
 					<dd class="notice" style="padding-top:8px">
-						<a href="${ctx }/front/toForget" style="font-size:12px; color:#03F; margin-left:20px;"><i18n:get key="portal.user.forget"></i18n:get>？</a>
+						<a href="${ctx }/front/toForget" style="font-size:12px; color:#03F; margin-left:20px;"><i18n:get key="portal.user.forget"></i18n:get>?</a>
 					</dd>
 				</dl>
 
@@ -96,16 +96,16 @@ $("#submitLogin").click(function(){
 	var login_no = $("#loginname").val();
 	var password = $("#loginpwd").val();
 	if (login_no.trim().length == 0) {
-		$("#loginname_notice").html("请输入邮箱！");
+		$("#loginname_notice").html("ange din e-postadress!");//请输入邮箱 
 		return false;
 	}
 	if (password.trim().length == 0) {
-		$("#loginpwd_notice").html("请输入密码！");
+		$("#loginpwd_notice").html("ange ditt lösenord!");//请输入密码	
 		return false;
 	}
 	var randval = $("#imgcode").val();
 	if (randval.trim().length == 0) {
-		$("#imgcode_notice").html('请输入验证码！');
+		$("#imgcode_notice").html('ange verifieringskoden!');//请输入验证码
 		return false;
 	}
 	$("#submitLogin").attr('disabled', true);

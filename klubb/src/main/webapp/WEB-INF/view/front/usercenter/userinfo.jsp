@@ -110,17 +110,17 @@
                                      
                                         <dl  class="us-info-dl clearfix">
                                             <dt class="fl"><span class="brown">*</span><i18n:get key="portal.user.center.oldpwd"></i18n:get>：</dt>
-                                            <dd class="fl"><input type="password" id="oldPwd" placeholder="请输入原始密码"/></dd>
+                                            <dd class="fl"><input type="password" id="oldPwd" placeholder="Ange gamla lösenordet"/></dd><!-- 请输入原始密码 -->
                                             <dd class="notice"></dd>
                                         </dl>
                                         <dl  class="us-info-dl clearfix">
                                             <dt class="fl"><span class="brown">*</span><i18n:get key="portal.user.forget.newpwd"></i18n:get>：</dt>
-                                            <dd class="fl"><input  type="password" id="newPwd" placeholder="请输入新密码"/></dd>
+                                            <dd class="fl"><input  type="password" id="newPwd" placeholder="ange ett nytt lösenord"/></dd><!-- 请输入新密码 -->
                                             <dd class="notice"></dd>
                                         </dl>
                                         <dl  class="us-info-dl clearfix">
                                             <dt class="fl"><span class="brown">*</span><i18n:get key="portal.regist.repassword"></i18n:get>：</dt>
-                                            <dd class="fl"><input  type="password" id="repwd" placeholder="请再 次输入新密码"/></dd>
+                                            <dd class="fl"><input  type="password" id="repwd" placeholder="bekräfta ditt nytt lösenord"/></dd><!-- 请再 次输入新密码 -->
                                             <dd class="notice"></dd>
                                         </dl>
                                        
@@ -240,7 +240,7 @@ function submitInfo(){
 			ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
 			   {type:2,
 				info:'个人资料',
-				text:'<div style=" font-size:18px; color:#ff0000;"> 修改失败 </div>',
+				text:'<div style=" font-size:18px; color:#ff0000;">Det gick inte att ändra lösenordet. </div>',//修改失败
 				'ok':function(){
 					$("#submitInfo").bind("click",submitInfo);
 					},
@@ -272,7 +272,7 @@ function submitPwd(){
 		$("#submitPwd").bind("click",submitPwd);
 		return false;
 	}else if(newpwd!=repwd){
-		$("#repwd").parent().next(".notice").html("两次密码输入不一致！");
+		$("#repwd").parent().next(".notice").html("Lösenorden stämmer inte");//两次密码不一致,请重新输入!	
 		$("#submitPwd").bind("click",submitPwd);
 		return false;
 	}
@@ -308,7 +308,7 @@ function submitPwd(){
 			ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
 			   {type:2,
 				info:'个人资料',
-				text:'<div style=" font-size:18px; color:#ff0000;"> 修改失败 </div>',
+				text:'<div style=" font-size:18px; color:#ff0000;">Det gick inte att ändra lösenordet.</div>',//修改失败 
 				'ok':function(){
 					$("#submitPwd").bind("click",submitPwd);
 					},

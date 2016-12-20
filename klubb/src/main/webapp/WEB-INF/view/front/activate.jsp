@@ -73,16 +73,16 @@ $("#submitLogin").click(function(){
 	var login_no = $("#loginname").val();
 	var password = $("#loginpwd").val();
 	if (login_no.trim().length == 0) {
-		$("#loginname_notice").html("请输入邮箱！");
+		$("#loginname_notice").html("ange din e-postadress!");//请输入邮箱 
 		return false;
 	}
 	if (password.trim().length == 0) {
-		$("#loginpwd_notice").html("请输入密码！");
+		$("#loginpwd_notice").html("ange ditt lösenord!");//请输入密码
 		return false;
 	}
 	var randval = $("#imgcode").val();
 	if (randval.trim().length == 0) {
-		$("#imgcode_notice").html('请输入验证码！');
+		$("#imgcode_notice").html('ange verifieringskoden!');//请输入验证码
 		return false;
 	}
 	$("#submitLogin").attr('disabled', true);

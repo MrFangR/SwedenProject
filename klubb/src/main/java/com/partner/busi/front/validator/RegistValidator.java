@@ -22,12 +22,18 @@ public class RegistValidator extends Validator {
 	@Override
 	protected void validate(Controller c) {
 		// TODO Auto-generated method stub
-        validateRequiredString("name", "nameMsg", "请输入您的姓名!");
-		validateRequiredString("nickName", "nickNameMsg", "请输入您的昵称!");
-		validateRequiredString("idNum", "idNumMsg", "请输入您的人口号!");
-		validateRequiredString("pwd", "pwdMsg", "请输入您的密码!");
-		validateRequiredString("repwd", "repwdMsg", "请输入您的确认密码!");
-		validateEmail("email", "emailMsg", "请输入正确用户邮箱!");
+//      validateRequiredString("name", "nameMsg", "请输入您的姓名!");
+//		validateRequiredString("nickName", "nickNameMsg", "请输入您的昵称!");
+//		validateRequiredString("idNum", "idNumMsg", "请输入您的人口号!");
+//		validateRequiredString("pwd", "pwdMsg", "请输入您的密码!");
+//		validateRequiredString("repwd", "repwdMsg", "请输入您的确认密码!");
+//		validateEmail("email", "emailMsg", "请输入正确用户邮箱!");
+		validateRequiredString("name", "nameMsg", "Ange ditt namn!");
+		validateRequiredString("nickName", "nickNameMsg", "Ange ditt smeknamn!");
+		validateRequiredString("idNum", "idNumMsg", "Ange ditt personnummer!");
+		validateRequiredString("pwd", "pwdMsg", "Ange ditt lösenord!");
+		validateRequiredString("repwd", "repwdMsg", "Bekräfta ditt lösenord!");
+		validateEmail("email", "emailMsg", "E-postadressen är ogiltlig!");
 		String pwd = c.getPara("pwd");
 		String repwd = c.getPara("repwd");
 		if(!pwd.equals(repwd)){

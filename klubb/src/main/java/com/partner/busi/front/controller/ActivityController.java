@@ -71,7 +71,8 @@ public class ActivityController extends Controller {
 		actUser.set("CREATE_TIME", new Date());
 		rsFlag = actUser.save();
 		if(rsFlag){
-			rsMsg = "参加成功！";
+//			rsMsg = "参加成功！";
+			rsMsg = "Du är anmäld till aktiviteten!";
 		}
 		setAttr("rsFlag", rsFlag);
 		setAttr("rsMsg", rsMsg);

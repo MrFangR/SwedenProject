@@ -92,7 +92,7 @@
 			$("#email_notice").html("邮箱不能为空！");
 			return false;
 		} else if (!jST.isEmail(email)) {
-			$("#email_notice").html("请输入正确邮箱地址！");
+			$("#email_notice").html("E-postadressen är ogiltlig!");//请输入正确邮箱地址!
 			return false;
 		}
 		$.ajax({
@@ -135,8 +135,8 @@
 			error : function() {
 				ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
 				   {type:2,
-					info:'忘记密码',
-					text:'<div style=" font-size:18px; color:#ff0000;"> 修改失败 </div>',
+					info:'jag har glömt mitt lösenord',//忘记密码
+					text:'<div style=" font-size:18px; color:#ff0000;">Det gick inte att ändra lösenordet. </div>',//修改失败
 					'ok':function(){window.location.href = '${ctx}/front/toForget';},
 					tag:'cw-ring'}
 	               );

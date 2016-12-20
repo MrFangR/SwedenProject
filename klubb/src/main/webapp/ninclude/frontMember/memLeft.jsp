@@ -5,10 +5,10 @@
 	<div class="us-set-top">
 		<dl class="info clearfix">
 			<dd>
-				<h3 class="nic">用户名 ： ${user.NAME }</h3>
+				<h3 class="nic"><i18n:get key="portal.user.name"></i18n:get>: ${user.NAME }</h3>
 			</dd>
 			<dd>
-				<h3>绑定手机号：${user.PHONE }</h3>
+				<h3><i18n:get key="portal.regist.phone"></i18n:get>:${user.PHONE }</h3>
 			</dd>
 		</dl>
 
