@@ -26,7 +26,7 @@
 	<div class="cont-con">
 		<!--内容 start-->
 		<div class="main_body xmfb_con">
-			<div class="xmfb_title" style="width:200px;">
+			<div class="xmfb_title" style="width:380px;">
 				<h2><i18n:get key="portal.user.login"></i18n:get></h2>
 			</div>
 			<div class="xmfb_xx"></div>

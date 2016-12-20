@@ -52,7 +52,7 @@ $(function(){
 	//删除happytimes相片	
 	
 	$(".list-condel	ul li").live("mouseenter",function(){
-		 $(this).append("<div class='list-del'><i class='delico'></i>删除相片</div>");
+		 $(this).append("<div class='list-del'><i class='delico'></i>radera bilden</div>");
 		
 		})
 	$(".list-condel	ul li").live("mouseleave ",function(){
