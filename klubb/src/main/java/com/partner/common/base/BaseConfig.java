@@ -31,6 +31,7 @@ import com.partner.busi.front.controller.IntroduceController;
 import com.partner.busi.front.controller.LoginController;
 import com.partner.busi.front.controller.UserCenterController;
 import com.partner.busi.model._MappingKit;
+import com.partner.common.interceptor.AuthInterceptor;
 import com.partner.common.plugin.PropertiesPlugin;
 import com.partner.common.tag.I18nTag;
 import com.partner.common.util.UploadController;
@@ -122,7 +123,7 @@ public class BaseConfig extends JFinalConfig {
 	@Override
 	public void configInterceptor(Interceptors me) {
 		// TODO Auto-generated method stub
-		//me.add(new AuthInterceptor());
+		me.add(new AuthInterceptor());
 	}
 
 	/*

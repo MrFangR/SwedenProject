@@ -33,7 +33,7 @@
 				</div>
 			</li>
 			<li>
-				<a class="end" href="${ctx}/back/login/logout">退出</a>
+				<a class="end" href="${ctx}/back/logout">退出</a>
 			</li>
 		</ul>
 	</div>
