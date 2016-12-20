@@ -53,7 +53,7 @@ public class BaseConfig extends JFinalConfig {
 		me.setViewType(ViewType.JSP);
 		me.setBaseViewPath("WEB-INF/view/");
 		me.setBaseUploadPath(getProperty("uploadDir"));
-		I18nTag.locale = "zh_CN";
+		I18nTag.locale = "en_US";
 	}
 
 	/*
