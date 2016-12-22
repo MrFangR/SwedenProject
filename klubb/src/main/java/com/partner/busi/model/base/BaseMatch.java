@@ -40,13 +40,21 @@ public abstract class BaseMatch<M extends BaseMatch<M>> extends Model<M> impleme
 	public java.lang.Integer getTYPE() {
 		return get("TYPE");
 	}
-	
+
 	public void setTHIRD(java.lang.Integer THIRD) {
 		set("THIRD", THIRD);
 	}
 
 	public java.lang.Integer getTHIRD() {
 		return get("THIRD");
+	}
+
+	public void setStartDate(java.util.Date startDate) {
+		set("START_DATE", startDate);
+	}
+
+	public java.util.Date getStartDate() {
+		return get("START_DATE");
 	}
 
 	public void setDESCRIPTION(java.lang.String DESCRIPTION) {
@@ -57,28 +65,20 @@ public abstract class BaseMatch<M extends BaseMatch<M>> extends Model<M> impleme
 		return get("DESCRIPTION");
 	}
 
-	public void setSTATUS(java.lang.Integer STATUS) {
-		set("STATUS", STATUS);
-	}
-
-	public java.lang.Integer getSTATUS() {
-		return get("STATUS");
-	}
-	
-	public void setPId(java.lang.Integer pid) {
-		set("P_ID", pid);
+	public void setPId(java.lang.Integer pId) {
+		set("P_ID", pId);
 	}
 
 	public java.lang.Integer getPId() {
 		return get("P_ID");
 	}
 
-	public void setStartDate(java.util.Date startDate) {
-		set("START_DATE", startDate);
+	public void setSTATUS(java.lang.Integer STATUS) {
+		set("STATUS", STATUS);
 	}
 
-	public java.util.Date getStartDate() {
-		return get("START_DATE");
+	public java.lang.Integer getSTATUS() {
+		return get("STATUS");
 	}
 
 }

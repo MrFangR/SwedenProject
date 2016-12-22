@@ -17,20 +17,20 @@ public abstract class BaseSysAccessLogHis<M extends BaseSysAccessLogHis<M>> exte
 		return get("ID");
 	}
 
-	public void setNum(java.lang.Integer num) {
-		set("NUM", num);
-	}
-
-	public java.lang.Integer getNum() {
-		return get("NUM");
-	}
-
 	public void setYYYYMM(java.lang.String YYYYMM) {
 		set("YYYYMM", YYYYMM);
 	}
 
 	public java.lang.String getYYYYMM() {
 		return get("YYYYMM");
+	}
+
+	public void setNUM(java.lang.Integer NUM) {
+		set("NUM", NUM);
+	}
+
+	public java.lang.Integer getNUM() {
+		return get("NUM");
 	}
 
 	public void setCreateTime(java.util.Date createTime) {
