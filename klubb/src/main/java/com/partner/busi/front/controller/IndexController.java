@@ -8,6 +8,7 @@ import java.util.List;
 import com.jfinal.core.Controller;
 import com.partner.busi.model.CUser;
 import com.partner.busi.model.Config;
+import com.partner.busi.model.Match;
 import com.partner.busi.model.Notice;
 import com.partner.busi.model.Picture;
 
@@ -21,6 +22,8 @@ public class IndexController extends Controller {
 		//获取最新公告
 		Notice notice = Notice.dao.findNotice();
 		setAttr("notice",notice);
+		//获取最新比赛
+		List<Match> matchLst = Match.dao.queryNewMatch();
 		//获取 happytime 数据
 		List<Picture> pictures = Picture.dao.findRecommendPic();
 		setAttr("pictures",pictures);
