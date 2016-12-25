@@ -796,3 +796,62 @@
 .listdate .riq{ margin-left:90px;}
 .listinfo .xs{ height:32px; line-height:32px; border-top:1px solid #CCC;margin-left: 10px; color:#333}
 .listinfo .xs input{}
+
+
+/*比赛*/
+.matchtitle{font-size:14px; color:#fff;}
+.matchtitle li{ float:left; width:310px; text-align:center; display:block; margin-left:1px; background:#333843;height:36px; line-height:36px; cursor:pointer}
+.matchtitle li:hover 
+{   
+  background:#222;  
+}   
+.dropbox{ width:310px; float:left;}
+.nodrop{ float:left; width:310px}
+.matchgroup{ width:360px; position:relative;}
+.matchgroup .matchline{ top:36px; right:0px; position:absolute; z-index:-1;margin-left:80px;}
+.bracket-line {
+    fill: none;
+    stroke: #222;
+    stroke-width: 2px;
+}
+.template{ width:300px; height:80px; position:relative;}
+.template h3{ font-size:20px; position:absolute; top:28px;left:10px;}
+.template .group{ margin-top:5px; margin-left:40px}
+.template .group i{
+	border-radius: 5px 0px 0px 5px; 
+	height:36px; 
+	width:36px; 
+	background:#787a80; 
+	display:inline-block; 
+	vertical-align:top;
+	line-height:36px;
+	font-style:normal;
+	text-align:center}
+.template .group span{
+	height:36px; 
+	width:160px; 
+	background:#58595e; 
+	line-height:36px; 
+	font-size:14px; 
+	display:inline-block;
+	vertical-align:top; 
+	color:#fff;
+	padding-left:20px;}
+.template .group input{
+	border-radius: 0px 5px 5px 0px; 
+	height:36px; 
+	width:36px; 
+	background:#787a80; 
+	display:inline-block; 
+	vertical-align:top; 
+	border:0px;
+	text-align:center}
+.template .group span:hover 
+{   
+  background:#222;  
+}   
+.mgt-60{ margin-top:60px;}
+.mgt-80{ margin-top:80px;}
+.mgt-160{ margin-top:160px;}
+.mgt-200{ margin-top:200px;}
+.mgt-230{ margin-top:230px;}

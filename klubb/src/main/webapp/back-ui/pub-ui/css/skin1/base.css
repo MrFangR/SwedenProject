@@ -9,9 +9,10 @@
 /*
  *base style
 */
-body, form, frame, iframe, blockquote, p, pre, sup, sub, table, caption, ol, dl, ul, li, dl, dd, dt, div, span, a, input, textarea, fieldset, legend, b, strong, em, i, h1, h2, h3, h4, h5, h6, img, label {
+body, form, frame, iframe, blockquote, p, pre, sup, sub, table, caption, ol, dl, ul, li, dl, dd, dt, div, span, a, input, textarea, fieldset, legend, b, strong, em, i, h1, h2, h3, h4, h5, h6, img, label, svg{
     margin: 0;
     padding: 0;
+	
 }
 table {
     border-collapse: collapse;

@@ -1,0 +1,57 @@
+.gu-mirror {
+  position: fixed !important;
+  margin: 0 !important;
+  z-index: 9999 !important;
+}
+.gu-hide {
+  display: none !important;
+}
+.gu-unselectable {
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+}
+.gu-transit {
+  opacity: 0.2;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
+  filter: alpha(opacity=20);
+}
+.gh-fork {
+  position: fixed;
+  top: 0;
+  right: 0;
+  border: 0;
+}
+
+/* dragula-specific example page styles */
+
+.container {
+  display: table-cell;
+  background-color: rgba(255, 255, 255, 0.2);
+  width: 50%;
+}
+.container:nth-child(odd) {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.container div {
+  margin: 10px;
+  padding: 10px;
+  width:86%;
+  background-color: rgba(0, 0, 0, 0.2);
+  transition: all 0.4s ease-in-out;
+  position:relative;
+}
+.container div i{ position:absolute; top:10px; z-index:100;}
+.container div i.mtch_del{right:-80px;}
+.container div i.mtch_edit{right:-40px;}
+.container .ex-moved {
+  background-color: #e74c3c;
+}
+
+/*编辑参赛人*/
+.container i{ width:24px; height:24px; display:inline-block; vertical-align:middle; float:right}
+.mtch_del{background:url(../../images/icon-3.png) 6px -60px no-repeat;}
+.mtch_del:hover{background:url(../../images/icon-3.png) 6px -92px no-repeat;}
+.mtch_edit{background:url(../../images/icon-3.png) 6px 4px no-repeat;}
+.mtch_edit:hover{background:url(../../images/icon-3.png) 6px -25px no-repeat;}
