@@ -85,6 +85,7 @@ public class BaseConfig extends JFinalConfig {
 		me.add("/front/happytimes",HappyTimesController.class,"/front");
 		me.add("/contact",ContactController.class,"/front");
 		me.add("/userCenter",UserCenterController.class,"/front/usercenter");
+		me.add("/back/match/editUser",BackConfigController.class,"/back/match/editUser");
 	}
 
 	/*
