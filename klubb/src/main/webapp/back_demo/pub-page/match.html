@@ -271,16 +271,38 @@
                         <div>Item 4. <i class="mtch_del"></i><i class="mtch_edit"></i></div>
                         <div>Item 5. <i class="mtch_del"></i><i class="mtch_edit"></i></div>
                         <div>Item 6. <i class="mtch_del"></i><i class="mtch_edit"></i></div>
-                  </div>
+                   </div>
 
-                
+                  <div class="tc" style="width:60%; margin-top:30px;"><button class="ued-button-2 js_dialog">添加人员</button></div>
              </div>
             <!--第二tab  e-->
         </div>
         <!--tabcon  e-->
 
 </div>
- 
+  <!--弹框  s-->
+ <div data-role="ued-dialog" class="ued-dialog" id="btn-dialog">
+    <div class="dialog-header">
+        <h3>添加参数人员</h3>
+        <span class="dialog-tool">
+            <a title="关闭" class="dialog-close">X</a>
+        </span>
+    </div>
+    <div>
+        <p class="pd-20 dialog-tipInfo clearfix">姓名：
+        <select size="1" style="width:180px;">
+          <option>昌盛</option>
+          <option>lijianghui</option>
+          <option>王二小</option>
+       </select>
+       </p>
+        <div class="pd-10 tc">
+            <button type="button" class="ued-button-2 mgr-25">保存</button>
+            <button type="button" class="ued-button-3 dialog-close">取消</button>
+        </div>
+    </div>
+</div>
+  <!--弹框  e-->
 <script type="text/javascript" src="../pub-ui/js/lib/jquery-1.7.2.min.js"></script>
 <script type="text/javascript" src="../pub-ui/js/plugin/ui.js"></script>
 <script type="text/javascript" src="../pub-ui/js/plugin/jquery.ztree.all-3.5.js"></script>
@@ -288,6 +310,17 @@
 <script type="text/javascript" src='../pub-ui/js/plugin/dragula.js'></script>
  <script type="text/javascript"> 
  $(function(){
+	 
+	  //高度设置
+    var contWrapH = $("div.ued-layout").height();
+    $("#ued-ztree").css("height",contWrapH-94);
+	//ztree.json为你的url
+	$("#ued-ztree").UED_tree();
+	
+	//弹出框
+	$(".js_dialog").bind("click",function(){		
+        $("#btn-dialog").trigger("dialog-open");
+	})
 	 $(".container i.mtch_del").click(function(){
 		  $(this).parent().remove();
 		    

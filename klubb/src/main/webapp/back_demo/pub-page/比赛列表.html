@@ -1,0 +1,150 @@
+<!DOCTYPE HTML>
+<html>
+    
+<head>
+    <title>比赛列表</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" type="text/css" href="../pub-ui/css/skin1/all.css">
+    <link rel="stylesheet" type="text/css" href="../pub-ui/css/skin1/zTreeStyle.css">
+</head>
+
+<body>
+<!--面包屑  s-->
+<div class="ued-location mgb-20">我的位置：<a href="#none">系统管理</a>&nbsp;&gt;&nbsp;<a href="#none">应用中心</a>&nbsp;&gt;&nbsp;比赛列表</div>
+<!--面包屑  d-->
+<div class="ued-tab js_tab">
+    <div class="ued-tab-tit clearfix js_tab_tit">
+        <ul class="ued-tab-1 fl clearfix">
+            <li class="on1 "><a class="ued-add" href="javascript:void(0)">赛事列表</a></li>
+            <li class="liQuery"><a class="ued-see" href="javascript:void(0)">添加比赛</a></li>
+        </ul>
+
+    </div>
+    <div class="ued-tab-con">	
+        <div class="box-n on1">
+            <!-- 列表 s -->
+            <table width="100%" cellspacing="0" cellpadding="0" border="0" class="ued-table mgt-20">
+                <tbody>
+                    <tr class="ued-tr-even">
+                        <th>序号<i class="ued-cor-d"></i></th>
+                        <th>比赛名称<i class="ued-cor-d"></i></th>
+                        <th>比赛制度<i class="ued-cor-up"></i></th>
+                        <th>参与人数</th>
+                        <th>比赛时间</th>
+                        <th>操作</th>
+                    </tr>
+                    <tr class="ued-tr-odd">
+                        <td>1</td>
+                        <td>新比赛</td>
+                        <td>单败制</td>
+                        <td>8</td>
+                        <td>2016-12-23</td>
+                        <td><a href="#none">编辑对阵图</a></td>
+                    </tr>
+                    <tr class="ued-tr-even">
+                        <td>2</td>
+                        <td>双淘汰比赛</td>
+                        <td>双淘汰制</td>
+                        <td>10</td>
+                        <td>2016-12-23</td>
+                        <td><a href="#none">编辑对阵图</a></td>
+                    </tr>
+                
+                </tbody>
+            </table>
+                        <div class="tc">
+                            <!--paging star-->
+                            <div class="ued-pading mgt-15 clearfix">
+                                <a href="#" class="prev">上一页</a>
+                                <a href="#">1</a>
+                                <a href="#">3</a>
+                                <a href="#">4</a>
+                                <a href="#" class="on">5</a>
+                                <a href="#">6</a>
+                                <a href="#">7</a>
+                                <em>...</em>
+                                <a href="#">380</a>
+                                <a href="#" class="next">下一页</a>
+                                <span>到<input type="text" class="ued-pading-text" />页</span>
+                                <a href="#" class="bg-on">确定</a>
+                            </div>
+                            <!--ued-pading end-->
+                        </div>
+                        
+                     <!-- 列表 e -->
+        </div>
+        <div class="box-n">
+           <!-- 列表 s -->
+            <table width="100%" cellspacing="0" cellpadding="0" class="ued-table-nobor mgt-15">
+                <colgroup><col width="135"><col><col width="125"><col></colgroup>
+                <tbody>
+                	<tr>
+                        <th><font color="color-3">*&nbsp;</font>赛事名称：</th>
+                        <td colspan="3">
+                            <input type="text" value="" class="ued-text-2" maxlength="30">     
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><font color="color-3">*&nbsp;</font>地址：</th>
+                        <td colspan="3">
+                            <input type="text" value="" class="ued-text-2" maxlength="30">     
+                        </td>
+                    </tr>
+                   
+                    <tr>
+                        <th><font color="color-3">*&nbsp;</font>类型：</th>
+                        <td colspan="3">
+                              <input class="inp-radio" type="radio" name="sex" /><span class="b-radio"><b class="mgr-10"></b>单阶段比赛</span>  
+                              <input class="inp-radio" type="radio" name="sex" /><span class="b-radio"><b class="mgr-10"></b>双阶段比赛 — 小组分别竞争,赢家进入最终阶段(例如世界杯) </span>   
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><font color="color-3">*&nbsp;</font>赛制：</th>
+                        <td colspan="3">
+                               <div style="width:180px;" class="ued-select-2 js_select">
+                                <span class="ued-sel-txt">单赛制</span>
+                                <a class="ued-sel-open"></a>
+                                <div class="ued-option" style="display: none;">
+                                    <a class="">单赛制</a>
+                                    <a class="">双败制</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><font color="color-3">*&nbsp;</font>注册：</th>
+                        <td colspan="3">
+                             <input class="inp-radio" type="radio" name="sex2" /><span class="b-radio"><b class="mgr-10"></b>提供参与者列表 </span>
+
+                             <input class="inp-radio" type="radio" name="sex2" /><span class="b-radio mgl-30"><b class="mgr-10"></b>创建一个注册页面 </span>    
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><font color="color-3">*&nbsp;</font>开始时间：</th>
+                        <td  colspan="3">
+                             <div class="ued-time-2 fl"><input type="text" onclick="WdatePicker()" class="Wdate"></div>
+                        </td>
+                       
+                    </tr>
+                    <tr>
+                        <th><font color="color-3">*&nbsp;</font>描述：</th>
+                        <td colspan="3">
+                            <textarea style="width:80%;" class="ued-textarea">请输入关键字</textarea>
+                            <p class="color-3 fs-14">优惠说明中请勿包含回车字符</p>  
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="mgt-25 tc"><button class="ued-button-2 mgr-25">保存</button><button class="ued-button-3">重置</button></div>
+            <!-- 列表 e -->
+            
+        </div>
+        
+    </div>
+</div>
+<script type="text/javascript" src="../pub-ui/js/lib/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="../pub-ui/js/plugin/ui.js"></script>
+<script type="text/javascript" src="../pub-ui/js/plugin/My97DatePicker/WdatePicker.js"></script>
+
+</body>
+</html>
