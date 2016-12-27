@@ -6,6 +6,8 @@ import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
 
+import com.jfinal.plugin.activerecord.Page;
+import com.jfinal.plugin.activerecord.Record;
 import com.partner.busi.model.base.BaseMatchUser;
 
 /**
@@ -16,7 +18,7 @@ public class MatchUser extends BaseMatchUser<MatchUser> {
 	public static final MatchUser dao = new MatchUser();
 	
 	public List<MatchUser> findUserByMatchId(Map<String,Object> params){
-		String sql = "select * from t_match_user where 1=1 order by CREATE_TIME ";
+		String sql = "select * from t_match_user where 1=1 ";
 		List<Object> paraLst = new  ArrayList<Object>();
 		if(StringUtils.isNotBlank(params.get("matchId").toString())){
 			sql +=" AND MATCH_ID = ?  ";
@@ -26,6 +28,7 @@ public class MatchUser extends BaseMatchUser<MatchUser> {
 			sql +=" AND USER_ID = ? ";
 			paraLst.add(params.get("userId").toString());
 		}
+		sql+=" ORDER BY CREATE_TIME ";
 		return dao.find(sql,paraLst.toArray());
 	};
 	
@@ -33,5 +36,21 @@ public class MatchUser extends BaseMatchUser<MatchUser> {
 		MatchUser user = dao.findFirst("select * from t_match_user where MATCH_ID = "+matchId+" AND USER_ID = "+userId);
 		//user.set(attr, value);//修改状态，增加状态用来标记用户是否参加比赛
 		dao.update();
+	}
+	
+	public Page<MatchUser> findMatchUserListBySeq(int pageNum, int pagesize) {
+		String select = "select m.ID, u.NAME ";
+		StringBuilder sql = new StringBuilder(" from t_match_user m, t_user u where m.USER_ID = u.ID and m.SEQ != null ");
+		List<Object> params = new ArrayList<Object>();
+		sql.append(" order by m.CREATE_TIME desc");
+		return paginate(pageNum, pagesize, select, sql.toString(), params.toArray());
+	}
+	
+	public Page<MatchUser> findMatchUserListNoSeq(int pageNum, int pagesize) {
+		String select = "select * ";
+		StringBuilder sql = new StringBuilder(" from t_match_user where SEQ == null ");
+		List<Object> params = new ArrayList<Object>();
+		sql.append(" order by CREATE_TIME desc");
+		return paginate(pageNum, pagesize, select, sql.toString(), params.toArray());
 	}
 }

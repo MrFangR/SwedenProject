@@ -855,3 +855,44 @@
 .mgt-160{ margin-top:160px;}
 .mgt-200{ margin-top:200px;}
 .mgt-230{ margin-top:230px;}
+.matchbtn{ 
+ 	position:absolute; 
+	top:0px; 
+	right:-70px; 
+	z-index:9; 
+	width:76px; 
+	height:76px; 
+	background:#333;
+	ilter:alpha(opacity=80); /*IE滤镜，透明度50%*/
+	-moz-opacity:0.8; /*Firefox私有，透明度50%*/
+	opacity:0.8;/*其他，透明度50%*/
+	 border-radius:5px;
+	-webkit-border-radius:5px;
+    -moz-border-radius:5px;}
+.matchbtn i.mtch_edit{ width:24px; height:24px; display:inline-block; position:absolute; top:24px; left:10px;
+background:url(../../images/icon-3.png) 6px -25px no-repeat; cursor:pointer;}
+.matchbtn i.mtch_see{ width:24px; height:24px; display:inline-block; position:absolute; top:24px; left:40px;
+background:url(../../images/icon-wx13.png) 0px -50px no-repeat; cursor:pointer;}
+.dialogtitle{ height:40px; line-height:40px; border-bottom:1px solid #666;}
+.dialogtitle ul li{ float:left;height:40px; line-height:40px; font-size:16px; padding:auto 20px;margin:auto 20px; cursor:pointer}
+.dialogtitle ul li.cur{ border-bottom:2px solid #e4007f; color:#e4007f}
+.dialogcon ul li{ display:none}
+.dialogcon ul li.cur{ display:block;}
+.dialogcon ul li p { font-size:26px; height:80px; line-height:80px; background:#CCC;}
+.dialogcon ul li .tit{ font-size:18px; margin-left:20px; margin-top:20px;}
+.dialogcon ul li span.btn{
+	background: #393d4a ;
+	height:30px; line-height:30px;
+    border: 1px solid #444650;
+    color: #eee;
+	text-align:center;
+    width: 80px;
+	float:left;
+    text-overflow: ellipsis;
+	display:block;
+	cursor:pointer;}
+.dialogcon ul li span.active {
+    background-color: #ff7324;
+    color: #fff;
+}
+.dialogcon ul li h3{ border-left: 2px solid #666; padding-left:10px; margin-bottom:20px;}

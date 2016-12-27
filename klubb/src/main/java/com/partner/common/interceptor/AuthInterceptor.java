@@ -30,13 +30,13 @@ public class AuthInterceptor implements Interceptor {
 		Controller contro = invoc.getController();
 		HttpServletRequest request = contro.getRequest();
 		String reqUrl = invoc.getActionKey(); 
-		if(reqUrl.contains("/back/")){//代表请求为后台请求
+		if(reqUrl.contains("/back/") && !reqUrl.contains("login")){//代表请求为后台请求
 			CUser backUser = BackSessionUtil.getUser(request);
 			if(backUser==null){//说明此用户没有登录
 				contro.setAttr("toUrl", reqUrl);
 				boolean isAjax = "XMLHttpRequest".equals(request.getHeader("X-Requested-With"));
 				if(isAjax){
-					contro.renderJson("{\"retCode\":\"1\",\"retMsg\":\"用户登录信息失效，请 重新登录。\"}");
+					contro.renderJson("{\"flag\":\"1\",\"msg\":\"用户登录信息失效，请重新登录。\"}");
 				}else{
 					contro.redirect("/back");
 				}

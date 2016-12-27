@@ -49,10 +49,11 @@
                      
                      <!--完整模板  s-->
                     <div class="matchgroup">
-                    <div class="template">
+                    <div class="template js_template">
                         <h3>1</h3>
                         <div class="group" ondrop="drop(event,this)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event, this)"><i>1</i><span>lijianghui</span><input name="" type="text" value="10"></div>
                         <div class="group" ondrop="drop(event,this)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event, this)"><i>2</i><span>woshishui</span><input name="" type="text" value="4"></div>
+                        
                     </div>  
                     
                     <div class="template mgt-60">
@@ -76,13 +77,13 @@
                   
                      <!--完整模板  s-->
                     <div class="matchgroup mgt-60">
-                    <div class="template">
+                    <div class="template js_template">
                         <h3>3</h3>
                         <div class="group" ondrop="drop(event,this)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event, this)"><i>1</i><span>第三组1</span><input name="" type="text" value="10"></div>
                         <div class="group" ondrop="drop(event,this)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event, this)"><i>2</i><span>第三组2</span><input name="" type="text" value="4"></div>
                     </div>  
                     
-                    <div class="template mgt-60">
+                    <div class="template mgt-60 js_template">
                         <h3>4</h3>
                         <div class="group" ondrop="drop(event,this)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event, this)"><i>3</i><span>第四章组1</span><input name="" type="text" value="0"></div>
                         <div class="group" ondrop="drop(event,this)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event, this)"><i>4</i><span>第四章组2</span><input name="" type="text" value="1"></div>
@@ -102,13 +103,13 @@
                   <!--完整模板  e-->  
                    <!--完整模板  s-->
                     <div class="matchgroup mgt-60">
-                    <div class="template">
+                    <div class="template js_template">
                         <h3>5</h3>
                         <div class="group" ondrop="drop(event,this)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event, this)"><i>1</i><span>第5组1</span><input name="" type="text" value="10"></div>
                         <div class="group" ondrop="drop(event,this)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event, this)"><i>2</i><span>第5组2</span><input name="" type="text" value="4"></div>
                     </div>  
                     
-                    <div class="template mgt-60">
+                    <div class="template mgt-60 js_template">
                         <h3>6</h3>
                         <div class="group" ondrop="drop(event,this)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event, this)"><i>3</i><span>第6章组1</span><input name="" type="text" value="0"></div>
                         <div class="group" ondrop="drop(event,this)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event, this)"><i>4</i><span>第6章组2</span><input name="" type="text" value="1"></div>
@@ -133,7 +134,7 @@
                      
                       <!--完整模板  s-->
                     <div class="matchgroup mgt-80">
-                    <div class="template">
+                    <div class="template js_template">
                         <h3>7</h3>
                         <div class="group" ><i>1</i><span>第三组1</span><input name="" type="text" value="10"></div>
                         <div class="group" ><i>2</i><span>第三组2</span><input name="" type="text" value="4"></div>
@@ -303,6 +304,72 @@
     </div>
 </div>
   <!--弹框  e-->
+  <!--弹框编辑比分  s-->
+ <div data-role="ued-dialog" class="ued-dialog" id="btn-matchbtn">
+    <div class="dialog-header">
+        <h3>比赛详情</h3> <span class="dialog-tool">
+            <a title="关闭" class="dialog-close">X</a>
+        </span>
+    </div>
+     <div class="dialogtitle"><ul><li class="cur">比赛信息</li><li>编辑比分</li></ul></div>
+     <div class="clear"></div>
+     <div class="dialogcon">
+        <ul>
+          <li class="cur">
+             <p class=" tc"><b>王二小</b>VS<b>昌盛</b></p>
+             <table class="ued-table-nobor mgt-15" width="100%" cellspacing="0" cellpadding="0">
+                <tbody>
+                	<tr>
+                        <th>设置：</th>
+                        <td>
+                            <input value="" class="ued-text-2" maxlength="30" type="text">     
+                        </td>
+                    </tr>
+                   <tr>
+                        <th>计划时间：</th>
+                        <td>
+                             <input value="" class="ued-text-2" maxlength="30" type="text"> 
+                        </td>
+                    
+                    </tr>
+                  
+                </tbody>
+            </table>
+          </li>
+          <li>
+              <h3 class="tit">选择胜者</h3>
+              <div class="clearfix" style="width:180px; margin:0 auto"><span  class="btn">王二小</span><span  class="btn active">昌盛</span> </div>
+               <h3 class="tit">输入比分</h3>
+                <table class="ued-table-nobor mgt-15" width="100%" cellspacing="0" cellpadding="0">
+                <tbody>
+                	<tr>
+                        <th>王二小：</th>
+                        <td>
+                            <input value="" class="ued-text-2" maxlength="30" type="text">     
+                        </td>
+                    </tr>
+                   <tr>
+                        <th>昌盛：</th>
+                        <td>
+                             <input value="" class="ued-text-2" maxlength="30" type="text"> 
+                        </td>
+                    
+                    </tr>
+                  
+                </tbody>
+            </table>
+          </li>
+        </ul>
+     
+     </div>
+      
+        <div class="pd-10 tc">
+            <button type="button" class="ued-button-2 mgr-25">保存修改</button>
+            <button type="button" class="ued-button-3 dialog-close">取消</button>
+        </div>
+   
+</div>
+  <!--弹框编辑比分  e-->
 <script type="text/javascript" src="../pub-ui/js/lib/jquery-1.7.2.min.js"></script>
 <script type="text/javascript" src="../pub-ui/js/plugin/ui.js"></script>
 <script type="text/javascript" src="../pub-ui/js/plugin/jquery.ztree.all-3.5.js"></script>
@@ -310,6 +377,24 @@
 <script type="text/javascript" src='../pub-ui/js/plugin/dragula.js'></script>
  <script type="text/javascript"> 
  $(function(){
+	 
+	 $(".js_template").hover(
+		  function() {
+			$(this).append("<div class='matchbtn js_matchbtn'><i class='mtch_edit' title='编辑比分'></i><i class='mtch_see' title='查看比赛'></i></div>");
+		  },
+		  function () {
+			$(this).find(".js_matchbtn").remove();
+		  }
+		);
+			 
+	 
+	 //tab切换
+	  $(".dialogtitle ul li").live("click",function(){
+		   var index_no = $(this).index();
+		     $(this).addClass("cur").siblings().removeClass("cur");
+			 $(".dialogcon ul li").eq(index_no).addClass("cur").siblings().removeClass("cur");
+		  })
+	 
 	 
 	  //高度设置
     var contWrapH = $("div.ued-layout").height();
@@ -325,6 +410,11 @@
 		  $(this).parent().remove();
 		    
 		 })
+		 
+    //编辑比分弹框
+	$(".js_matchbtn").live("click",function(){		
+        $("#btn-matchbtn").trigger("dialog-open");
+	})
 	 
 	 
 	 })
