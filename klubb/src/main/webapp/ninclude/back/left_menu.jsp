@@ -29,6 +29,9 @@
 			<a tabid="1-7" url="${ctx}/back/happytimes">
 				<b class="b-t6"></b><span>Happytimes管理</span>
 			</a>
+			<a tabid="1-8" url="${ctx}/back/match/edit">
+				<b class="b-t6"></b><span>对阵图tmp</span>
+			</a>
 		</li>
 	</ul>
 	

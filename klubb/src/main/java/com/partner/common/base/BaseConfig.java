@@ -19,6 +19,7 @@ import com.partner.busi.back.controller.BackContactController;
 import com.partner.busi.back.controller.BackIntroduceController;
 import com.partner.busi.back.controller.BackLoginController;
 import com.partner.busi.back.controller.BackMainController;
+import com.partner.busi.back.controller.BackMatchController;
 import com.partner.busi.back.controller.BackNoticeController;
 import com.partner.busi.back.controller.BackPictureController;
 import com.partner.busi.back.controller.BackUserController;
@@ -86,6 +87,7 @@ public class BaseConfig extends JFinalConfig {
 		me.add("/contact",ContactController.class,"/front");
 		me.add("/userCenter",UserCenterController.class,"/front/usercenter");
 		me.add("/back/match/editUser",BackConfigController.class,"/back/match/editUser");
+		me.add("/back/match/edit",BackMatchController.class,"/back/match");
 	}
 
 	/*
@@ -124,7 +126,7 @@ public class BaseConfig extends JFinalConfig {
 	@Override
 	public void configInterceptor(Interceptors me) {
 		// TODO Auto-generated method stub
-		me.add(new AuthInterceptor());
+//		me.add(new AuthInterceptor());
 	}
 
 	/*

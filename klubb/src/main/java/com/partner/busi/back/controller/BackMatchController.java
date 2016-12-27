@@ -20,6 +20,10 @@ import com.partner.busi.model.Match;
  */
 public class BackMatchController extends Controller {
 	
+	public void index(){
+		render("match_edit.jsp");
+	}
+	
 	public void loadGame(){
 		Integer matchId = getParaToInt("matchId");
 		Match match = Match.dao.findById(matchId);
@@ -42,6 +46,14 @@ public class BackMatchController extends Controller {
 
 	}
 	
+	/**
+	 * 生成单败制比赛
+	 * @param userIdList
+	 * @param seq
+	 * @param userSum
+	 * @param roundNum
+	 * @param matchId
+	 */
 	private void generateSingleGame(List<Integer> userIdList, int seq, int userSum, int roundNum, int matchId){
 		if(userIdList != null){ //首轮有此参数
 			userSum = userIdList.size();
@@ -83,6 +95,87 @@ public class BackMatchController extends Controller {
 				return;
 			}
 			generateSingleGame(null, seq, gameSum, ++roundNum, matchId);
+		}else{
+			return;
+		}
+	}
+	
+	/**
+	 * 生成双败制比赛
+	 * @param userIdList
+	 * @param seq
+	 * @param userSum
+	 * @param roundNum
+	 * @param matchId
+	 */
+	private void generateDoubleGame(List<Integer> userIdList, int seq, int userSum, int roundNum, int matchId){
+		if(userIdList != null){ //首轮有此参数
+			userSum = userIdList.size();
+		}
+		int gameSum = 1;
+		//根据参赛人员人数获得比赛场数
+		int needGame = new BigDecimal(userSum).divide(new BigDecimal(2), RoundingMode.CEILING).intValue();
+		if(needGame > 0){
+			while(needGame > gameSum){
+				gameSum *= 2;
+			}
+			int byeUserSum = gameSum * 2 - userSum; //轮空人数，即首轮轮空比赛数
+					
+			//创建比赛
+			int userIndex = 0;
+			int winNextSeq = seq + gameSum + gameSum/2 + 1; //胜者下一场比赛序列
+			int loseNextSeq = seq + gameSum + 1; //败者下一场比赛序列
+			
+			//胜者组
+			for(int i = 0; i < gameSum; i++){
+				Game game = new Game();
+				if(userIdList != null){ //首轮有此参数
+					game.setUSER1(userIdList.get(userIndex++));
+					if(i + byeUserSum < gameSum){ //不轮空才设置user2
+						game.setUSER2(userIdList.get(userIndex++));
+					}
+				}
+				game.setSEQ(++seq);
+				if(gameSum > 1){ //不是最后一场比赛
+					game.setWNextSeq(winNextSeq);
+					game.setLNextSeq(loseNextSeq);
+				}
+				if(seq % 2 == 0){
+					winNextSeq++;
+					loseNextSeq++;
+				}
+				game.setRoundNum(roundNum);
+				game.setMatchId(matchId);
+				game.setSTATUS(0);
+//				game.save();
+				System.out.println(game);
+			}
+			
+			//败者组
+			if(roundNum == 1){
+				gameSum = gameSum/2;
+			}
+			for(int i = 0; i < gameSum; i++){
+				Game game = new Game();
+				game.setSEQ(++seq);
+				if(gameSum > 1){ //不是最后一场比赛
+					game.setWNextSeq(winNextSeq);
+				}
+				if(seq % 2 == 0){
+					winNextSeq++;
+					loseNextSeq++;
+				}
+				game.setRoundNum(roundNum);
+				game.setMatchId(matchId);
+				game.setSTATUS(0);
+//				game.save();
+				System.out.println(game);
+			}
+			
+			if(gameSum <= 1){ //最后一场比赛
+				return;
+			}
+			generateDoubleGame(null, seq, gameSum, ++roundNum, matchId);
 		}else{
 			return;
 		}
