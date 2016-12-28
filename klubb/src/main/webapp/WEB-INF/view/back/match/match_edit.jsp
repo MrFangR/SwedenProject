@@ -23,35 +23,42 @@
         <!--tabcon  s-->
         <div class="ued-tab-con mgt-20">	
                <!--第一tab  一列是320px 目前展示5列宽为1600px  如果对阵图列数超过3需要代码判断列数给 box-n div 输入宽度 s-->
+            <c:set var="boxMgt" value="zhanwei,zhanwei,mgt-20,mgt-160,mgt-20" />
+            <c:set var="groupMgt" value="mgt-60,mgt-80,mgt-200,mgt-200,mgt-230" />
+            <c:set var="tempMgt" value="mgt-60,mgt-200,mgt-300,mgt-400" />
             <div class="box-n on1" style="width:1600px;">
             <!--比赛标题  s-->
             <div class="matchtitle">
-               <li>第一轮</li>
-               <li>第二轮</li>
-               <li>第三轮</li>
-               <li>半决赛</li>
-               <li>决赛</li>
+            	<c:forEach items="${titleList }" var="title">
+	               <li>${title }</li>
+            	</c:forEach>
                <div class="clear"></div>
             </div>
             <!--比赛标题  e-->
-              
-                      <!--可拖动部分  s-->
+            <c:forEach items="${list }" var="gList" varStatus="status">
+            	<c:if test="${status.index == 0 }">
+            		<!--可拖动部分  s-->
                      <div class="dropbox">
-                     
-                    
-                     
-                     <!--完整模板  s-->
-                    <div class="matchgroup">
-                    <div class="template">
-                        <h3>1</h3>
-                        <div class="group" ondrop="drop(event,this)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event, this)"><i>1</i><span>lijianghui</span><input name="" type="text" value="10"></div>
-                        <div class="group" ondrop="drop(event,this)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event, this)"><i>2</i><span>woshishui</span><input name="" type="text" value="4"></div>
-                    </div>  
-                    
-                    <div class="template mgt-60">
+            	</c:if>
+            	<c:if test="${status.index > 1 }">
+            		<!--可拖动部分  s-->
+                     <div class="nodrop ${boxMgt[status.index] }">
+            	</c:if>
+            	<c:forEach items="${gList }" var="game" varStatus="gStatus">
+            		<c:if test="${gStatus.index mod 2 == 0}">
+	            		<!--完整模板  s-->
+	                    <div class="matchgroup ${groupMgt[status.index] }">
+	                    <div class="template">
+	                        <h3>${game.SEQ }</h3>
+	                    <div class="group" <c:if test="${status.index == 0 }"> ondrop="drop(event,this)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event, this)"</c:if>><i>${game.u1_SEQ }</i><span>${game.u1_NAME }</span><input name="" type="text" value="10"></div>
+	                    <div class="group" <c:if test="${status.index == 0 }"> ondrop="drop(event,this)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event, this)"</c:if>><i>${game.u2_SEQ }</i><span>${game.u2_NAME }</span><input name="" type="text" value="4"></div>
+	                    </div>  
+            		</c:if>
+                    <c:if test="${gStatus.index mod 2 == 1}">
+                    <div class="template ${tempMgt[status.index] }">
                         <h3>2</h3>
-                        <div class="group" ondrop="drop(event,this)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event, this)"><i>3</i><span>第二组第一名</span><input name="" type="text" value="0"></div>
-                        <div class="group" ondrop="drop(event,this)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event, this)"><i>4</i><span>第二组第二名</span><input name="" type="text" value="1"></div>
+                        <div class="group" <c:if test="${status.index == 0 }"> ondrop="drop(event,this)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event, this)"</c:if>><i>3</i><span>第二组第一名</span><input name="" type="text" value="0"></div>
+                        <div class="group" <c:if test="${status.index == 0 }"> ondrop="drop(event,this)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event, this)"</c:if>><i>4</i><span>第二组第二名</span><input name="" type="text" value="1"></div>
                     </div>  
                     <div class="matchline">
                        
@@ -60,199 +67,14 @@
                         </svg>
                         <svg  x="0" y="0"  width="290px" height="76px" style="margin-top:-6px">
                             <path d="M 228,76 L 236,76  L 236,1  L 244,1" class="bracket-line"/>
-                                       
                         </svg>
-                    
                     </div>
                   </div>
-                  <!--完整模板  e-->  
-                  
-                     <!--完整模板  s-->
-                    <div class="matchgroup mgt-60">
-                    <div class="template">
-                        <h3>3</h3>
-                        <div class="group" ondrop="drop(event,this)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event, this)"><i>1</i><span>第三组1</span><input name="" type="text" value="10"></div>
-                        <div class="group" ondrop="drop(event,this)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event, this)"><i>2</i><span>第三组2</span><input name="" type="text" value="4"></div>
-                    </div>  
-                    
-                    <div class="template mgt-60">
-                        <h3>4</h3>
-                        <div class="group" ondrop="drop(event,this)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event, this)"><i>3</i><span>第四章组1</span><input name="" type="text" value="0"></div>
-                        <div class="group" ondrop="drop(event,this)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event, this)"><i>4</i><span>第四章组2</span><input name="" type="text" value="1"></div>
-                    </div>  
-                    <div class="matchline">
-                       
-                       <svg  x="0" y="0" width="290px" height="76px">
-                          <path d="M 228 1 L 236 1 L 236 76 " class="bracket-line"/>
-                        </svg>
-                        <svg  x="0" y="0"  width="290px" height="76px" style=" margin-top:-6px">
-                            <path d="M 228,76 L 236,76  L 236,1  L 244,1" class="bracket-line"/>
-                                       
-                        </svg>
-                    
-                    </div>
-                  </div>
-                  <!--完整模板  e-->  
-                   <!--完整模板  s-->
-                    <div class="matchgroup mgt-60">
-                    <div class="template">
-                        <h3>5</h3>
-                        <div class="group" ondrop="drop(event,this)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event, this)"><i>1</i><span>第5组1</span><input name="" type="text" value="10"></div>
-                        <div class="group" ondrop="drop(event,this)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event, this)"><i>2</i><span>第5组2</span><input name="" type="text" value="4"></div>
-                    </div>  
-                    
-                    <div class="template mgt-60">
-                        <h3>6</h3>
-                        <div class="group" ondrop="drop(event,this)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event, this)"><i>3</i><span>第6章组1</span><input name="" type="text" value="0"></div>
-                        <div class="group" ondrop="drop(event,this)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event, this)"><i>4</i><span>第6章组2</span><input name="" type="text" value="1"></div>
-                    </div>  
-                    <div class="matchline">
-                       
-                       <svg  x="0" y="0" width="290px" height="76px">
-                          <path d="M 228 1 L 236 1 L 236 76 " class="bracket-line"/>
-                        </svg>
-                        <svg  x="0" y="0"  width="290px" height="76px" style=" margin-top:-6px">
-                            <path d="M 228,76 L 236,76  L 236,1  L 244,1" class="bracket-line"/>
-                                       
-                        </svg>
-                    
-                    </div>
-                  </div>
-                  <!--完整模板  e-->  
-                 </div>
-                 <!--可拖动部分 e-->
-                 <!--生成结果第二列 s-->
-                     <div class="nodrop">
-                     
-                      <!--完整模板  s-->
-                    <div class="matchgroup mgt-80">
-                    <div class="template">
-                        <h3>7</h3>
-                        <div class="group" ><i>1</i><span>第三组1</span><input name="" type="text" value="10"></div>
-                        <div class="group" ><i>2</i><span>第三组2</span><input name="" type="text" value="4"></div>
-                    </div>  
-                    
-                    <div class="template mgt-200">
-                        <h3>8</h3>
-                        <div class="group" ><i>3</i><span>第四章组1</span><input name="" type="text" value="0"></div>
-                        <div class="group" ><i>4</i><span>第四章组2</span><input name="" type="text" value="1"></div>
-                    </div>  
-                    <div class="matchline">
-                       
-                       <svg  x="0" y="0" width="290px" height="140px">
-                          <path d="M 228 1 L 236 1 L 236 140 " class="bracket-line"/>
-                        </svg>
-                        <svg  x="0" y="0"  width="290px" height="140px" style=" margin-top:-6px">
-                            <path d="M 228,140 L 236,140  L 236,1  L 244,1" class="bracket-line"/>
-                                       
-                        </svg>
-                    
-                    </div>
-                  </div>
-                  <!--完整模板  e-->  
-                  
-                      <!--完整模板  s-->
-                    <div class="matchgroup mgt-80">
-                                      
-                    <div class="template mgt-200">
-                        <h3>9</h3>
-                        <div class="group" ><i>3</i><span>第四章组1</span><input name="" type="text" value="0"></div>
-                        <div class="group" ><i>4</i><span>第四章组2</span><input name="" type="text" value="1"></div>
-                    </div>  
-                    <div class="matchline">
-                      
-                        <svg  x="0" y="0"  width="290px" height="140px" style=" margin-top:-140px">
-                            <path d="M 228,130 L 236,130  L 236,1  L 244,1" class="bracket-line"/>
-                                       
-                        </svg>
-                    
-                    </div>
-                  </div>
-                  <!--完整模板  e-->  
-                     
-                     </div>
-                 <!--生成结果第二列 e-->
-                   <!--生成结果第三列 s-->
-                     <div class="nodrop mgt-20">
-                     
-                       <!--完整模板  s-->
-                    <div class="matchgroup mgt-200">
-                    <div class="template">
-                        <h3>10</h3>
-                        <div class="group" ><i>1</i><span>第三组1</span><input name="" type="text" value="10"></div>
-                        <div class="group" ><i>2</i><span>第三组2</span><input name="" type="text" value="4"></div>
-                    </div>  
-                     <div class="matchline">
-                       
-                       <svg  x="0" y="0" width="290px" height="140px">
-                          <path d="M 228 1 L 236 1 L 236 140 " class="bracket-line"/>
-                        </svg>
-                        <svg  x="0" y="0"  width="290px" height="140px" style=" margin-top:-6px">
-                            <path d="M 228,140 L 236,140  L 236,1  L 244,1" class="bracket-line"/>
-                                       
-                        </svg>
-                    
-                    </div>
-                   
-                  </div>
-                  <!--完整模板  e-->  
-                  
-                    <!--完整模板  s-->
-                    <div class="matchgroup mgt-200">
-                    <div class="template">
-                        <h3>11</h3>
-                        <div class="group" ><i>1</i><span>第三组1</span><input name="" type="text" value="10"></div>
-                        <div class="group" ><i></i><span></span><input name="" type="text" value=""></div>
-                    </div>  
-                     
-                   
-                  </div>
-                  <!--完整模板  e-->  
-                     
-                     </div>
-                 <!--生成结果第三列 e-->
-                     <!--生成结果第四列 s-->
-                     <div class="nodrop mgt-160">
-                     
-                  
-                    <!--完整模板  s-->
-                    <div class="matchgroup mgt-200">
-                    <div class="template">
-                        <h3>12</h3>
-                        <div class="group" ><i>1</i><span>第三组1</span><input name="" type="text" value="10"></div>
-                        <div class="group" ><i></i><span></span><input name="" type="text" value=""></div>
-                    </div>  
-                     <div class="matchline">
-                      
-                        <svg  x="0" y="0"  width="290px" height="140px" style=" margin-top:-140px">
-                            <path d="M 228,130 L 236,130  L 236,1  L 244,1" class="bracket-line"/>
-                                       
-                        </svg>
-                    
-                    </div>
-                   
-                  </div>
-                  <!--完整模板  e-->  
-                     
-                     </div>
-                 <!--生成结果第四列 e-->
-                 
-                 <!--生成结果第五列 s-->
-                     <div class="nodrop mgt-20">
-                     
-                  
-                    <!--完整模板  s-->
-                    <div class="matchgroup mgt-230">
-                    <div class="template">
-                        <div class="group" ><i>1</i><span>第三组1</span><input name="" type="text" value="10"></div>
-                    </div>  
-                     
-                   
-                  </div>
-                  <!--完整模板  e-->  
-                     
-                   </div>
-                 <!--生成结果第五列 e-->
+                  </c:if>
+                  <!--完整模板  e--> 
+            	</c:forEach>
+            </c:forEach>
+            
             </div>
              <!--第一tab  e-->
              <!--第二tab  s-->
