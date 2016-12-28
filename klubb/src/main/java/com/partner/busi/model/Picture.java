@@ -37,4 +37,12 @@ public class Picture extends BasePicture<Picture> {
 		Page<Picture> page = paginate(pageNum, pageSize, "select * ", " from t_picture p where p.USER_ID=? order by p.CREATE_TIME desc",id);
 		return page;
 	}
+
+	public void setNICKNAME(String nickName) {
+		set("NICKNAME", nickName);
+	}
+	
+	public String getNICKNAME() {
+		return get("NICKNAME");
+	}
 }

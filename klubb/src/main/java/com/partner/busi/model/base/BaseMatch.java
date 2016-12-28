@@ -65,6 +65,14 @@ public abstract class BaseMatch<M extends BaseMatch<M>> extends Model<M> impleme
 		return get("DESCRIPTION");
 	}
 
+	public void setMaxPlayer(java.lang.Integer maxPlayer) {
+		set("MAX_PLAYER", maxPlayer);
+	}
+
+	public java.lang.Integer getMaxPlayer() {
+		return get("MAX_PLAYER");
+	}
+
 	public void setPId(java.lang.Integer pId) {
 		set("P_ID", pId);
 	}

@@ -53,4 +53,10 @@ public class MatchUser extends BaseMatchUser<MatchUser> {
 		sql.append(" order by CREATE_TIME desc");
 		return paginate(pageNum, pagesize, select, sql.toString(), params.toArray());
 	}
+	
+	public List<MatchUser> findUserByMatchId(int matchId){
+		String sql = "select * from t_match_user where MATCH_ID = ? order by SEQ ";
+		return dao.find(sql, matchId);
+	};
+	
 }

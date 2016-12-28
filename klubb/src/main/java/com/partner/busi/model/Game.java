@@ -1,5 +1,6 @@
 package com.partner.busi.model;
 
+import com.jfinal.plugin.activerecord.Db;
 import com.partner.busi.model.base.BaseGame;
 
 /**
@@ -8,4 +9,52 @@ import com.partner.busi.model.base.BaseGame;
 @SuppressWarnings("serial")
 public class Game extends BaseGame<Game> {
 	public static final Game dao = new Game();
+	
+	/**
+	 * 根据赛事ID删除所有比赛
+	 * @param matchId
+	 * @return
+	 */
+	public boolean deleteByMatchId(int matchId) {
+		int rs = Db.update("delete from t_game where MATCH_ID = ?", matchId);
+		if(rs==0){
+			return false;
+		}else{
+			return true;
+		}
+	}
+	
+
+	public void setU1_SEQ(Long seq) {
+		set("U1_SEQ", seq);
+	}
+	
+	public Long getU1_SEQ() {
+		return get("U1_SEQ");
+	}
+	
+	public void setU2_SEQ(Long seq) {
+		set("U2_SEQ", seq);
+	}
+	
+	public Long getU2_SEQ() {
+		return get("U2_SEQ");
+	}
+	
+	public void setU1_NAME(String name) {
+		set("U1_NAME", name);
+	}
+	
+	public String getU1_NAME() {
+		return get("U1_NAME");
+	}
+	
+	public void setU2_NAME(String name) {
+		set("U2_NAME", name);
+	}
+	
+	public String getU2_NAME() {
+		return get("U2_NAME");
+	}
+	
 }

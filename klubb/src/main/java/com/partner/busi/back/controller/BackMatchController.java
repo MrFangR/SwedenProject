@@ -6,11 +6,13 @@ package com.partner.busi.back.controller;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import com.jfinal.core.Controller;
 import com.partner.busi.model.Game;
 import com.partner.busi.model.Match;
+import com.partner.busi.model.MatchUser;
 
 /** 
  * @ClassName: BackMatchController 
@@ -21,29 +23,66 @@ import com.partner.busi.model.Match;
 public class BackMatchController extends Controller {
 	
 	public void index(){
+		Integer matchId = getParaToInt("matchId");
+		List<Game> list = Game.dao.find("SELECT g.*, IFNULL(mu1.SEQ, 0) AS U1_SEQ, IFNULL(mu2.SEQ, 0) AS U2_SEQ,"
+				+ " IFNULL(u1.`NAME`,'') as U1_NAME, IFNULL(u2.`NAME`,'') as U2_NAME"
+				+ " FROM t_game g"
+				+ " LEFT JOIN t_match_user AS mu1 ON g.USER1 = mu1.USER_ID"
+				+ " LEFT JOIN t_match_user AS mu2 ON g.USER2 = mu2.USER_ID"
+				+ " LEFT JOIN t_user AS u1 ON g.USER1 = u1.ID"
+				+ " LEFT JOIN t_user AS u2 ON g.USER2 = u2.ID"
+				+ " WHERE g.MATCH_ID = ?"
+				+ " ORDER BY g.SHOW_INDEX", matchId);
+		
+		List<List<Game>> rsList = new ArrayList<List<Game>>();
+
+		List<Integer> roundList = new ArrayList<Integer>();
+		for(Game game : list){
+			if(!roundList.contains(game.getRoundNum())){
+				roundList.add(game.getRoundNum());
+				rsList.add(new ArrayList<Game>());
+			}
+		}
+		List<String> titleList = new ArrayList<String>();
+		for(int i = 0; i < roundList.size(); i++){
+			if(i == roundList.size() - 1){
+				titleList.add("决赛");
+			}else if(i == roundList.size() - 2){
+				titleList.add("半决赛");
+			}else{
+				titleList.add("第" + roundList.get(i) + "轮");
+			}
+		}
+		
+		for(Game game : list){
+			rsList.get(game.getRoundNum() - 1).add(game);
+		}
+		
+		setAttr("list", rsList);
+		setAttr("titleList", titleList);
 		render("match_edit.jsp");
 	}
 	
-	public void loadGame(){
+	public void generateGame(){
 		Integer matchId = getParaToInt("matchId");
 		Match match = Match.dao.findById(matchId);
 		if(match != null && match.getSTATUS() == 0){ //比赛未开始，根据当前用户信息重新生成比赛
 			if(match.getTYPE() == 1 || match.getTYPE() == 3){ //单败
 				//1.删除本赛事下所有比赛
-				
+				Game.dao.deleteByMatchId(matchId);
 				//2.根据当前人员生成比赛
 				//2.1获取当前参赛人员，orderby seq
-				List<Integer> userIdList = null;
+				List<MatchUser> list = MatchUser.dao.findUserByMatchId(matchId);
+				List<Integer> userIdList = new ArrayList<Integer>();
+				for(MatchUser user : list){
+					userIdList.add(user.getUserId());
+				}
 				//2.2生成比赛
 				generateSingleGame(userIdList, 0, 0, 1, matchId);
 			} else if(match.getTYPE() == 2 || match.getTYPE() == 4){ //双败
 				
 			}
-			
 		}
-		//查找比赛
-		
-
 	}
 	
 	/**
@@ -79,6 +118,7 @@ public class BackMatchController extends Controller {
 					}
 				}
 				game.setSEQ(++seq);
+				game.setShowIndex(seq);
 				if(gameSum > 1){ //不是最后一场比赛
 					game.setWNextSeq(winNextSeq);
 				}
@@ -88,8 +128,8 @@ public class BackMatchController extends Controller {
 				game.setRoundNum(roundNum);
 				game.setMatchId(matchId);
 				game.setSTATUS(0);
-//				game.save();
-				System.out.println(game);
+				game.save();
+//				System.out.println(game);
 			}
 			if(gameSum <= 1){ //最后一场比赛
 				return;

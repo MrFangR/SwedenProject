@@ -113,6 +113,14 @@ public abstract class BaseGame<M extends BaseGame<M>> extends Model<M> implement
 		return get("ROUND_NUM");
 	}
 
+	public void setShowIndex(java.lang.Integer showIndex) {
+		set("SHOW_INDEX", showIndex);
+	}
+
+	public java.lang.Integer getShowIndex() {
+		return get("SHOW_INDEX");
+	}
+
 	public void setMatchId(java.lang.Integer matchId) {
 		set("MATCH_ID", matchId);
 	}

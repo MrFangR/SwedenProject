@@ -21,6 +21,16 @@ Table: sys_access_log
  CREATE_TIME | TIMESTAMP(19) | YES  |     |         | 访问时间    
 -------------+---------------+------+-----+---------+---------
 
+Table: sys_access_log_his
+-------------+--------------+------+-----+---------+---------
+ Field       | Type         | Null | Key | Default | Remarks 
+-------------+--------------+------+-----+---------+---------
+ ID          | INT(10)      | NO   | PRI |         |         
+ YYYYMM      | VARCHAR(9)   | NO   |     |         | 插入年月    
+ NUM         | INT(10)      | NO   |     |         | 当月访问数量  
+ CREATE_TIME | DATETIME(19) | NO   |     |         |         
+-------------+--------------+------+-----+---------+---------
+
 Table: t_act_user
 -------------+---------------+------+-----+---------+---------
  Field       | Type          | Null | Key | Default | Remarks 
@@ -35,21 +45,21 @@ Table: t_act_user
 -------------+---------------+------+-----+---------+---------
 
 Table: t_activity
-----------------+---------------+------+-----+---------+---------
- Field          | Type          | Null | Key | Default | Remarks 
-----------------+---------------+------+-----+---------+---------
- ID             | INT(10)       | NO   | PRI |         | 主键      
- TITLE          | VARCHAR(50)   | YES  |     |         | 活动名称    
- IMG            | VARCHAR(100)  | YES  |     |         | 图片描述    
- ABSTRACT       | VARCHAR(255)  | YES  |     |         | 摘要      
- CONTENT        | VARCHAR(1000) | YES  |     |         | 活动内容    
- ACT_TIME       | DATETIME(19)  | YES  |     |         | 活动时间    
- STATUS         | TINYINT(3)    | YES  |     |         | 状态，0：草稿，1：正常
- CREATE_TIME    | TIMESTAMP(19) | YES  |     |         | 创建时间    
- CREATE_USER_ID | INT(10)       | YES  |     |         | 创建人     
- UPDATE_TIME    | TIMESTAMP(19) | YES  |     |         | 修改时间    
- UPDATE_USER_ID | INT(10)       | YES  |     |         | 修改用户ID  
-----------------+---------------+------+-----+---------+---------
+----------------+----------------+------+-----+---------+---------
+ Field          | Type           | Null | Key | Default | Remarks 
+----------------+----------------+------+-----+---------+---------
+ ID             | INT(10)        | NO   | PRI |         | 主键      
+ TITLE          | VARCHAR(50)    | YES  |     |         | 活动名称    
+ IMG            | VARCHAR(100)   | YES  |     |         | 图片描述    
+ ABSTRACT       | VARCHAR(255)   | YES  |     |         | 摘要      
+ CONTENT        | VARCHAR(10000) | YES  |     |         | 活动内容    
+ ACT_TIME       | DATETIME(19)   | YES  |     |         | 活动时间    
+ STATUS         | TINYINT(3)     | YES  |     |         | 状态，0：草稿，1：正常
+ CREATE_TIME    | TIMESTAMP(19)  | YES  |     |         | 创建时间    
+ CREATE_USER_ID | INT(10)        | YES  |     |         | 创建人     
+ UPDATE_TIME    | TIMESTAMP(19)  | YES  |     |         | 修改时间    
+ UPDATE_USER_ID | INT(10)        | YES  |     |         | 修改用户ID  
+----------------+----------------+------+-----+---------+---------
 
 Table: t_config
 ---------------+--------------+------+-----+---------+---------
@@ -82,12 +92,34 @@ Table: t_evaluation
 -------------+---------------+------+-----+---------+---------
  ID          | INT(10)       | NO   | PRI |         | 主键      
  OBJ_ID      | INT(10)       | YES  |     |         | 评价对象ID  
- OBJ_TYPE    | TINYINT(3)    | YES  |     |         | 操作对象类型，1：happytimes，2：活动
+ OBJ_TYPE    | TINYINT(3)    | YES  |     |         | 操作对象类型，1：happytimes，2：活动，3：赛事
  CONTENT     | VARCHAR(300)  | YES  |     |         | 评价留言    
  USER_ID     | INT(10)       | YES  |     |         | 用户ID    
  CREATE_TIME | TIMESTAMP(19) | YES  |     |         | 创建时间    
  P_ID        | INT(10)       | NO   |     |         | 回复那条评论  
 -------------+---------------+------+-----+---------+---------
+
+Table: t_game
+------------+--------------+------+-----+---------+---------
+ Field      | Type         | Null | Key | Default | Remarks 
+------------+--------------+------+-----+---------+---------
+ ID         | INT(10)      | NO   | PRI |         | 主键      
+ SEQ        | INT(10)      | NO   |     |         | 序列      
+ TABLE_NUM  | VARCHAR(20)  | YES  |     |         | 台球桌编号   
+ START_TIME | DATETIME(19) | YES  |     |         | 开始时间    
+ USER1      | INT(10)      | YES  |     |         | 参赛者1    
+ USER2      | INT(10)      | YES  |     |         | 参赛者2    
+ SCORE1     | INT(10)      | YES  |     |         | 参赛者1分数  
+ SCORE2     | INT(10)      | YES  |     |         | 参赛者2分数  
+ WINNER_ID  | INT(10)      | YES  |     |         | 胜者ID    
+ W_NEXT_SEQ | INT(10)      | YES  |     |         | 胜者下一场比赛序列
+ L_NEXT_SEQ | INT(10)      | YES  |     |         | 败者下一场比赛序列
+ TYPE       | TINYINT(3)   | YES  |     |         | 台球类型，8：8球，9：9球，10：10球，
+ ROUND_NUM  | INT(10)      | YES  |     |         | 第几轮     
+ SHOW_INDEX | INT(10)      | YES  |     |         | 页面展示顺序  
+ MATCH_ID   | INT(10)      | NO   |     |         | 归属赛事ID  
+ STATUS     | TINYINT(3)   | NO   |     |         | 比赛状态，0：未开始，1：进行中，2：已完成，
+------------+--------------+------+-----+---------+---------
 
 Table: t_introduce
 ----------------+---------------+------+-----+---------+---------
@@ -99,6 +131,34 @@ Table: t_introduce
  CREATE_TIME    | TIMESTAMP(19) | YES  |     |         | 创建时间    
  CREATE_USER_ID | INT(10)       | YES  |     |         | 创建人     
 ----------------+---------------+------+-----+---------+---------
+
+Table: t_match
+-------------+--------------+------+-----+---------+---------
+ Field       | Type         | Null | Key | Default | Remarks 
+-------------+--------------+------+-----+---------+---------
+ ID          | INT(10)      | NO   | PRI |         | 主键      
+ NAME        | VARCHAR(100) | NO   |     |         | 比赛名称    
+ IMG         | VARCHAR(100) | YES  |     |         | 图片      
+ TYPE        | TINYINT(3)   | NO   |     |         | 类型，1：单败，2：双败，3：单败plus，4：双败plus
+ THIRD       | TINYINT(3)   | YES  |     |         | 第三名争夺赛，1：有第三名争夺赛，0：没有
+ START_DATE  | DATETIME(19) | YES  |     |         | 开始时间    
+ DESCRIPTION | VARCHAR(200) | YES  |     |         | 描述      
+ MAX_PLAYER  | INT(10)      | NO   |     | 9999999 | 最大参赛人数  
+ P_ID        | INT(10)      | YES  |     |         | 父赛事ID，用于双败后单败使用
+ STATUS      | TINYINT(3)   | NO   |     |         | 比赛状态，-1，已取消，0：未开始，1：进行中，2：已完成，
+-------------+--------------+------+-----+---------+---------
+
+Table: t_match_user
+-------------+--------------+------+-----+---------+---------
+ Field       | Type         | Null | Key | Default | Remarks 
+-------------+--------------+------+-----+---------+---------
+ ID          | INT(10)      | NO   | PRI |         | 主键      
+ MATCH_ID    | INT(10)      | YES  |     |         | 赛事ID    
+ SEQ         | INT(10)      | YES  |     |         | 参赛排序    
+ USER_ID     | INT(10)      | YES  |     |         | 用户ID    
+ CREATE_TIME | DATETIME(19) | YES  |     |         | 报名时间    
+ START_SCORE | VARCHAR(10)  | YES  |     |         | 起始分     
+-------------+--------------+------+-----+---------+---------
 
 Table: t_notice
 ---------+--------------+------+-----+---------+---------
