@@ -36,7 +36,7 @@
 				<b class="b-t6"></b><span>比赛管理</span>
 			</a>
 			<a tabid="1-10" url="${ctx}/back/match/editUser">
-				<b class="b-t6"></b><span>比赛管理</span>
+				<b class="b-t6"></b><span>编辑参赛人员</span>
 			</a>
 		</li>
 	</ul>
