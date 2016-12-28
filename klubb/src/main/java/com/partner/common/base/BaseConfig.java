@@ -20,6 +20,7 @@ import com.partner.busi.back.controller.BackIntroduceController;
 import com.partner.busi.back.controller.BackLoginController;
 import com.partner.busi.back.controller.BackMainController;
 import com.partner.busi.back.controller.BackMatchController;
+import com.partner.busi.back.controller.BackMatchListController;
 import com.partner.busi.back.controller.BackNoticeController;
 import com.partner.busi.back.controller.BackPictureController;
 import com.partner.busi.back.controller.BackUserController;
@@ -88,6 +89,7 @@ public class BaseConfig extends JFinalConfig {
 		me.add("/userCenter",UserCenterController.class,"/front/usercenter");
 		me.add("/back/match/editUser",BackConfigController.class,"/back/match/editUser");
 		me.add("/back/match/edit",BackMatchController.class,"/back/match");
+		me.add("/back/match",BackMatchListController.class,"/back/match");
 	}
 
 	/*

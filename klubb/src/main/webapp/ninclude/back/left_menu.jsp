@@ -32,6 +32,9 @@
 			<a tabid="1-8" url="${ctx}/back/match/edit">
 				<b class="b-t6"></b><span>对阵图tmp</span>
 			</a>
+			<a tabid="1-8" url="${ctx}/back/match">
+				<b class="b-t6"></b><span>比赛管理</span>
+			</a>
 		</li>
 	</ul>
 	
