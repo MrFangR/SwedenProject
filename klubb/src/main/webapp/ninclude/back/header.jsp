@@ -29,6 +29,7 @@
     <link rel="stylesheet" type="text/css" href="${ctx}/back-ui/pub-ui/css/skin1/jquery.jscrollpane.css" />
     <link rel="stylesheet" type="text/css" href="${ctx}/back-ui/pub-ui/css/skin1/zTreeStyle.css" />
     <link rel="stylesheet" type="text/css"  href="${ctx}/css/ands-popAlert.css"></link>
+    <link rel="stylesheet" type="text/css" href="${ctx}/back-ui/pub-ui/css/skin1/dragula.css" />
 <%/* 引入css end */%>
 
 <%/* 引入js start */%>

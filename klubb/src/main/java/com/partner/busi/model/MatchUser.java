@@ -40,17 +40,17 @@ public class MatchUser extends BaseMatchUser<MatchUser> {
 	
 	public Page<MatchUser> findMatchUserListBySeq(int pageNum, int pagesize) {
 		String select = "select m.ID, u.NAME ";
-		StringBuilder sql = new StringBuilder(" from t_match_user m, t_user u where m.USER_ID = u.ID and m.SEQ != null ");
+		StringBuilder sql = new StringBuilder(" from t_match_user m, t_user u where m.USER_ID = u.ID and m.SEQ IS NOT NULL");
 		List<Object> params = new ArrayList<Object>();
 		sql.append(" order by m.CREATE_TIME desc");
 		return paginate(pageNum, pagesize, select, sql.toString(), params.toArray());
 	}
 	
 	public Page<MatchUser> findMatchUserListNoSeq(int pageNum, int pagesize) {
-		String select = "select * ";
-		StringBuilder sql = new StringBuilder(" from t_match_user where SEQ == null ");
+		String select = "select m.ID, u.NAME ";
+		StringBuilder sql = new StringBuilder(" from t_match_user m, t_user u where m.USER_ID = u.ID and m.SEQ IS NULL");
 		List<Object> params = new ArrayList<Object>();
-		sql.append(" order by CREATE_TIME desc");
+		sql.append(" order by m.CREATE_TIME desc");
 		return paginate(pageNum, pagesize, select, sql.toString(), params.toArray());
 	}
 	
@@ -58,5 +58,13 @@ public class MatchUser extends BaseMatchUser<MatchUser> {
 		String sql = "select * from t_match_user where MATCH_ID = ? order by SEQ ";
 		return dao.find(sql, matchId);
 	};
+	
+	public void setNAME(String name) {
+		set("NAME", name);
+	}
+	
+	public String getNAME() {
+		return get("NAME");
+	}
 	
 }
