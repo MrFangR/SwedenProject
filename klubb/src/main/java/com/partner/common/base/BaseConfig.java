@@ -16,6 +16,7 @@ import com.jfinal.render.ViewType;
 import com.partner.busi.back.controller.BackActivityController;
 import com.partner.busi.back.controller.BackConfigController;
 import com.partner.busi.back.controller.BackContactController;
+import com.partner.busi.back.controller.BackEditMatchUserController;
 import com.partner.busi.back.controller.BackIntroduceController;
 import com.partner.busi.back.controller.BackLoginController;
 import com.partner.busi.back.controller.BackMainController;
@@ -87,7 +88,7 @@ public class BaseConfig extends JFinalConfig {
 		me.add("/front/happytimes",HappyTimesController.class,"/front");
 		me.add("/contact",ContactController.class,"/front");
 		me.add("/userCenter",UserCenterController.class,"/front/usercenter");
-		me.add("/back/match/editUser",BackConfigController.class,"/back/match/editUser");
+		me.add("/back/match/editUser",BackEditMatchUserController.class,"/back/match/editUser");
 		me.add("/back/match/edit",BackMatchController.class,"/back/match");
 		me.add("/back/match",BackMatchListController.class,"/back/match");
 	}

@@ -13,8 +13,8 @@
 	<div class="ued-tab js_tab">
 	    <div class="ued-tab-tit clearfix js_tab_tit">
 	        <ul class="ued-tab-1 fl clearfix">
-                <li class="liQuery"><a class="ued-see" href="javascript:void(0)">编辑参与者</a></li>
                 <li class="on1 "><a class="ued-add" href="javascript:void(0)">编辑对阵图</a></li>
+                <li class="liQuery"><a class="ued-see" href="javascript:void(0)">编辑参与者</a></li>
                 
             </ul>
 	    </div>
