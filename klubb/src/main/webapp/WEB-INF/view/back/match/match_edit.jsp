@@ -23,31 +23,39 @@
         <!--tabcon  s-->
         <div class="ued-tab-con mgt-20">	
                <!--第一tab  一列是320px 目前展示5列宽为1600px  如果对阵图列数超过3需要代码判断列数给 box-n div 输入宽度 s-->
-            <c:set var="boxMgt" value="zhanwei,zhanwei,mgt-20,mgt-160,mgt-20" />
-            <c:set var="groupMgt" value="mgt-60,mgt-80,mgt-200,mgt-200,mgt-230" />
-            <c:set var="tempMgt" value="mgt-60,mgt-200,mgt-300,mgt-400" />
+            <c:set var="boxMgt" value="${fn:split(' , ,mgt-20,mgt-160,mgt-20', ',') }" />
+            <c:set var="groupMgt" value="${fn:split('mgt-60,mgt-80,mgt-200,mgt-200,mgt-230', ',') }" />
+            <c:set var="tempMgt" value="${fn:split('mgt-60,mgt-200,mgt-300,mgt-400', ',') }" />
+            <c:set var="svgHeight" value="${fn:split('76,140,140,140', ',') }" />
             <div class="box-n on1" style="width:1600px;">
             <!--比赛标题  s-->
             <div class="matchtitle">
-            	<c:forEach items="${titleList }" var="title">
-	               <li>${title }</li>
+            	<c:forEach items="${titleList}" var="title">
+	               <li>${title}</li>
             	</c:forEach>
                <div class="clear"></div>
             </div>
             <!--比赛标题  e-->
-            <c:forEach items="${list }" var="gList" varStatus="status">
-            	<c:if test="${status.index == 0 }">
+            <c:forEach items="${list}" var="gList" varStatus="status">
+            	<c:if test="${status.index == 0}">
             		<!--可拖动部分  s-->
                      <div class="dropbox">
             	</c:if>
-            	<c:if test="${status.index > 1 }">
+            	<c:if test="${status.index > 0}">
             		<!--可拖动部分  s-->
-                     <div class="nodrop ${boxMgt[status.index] }">
+                     <div class="nodrop ${boxMgt[status.index]}">
             	</c:if>
-            	<c:forEach items="${gList }" var="game" varStatus="gStatus">
+            	<c:forEach items="${gList}" var="game" varStatus="gStatus">
             		<c:if test="${gStatus.index mod 2 == 0}">
 	            		<!--完整模板  s-->
-	                    <div class="matchgroup ${groupMgt[status.index] }">
+	            		<c:choose>
+	            			<c:when test="${game.SEQ == 1}">
+	            				<div class="matchgroup">
+	            			</c:when>
+	            			<c:otherwise>
+	            				<div class="matchgroup ${groupMgt[status.index]}">
+	            			</c:otherwise>
+	            		</c:choose>
 	                    <div class="template">
 	                        <h3>${game.SEQ }</h3>
 	                    <div class="group" <c:if test="${status.index == 0 }"> ondrop="drop(event,this)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event, this)"</c:if>><i>${game.u1_SEQ }</i><span>${game.u1_NAME }</span><input name="" type="text" value="10"></div>
@@ -55,24 +63,25 @@
 	                    </div>  
             		</c:if>
                     <c:if test="${gStatus.index mod 2 == 1}">
-                    <div class="template ${tempMgt[status.index] }">
-                        <h3>2</h3>
-                        <div class="group" <c:if test="${status.index == 0 }"> ondrop="drop(event,this)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event, this)"</c:if>><i>3</i><span>第二组第一名</span><input name="" type="text" value="0"></div>
-                        <div class="group" <c:if test="${status.index == 0 }"> ondrop="drop(event,this)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event, this)"</c:if>><i>4</i><span>第二组第二名</span><input name="" type="text" value="1"></div>
+                    <div class="template ${tempMgt[status.index]}">
+                        <h3>${game.SEQ }</h3>
+                        <div class="group" <c:if test="${status.index == 0 }"> ondrop="drop(event,this)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event, this)"</c:if>><i>${game.u1_SEQ }</i><span>${game.u1_NAME }</span><input name="" type="text" value="0"></div>
+                        <div class="group" <c:if test="${status.index == 0 }"> ondrop="drop(event,this)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event, this)"</c:if>><i>${game.u2_SEQ }</i><span>${game.u2_NAME }</span><input name="" type="text" value="1"></div>
                     </div>  
                     <div class="matchline">
                        
-                       <svg  x="0" y="0" width="290px" height="76px">
-                          <path d="M 228 1 L 236 1 L 236 76 " class="bracket-line"/>
+                       <svg  x="0" y="0" width="290px" height="${svgHeight[status.index] }px">
+                          <path d="M 228 1 L 236 1 L 236 ${svgHeight[status.index] } " class="bracket-line"/>
                         </svg>
-                        <svg  x="0" y="0"  width="290px" height="76px" style="margin-top:-6px">
-                            <path d="M 228,76 L 236,76  L 236,1  L 244,1" class="bracket-line"/>
+                        <svg  x="0" y="0"  width="290px" height="${svgHeight[status.index] }px" style="margin-top:-6px">
+                            <path d="M 228,${svgHeight[status.index] } L 236,${svgHeight[status.index] }  L 236,1  L 244,1" class="bracket-line"/>
                         </svg>
                     </div>
                   </div>
                   </c:if>
                   <!--完整模板  e--> 
             	</c:forEach>
+            	</div>
             </c:forEach>
             
             </div>
