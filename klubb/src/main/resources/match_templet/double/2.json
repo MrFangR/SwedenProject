@@ -1,0 +1,11 @@
+{
+    "gameList": [
+        {
+            "seq": 1,
+            "winNextSeq": 0,
+            "loseNextSeq": 0,
+            "roundNum": 1,
+            "showIndex": 1
+        }
+    ]
+}

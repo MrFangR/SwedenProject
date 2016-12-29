@@ -1,0 +1,88 @@
+{
+    "gameList": [
+        {
+            "seq": 1,
+            "winNextSeq": 7,
+            "loseNextSeq": 5,
+            "roundNum": 1,
+            "showIndex": 1
+        },
+        {
+            "seq": 2,
+            "winNextSeq": 7,
+            "loseNextSeq": 5,
+            "roundNum": 1,
+            "showIndex": 2
+        },
+        {
+            "seq": 3,
+            "winNextSeq": 8,
+            "loseNextSeq": 6,
+            "roundNum": 1,
+            "showIndex": 3
+        },
+        {
+            "seq": 4,
+            "winNextSeq": 8,
+            "loseNextSeq": 6,
+            "roundNum": 1,
+            "showIndex": 4
+        },
+        {
+            "seq": 5,
+            "winNextSeq": 10,
+            "loseNextSeq": 0,
+            "roundNum": 1,
+            "showIndex": 5
+        },
+        {
+            "seq": 6,
+            "winNextSeq": 9,
+            "loseNextSeq": 0,
+            "roundNum": 1,
+            "showIndex": 6
+        },
+        {
+            "seq": 7,
+            "winNextSeq": 12,
+            "loseNextSeq": 9,
+            "roundNum": 2,
+            "showIndex": 7
+        },
+        {
+            "seq": 8,
+            "winNextSeq": 12,
+            "loseNextSeq": 10,
+            "roundNum": 2,
+            "showIndex": 8
+        },
+        {
+            "seq": 9,
+            "winNextSeq": 11,
+            "loseNextSeq": 0,
+            "roundNum": 2,
+            "showIndex": 10
+        },
+        {
+            "seq": 10,
+            "winNextSeq": 11,
+            "loseNextSeq": 0,
+            "roundNum": 2,
+            "showIndex": 9
+        },
+        {
+            "seq": 11,
+            "winNextSeq": 13,
+            "loseNextSeq": 0,
+            "roundNum": 3,
+            "showIndex": 12
+        },
+        {
+            "seq": 12,
+            "winNextSeq": 0,
+            "loseNextSeq": 13,
+            "roundNum": 3,
+            "showIndex": 11
+        }
+    ]
+}

@@ -1,0 +1,39 @@
+{
+    "gameList": [
+        {
+            "seq": 1,
+            "winNextSeq": 4,
+            "loseNextSeq": 3,
+            "roundNum": 1,
+            "showIndex": 1
+        },
+        {
+            "seq": 2,
+            "winNextSeq": 4,
+            "loseNextSeq": 3,
+            "roundNum": 1,
+            "showIndex": 2
+        },
+        {
+            "seq": 3,
+            "winNextSeq": 5,
+            "loseNextSeq": 0,
+            "roundNum": 1,
+            "showIndex": 3
+        },
+        {
+            "seq": 4,
+            "winNextSeq": 0,
+            "loseNextSeq": 5,
+            "roundNum": 2,
+            "showIndex": 4
+        },
+        {
+            "seq": 5,
+            "winNextSeq": 0,
+            "loseNextSeq": 0,
+            "roundNum": 2,
+            "showIndex": 5
+        }
+    ]
+}
