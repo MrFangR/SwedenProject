@@ -164,9 +164,9 @@ public class EmailUtil {
 		String caFilePath = EmailUtil.class.getClassLoader().getResource("cancleActivity.xml").getPath();
 		String cuFilePath = EmailUtil.class.getClassLoader().getResource("cancleUser.xml").getPath();
 		String filePath = "";
-		if("1".equals(cuFilePath)){
+		if("1".equals(type)){
 			filePath = caFilePath;
-		}else if("2".equals(cuFilePath)){
+		}else if("2".equals(type)){
 			filePath = cuFilePath;
 		}
 		

@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <meta name="format-detection" content="telephone=no,email=no">
-    <title><i18n:get key="portal.menu.activity"></i18n:get></title>
+    <title></title>
     <%@include file="/ninclude/back/header.jsp"%>
     <script  src="${ctx}/front-ui/js/jquery1.9.0.min.js"></script>
     <script  src="${ctx}/front-ui/js/ui.js"></script>

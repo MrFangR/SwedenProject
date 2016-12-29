@@ -35,7 +35,8 @@
                 	<tr>
                         <th><font color="color-3">*&nbsp;</font>赛事名称：</th>
                         <td colspan="3">
-                            <input type="text" name="match.NAME" value="" class="ued-text-2" maxlength="30">     
+                            <input type="text" name="match.NAME" value="" class="ued-text-2" maxlength="30">
+                            <p class="color-3 fs-14" id="name_msg"></p>     
                         </td>
                     </tr>
                     <tr>
@@ -57,7 +58,6 @@
                             <input class="inp-radio" type="radio" name="match.TYPE"  value="2"><span class="b-radio"><b></b>双败</span>
                             <input class="inp-radio" type="radio" name="match.TYPE"  value="3"><span class="b-radio"><b></b>单败plus</span>
                             <input class="inp-radio" type="radio" name="match.TYPE"  value="4"><span class="b-radio"><b></b>双败plus</span>
-                            <p class="color-3 fs-14" id="shop_status_msg"></p>            
                         </td>
                     </tr>
                     <tr>
@@ -71,19 +71,21 @@
                         <th><font color="color-3">*&nbsp;</font>开始时间：</th>
                         <td  colspan="3">
                              <div class="ued-time-2 fl"><input type="text" name="match.START_DATE" onclick="WdatePicker()" class="Wdate"></div>
+                             <p class="color-3 fs-14" id="start_time_msg"></p> 
                         </td>
                     </tr>
                     <tr>
                         <th><font color="color-3">*&nbsp;</font>最大参赛人数：</th>
                         <td colspan="3">
-                            <input type="text" name="match.MAX_PLAYER" value="" class="ued-text-2" maxlength="30">     
+                            <input type="text" name="match.MAX_PLAYER" value="" class="ued-text-2" maxlength="30">
+                            <p class="color-3 fs-14" id="max_player_msg"></p>    
                         </td>
                     </tr>
                     <tr>
                         <th><font color="color-3">*&nbsp;</font>描述：</th>
                         <td colspan="3">
-                            <textarea style="width:80%;" name="match.DESCRIPTION" class="ued-textarea">请输入关键字</textarea>
-                            <p class="color-3 fs-14">优惠说明中请勿包含回车字符</p>  
+                            <textarea style="width:80%;" name="match.DESCRIPTION" class="ued-textarea"></textarea>
+                            <p class="color-3 fs-14" id="description_msg"></p> 
                         </td>
                     </tr>
                 </tbody>

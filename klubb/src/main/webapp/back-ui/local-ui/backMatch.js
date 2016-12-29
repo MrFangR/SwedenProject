@@ -66,10 +66,35 @@ function showNotice(data){
 function validData(){
 	return true;
 }
+//取消比赛
+function cancleMat(ID){
+	$.ajax({
+		type : 'get',
+		cache : false,
+		async : true,
+		url : ctx + "/back/match/cancleMatch",
+		data: {
+			matID : ID
+		},
+		dataType : "html",
+		success : function(data){
+			location.href=ctx + "/back/match";
+			return
+		},
+		error : function(json){
+			pop.fail("系统异常，请稍后重试");
+			return;
+		}
+	});
+}
+
+
+
 //图片相关
 function initUpload(){
 	//图片上传
 	$("#imgForUpload").live("change", function(){
+		alert('sssss');
 		$.ajaxFileUpload({
 		    url : '${ctx}/upload/imgUpload',
 		    secureuri:false,
@@ -77,6 +102,7 @@ function initUpload(){
 		    dataType: 'json',//返回数据的类型
 		    data:{},//一同上传的数据
 		    success: function (data) {
+		    	alert(data);
 		    	var obj = jQuery.parseJSON(data);
 		    	$("#imgPath").val(obj.fileName);
 		    	$("#showImg").attr("src", "${uploadUrl}" + obj.fileName);

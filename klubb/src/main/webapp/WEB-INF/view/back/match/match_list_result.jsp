@@ -30,10 +30,10 @@
 							<c:when test="${match.TYPE eq 4}">双败plus</c:when>
 						</c:choose>
 		            </td>
-		            <td>${match.MAX_PLAYER}</td>
-		            <td>${match.START_DATE}</td>
+		            <td>${match.playerNum}</td>
+		            <td><fmt:formatDate value="${match.startDate}" pattern="dd/MM/yyyy HH:mm:ss"/></td>
 		            <td>
-		            	<a href="#none">取消活动</a>
+		            	<a href="cancleMat(${match.ID})">取消活动</a>
 		            	<a href="#none">编辑对阵图</a>
 		            </td>
 				</tr>
