@@ -41,9 +41,9 @@
              <!--第二tab  s-->
             <div class="box-n">
                     <div id='single1' class='container'>
-                        <div>2If you try to drop me somewhere other than here, I'll die a fiery death. <i class="mtch_del"></i><i class="mtch_edit"></i></div>
+                        <div>2If you try to drop me somewhere other than here, I'll die a fiery death. <i class="mtch_del"></i></div>
 						<c:forEach var="user" items="${matchUser.list }">
-							<div>${user.NAME } <i class="mtch_del"></i></div>
+							<div>${user.NAME } <i class="mtch_del" dataValue="${user.ID }"></i></div>
 						</c:forEach>
 						<!-- 
                         <div>Item 3. <i class="mtch_del"></i><i class="mtch_edit"></i></div>
@@ -69,10 +69,17 @@
 	    </div>
 	    <div>
 	        <p class="pd-20 dialog-tipInfo clearfix">姓名：
-	        <select size="1" style="width:180px;">
-	          <option>昌盛</option>
-	          <option>lijianghui</option>
-	          <option>王二小</option>
+	        <select size="1" style="width:180px;" id="addUser" name="addUser">
+	        	<c:choose>
+	        		<c:when test="${empty noMatchUser }">
+	        			<option value="">暂无可添加成员</option>
+	        		</c:when>
+	        		<c:otherwise>
+			        	<c:forEach var="user" items="${noMatchUser }">
+			        		<option value="${user.ID }">${user.NAME }</option>
+			        	</c:forEach>
+	        		</c:otherwise>
+	        	</c:choose>
 	       </select>
 	       </p>
 	        <div class="pd-10 tc">
@@ -100,7 +107,7 @@
 		   var index_no = $(this).index();
 		     $(this).addClass("cur").siblings().removeClass("cur");
 			 $(".dialogcon ul li").eq(index_no).addClass("cur").siblings().removeClass("cur");
-		  })
+		  });
 	 
 	 
 	  //高度设置
@@ -112,40 +119,72 @@
 	//弹出框
 	$(".js_dialog").bind("click",function(){		
         $("#btn-dialog").trigger("dialog-open");
-	})
+	});
 	 $(".container i.mtch_del").click(function(){
-		  $(this).parent().remove();
+		  var userId = $(this).attr("dataValue");
+		  $.ajax({
+			  type:"post",
+			  url:ctx + "/back/match/editUser/delUser",
+			  data:{
+				  id: userId
+			  },
+			  async:false,
+			  dataType:"json",
+			  success:function(json){
+				  if(json.retCode == 0 ){
+					  $(this).parent().remove();
+				  }else{
+					  ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+					   {type:2,
+						info:'比赛管理',
+						text:'<div style=" font-size:18px; color:#ff0000;"> '+json.msg+' </div>',
+						'ok':function(){},
+						tag:'cw-ring'}
+		               );
+				  }
+			  },
+			  error:function(){
+				  ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+				   {type:2,
+					info:'比赛管理',
+					text:'<div style=" font-size:18px; color:#ff0000;"> 系统异常，请稍后重试 </div>',
+					'ok':function(){},
+					tag:'cw-ring'}
+	               );
+			  }
+		  });
 		    
-		 })
+	});
 		 
     //编辑比分弹框
 	$(".js_matchbtn").live("click",function(){		
         $("#btn-matchbtn").trigger("dialog-open");
-	})
+	});
 	 
 	 
-	 })
+	 });
   dragula([single1], { removeOnSpill: true });
     function allowDrop(ev)  
     {  
-    ev.preventDefault();  
+    	ev.preventDefault();  
     }  
       
     var srcdiv = null;  
     function drag(ev,divdom)  
     {  
-    srcdiv=divdom;  
-    ev.dataTransfer.setData("text/html",divdom.innerHTML);  
+	    srcdiv=divdom;  
+	    ev.dataTransfer.setData("text/html",divdom.innerHTML);  
     }  
       
     function drop(ev,divdom)  
-    {  
-    ev.preventDefault();  
-    if(srcdiv != divdom){  
-    srcdiv.innerHTML = divdom.innerHTML;  
-    divdom.innerHTML=ev.dataTransfer.getData("text/html");  
-    }  
-    }  
+    {
+	    ev.preventDefault();  
+	    if(srcdiv != divdom){  
+	    srcdiv.innerHTML = divdom.innerHTML;  
+	    divdom.innerHTML=ev.dataTransfer.getData("text/html");  
+	    }  
+    }
+    
     </script>  
 </body>
 </html>

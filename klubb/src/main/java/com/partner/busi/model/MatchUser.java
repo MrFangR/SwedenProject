@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
 
+import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.Page;
 import com.jfinal.plugin.activerecord.Record;
 import com.partner.busi.model.base.BaseMatchUser;
@@ -42,16 +43,14 @@ public class MatchUser extends BaseMatchUser<MatchUser> {
 		String select = "select m.ID, u.NAME ";
 		StringBuilder sql = new StringBuilder(" from t_match_user m, t_user u where m.USER_ID = u.ID and m.SEQ IS NOT NULL");
 		List<Object> params = new ArrayList<Object>();
-		sql.append(" order by m.CREATE_TIME desc");
+		sql.append(" order by m.SEQ");
 		return paginate(pageNum, pagesize, select, sql.toString(), params.toArray());
 	}
 	
-	public Page<MatchUser> findMatchUserListNoSeq(int pageNum, int pagesize) {
-		String select = "select m.ID, u.NAME ";
-		StringBuilder sql = new StringBuilder(" from t_match_user m, t_user u where m.USER_ID = u.ID and m.SEQ IS NULL");
-		List<Object> params = new ArrayList<Object>();
-		sql.append(" order by m.CREATE_TIME desc");
-		return paginate(pageNum, pagesize, select, sql.toString(), params.toArray());
+	public List<MatchUser> findMatchUserListNoSeq() {
+		StringBuilder sql = new StringBuilder(" select m.ID, u.NAME from t_match_user m, t_user u where m.USER_ID = u.ID and m.SEQ IS NULL");
+		sql.append(" order by m.SEQ ");
+		return dao.find(sql.toString());
 	}
 	
 	public List<MatchUser> findUserByMatchId(int matchId){
@@ -66,5 +65,14 @@ public class MatchUser extends BaseMatchUser<MatchUser> {
 	public String getNAME() {
 		return get("NAME");
 	}
-	
+	/**
+	 * 
+	 * @param matchId
+	 * @param seq
+	 * @return int >=1 为成功
+	 */
+	public int batchUpdateSeq(int matchId, int seq){
+		StringBuffer sb = new StringBuffer(" UPDATE t_match_user MU SET MU.SEQ = MU.SEQ-1 WHERE MU.MATCH_ID = "+matchId+" AND MU.SEQ IS NOT NULL AND MU.SEQ > "+seq);
+		return Db.update(sb.toString());
+	}
 }
