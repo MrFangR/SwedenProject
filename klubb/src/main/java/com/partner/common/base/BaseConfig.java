@@ -12,6 +12,7 @@ import com.jfinal.config.Routes;
 import com.jfinal.ext.handler.ContextPathHandler;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.druid.DruidPlugin;
+import com.jfinal.plugin.ehcache.EhCachePlugin;
 import com.jfinal.render.ViewType;
 import com.partner.busi.back.controller.BackActivityController;
 import com.partner.busi.back.controller.BackConfigController;
@@ -37,6 +38,7 @@ import com.partner.busi.model._MappingKit;
 import com.partner.common.interceptor.AuthInterceptor;
 import com.partner.common.plugin.PropertiesPlugin;
 import com.partner.common.tag.I18nTag;
+import com.partner.common.util.MatchTemplateCache;
 import com.partner.common.util.UploadController;
 
 /**
@@ -118,6 +120,7 @@ public class BaseConfig extends JFinalConfig {
 		// 所有配置在 MappingKit 中搞定
 		_MappingKit.mapping(arp);
 
+		me.add(new EhCachePlugin());
 	}
 
 	/*
@@ -143,6 +146,12 @@ public class BaseConfig extends JFinalConfig {
 		// TODO Auto-generated method stub
 		me.add(new ContextPathHandler());
 		me.add(new UploadServerUrlHandler());
+	}
+
+	@Override
+	public void afterJFinalStart() {
+		super.afterJFinalStart();
+		MatchTemplateCache.init();
 	}
 
 }
