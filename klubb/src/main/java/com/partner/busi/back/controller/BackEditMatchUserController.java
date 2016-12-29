@@ -28,9 +28,13 @@ public class BackEditMatchUserController extends Controller {
 		if(StringUtils.isNotBlank(pageSize)){
 			currPageSize = Integer.parseInt(pageSize);
 		}
-		Page<MatchUser> matchUser = MatchUser.dao.findMatchUserListBySeq(currPageNum, currPageSize);
+		String  matchId = getPara("matchId");
+		if(StringUtils.isBlank(matchId)){
+			matchId = "2";
+		}
+		Page<MatchUser> matchUser = MatchUser.dao.findMatchUserListBySeq(currPageNum, currPageSize, matchId);
 		setAttr("matchUser",matchUser);
-		List<MatchUser> noMatchUser = MatchUser.dao.findMatchUserListNoSeq();
+		List<MatchUser> noMatchUser = MatchUser.dao.findMatchUserListNoSeq(matchId);
 		setAttr("noMatchUser", noMatchUser);
 		render("match_user_edit.jsp");
 	}
@@ -44,16 +48,25 @@ public class BackEditMatchUserController extends Controller {
 			retInfo.setRetMsg("参赛人员获取失败，请稍后再试！");
 		}else{
 			int flag = MatchUser.dao.batchUpdateSeq(user.getMatchId(), user.getSEQ());
-			if(flag < 1){
-				retInfo.setRetCode(1);
-				retInfo.setRetMsg("参赛人员删除失败，请稍后再试！");
-			}else{
-				user.setSEQ(null);
-				user.update();
-				retInfo.setRetCode(0);
-				retInfo.setRetMsg("参赛人员删除成功！");
-			}
+			user.setSEQ(null);
+			user.update();
+			retInfo.setRetCode(0);
+			retInfo.setRetMsg("参赛人员删除成功！");
 		}
 		renderJson(retInfo);
 	}
+	
+	public void addUser(){
+		String id = getPara("id");
+		MatchUser user = MatchUser.dao.findById(id);
+		int maxSeq = MatchUser.dao.countMatchPersion(user.getMatchId());
+		user.setSEQ(maxSeq+1);
+		user.update();
+		ResultInfo retInfo = new ResultInfo();
+		retInfo.setRetCode(0);
+		retInfo.setRetMsg("添加成功");
+		renderJson(retInfo);
+	}
+	
+	
 }

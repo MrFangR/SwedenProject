@@ -62,7 +62,7 @@
 	</div>
 	 <div data-role="ued-dialog" class="ued-dialog" id="btn-dialog">
 	    <div class="dialog-header">
-	        <h3>添加参数人员</h3>
+	        <h3>添加参赛人员</h3>
 	        <span class="dialog-tool">
 	            <a title="关闭" class="dialog-close">X</a>
 	        </span>
@@ -83,12 +83,15 @@
 	       </select>
 	       </p>
 	        <div class="pd-10 tc">
-	            <button type="button" class="ued-button-2 mgr-25">保存</button>
+	            <c:if test="${!empty noMatchUser }">
+	            	<button type="button" class="ued-button-2 mgr-25" id="submitUser">保存</button>
+	            </c:if>
 	            <button type="button" class="ued-button-3 dialog-close">取消</button>
 	        </div>
 	    </div>
 	</div>
-<script type="text/javascript" src="${ctx}/back-ui/pub-ui/js/plugin/dialog.js"></script>	
+<script type="text/javascript" src="${ctx}/back-ui/pub-ui/js/plugin/dialog.js"></script>
+<script type="text/javascript" src='${ctx}/back-ui/pub-ui/js/plugin/dragula.js'></script>
 <script type="text/javascript"> 
  $(function(){
 	 
@@ -117,11 +120,12 @@
 	$("#ued-ztree").UED_tree();
 	
 	//弹出框
-	$(".js_dialog").bind("click",function(){		
+	$(".js_dialog").bind("click",function(){	
         $("#btn-dialog").trigger("dialog-open");
 	});
 	 $(".container i.mtch_del").click(function(){
 		  var userId = $(this).attr("dataValue");
+		  var obj = $(this);
 		  $.ajax({
 			  type:"post",
 			  url:ctx + "/back/match/editUser/delUser",
@@ -132,12 +136,13 @@
 			  dataType:"json",
 			  success:function(json){
 				  if(json.retCode == 0 ){
-					  $(this).parent().remove();
+					  obj.parent().remove();
+					  location.href=ctx + "/back/match/editUser";
 				  }else{
 					  ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
 					   {type:2,
 						info:'比赛管理',
-						text:'<div style=" font-size:18px; color:#ff0000;"> '+json.msg+' </div>',
+						text:'<div style=" font-size:18px; color:#ff0000;"> '+json.retMsg+' </div>',
 						'ok':function(){},
 						tag:'cw-ring'}
 		               );
@@ -160,6 +165,51 @@
 	$(".js_matchbtn").live("click",function(){		
         $("#btn-matchbtn").trigger("dialog-open");
 	});
+    
+    //增加参赛人同
+    $("#submitUser").bind("click",function(){
+    	var id = $("#addUser").val();
+    	$.ajax({
+    		type:"post",
+    		url:ctx+"/back/match/editUser/addUser",
+    		data:{
+    			id:id
+    		},
+    		dataType:"json",
+    		success:function(json){
+    			if(json.retCode == 0 ){
+    				ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+ 	 					   {type:2,
+ 	 						info:'比赛管理',
+ 	 						text:'<div style=" font-size:18px; color:#ff0000;"> '+json.retMsg+' </div>',
+ 	 						'ok':function(){
+ 	 							$("#btn-dialog").trigger("dialog-close");
+ 	 							location.href=ctx + "/back/match/editUser";
+ 	 							$(".liQuery").addClass("on1").siblings().removeClass("on1");
+ 	 						},
+ 	 						tag:'zq-ring'}
+ 	 		               );
+    			}else{
+    				ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+  	 					   {type:2,
+  	 						info:'比赛管理',
+  	 						text:'<div style=" font-size:18px; color:#ff0000;"> '+json.retMsg+' </div>',
+  	 						'ok':function(){},
+  	 						tag:'cw-ring'}
+  	 		               );
+    			}
+    		},
+    		error:function(){
+    			 ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+    					   {type:2,
+    						info:'比赛管理',
+    						text:'<div style=" font-size:18px; color:#ff0000;"> 系统异常，请稍后重试 </div>',
+    						'ok':function(){},
+    						tag:'cw-ring'}
+    		               );
+    		}
+    	});
+    });
 	 
 	 
 	 });
