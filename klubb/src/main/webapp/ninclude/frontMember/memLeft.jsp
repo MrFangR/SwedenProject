@@ -28,10 +28,10 @@
 				class="icon fl disan"></i>
 				<h5 class="name fl">happytimes</h5>
 		</a></li>
-		<!-- <li><a href="#none" class="link clearfix"> <i
-				class="icon fl disi"></i>
+		<li id="matchMgr"><a href="javascript:myLoadLeft('matchMgr','${ctx}/userCenter/toMatch');" class="link clearfix" url="toMatch"> <i
+				class="icon fl disan"></i>
 				<h5 class="name fl">参赛管理</h5>
-		</a></li> -->
+		</a></li>
 	</ul>
 </div>
 <script type="text/javascript">

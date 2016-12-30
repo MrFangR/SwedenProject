@@ -39,17 +39,16 @@ public class MatchUser extends BaseMatchUser<MatchUser> {
 		dao.update();
 	}
 	
-	public Page<MatchUser> findMatchUserListBySeq(int pageNum, int pagesize,String matchId) {
+	public Page<MatchUser> findMatchUserListBySeq(int pageNum, int pagesize) {
 		String select = "select m.ID, u.NAME ";
-		StringBuilder sql = new StringBuilder(" from t_match_user m, t_user u where m.USER_ID = u.ID and m.SEQ IS NOT NULL AND MATCH_ID = ? ");
+		StringBuilder sql = new StringBuilder(" from t_match_user m, t_user u where m.USER_ID = u.ID and m.SEQ IS NOT NULL");
 		List<Object> params = new ArrayList<Object>();
-		params.add(matchId);
 		sql.append(" order by m.SEQ");
 		return paginate(pageNum, pagesize, select, sql.toString(), params.toArray());
 	}
 	
-	public List<MatchUser> findMatchUserListNoSeq(String matchId) {
-		StringBuilder sql = new StringBuilder(" select m.ID, u.NAME from t_match_user m, t_user u where m.USER_ID = u.ID and m.SEQ IS NULL AND MATCH_ID = "+matchId);
+	public List<MatchUser> findMatchUserListNoSeq() {
+		StringBuilder sql = new StringBuilder(" select m.ID, u.NAME from t_match_user m, t_user u where m.USER_ID = u.ID and m.SEQ IS NULL");
 		sql.append(" order by m.SEQ ");
 		return dao.find(sql.toString());
 	}
@@ -66,14 +65,6 @@ public class MatchUser extends BaseMatchUser<MatchUser> {
 	public String getNAME() {
 		return get("NAME");
 	}
-	
-	public void setMaxSeq(Integer maxSeq) {
-		set("maxSeq", maxSeq);
-	}
-	
-	public Integer getMaxSeq() {
-		return get("maxSeq");
-	}
 	/**
 	 * 
 	 * @param matchId
@@ -84,10 +75,13 @@ public class MatchUser extends BaseMatchUser<MatchUser> {
 		StringBuffer sb = new StringBuffer(" UPDATE t_match_user MU SET MU.SEQ = MU.SEQ-1 WHERE MU.MATCH_ID = "+matchId+" AND MU.SEQ IS NOT NULL AND MU.SEQ > "+seq);
 		return Db.update(sb.toString());
 	}
-	
-	public int countMatchPersion(int matchId){
-		String sql = " SELECT max(seq) as maxSeq  from t_match_user where MATCH_ID = "+matchId+" and SEQ IS NOT NULL";
-		MatchUser matchUser = dao.findFirst(sql);
-		return matchUser.getMaxSeq();
+
+	public boolean deleteByUserIdAndActId(Integer userId, int matId) {
+		int rs = Db.update("delete from t_match_user where USER_ID = ? and MATCH_ID = ?",userId,matId);
+		if(rs==0){
+			return false;
+		}else{
+			return true;
+		}
 	}
 }

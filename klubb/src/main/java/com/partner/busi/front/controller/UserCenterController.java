@@ -10,6 +10,8 @@ import com.partner.busi.front.validator.HappyValidator;
 import com.partner.busi.front.validator.PwdValidator;
 import com.partner.busi.model.ActUser;
 import com.partner.busi.model.Activity;
+import com.partner.busi.model.Match;
+import com.partner.busi.model.MatchUser;
 import com.partner.busi.model.Picture;
 import com.partner.busi.model.User;
 import com.partner.common.base.ResultInfo;
@@ -193,6 +195,35 @@ public class UserCenterController extends Controller {
 		
 		int picID = getParaToInt("picID");
 		rsFlag = Picture.dao.deleteById(picID);
+		
+		setAttr("rsFlag", rsFlag);
+		setAttr("rsMsg", rsMsg);
+		renderJson();
+	}
+	
+	/**
+	 * find match by user_id
+	 */
+	public void findMatByUserId(){
+		int pageNum = getParaToInt("pageNum");
+		int pageSize = getParaToInt("pageSize");
+		
+		Page<Match> page = Match.dao.findAllMatByUser(FrontSessionUtil.getSession(getRequest()).getID(),pageNum,pageSize);
+		renderJson(page);
+	}
+	
+	/**
+	 * cancle match
+	 */
+	public void cancleMatch(){
+		boolean rsFlag = false;
+//		String rsMsg = "取消活动失败，请稍后再试";
+		String rsMsg = "Det gick inte att inställa aktiviteten. Vänligen försök senare.";
+		
+		int matId = getParaToInt("matId");
+		Integer userId = FrontSessionUtil.getSession(getRequest()).getID();
+		//String userId = "1";
+		rsFlag = MatchUser.dao.deleteByUserIdAndActId(userId,matId);
 		
 		setAttr("rsFlag", rsFlag);
 		setAttr("rsMsg", rsMsg);
