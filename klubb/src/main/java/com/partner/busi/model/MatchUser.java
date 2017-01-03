@@ -54,6 +54,12 @@ public class MatchUser extends BaseMatchUser<MatchUser> {
 		return dao.find(sql.toString());
 	}
 	
+	public List<MatchUser> findMatchUserListByMatchId(String matchId){
+		StringBuilder sql = new StringBuilder(" select m.SEQ, m.CREATE_TIME, m.START_SCORE, u.EMAIL, u.GENDER, u.PHONE, u.NAME from t_match_user m, t_user u where m.USER_ID = u.ID AND m.MATCH_ID = "+matchId);
+		sql.append(" order by m.SEQ ");
+		return dao.find(sql.toString());
+	}
+	
 	public List<MatchUser> findUserByMatchId(int matchId){
 		String sql = "select * from t_match_user where MATCH_ID = ? order by SEQ ";
 		return dao.find(sql, matchId);
@@ -67,6 +73,29 @@ public class MatchUser extends BaseMatchUser<MatchUser> {
 		return get("NAME");
 	}
 	
+	public void setEMAIL(String email) {
+		set("EMAIL", email);
+	}
+	
+	public String getEMAIL() {
+		return get("EMAIL");
+	}
+	
+	public void setGENDER(Integer gender) {
+		set("GENDER", gender);
+	}
+	
+	public Integer getGENDER() {
+		return get("GENDER");
+	}
+	
+	public void setPHONE(String phone) {
+		set("PHONE", phone);
+	}
+	
+	public String getPHONE() {
+		return get("PHONE");
+	}
 	public void setMaxSeq(Integer maxSeq) {
 		set("maxSeq", maxSeq);
 	}
