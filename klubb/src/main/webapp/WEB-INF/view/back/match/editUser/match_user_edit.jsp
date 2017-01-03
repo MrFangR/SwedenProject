@@ -39,11 +39,15 @@
             </div>
              <!--第一tab  e-->
              <!--第二tab  s-->
-            <div class="box-n">
+            <div class="box-n" style="width:100%">
                     <div id='single1' class='container'>
-                        <div>2If you try to drop me somewhere other than here, I'll die a fiery death. <i class="mtch_del"></i></div>
 						<c:forEach var="user" items="${matchUser.list }">
-							<div>${user.NAME } <i class="mtch_del" dataValue="${user.ID }"></i></div>
+							<c:if test="${not empty user.startScore}">
+								<div>${user.NAME } <input name="" type="text" value="初始分：${user.startScore }" ><i class="mtch_del" dataValue="${user.ID }"></i></div>
+							</c:if>
+							<c:if test="${empty user.startScore}">
+								<div>${user.NAME } <input name="" type="text" value="初始分：未设置" ><i class="mtch_del" dataValue="${user.ID }"></i></div>
+							</c:if>
 						</c:forEach>
 						<!-- 
                         <div>Item 3. <i class="mtch_del"></i><i class="mtch_edit"></i></div>
