@@ -16,7 +16,7 @@
             <ul class="ued-tab-1 fl clearfix">
                 <li class="on1 "><a class="ued-add" href="javascript:void(0)">编辑对阵图</a></li>
                 <li class="liQuery"><a class="ued-see" href="javascript:void(0)">编辑参与者</a></li>
-                
+                <li class="liLook"><a class="ued-see" href="javascript:void(0)">查看参与者</a></li>
             </ul>
     
         </div>
@@ -56,6 +56,69 @@
                   <div class="tc" style="width:60%; margin-top:30px;"><button class="ued-button-2 js_dialog">添加人员</button></div>
              </div>
             <!--第二tab  e-->
+            <!-- 第三个tab s -->
+           	<div class="box-n">
+	            <div>
+	            	<table width="100%" cellspacing="0" cellpadding="0" border="0" class="ued-table mgt-20">
+	            		<colgroup>
+	            			<col width="5%" />
+							<col width="10%" />
+							<col width="5%" />
+							<col width="15%" />
+							<col width="15%" />
+							<col width="10%" />
+							<col width="10%" />
+							<col width="30%" />
+	            		</colgroup>
+	            		<tbody>
+	            			<tr class="ued-tr-even">
+								<th>排序</th>
+								<th>姓名</th>
+								<th>性别</th>
+								<th>邮箱</th>
+								<th>手机号</th>
+								<th>起始分</th>
+								<th>报名时间</th>
+							</tr>
+							<c:if test="${empty allMatchUser}">
+								<tr><td colspan="7">抱歉，未查询到符合条件的记录</td></tr>
+							</c:if>
+							<c:if test="${not empty allMatchUser}">
+								<c:forEach items="${allMatchUser}" var="user">
+									<tr class="ued-tr-odd">
+										<td class="pdl-10">${user.SEQ }</td>
+										<td>${user.NAME }</td>
+										<td>
+											<c:choose>
+												<c:when test="${user.GENDER eq 0}">
+													女
+												</c:when>
+												<c:when test="${user.GENDER eq 1}">
+													男
+												</c:when>
+											</c:choose>
+										</td>
+										<td>${user.EMAIL }</td>
+										<td>${user.PHONE }</td>
+										<td>
+											<c:choose>
+												<c:when test="${empty user.startScore}">
+													<font class="color-4">未设置</font>
+												</c:when>
+												<c:otherwise>
+													${user.startScore }
+												</c:otherwise>
+											</c:choose>
+										</td>
+										<td>${user.createTime }</td>
+									</tr>
+								</c:forEach>
+							</c:if>
+	            		</tbody>
+	            	</table>
+	            </div>
+           	</div>
+            <!-- 第三个tab e -->
         </div>
         <!--tabcon  e-->
 
@@ -91,7 +154,7 @@
 	    </div>
 	</div>
 <script type="text/javascript" src="${ctx}/back-ui/pub-ui/js/plugin/dialog.js"></script>
-<script type="text/javascript" src='${ctx}/back-ui/pub-ui/js/plugin/dragula.js'></script>
+ <script type="text/javascript" src='${ctx}/back-ui/pub-ui/js/plugin/dragula.js'></script>
 <script type="text/javascript"> 
  $(function(){
 	 
@@ -106,6 +169,7 @@
 			 
 	 
 	 //tab切换
+	 
 	  $(".dialogtitle ul li").live("click",function(){
 		   var index_no = $(this).index();
 		     $(this).addClass("cur").siblings().removeClass("cur");
@@ -213,7 +277,7 @@
 	 
 	 
 	 });
-  dragula([single1], { removeOnSpill: true });
+  	dragula([single1], { removeOnSpill: true });
     function allowDrop(ev)  
     {  
     	ev.preventDefault();  

@@ -1,6 +1,8 @@
 package com.partner.busi.back.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
 
@@ -36,6 +38,9 @@ public class BackEditMatchUserController extends Controller {
 		setAttr("matchUser",matchUser);
 		List<MatchUser> noMatchUser = MatchUser.dao.findMatchUserListNoSeq(matchId);
 		setAttr("noMatchUser", noMatchUser);
+		//获取全部报名人员
+		List<MatchUser> allMatchUser = MatchUser.dao.findMatchUserListByMatchId(matchId);
+		setAttr("allMatchUser",allMatchUser);
 		render("match_user_edit.jsp");
 	}
 	
