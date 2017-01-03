@@ -56,13 +56,5 @@ public abstract class BasePicture<M extends BasePicture<M>> extends Model<M> imp
 	public java.lang.Integer getIsRecommend() {
 		return get("IS_RECOMMEND");
 	}
-	
-	public void setNICKNAME(String nickName) {
-		set("NICKNAME", nickName);
-	}
-	
-	public String getNICKNAME() {
-		return get("NICKNAME");
-	}
 
 }
