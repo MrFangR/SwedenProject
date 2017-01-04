@@ -24,6 +24,10 @@ public class Game extends BaseGame<Game> {
 		}
 	}
 	
+	public boolean updateUser(int gameId, Integer userId, int userIndex){
+		int rs = Db.update("update t_game set USER"+userIndex+"=? where ID = ?", userId, gameId);
+		return rs > 0;
+	}
 
 	public void setU1_SEQ(Long seq) {
 		set("U1_SEQ", seq);

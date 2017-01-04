@@ -59,15 +59,15 @@
 	            		</c:choose>
 	                    <div class="template">
 	                        <h3>${game.SEQ }</h3>
-	                    <div class="group" <c:if test="${status.index == 0 }"> ondrop="drop(event,this)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event, this)"</c:if>><i>${game.u1_SEQ }</i><span>${game.u1_NAME }</span><input name="" type="text" value="10"></div>
-	                    <div class="group" <c:if test="${status.index == 0 }"> ondrop="drop(event,this)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event, this)"</c:if>><i>${game.u2_SEQ }</i><span>${game.u2_NAME }</span><input name="" type="text" value="4"></div>
+	                    <div class="group" id="${game.ID }_1" <c:if test="${status.index == 0 }"> ondrop="drop(event,this)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event, this)"</c:if>><i><c:if test="${game.u1_SEQ != 0}">${game.u1_SEQ}</c:if></i><span id="${game.USER1 }">${game.u1_NAME }</span><input name="" type="text" value="10"></div>
+	                    <div class="group" id="${game.ID }_2" <c:if test="${status.index == 0 }"> ondrop="drop(event,this)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event, this)"</c:if>><i><c:if test="${game.u2_SEQ != 0}">${game.u2_SEQ}</c:if></i><span id="${game.USER2 }">${game.u2_NAME }</span><input name="" type="text" value="4"></div>
 	                    </div>  
             		</c:if>
                     <c:if test="${gStatus.index mod 2 == 1}">
                     <div class="template ${tempMgt[status.index]}">
                         <h3>${game.SEQ }</h3>
-                        <div class="group" <c:if test="${status.index == 0 }"> ondrop="drop(event,this)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event, this)"</c:if>><i>${game.u1_SEQ }</i><span>${game.u1_NAME }</span><input name="" type="text" value="0"></div>
-                        <div class="group" <c:if test="${status.index == 0 }"> ondrop="drop(event,this)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event, this)"</c:if>><i>${game.u2_SEQ }</i><span>${game.u2_NAME }</span><input name="" type="text" value="1"></div>
+                        <div class="group" id="${game.ID }_1" <c:if test="${status.index == 0 }"> ondrop="drop(event,this)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event, this)"</c:if>><i><c:if test="${game.u1_SEQ != 0}">${game.u1_SEQ}</c:if></i><span id="${game.USER1 }">${game.u1_NAME }</span><input name="" type="text" value="0"></div>
+                        <div class="group" id="${game.ID }_2" <c:if test="${status.index == 0 }"> ondrop="drop(event,this)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event, this)"</c:if>><i><c:if test="${game.u2_SEQ != 0}">${game.u2_SEQ}</c:if></i><span id="${game.USER2 }">${game.u2_NAME }</span><input name="" type="text" value="1"></div>
                     </div>  
                     <c:if test="${not status.last }">
                     <div class="matchline">
@@ -114,8 +114,8 @@
 		            		</c:choose>
             			<div class="template ${tempMgt[status.index * 2 + 1]}">
 	                        <h3>${game.SEQ }</h3>
-	                    <div class="group"><i>${game.u1_SEQ }</i><span>${game.u1_NAME }</span><input name="" type="text" value="10"></div>
-	                    <div class="group"><i>${game.u2_SEQ }</i><span>${game.u2_NAME }</span><input name="" type="text" value="4"></div>
+	                    <div class="group" id="${game.ID }_1" ><i><c:if test="${game.u1_SEQ != 0}">${game.u1_SEQ}</c:if></i><span id="${game.USER2 }">${game.u1_NAME }</span><input name="" type="text" value="10"></div>
+	                    <div class="group" id="${game.ID }_2" ><i><c:if test="${game.u2_SEQ != 0}">${game.u2_SEQ}</c:if></i><span id="${game.USER2 }">${game.u2_NAME }</span><input name="" type="text" value="4"></div>
 	                    </div>
 	                    <c:if test="${not status.last }">
 		                    <div class="matchline">
@@ -143,15 +143,15 @@
 		            		</c:choose>
 		                    <div class="template">
 		                        <h3>${game.SEQ }</h3>
-		                    <div class="group"><i>${game.u1_SEQ }</i><span>${game.u1_NAME }</span><input name="" type="text" value="10"></div>
-		                    <div class="group"><i>${game.u2_SEQ }</i><span>${game.u2_NAME }</span><input name="" type="text" value="4"></div>
+		                    <div class="group" id="${game.ID }_1" ><i><c:if test="${game.u1_SEQ != 0}">${game.u1_SEQ}</c:if></i><span id="${game.USER1 }">${game.u1_NAME }</span><input name="" type="text" value="10"></div>
+		                    <div class="group" id="${game.ID }_2" ><i><c:if test="${game.u2_SEQ != 0}">${game.u2_SEQ}</c:if></i><span id="${game.USER2 }">${game.u2_NAME }</span><input name="" type="text" value="4"></div>
 		                    </div>  
 	            		</c:if>
 	                    <c:if test="${gStatus.index mod 2 == 1}">
 	                    <div class="template ${tempMgt[status.index]}">
 	                        <h3>${game.SEQ }</h3>
-	                        <div class="group"><i>${game.u1_SEQ }</i><span>${game.u1_NAME }</span><input name="" type="text" value="0"></div>
-	                        <div class="group"><i>${game.u2_SEQ }</i><span>${game.u2_NAME }</span><input name="" type="text" value="1"></div>
+	                        <div class="group" id="${game.ID }_1" ><i><c:if test="${game.u1_SEQ != 0}">${game.u1_SEQ}</c:if></i><span id="${game.USER1 }">${game.u1_NAME }</span><input name="" type="text" value="0"></div>
+	                        <div class="group" id="${game.ID }_2" ><i><c:if test="${game.u2_SEQ != 0}">${game.u2_SEQ}</c:if></i><span id="${game.USER2 }">${game.u2_NAME }</span><input name="" type="text" value="1"></div>
 	                    </div>  
 	                    <c:if test="${not status.last }">
 	                    <div class="matchline">
@@ -247,20 +247,47 @@
     }  
       
     var srcdiv = null;  
-    function drag(ev,divdom)  
-    {  
-    srcdiv=divdom;  
-    ev.dataTransfer.setData("text/html",divdom.innerHTML);  
-    }  
-      
-    function drop(ev,divdom)  
-    {  
-    ev.preventDefault();  
-    if(srcdiv != divdom){  
-    srcdiv.innerHTML = divdom.innerHTML;  
-    divdom.innerHTML=ev.dataTransfer.getData("text/html");  
-    }  
-    }  
-    </script>  
+
+	function drag(ev, divdom) {
+		srcdiv = divdom;
+		ev.dataTransfer.setData("text/html", divdom.innerHTML);
+	}
+
+	function drop(ev, divdom) {
+		ev.preventDefault();
+		console.log('drop');
+		if (srcdiv != divdom) {
+			srcdiv.innerHTML = divdom.innerHTML;
+			divdom.innerHTML = ev.dataTransfer.getData("text/html");
+			
+			var gameId1 = srcdiv.id.split("_")[0];
+			var gameId2 = divdom.id.split("_")[0];
+			var userIndex1 = srcdiv.id.split("_")[1];
+			var userIndex2 = divdom.id.split("_")[1];
+			var userId1 = $(srcdiv).find("span").attr("id");
+			var userId2 = $(divdom).find("span").attr("id");
+			$.ajax({
+				type : "POST",
+				url : "${ctx}/back/match/edit/exchange",
+				dataType : "json",
+				data : {
+					gameId1: gameId1,
+					gameId2: gameId2,
+					userIndex1: userIndex1,
+					userIndex2: userIndex2,
+					userId1: userId1,
+					userId2: userId2
+				},
+				success: function(data){
+					if(!data.rsFlag){
+						var tmp = divdom.innerHTML;
+						divdom.innerHTML = srcdiv.innerHTML;
+						srcdiv.innerHTML = tmp;
+					}
+				}
+			});
+		}
+	}
+</script>  
 </body>
 </html>

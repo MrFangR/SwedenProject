@@ -5,10 +5,14 @@ package com.partner.busi.back.controller;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
+import com.jfinal.plugin.activerecord.DbKit;
+import com.jfinal.plugin.activerecord.tx.Tx;
 import com.partner.busi.model.Game;
 import com.partner.busi.model.Match;
 import com.partner.busi.model.MatchTemplate.GameTemplate;
@@ -37,7 +41,7 @@ public class BackMatchController extends Controller {
 				+ " ORDER BY g.SHOW_INDEX";
 		final String WIN_CON = "(m.TYPE in (1, 3) or (m.TYPE in (2, 4) and L_NEXT_SEQ != 0))";
 		final String LOSE_CON = "(m.TYPE in (2, 4) and L_NEXT_SEQ = 0)";
-		System.out.println(String.format(sql, WIN_CON));
+		
 		List<Game> wList = Game.dao.find(String.format(sql, WIN_CON), matchId);
 		List<Game> lList = Game.dao.find(String.format(sql, LOSE_CON), matchId);
 		
@@ -52,6 +56,39 @@ public class BackMatchController extends Controller {
 		setAttr("loseList", loseList);
 		setAttr("loseTitleList", loseTitleList);
 		render("match_edit.jsp");
+	}
+	
+	/**
+	 * 交换
+	 */
+	public void exchange(){
+		Integer gameId1 = getParaToInt("gameId1");
+		Integer gameId2 = getParaToInt("gameId2");
+		Integer userIndex1 = getParaToInt("userIndex1");
+		Integer userIndex2 = getParaToInt("userIndex2");
+		Integer userId1 = getParaToInt("userId1");
+		Integer userId2 = getParaToInt("userId2");
+		
+		boolean rsFlag = false;
+		try {
+			rsFlag = updateUsers(gameId1, gameId2, userIndex1, userIndex2, userId1, userId2);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		renderJson("rsFlag", rsFlag);
+	}
+	
+	@Before(Tx.class)
+	private boolean updateUsers(Integer gameId1, Integer gameId2, Integer userIndex1, Integer userIndex2, Integer userId1, Integer userId2) throws SQLException{
+		boolean flag1 = Game.dao.updateUser(gameId1, userId1, userIndex1);
+		boolean flag2 = Game.dao.updateUser(gameId2, userId2, userIndex2);
+		if(flag1 && flag2){
+			return true;
+		}else{
+			DbKit.getConfig().getConnection().rollback();
+			return false;
+		}
 	}
 	
 	private List<List<Game>> generateList(List<Game> list, List<String> titleList, boolean isWin){
