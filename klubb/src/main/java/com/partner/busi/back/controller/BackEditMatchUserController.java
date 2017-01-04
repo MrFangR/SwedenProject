@@ -20,6 +20,10 @@ import com.partner.common.constant.Constants;
 public class BackEditMatchUserController extends Controller {
 
 	public void index(){
+		String tabFlag = getPara("flag");
+		if(StringUtils.isNotBlank(tabFlag) && "editUser".equals(tabFlag)){
+			setAttr("tabFlag",tabFlag);
+		}
 		String pageNum = getPara("pageNum");
 		int currPageNum=1;
 		int currPageSize=Constants.PAGESIZE;
@@ -73,5 +77,19 @@ public class BackEditMatchUserController extends Controller {
 		renderJson(retInfo);
 	}
 	
+	public void setScore(){
+		ResultInfo retInfo = new ResultInfo();
+		int id = getParaToInt("id");
+		String score = getPara("score");
+		int result = MatchUser.dao.updateStartScore(id, score);
+		if(result>0){
+			retInfo.setRetCode(0);
+			retInfo.setRetMsg("更新成功");
+		}else{
+			retInfo.setRetCode(1);
+			retInfo.setRetMsg("更新失败");
+		}
+		renderJson(retInfo);
+	}
 	
 }

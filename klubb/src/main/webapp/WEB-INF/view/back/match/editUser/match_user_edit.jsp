@@ -43,10 +43,10 @@
                     <div id='single1' class='container'>
 						<c:forEach var="user" items="${matchUser.list }">
 							<c:if test="${not empty user.startScore}">
-								<div>${user.NAME } <input name="" type="text" value="初始分：${user.startScore }" ><i class="mtch_del" dataValue="${user.ID }"></i></div>
+								<div>${user.NAME } <p class="input">初始分：<span>${user.startScore }</span></p><i class="mtch_del" dataValue="${user.ID }"></i><i class="mtch_edit" dataValue="${user.ID }" startScore="${user.startScore }"></i></div>
 							</c:if>
 							<c:if test="${empty user.startScore}">
-								<div>${user.NAME } <input name="" type="text" value="初始分：未设置" ><i class="mtch_del" dataValue="${user.ID }"></i></div>
+								<div>${user.NAME } <p class="input">初始分：<span>0</span></p><i class="mtch_del" dataValue="${user.ID }"></i><i class="mtch_edit" dataValue="${user.ID }" startScore="${user.startScore }"></i></div>
 							</c:if>
 						</c:forEach>
 						<!-- 
@@ -157,11 +157,35 @@
 	        </div>
 	    </div>
 	</div>
+	
+	 <!--弹框初始化分数  s-->
+	 <div data-role="ued-dialog" class="ued-dialog" id="btn-fen">
+	    <div class="dialog-header">
+	        <h3>设置初始分数</h3>
+	        <span class="dialog-tool">
+	            <a title="关闭" class="dialog-close">X</a>
+	        </span>
+	    </div>
+	    <div>
+	        <p class="pd-20 dialog-tipInfo clearfix">分数：
+	       		<input name="startScore" id="startScore" type="text">
+	       		<input type="hidden" id="matchUserId">
+	       </p>
+	        <div class="pd-10 tc">
+	            <button type="button" class="ued-button-2 mgr-25" id="setStartScore">保存</button>
+	            <button type="button" class="ued-button-3 dialog-close">取消</button>
+	        </div>
+	    </div>
+	</div>
+	  <!--弹框初始化分数  e-->
 <script type="text/javascript" src="${ctx}/back-ui/pub-ui/js/plugin/dialog.js"></script>
  <script type="text/javascript" src='${ctx}/back-ui/pub-ui/js/plugin/dragula.js'></script>
 <script type="text/javascript"> 
  $(function(){
-	 
+	 var tabFlag = '${tabFlag}';
+	 if(tabFlag=="editUser"){
+		 $(".liLook").addClass("on1").siblings().removeClass("on1"); 
+	 }
 	 $(".js_template").hover(
 		  function() {
 			$(this).append("<div class='matchbtn js_matchbtn'><i class='mtch_edit' title='编辑比分'></i><i class='mtch_see' title='查看比赛'></i></div>");
@@ -188,7 +212,7 @@
 	$("#ued-ztree").UED_tree();
 	
 	//弹出框
-	$(".js_dialog").bind("click",function(){	
+	$(".js_dialog").bind("click",function(){
         $("#btn-dialog").trigger("dialog-open");
 	});
 	 $(".container i.mtch_del").click(function(){
@@ -205,7 +229,7 @@
 			  success:function(json){
 				  if(json.retCode == 0 ){
 					  obj.parent().remove();
-					  location.href=ctx + "/back/match/editUser";
+					  location.href=ctx + "/back/match/editUser?flag=editUser";
 				  }else{
 					  ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
 					   {type:2,
@@ -234,6 +258,15 @@
         $("#btn-matchbtn").trigger("dialog-open");
 	});
     
+	//弹出框比分
+	$(".mtch_edit").bind("click",function(){
+		var userId = $(this).attr("dataValue");
+		var startScore = $(this).attr("startScore");
+		$("#matchUserId").val(userId);
+		$("#startScore").val(startScore);
+		 $("#btn-fen").trigger("dialog-open");
+	});
+    
     //增加参赛人同
     $("#submitUser").bind("click",function(){
     	var id = $("#addUser").val();
@@ -246,13 +279,14 @@
     		dataType:"json",
     		success:function(json){
     			if(json.retCode == 0 ){
+    				$("#btn-dialog").trigger("dialog-close");
     				ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
  	 					   {type:2,
  	 						info:'比赛管理',
  	 						text:'<div style=" font-size:18px; color:#ff0000;"> '+json.retMsg+' </div>',
  	 						'ok':function(){
  	 							$("#btn-dialog").trigger("dialog-close");
- 	 							location.href=ctx + "/back/match/editUser";
+ 	 							location.href=ctx + "/back/match/editUser?flag=editUser";
  	 							$(".liQuery").addClass("on1").siblings().removeClass("on1");
  	 						},
  	 						tag:'zq-ring'}
@@ -276,6 +310,50 @@
     						tag:'cw-ring'}
     		               );
     		}
+    	});
+    });
+    
+    $("#setStartScore").bind("click",function(){
+    	$.ajax({
+    		type:"post",
+    		url:ctx+"/back/match/editUser/setScore",
+    		data:{
+    			id:$("#matchUserId").val(),
+    			score:$("#startScore").val()
+    		},
+    		dataType:"json",
+    		success:function(json){
+    			if(json.retCode == 0 ){
+    			$("#btn-fen").trigger("dialog-close");
+    				ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+ 	 					   {type:2,
+ 	 						info:'修改起始分',
+ 	 						text:'<div style=" font-size:18px; color:#ff0000;"> '+json.retMsg+' </div>',
+ 	 						'ok':function(){
+ 	 							$("#btn-dialog").trigger("dialog-close");
+ 	 							location.href=ctx + "/back/match/editUser?flag=editUser";
+ 	 						},
+ 	 						tag:'zq-ring'}
+ 	 		               );
+    			}else{
+    				ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+  	 					   {type:2,
+  	 						info:'修改起始分',
+  	 						text:'<div style=" font-size:18px; color:#ff0000;"> '+json.retMsg+' </div>',
+  	 						'ok':function(){},
+  	 						tag:'cw-ring'}
+  	 		               );
+    			}
+    		},
+    		error:function(){
+   			 ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+   					   {type:2,
+   						info:'修改起始分',
+   						text:'<div style=" font-size:18px; color:#ff0000;"> 系统异常，请稍后重试 </div>',
+   						'ok':function(){},
+   						tag:'cw-ring'}
+   		               );
+   		}
     	});
     });
 	 

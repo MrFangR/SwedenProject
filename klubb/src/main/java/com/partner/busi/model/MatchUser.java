@@ -128,4 +128,14 @@ public class MatchUser extends BaseMatchUser<MatchUser> {
 			return true;
 		}
 	}
+	/**
+	 * 
+	 * @param id
+	 * @param score
+	 * @return int >=1 为成功
+	 */
+	public int updateStartScore(int id, String score){
+		StringBuffer sb = new StringBuffer(" UPDATE t_match_user MU SET MU.START_SCORE = '"+score+"' WHERE MU.ID = "+id);
+		return Db.update(sb.toString());
+	}
 }
