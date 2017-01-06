@@ -929,6 +929,7 @@ nav ul li.line{
     position: relative;
     width: 270px;
 	overflow:hidden;
+	height:320px;
 }
 .listboximg {
     height: 211px;
@@ -966,7 +967,14 @@ nav ul li.line{
     margin-bottom: 5px;
     margin-top: 2px;
     text-align: left;
-    width: 70px;
+}
+.listplace{
+    color: #332;
+    float: left;
+    font-size: 12px;
+    margin-bottom: 5px;
+    margin-top: 2px;
+    text-align: left;
 }
 
 /*happytimes 详情页*/
@@ -1011,7 +1019,7 @@ nav ul li.line{
 
 /*简介*/
 
-.list-title{ height:58px; line-height:58px; width:260px; background:#363a3d; color:#fff; font-size:24px; text-align:center; float:left; cursor:pointer}
+.list-title{ height:58px; line-height:58px; width:260px; background:#363a3d; color:#fff; font-size:24px; text-align:center; float:left; cursor:pointer; margin-right:2px;}
 .list-tab .curr{ background:#eb003b}
 .list-tab{ border-bottom:1px solid #eb003b;}
 
@@ -1281,3 +1289,128 @@ nav ul li.line{
     margin: 120px auto 30px auto;
     width: 99px;
 }
+
+
+
+/*比赛*/
+.matchtitle{font-size:14px; color:#fff;}
+.matchtitle li{ float:left; width:310px; text-align:center; display:block; margin-left:1px; background:#333843;height:36px; line-height:36px; cursor:pointer}
+.matchtitle li:hover 
+{   
+  background:#222;  
+}   
+.dropbox{ width:310px; float:left;}
+.nodrop{ float:left; width:310px}
+.matchgroup{ width:360px; position:relative;}
+.matchgroup .matchline{ top:36px; right:0px; position:absolute; z-index:-1;margin-left:80px;}
+.bracket-line {
+    fill: none;
+    stroke: #222;
+    stroke-width: 2px;
+}
+.template{ width:300px; height:80px; position:relative;}
+.template h3{ font-size:20px; position:absolute; top:28px;left:10px;}
+.template .group{ margin-top:5px; margin-left:40px}
+.template .group i{
+	border-radius: 5px 0px 0px 5px; 
+	height:36px; 
+	width:36px; 
+	background:#787a80; 
+	display:inline-block; 
+	vertical-align:top;
+	line-height:36px;
+	font-style:normal;
+	text-align:center}
+.template .group span{
+	height:36px; 
+	width:160px; 
+	background:#58595e; 
+	line-height:36px; 
+	font-size:14px; 
+	display:inline-block;
+	vertical-align:top; 
+	color:#fff;
+	padding-left:20px;}
+.template .group input{
+	border-radius: 0px 5px 5px 0px; 
+	height:36px; 
+	width:36px; 
+	background:#787a80; 
+	display:inline-block; 
+	vertical-align:top; 
+	border:0px;
+	text-align:center}
+.template .group span:hover 
+{   
+  background:#222;  
+}
+.mgt-0 {margin-top:0px !important;}
+.mgt-2 {margin-top:2px !important;}
+.mgt-3 {margin-top:3px !important;}
+.mgt-5 {margin-top:5px !important;}
+.mgt-6{margin-top:6px !important;}
+.mgt-7 {margin-top:7px !important;}
+.mgt-8{margin-top:8px !important;}
+.mgt-10 {margin-top:10px !important;}
+.mgt-12 {margin-top:12px !important;}
+.mgt-15 {margin-top:15px !important;}
+.mgt-18{margin-top:18px !important;}
+.mgt-20 {margin-top:20px !important;}
+.mgt-25 {margin-top:25px !important;}
+.mgt-30 {margin-top:30px !important;}
+.mgt-35 {margin-top:35px !important;}
+.mgt-40 {margin-top:40px !important;}
+.mgt-50 {margin-top:50px !important;}
+.mgt-60 {margin-top:60px !important;}
+.mgt-70 {margin-top:70px !important;}
+.mgt-80 {margin-top:80px !important;}   
+.mgt-60{ margin-top:60px;}
+.mgt-80{ margin-top:80px;}
+.mgt-160{ margin-top:160px;}
+.mgt-180{ margin-top:180px;}
+.mgt-200{ margin-top:200px;}
+.mgt-230{ margin-top:230px;}
+.mgt-300{ margin-top:300px;}
+.mgt-480{ margin-top:480px;}
+.mgt-1040{ margin-top:1040px;}
+.matchbtn{ 
+ 	position:absolute; 
+	top:0px; 
+	right:-70px; 
+	z-index:9; 
+	width:76px; 
+	height:76px; 
+	background:#333;
+	ilter:alpha(opacity=80); /*IE滤镜，透明度50%*/
+	-moz-opacity:0.8; /*Firefox私有，透明度50%*/
+	opacity:0.8;/*其他，透明度50%*/
+	 border-radius:5px;
+	-webkit-border-radius:5px;
+    -moz-border-radius:5px;}
+.matchbtn i.mtch_edit{ width:24px; height:24px; display:inline-block; position:absolute; top:24px; left:10px;
+background:url(../../images/icon-3.png) 6px -25px no-repeat; cursor:pointer;}
+.matchbtn i.mtch_see{ width:24px; height:24px; display:inline-block; position:absolute; top:24px; left:40px;
+background:url(../../images/icon-wx13.png) 0px -50px no-repeat; cursor:pointer;}
+.dialogtitle{ height:40px; line-height:40px; border-bottom:1px solid #666;}
+.dialogtitle ul li{ float:left;height:40px; line-height:40px; font-size:16px; padding:auto 20px;margin:auto 20px; cursor:pointer}
+.dialogtitle ul li.cur{ border-bottom:2px solid #e4007f; color:#e4007f}
+.dialogcon ul li{ display:none}
+.dialogcon ul li.cur{ display:block;}
+.dialogcon ul li p { font-size:26px; height:80px; line-height:80px; background:#CCC;}
+.dialogcon ul li .tit{ font-size:18px; margin-left:20px; margin-top:20px;}
+.dialogcon ul li span.btn{
+	background: #393d4a ;
+	height:30px; line-height:30px;
+    border: 1px solid #444650;
+    color: #eee;
+	text-align:center;
+    width: 80px;
+	float:left;
+    text-overflow: ellipsis;
+	display:block;
+	cursor:pointer;}
+.dialogcon ul li span.active {
+    background-color: #ff7324;
+    color: #fff;
+}
+.dialogcon ul li h3{ border-left: 2px solid #666; padding-left:10px; margin-bottom:20px;}
