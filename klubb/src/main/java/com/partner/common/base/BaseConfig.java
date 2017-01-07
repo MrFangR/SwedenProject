@@ -132,7 +132,7 @@ public class BaseConfig extends JFinalConfig {
 	@Override
 	public void configInterceptor(Interceptors me) {
 		// TODO Auto-generated method stub
-//		me.add(new AuthInterceptor());
+		me.add(new AuthInterceptor());
 	}
 
 	/*
