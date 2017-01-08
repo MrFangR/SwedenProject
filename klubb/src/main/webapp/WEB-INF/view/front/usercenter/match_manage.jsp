@@ -30,7 +30,7 @@
           		<div class="us-set-rt fl">
                 	<!--活动列表start-->
                 	<input id="pageSizeIn" name="pageSize" type="hidden" value="10"/>
-                	<div class="shopslist_con houseList shopsc" id="actListDiv">
+                	<div class="shopslist_con houseList shopsc" id="matListDiv">
                   	</div>
                     <!--活动列表end-->
             </div>
@@ -47,12 +47,12 @@
 </body>
 <script type="text/javascript">
 $(function(){
-	showUserAct(1);
+	showUserMat(1);
 });
-function showUserAct(pageNum){
+function showUserMat(pageNum){
 	$.ajax({
 		type : 'POST',
-		url : ctx + "/userCenter/findActByUserId",
+		url : ctx + "/userCenter/findMatByUserId",
 		data: {
 			pageNum : pageNum,
 			pageSize : $('#pageSizeIn').val()
@@ -60,20 +60,20 @@ function showUserAct(pageNum){
 		dataType : "json",
 		success : function(data){
 			var htmlStr = "";
-			$.each(data.list, function(i, act){
+			$.each(data.list, function(i, mat){
 				htmlStr +="<dl style='display: block;'  class='list hiddenMap position-rel'>"
-						+ "	<dt class='img position-rel fl'><a target='_blank' href='"+ctx+"/front/activity/viewAct?type="+act.ID+"'><img src='"+uploadUrl+act.IMG+"' width='340' height='310'></a></dt>"
+						+ "	<dt class='img position-rel fl'><a target='_blank' href='"+ctx+"/front/activity/viewAct?type="+mat.ID+"'><img src='"+uploadUrl+mat.IMG+"' width='340' height='310'></a></dt>"
 						+ "	<dd class='info  position-rel fr'>"
-						+ "		<p class='title'><a target='_blank' href='"+ctx+"/front/activity/viewAct?type="+act.ID+"'>"+act.TITLE+"</a></p>"
-						+ "		<p class='gray6 mgt-12'>"+act.ABSTRACT+"</p>"
-						+ "		<div class='moreInfo'><input name='cancleAct' onclick='cancleAct("+act.ID+")' class='contbtn' value='—取消报名' type='button'></div>"
+						+ "		<p class='title'><a target='_blank' href='"+ctx+"/front/activity/viewAct?type="+mat.ID+"'>"+mat.NAME+"</a></p>"
+						+ "		<p class='gray6 mgt-12'>"+mat.DESCRIPTION+"</p>"
+						+ "		<div class='moreInfo'><input name='cancleMat' onclick='cancleMat("+mat.ID+")' class='contbtn' value='—取消报名' type='button'></div>"
 						+ "	</dd>"
 						+ "</dl>";
 			});
 			htmlStr +="<div class='clear'></div>"
 					+ "<div class='paging clearfix' id='pageDiv'></div>";
 			
-			$("#actListDiv").html(htmlStr);
+			$("#matListDiv").html(htmlStr);
 				
 			//设置分页
 			setPageInfo("pageDiv", data, showUserAct);
@@ -81,12 +81,12 @@ function showUserAct(pageNum){
 	});
 
 }
-function cancleAct(actId){
+function cancleMat(matId){
 	$.ajax({
 		type : 'POST',
-		url : ctx + "/userCenter/cancleAct",
+		url : ctx + "/userCenter/cancleMatch",
 		data: {
-			actId : actId
+			matId : matId
 		},
 		dataType : "json",
 		success : function(data){

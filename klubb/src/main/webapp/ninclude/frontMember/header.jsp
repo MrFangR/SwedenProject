@@ -18,7 +18,7 @@
             <li class="jsli" width="134" url="introduce"><a href="${ctx}/introduce"><i18n:get key="portal.menu.introduce"></i18n:get></a></li>
             <li class="jsli" width="254" url="happytimes"><a href="${ctx}/front/happytimes"><i18n:get key="portal.menu.happytimes"></i18n:get></a></li>
             <li class="jsli" width="376" url="activity"><a href="${ctx}/front/activity"><i18n:get key="portal.menu.activity"></i18n:get></a></li>
-            <li class="jsli" width="500"><a href="javascript:;" onclick="showAlert();"><i18n:get key="portal.menu.game"></i18n:get></a></li>
+            <li class="jsli" width="500" url="match"><a href="${ctx}/front/match"><i18n:get key="portal.menu.game"></i18n:get></a></li>
             <li class="jsli" width="614" url="contact"><a href="${ctx}/contact"><i18n:get key="portal.menu.contact"></i18n:get></a></li>
             <li class="jsli" width="738" url="userCenter"><a href="${ctx }/userCenter"><i18n:get key="portal.menu.center"></i18n:get></a></li>
             <li class="line"></li>

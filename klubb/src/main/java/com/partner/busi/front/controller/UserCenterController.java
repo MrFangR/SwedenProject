@@ -61,6 +61,20 @@ public class UserCenterController extends Controller {
 	}
 	
 	/**
+	 * to match_manage
+	 */
+	public void toMatMan(){
+		if(FrontSessionUtil.isLogin(getRequest())){
+			User user = FrontSessionUtil.getSession(getRequest());
+			setAttr("user",user);
+			render("match_manage.jsp");
+		}else{
+			forwardAction("/front/toLogin");
+//			redirect("/front/toLogin");
+		}
+	}
+	
+	/**
 	 * find activity by user_id
 	 */
 	public void findActByUserId(){

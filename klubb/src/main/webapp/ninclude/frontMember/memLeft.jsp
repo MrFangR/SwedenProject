@@ -28,7 +28,7 @@
 				class="icon fl disan"></i>
 				<h5 class="name fl">happytimes</h5>
 		</a></li>
-		<li id="matchMgr"><a href="javascript:myLoadLeft('matchMgr','${ctx}/userCenter/toMatch');" class="link clearfix" url="toMatch"> <i
+		<li id="matchMgr"><a href="javascript:myLoadLeft('matchMgr','${ctx}/userCenter/toMatMan');" class="link clearfix" url="toMatMan"> <i
 				class="icon fl disan"></i>
 				<h5 class="name fl">参赛管理</h5>
 		</a></li>
