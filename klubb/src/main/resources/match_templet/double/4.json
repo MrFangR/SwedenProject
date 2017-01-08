@@ -2,36 +2,36 @@
     "gameList": [
         {
             "seq": 1,
-            "winNextSeq": 4,
-            "loseNextSeq": 3,
+            "winNextId": "4_1",
+            "loseNextId": "3_1",
             "roundNum": 1,
             "showIndex": 1
         },
         {
             "seq": 2,
-            "winNextSeq": 4,
-            "loseNextSeq": 3,
+            "winNextId": "4_2",
+            "loseNextId": "3_2",
             "roundNum": 1,
             "showIndex": 2
         },
         {
             "seq": 3,
-            "winNextSeq": 5,
-            "loseNextSeq": 0,
+            "winNextId": "5_2",
+            "loseNextId": "",
             "roundNum": 1,
             "showIndex": 3
         },
         {
             "seq": 4,
-            "winNextSeq": 0,
-            "loseNextSeq": 5,
+            "winNextId": "",
+            "loseNextId": "5_1",
             "roundNum": 2,
             "showIndex": 4
         },
         {
             "seq": 5,
-            "winNextSeq": 0,
-            "loseNextSeq": 0,
+            "winNextId": "",
+            "loseNextId": "",
             "roundNum": 2,
             "showIndex": 5
         }

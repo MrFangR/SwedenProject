@@ -1,0 +1,25 @@
+{
+    "gameList": [
+        {
+            "seq": 1,
+            "winNextId": "3_1",
+            "loseNextId": "",
+            "roundNum": 1,
+            "showIndex": 1
+        },
+        {
+            "seq": 2,
+            "winNextId": "3_2",
+            "loseNextId": "",
+            "roundNum": 1,
+            "showIndex": 2
+        },
+        {
+            "seq": 3,
+            "winNextId": "",
+            "loseNextId": "",
+            "roundNum": 2,
+            "showIndex": 3
+        }
+    ]
+}

@@ -81,20 +81,20 @@ public abstract class BaseGame<M extends BaseGame<M>> extends Model<M> implement
 		return get("WINNER_ID");
 	}
 
-	public void setWNextSeq(java.lang.Integer wNextSeq) {
-		set("W_NEXT_SEQ", wNextSeq);
+	public void setWNextId(java.lang.String wNextId) {
+		set("W_NEXT_ID", wNextId);
 	}
 
-	public java.lang.Integer getWNextSeq() {
-		return get("W_NEXT_SEQ");
+	public java.lang.String getWNextId() {
+		return get("W_NEXT_ID");
 	}
 
-	public void setLNextSeq(java.lang.Integer lNextSeq) {
-		set("L_NEXT_SEQ", lNextSeq);
+	public void setLNextId(java.lang.String lNextId) {
+		set("L_NEXT_ID", lNextId);
 	}
 
-	public java.lang.Integer getLNextSeq() {
-		return get("L_NEXT_SEQ");
+	public java.lang.String getLNextId() {
+		return get("L_NEXT_ID");
 	}
 
 	public void setTYPE(java.lang.Integer TYPE) {

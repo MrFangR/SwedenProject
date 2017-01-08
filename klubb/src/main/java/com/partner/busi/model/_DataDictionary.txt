@@ -112,8 +112,8 @@ Table: t_game
  SCORE1     | INT(10)      | YES  |     |         | 参赛者1分数  
  SCORE2     | INT(10)      | YES  |     |         | 参赛者2分数  
  WINNER_ID  | INT(10)      | YES  |     |         | 胜者ID    
- W_NEXT_SEQ | INT(10)      | YES  |     |         | 胜者下一场比赛序列
- L_NEXT_SEQ | INT(10)      | YES  |     |         | 败者下一场比赛序列
+ W_NEXT_ID  | VARCHAR(50)  | YES  |     |         | 胜者下一场比赛页面上的ID
+ L_NEXT_ID  | VARCHAR(50)  | YES  |     |         | 败者下一场比赛页面上的ID
  TYPE       | TINYINT(3)   | YES  |     |         | 台球类型，8：8球，9：9球，10：10球，
  ROUND_NUM  | INT(10)      | YES  |     |         | 第几轮     
  SHOW_INDEX | INT(10)      | YES  |     |         | 页面展示顺序  

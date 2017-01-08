@@ -1,0 +1,53 @@
+{
+    "gameList": [
+        {
+            "seq": 1,
+            "winNextId": "5_1",
+            "loseNextId": "",
+            "roundNum": 1,
+            "showIndex": 1
+        },
+        {
+            "seq": 2,
+            "winNextId": "5_2",
+            "loseNextId": "",
+            "roundNum": 1,
+            "showIndex": 2
+        },
+        {
+            "seq": 3,
+            "winNextId": "6_1",
+            "loseNextId": "",
+            "roundNum": 1,
+            "showIndex": 3
+        },
+        {
+            "seq": 4,
+            "winNextId": "6_2",
+            "loseNextId": "",
+            "roundNum": 1,
+            "showIndex": 4
+        },
+        {
+            "seq": 5,
+            "winNextId": "7_1",
+            "loseNextId": "",
+            "roundNum": 2,
+            "showIndex": 5
+        },
+        {
+            "seq": 6,
+            "winNextId": "7_2",
+            "loseNextId": "",
+            "roundNum": 2,
+            "showIndex": 6
+        },
+        {
+            "seq": 7,
+            "winNextId": "",
+            "loseNextId": "",
+            "roundNum": 3,
+            "showIndex": 7
+        }
+    ]
+}

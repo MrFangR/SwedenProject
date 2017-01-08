@@ -9,6 +9,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
+
 import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
 import com.jfinal.plugin.activerecord.DbKit;
@@ -39,8 +41,8 @@ public class BackMatchController extends Controller {
 				+ " INNER JOIN t_match AS m ON m.ID = g.MATCH_ID"
 				+ " WHERE g.MATCH_ID = ? and %s"
 				+ " ORDER BY g.SHOW_INDEX";
-		final String WIN_CON = "(m.TYPE in (1, 3) or (m.TYPE in (2, 4) and L_NEXT_SEQ != 0))";
-		final String LOSE_CON = "(m.TYPE in (2, 4) and L_NEXT_SEQ = 0)";
+		final String WIN_CON = "(m.TYPE in (1, 3) or (m.TYPE in (2, 4) and L_NEXT_ID != ''))";
+		final String LOSE_CON = "(m.TYPE in (2, 4) and L_NEXT_ID = '')";
 		
 		List<Game> wList = Game.dao.find(String.format(sql, WIN_CON), matchId);
 		List<Game> lList = Game.dao.find(String.format(sql, LOSE_CON), matchId);
@@ -56,6 +58,53 @@ public class BackMatchController extends Controller {
 		setAttr("loseList", loseList);
 		setAttr("loseTitleList", loseTitleList);
 		render("match_edit.jsp");
+	}
+	
+	/**
+	 * 更新比分
+	 */
+	public void updateScore(){
+		Integer winId = getParaToInt("winId");
+		Integer score1 = getParaToInt("score1");
+		Integer score2 = getParaToInt("score2");
+		Integer gameId = getParaToInt("gameId");
+		boolean rsFlag = false;
+		try {
+			rsFlag = updateScoreTx(winId, score1, score2, gameId);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		renderJson("rsFlag", rsFlag);
+	}
+	
+	@Before(Tx.class)
+	private boolean updateScoreTx(Integer winId, Integer score1, Integer score2, Integer gameId) throws SQLException{
+		boolean flag1 = Game.dao.updateScore(gameId, winId, score1, score2);
+		boolean flag2 = true;
+		boolean flag3 = true;
+		
+		Game game = Game.dao.findById(gameId);
+		String wNextId = game.getWNextId();
+		if(StringUtils.isNotBlank(wNextId)){ //胜者组迁移
+			Integer seq = Integer.parseInt(wNextId.split("_")[0]);
+			Integer index = Integer.parseInt(wNextId.split("_")[1]);
+			flag2 = Game.dao.moveUserToGame(game.getMatchId(), seq, index, winId);
+		}
+		
+		String lNextId = game.getLNextId();
+		if(StringUtils.isNotBlank(lNextId)){ //败者组迁移
+			Integer seq = Integer.parseInt(lNextId.split("_")[0]);
+			Integer index = Integer.parseInt(lNextId.split("_")[1]);
+			Integer loseId = (game.getUSER1().equals(winId)) ? game.getUSER2() : game.getUSER1();
+			flag3 = Game.dao.moveUserToGame(game.getMatchId(), seq, index, loseId);
+		}
+		if(flag1 && flag2 && flag3){
+			return true;
+		}else{
+			DbKit.getConfig().getConnection().rollback();
+			return false;
+		}
 	}
 	
 	/**
@@ -138,7 +187,8 @@ public class BackMatchController extends Controller {
 			}
 			//2.2生成比赛
 			if(match.getTYPE() == 1 || match.getTYPE() == 3){ //单败
-				generateSingleGame(userIdList, 0, 0, 1, matchId);
+//				generateSingleGame(userIdList, 0, 0, 1, matchId);
+				generateSingleGame(userIdList, matchId);
 			} else if(match.getTYPE() == 2 || match.getTYPE() == 4){ //双败
 				generateDoubleGame(userIdList, matchId);
 			}
@@ -153,7 +203,63 @@ public class BackMatchController extends Controller {
 	 * @param roundNum
 	 * @param matchId
 	 */
-	private void generateSingleGame(List<Integer> userIdList, int seq, int userSum, int roundNum, int matchId){
+//	private void generateSingleGame(List<Integer> userIdList, int seq, int userSum, int roundNum, int matchId){
+//		if(userIdList != null){ //首轮有此参数
+//			userSum = userIdList.size();
+//		}
+//		int gameSum = 1;
+//		//根据参赛人员人数获得比赛场数
+//		int needGame = new BigDecimal(userSum).divide(new BigDecimal(2), RoundingMode.CEILING).intValue();
+//		if(needGame > 0){
+//			while(needGame > gameSum){
+//				gameSum *= 2;
+//			}
+//			int byeUserSum = gameSum * 2 - userSum; //轮空人数，即首轮轮空比赛数
+//					
+//			//创建比赛
+//			int userIndex = 0;
+//			int winNextSeq = seq + gameSum + 1; //胜者下一场比赛序列
+//			for(int i = 0; i < gameSum; i++){
+//				Game game = new Game();
+//				if(userIdList != null){ //首轮有此参数
+//					game.setUSER1(userIdList.get(userIndex++));
+//					if(i + byeUserSum < gameSum){ //不轮空才设置user2
+//						game.setUSER2(userIdList.get(userIndex++));
+//					}
+//				}
+//				game.setSEQ(++seq);
+//				game.setShowIndex(seq);
+//				if(gameSum > 1){ //不是最后一场比赛
+//					game.setWNextId(winNextSeq);
+//				}
+//				if(seq % 2 == 0){
+//					winNextSeq++;
+//				}
+//				game.setRoundNum(roundNum);
+//				game.setMatchId(matchId);
+//				game.setSTATUS(0);
+//				game.save();
+////				System.out.println(game);
+//			}
+//			if(gameSum <= 1){ //最后一场比赛
+//				return;
+//			}
+//			generateSingleGame(null, seq, gameSum, ++roundNum, matchId);
+//		}else{
+//			return;
+//		}
+//	}
+	
+	/**
+	 * 生成单败制比赛
+	 * @param userIdList
+	 * @param seq
+	 * @param userSum
+	 * @param roundNum
+	 * @param matchId
+	 */
+	private void generateSingleGame(List<Integer> userIdList, int matchId){
+		int userSum = 0;
 		if(userIdList != null){ //首轮有此参数
 			userSum = userIdList.size();
 		}
@@ -164,40 +270,30 @@ public class BackMatchController extends Controller {
 			while(needGame > gameSum){
 				gameSum *= 2;
 			}
+			
 			int byeUserSum = gameSum * 2 - userSum; //轮空人数，即首轮轮空比赛数
-					
-			//创建比赛
 			int userIndex = 0;
-			int winNextSeq = seq + gameSum + 1; //胜者下一场比赛序列
-			for(int i = 0; i < gameSum; i++){
+			List<GameTemplate> list = MatchTemplateCache.getGameList(MatchTemplateCache.SINGLE_CACHE_NAME, gameSum * 2);
+			for(int i = 0; i < list.size(); i++){
 				Game game = new Game();
-				if(userIdList != null){ //首轮有此参数
+				GameTemplate tmp = list.get(i);
+				if(tmp.getRoundNum() == 1){ //首轮有此参数
 					game.setUSER1(userIdList.get(userIndex++));
 					if(i + byeUserSum < gameSum){ //不轮空才设置user2
 						game.setUSER2(userIdList.get(userIndex++));
 					}
 				}
-				game.setSEQ(++seq);
-				game.setShowIndex(seq);
-				if(gameSum > 1){ //不是最后一场比赛
-					game.setWNextSeq(winNextSeq);
-				}
-				if(seq % 2 == 0){
-					winNextSeq++;
-				}
-				game.setRoundNum(roundNum);
+				game.setSEQ(tmp.getSeq());
+				game.setShowIndex(tmp.getShowIndex());
+				game.setWNextId(tmp.getWinNextId());
+				game.setLNextId(tmp.getLoseNextId());
+				game.setRoundNum(tmp.getRoundNum());
 				game.setMatchId(matchId);
 				game.setSTATUS(0);
 				game.save();
-//				System.out.println(game);
 			}
-			if(gameSum <= 1){ //最后一场比赛
-				return;
-			}
-			generateSingleGame(null, seq, gameSum, ++roundNum, matchId);
-		}else{
-			return;
 		}
+		
 	}
 	
 	/**
@@ -223,11 +319,11 @@ public class BackMatchController extends Controller {
 			
 			int byeUserSum = gameSum * 2 - userSum; //轮空人数，即首轮轮空比赛数
 			int userIndex = 0;
-			List<GameTemplate> list = MatchTemplateCache.getGameList(gameSum * 2);
+			List<GameTemplate> list = MatchTemplateCache.getGameList(MatchTemplateCache.DOUBLE_CACHE_NAME, gameSum * 2);
 			for(int i = 0; i < list.size(); i++){
 				Game game = new Game();
 				GameTemplate tmp = list.get(i);
-				if(tmp.getRoundNum() == 1 && tmp.getLoseNextSeq() != 0){ //首轮有此参数
+				if(tmp.getRoundNum() == 1 && StringUtils.isNotBlank(tmp.getLoseNextId())){ //首轮有此参数
 					game.setUSER1(userIdList.get(userIndex++));
 					if(i + byeUserSum < gameSum){ //不轮空才设置user2
 						game.setUSER2(userIdList.get(userIndex++));
@@ -235,8 +331,8 @@ public class BackMatchController extends Controller {
 				}
 				game.setSEQ(tmp.getSeq());
 				game.setShowIndex(tmp.getShowIndex());
-				game.setWNextSeq(tmp.getWinNextSeq());
-				game.setLNextSeq(tmp.getLoseNextSeq());
+				game.setWNextId(tmp.getWinNextId());
+				game.setLNextId(tmp.getLoseNextId());
 				game.setRoundNum(tmp.getRoundNum());
 				game.setMatchId(matchId);
 				game.setSTATUS(0);

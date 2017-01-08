@@ -2,85 +2,85 @@
     "gameList": [
         {
             "seq": 1,
-            "winNextSeq": 7,
-            "loseNextSeq": 5,
+            "winNextId": "7_1",
+            "loseNextId": "5_1",
             "roundNum": 1,
             "showIndex": 1
         },
         {
             "seq": 2,
-            "winNextSeq": 7,
-            "loseNextSeq": 5,
+            "winNextId": "7_2",
+            "loseNextId": "5_2",
             "roundNum": 1,
             "showIndex": 2
         },
         {
             "seq": 3,
-            "winNextSeq": 8,
-            "loseNextSeq": 6,
+            "winNextId": "8_1",
+            "loseNextId": "6_1",
             "roundNum": 1,
             "showIndex": 3
         },
         {
             "seq": 4,
-            "winNextSeq": 8,
-            "loseNextSeq": 6,
+            "winNextId": "8_2",
+            "loseNextId": "6_2",
             "roundNum": 1,
             "showIndex": 4
         },
         {
             "seq": 5,
-            "winNextSeq": 10,
-            "loseNextSeq": 0,
+            "winNextId": "10_2",
+            "loseNextId": "",
             "roundNum": 1,
             "showIndex": 5
         },
         {
             "seq": 6,
-            "winNextSeq": 9,
-            "loseNextSeq": 0,
+            "winNextId": "9_2",
+            "loseNextId": "",
             "roundNum": 1,
             "showIndex": 6
         },
         {
             "seq": 7,
-            "winNextSeq": 12,
-            "loseNextSeq": 9,
+            "winNextId": "12_1",
+            "loseNextId": "9_1",
             "roundNum": 2,
             "showIndex": 7
         },
         {
             "seq": 8,
-            "winNextSeq": 12,
-            "loseNextSeq": 10,
+            "winNextId": "12_2",
+            "loseNextId": "10_1",
             "roundNum": 2,
             "showIndex": 8
         },
         {
             "seq": 9,
-            "winNextSeq": 11,
-            "loseNextSeq": 0,
+            "winNextId": "11_2",
+            "loseNextId": "",
             "roundNum": 2,
             "showIndex": 10
         },
         {
             "seq": 10,
-            "winNextSeq": 11,
-            "loseNextSeq": 0,
+            "winNextId": "11_1",
+            "loseNextId": "",
             "roundNum": 2,
             "showIndex": 9
         },
         {
             "seq": 11,
-            "winNextSeq": 13,
-            "loseNextSeq": 0,
+            "winNextId": "13_2",
+            "loseNextId": "",
             "roundNum": 3,
             "showIndex": 12
         },
         {
             "seq": 12,
-            "winNextSeq": 0,
-            "loseNextSeq": 13,
+            "winNextId": "",
+            "loseNextId": "13_1",
             "roundNum": 3,
             "showIndex": 11
         }

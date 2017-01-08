@@ -16,8 +16,8 @@ public class MatchTemplate {
 	private List<GameTemplate> gameList = new ArrayList<GameTemplate>();
 	public static class GameTemplate{
 		private Integer seq; //序列
-		private Integer winNextSeq; //胜者下一场比赛序列
-		private Integer loseNextSeq; //败者下一场比赛序列
+		private String winNextId; //胜者下一场比赛序列
+		private String loseNextId; //败者下一场比赛序列
 		private Integer roundNum; //第几轮
 		private Integer showIndex; //展示顺序
 		public Integer getSeq() {
@@ -26,18 +26,7 @@ public class MatchTemplate {
 		public void setSeq(Integer seq) {
 			this.seq = seq;
 		}
-		public Integer getWinNextSeq() {
-			return winNextSeq;
-		}
-		public void setWinNextSeq(Integer winNextSeq) {
-			this.winNextSeq = winNextSeq;
-		}
-		public Integer getLoseNextSeq() {
-			return loseNextSeq;
-		}
-		public void setLoseNextSeq(Integer loseNextSeq) {
-			this.loseNextSeq = loseNextSeq;
-		}
+		
 		public Integer getRoundNum() {
 			return roundNum;
 		}
@@ -49,6 +38,18 @@ public class MatchTemplate {
 		}
 		public void setShowIndex(Integer showIndex) {
 			this.showIndex = showIndex;
+		}
+		public String getWinNextId() {
+			return winNextId;
+		}
+		public void setWinNextId(String winNextId) {
+			this.winNextId = winNextId;
+		}
+		public String getLoseNextId() {
+			return loseNextId;
+		}
+		public void setLoseNextId(String loseNextId) {
+			this.loseNextId = loseNextId;
 		}
 	}
 	public List<GameTemplate> getGameList() {

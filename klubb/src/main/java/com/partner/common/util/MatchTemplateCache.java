@@ -26,11 +26,18 @@ import net.sf.json.JSONObject;
  * @date 2016年12月29日 下午9:53:47  
  */
 public class MatchTemplateCache {
-	private static final String PATH = "match_templet/double";
-	private static final String CACHE_NAME = "matchTempCache";
+	private static final String SINGLE_PATH = "match_templet/single";
+	private static final String DOUBLE_PATH = "match_templet/double";
+	public static final String SINGLE_CACHE_NAME = "singleMatchTempCache";
+	public static final String DOUBLE_CACHE_NAME = "doubleMatchTempCache";
 	
 	public static void init(){
-		URL url = MatchTemplateCache.class.getClassLoader().getResource(PATH);
+		initCache(SINGLE_PATH, SINGLE_CACHE_NAME);
+		initCache(DOUBLE_PATH, DOUBLE_CACHE_NAME);
+	}
+	
+	public static void initCache(String path, String cacheName){
+		URL url = MatchTemplateCache.class.getClassLoader().getResource(path);
 		File file = new File(url.getFile());
 		File[] tempList = file.listFiles();
 		for (int i = 0; i < tempList.length; i++) {
@@ -48,7 +55,7 @@ public class MatchTemplateCache {
 					while ((line = bufread.readLine()) != null) {
 						sb.append(line);
 					}
-					CacheKit.put(CACHE_NAME, cacheKey, sb.toString());
+					CacheKit.put(cacheName, cacheKey, sb.toString());
 					System.out.println(sb.toString());
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
@@ -59,8 +66,8 @@ public class MatchTemplateCache {
 		}
 	}
 	
-	public static List<GameTemplate> getGameList(int userSum){
-		String jsonStr = CacheKit.get(CACHE_NAME, String.valueOf(userSum));
+	public static List<GameTemplate> getGameList(String cacheName, int userSum){
+		String jsonStr = CacheKit.get(cacheName, String.valueOf(userSum));
 		JSONObject obj = JSONObject.fromObject(jsonStr);
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("gameList", GameTemplate.class);

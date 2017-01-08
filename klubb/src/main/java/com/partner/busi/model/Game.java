@@ -24,8 +24,40 @@ public class Game extends BaseGame<Game> {
 		}
 	}
 	
+	/**
+	 * 修改用户
+	 * @param gameId
+	 * @param userId
+	 * @param userIndex
+	 * @return
+	 */
 	public boolean updateUser(int gameId, Integer userId, int userIndex){
 		int rs = Db.update("update t_game set USER"+userIndex+"=? where ID = ?", userId, gameId);
+		return rs > 0;
+	}
+	
+	/**
+	 * 更新比分
+	 * @param winId
+	 * @param score1
+	 * @param score2
+	 * @return
+	 */
+	public boolean updateScore(int gameId, Integer winId, Integer score1, Integer score2){
+		int rs = Db.update("update t_game set WINNER_ID=?, SCORE1=?, SCORE2=? where ID = ?", winId, score1, score2, gameId);
+		return rs > 0;
+	}
+	
+	/**
+	 * 将用户移动到对应比赛
+	 * @param matchId
+	 * @param seq
+	 * @param index
+	 * @param userId
+	 * @return
+	 */
+	public boolean moveUserToGame(int matchId, Integer seq, Integer index, Integer userId){
+		int rs = Db.update("update t_game set USER" + index + "=? where MATCH_ID = ? and SEQ=?", userId, matchId, seq);
 		return rs > 0;
 	}
 
