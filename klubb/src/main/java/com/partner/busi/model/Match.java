@@ -21,7 +21,7 @@ public class Match extends BaseMatch<Match> {
 	}
 	
 	public List<Match> queryNewMatch(){
-		return dao.find("select ID, NAME, IMG, DESCRIPTION from t_match where p_id is null and STATUS != -1 order by start_date desc;");
+		return dao.find("select ID, NAME, IMG, DESCRIPTION from t_match where p_id is null and STATUS != -1 order by start_date desc");
 	}
 	
 	public Page<Match> findList(String title, int pageNum, Integer pagesize) {

@@ -24,6 +24,7 @@ public class IndexController extends Controller {
 		setAttr("notice",notice);
 		//获取最新比赛
 		List<Match> matchLst = Match.dao.queryNewMatch();
+		setAttr("matchLst", matchLst);
 		//获取 happytime 数据
 		List<Picture> pictures = Picture.dao.findRecommendPic();
 		setAttr("pictures",pictures);
