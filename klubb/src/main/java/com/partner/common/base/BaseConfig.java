@@ -34,6 +34,7 @@ import com.partner.busi.front.controller.IndexController;
 import com.partner.busi.front.controller.IntroduceController;
 import com.partner.busi.front.controller.LoginController;
 import com.partner.busi.front.controller.MatchController;
+import com.partner.busi.front.controller.MatchDetailController;
 import com.partner.busi.front.controller.UserCenterController;
 import com.partner.busi.model._MappingKit;
 import com.partner.common.interceptor.AuthInterceptor;
@@ -95,6 +96,7 @@ public class BaseConfig extends JFinalConfig {
 		me.add("/back/match/editUser",BackEditMatchUserController.class,"/back/match/editUser");
 		me.add("/back/match/edit",BackMatchController.class,"/back/match");
 		me.add("/back/match",BackMatchListController.class,"/back/match");
+		me.add("/front/matchdetail",MatchDetailController.class,"/front/match/detail");
 	}
 
 	/*

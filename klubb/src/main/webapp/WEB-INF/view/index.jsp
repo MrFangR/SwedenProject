@@ -79,7 +79,7 @@
             <!--最新比赛  注意为实现全屏自适应采用了特殊布局方式有些地方不能加空格 S-->
 			<div class="hactivity">
 				<c:if test="${not empty matchLst[1] }">
-					<div class="hacfist"><i18n:get key="portal.index.game"></i18n:get></div><div class="image2"><a href="#none"><img src="${uploadUrl }${matchLst[1].IMG}" ></a><p class="atc">${matchLst[1].NAME}</p></div>
+					<div class="hacfist"><i18n:get key="portal.index.game"></i18n:get></div><div class="image2"><a href="${ctx}/front/matchdetail?matchId=${matchLst[1].ID}"><img src="${uploadUrl }${matchLst[1].IMG}" ></a><p class="atc">${matchLst[1].NAME}</p></div>
 				</c:if>
 				<c:if test="${empty matchLst[1] }">
 					<div class="hacfist"><i18n:get key="portal.index.game"></i18n:get></div><div class="image2"><a href="#none"><img src="${ctx }/front-ui/images/at1.jpg" ></a><p class="atc">大师赛第二阶段王岩邱</p></div>
@@ -87,21 +87,21 @@
             </div>
             <div class="hactivity">
             	<c:if test="${not empty matchLst[0] }">
-                	<div class="secleft"><a href="#none"><img src="${uploadUrl }${matchLst[0].IMG}"></a><p class="atc2">${matchLst[0].NAME}</p></div><div class="secright">
+                	<div class="secleft"><a href="${ctx}/front/matchdetail?matchId=${matchLst[0].ID}"><img src="${uploadUrl }${matchLst[0].IMG}"></a><p class="atc2">${matchLst[0].NAME}</p></div><div class="secright">
                	</c:if>
                	<c:if test="${empty matchLst[0] }">
                 	<div class="secleft"><a href="#none"><img src="${ctx }/front-ui/images/at2.jpg"></a><p class="atc2">@大师赛第二阶段王岩邱</p></div><div class="secright">
                	</c:if>
                 <div class="secr-left">
                 	<c:if test="${not empty matchLst[2] }">
-                		<a href="#none"><img src="${uploadUrl }${matchLst[2].IMG}"></a><p class="atc">${matchLst[2].NAME}</p>
+                		<a href="${ctx}/front/matchdetail?matchId=${matchLst[2].ID}"><img src="${uploadUrl }${matchLst[2].IMG}"></a><p class="atc">${matchLst[2].NAME}</p>
                 	</c:if>
                 	<c:if test="${empty matchLst[2] }">
                 		<a href="#none"><img src="${ctx }/front-ui/images/at3.jpg"></a><p class="atc">大师赛第二阶段王岩邱</p>
                 	</c:if>
                 </div><div class="secr-right">
                 	<c:if test="${not empty matchLst[3] }">
-                		<a href="#none"><img src="${uploadUrl }${matchLst[3].IMG}" ></a><p class="atc">${matchLst[3].NAME}</p>
+                		<a href="${ctx}/front/matchdetail?matchId=${matchLst[3].ID}"><img src="${uploadUrl }${matchLst[3].IMG}" ></a><p class="atc">${matchLst[3].NAME}</p>
                 	</c:if>
                 	<c:if test="${empty matchLst[3] }">
                 		<a href="#none"><img src="${ctx }/front-ui/images/at4.jpg" ></a><p class="atc">大师赛第二阶段王岩邱</p>
@@ -109,14 +109,14 @@
                 </div>
                 <div class="secr-left">
                 	<c:if test="${not empty matchLst[4] }">
-                		<a href="#none"><img src="${uploadUrl }${matchLst[4].IMG}"></a><p class="atc">${matchLst[4].NAME}</p>
+                		<a href="${ctx}/front/matchdetail?matchId=${matchLst[4].ID}"><img src="${uploadUrl }${matchLst[4].IMG}"></a><p class="atc">${matchLst[4].NAME}</p>
                 	</c:if>
                 	<c:if test="${empty matchLst[4] }">
                 		<a href="#none"><img src="${ctx }/front-ui/images/at5.jpg"></a><p class="atc">大师赛第二阶段王岩邱</p>
                 	</c:if>
                 </div><div class="secr-right">
                 	<c:if test="${not empty matchLst[5] }">
-                		<a href="#none"><img src="${uploadUrl }${matchLst[5].IMG}" ></a><p class="atc">${matchLst[5].NAME}</p>
+                		<a href="${ctx}/front/matchdetail?matchId=${matchLst[5].ID}"><img src="${uploadUrl }${matchLst[5].IMG}" ></a><p class="atc">${matchLst[5].NAME}</p>
                 	</c:if>
                 	<c:if test="${empty matchLst[5] }">
                 		<a href="#none"><img src="${ctx }/front-ui/images/at3.jpg" ></a><p class="atc">大师赛第二阶段王岩邱</p>

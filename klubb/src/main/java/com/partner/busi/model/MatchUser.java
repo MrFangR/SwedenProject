@@ -108,6 +108,7 @@ public class MatchUser extends BaseMatchUser<MatchUser> {
 	 * @param matchId
 	 * @param seq
 	 * @return int >=1 为成功
+	 * 批量对SEQ 进行递减操作
 	 */
 	public int batchUpdateSeq(int matchId, int seq){
 		StringBuffer sb = new StringBuffer(" UPDATE t_match_user MU SET MU.SEQ = MU.SEQ-1 WHERE MU.MATCH_ID = "+matchId+" AND MU.SEQ IS NOT NULL AND MU.SEQ > "+seq);
