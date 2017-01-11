@@ -231,15 +231,30 @@
              <table class="ued-table-nobor mgt-15" width="100%" cellspacing="0" cellpadding="0">
                 <tbody>
                 	<tr>
-                        <th>设置：</th>
+                        <th>球桌编号：</th>
                         <td>
                             <input value="" class="ued-text-2" maxlength="30" type="text">     
                         </td>
                     </tr>
-                   <tr>
-                        <th>计划时间：</th>
+                    <tr>
+                        <th>比赛类型：</th>
                         <td>
-                             <input value="" class="ued-text-2" maxlength="30" type="text"> 
+                            <div style="width:180px;" class="ued-select-2 js_select">
+                                <span class="ued-sel-txt">未指定</span>
+                                <a class="ued-sel-open"></a>
+                                <div class="ued-option" style="display: none;" id="statusSelect">
+                                	<a href="javascript:void(0);" onclick="chgType('')">未指定</a>
+                                	<a href="javascript:void(0);" onclick="chgType(8)">8球</a>
+                                	<a href="javascript:void(0);" onclick="chgType(9)">9球</a>
+                                </div>
+                            </div>
+                            <input type="hidden" id="editType" value="">
+                        </td>
+                    </tr>
+                   <tr>
+                        <th>开始时间：</th>
+                        <td>
+                             	<input id="editStartTime" value="" class="Wdate ued-text-2" maxlength="30" type="text" onClick="WdatePicker({ dateFmt: 'yyyy-MM-dd HH:mm:ss' })" style="border: 1px solid #e5e5e5;height: 28px;padding-left: 10px;">
                         </td>
                     
                     </tr>
@@ -369,6 +384,7 @@ $(function() {
 						
 						moveUserToGame(gameId, "w"); //移动到胜者组
 						moveUserToGame(gameId, "l"); //移动到败者组
+						$(".dialog-close").trigger("click");
 						alert("编辑成功");
 					}else{
 						alert("编辑失败");
@@ -478,6 +494,10 @@ $(function() {
 					$("#btn-matchbtn span.editUser2").trigger("click");
 				}
 			}
+		}
+		
+		function chgType(type){
+			$('#editType').val(type);
 		}
 	</script>  
 </body>
