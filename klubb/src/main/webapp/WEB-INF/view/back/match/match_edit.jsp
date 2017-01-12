@@ -40,7 +40,14 @@
             <c:forEach items="${winList}" var="gList" varStatus="status">
             	<c:if test="${status.index == 0}">
             		<!--可拖动部分  s-->
-                     <div class="dropbox">
+            		<c:choose>
+            			<c:when test="${match.STATUS == 0 }">
+                     		<div class="dropbox">
+                     	</c:when>
+                     	<c:otherwise>
+                     		<div class="nodrop">
+                     	</c:otherwise>
+                     </c:choose>
             	</c:if>
             	<c:if test="${status.index > 0}">
             		<!--可拖动部分  s-->
@@ -57,17 +64,17 @@
 	            				<div class="matchgroup ${groupMgt[status.index]}">
 	            			</c:otherwise>
 	            		</c:choose>
-	                    <div wId="${game.winnerId }" gSeq="${game.SEQ }" gId="${game.ID}" wSeq="${game.WNextId}" lSeq="${game.LNextId}" class="template js_template">
+	                    <div wId="${game.winnerId }" tNum="${game.tableNum }" sTime="${game.startTime }" gType="${game.TYPE }" gSeq="${game.SEQ }" gId="${game.ID}" wSeq="${game.WNextId}" lSeq="${game.LNextId}" class="template js_template">
 	                        <h3>${game.SEQ }</h3>
-	                    <div class="group" id="${game.ID }_1" <c:if test="${status.index == 0 }"> ondrop="drop(event,this)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event, this)"</c:if>><i><c:if test="${game.u1_SEQ != 0}">${game.u1_SEQ}</c:if></i><span id="${game.USER1 }">${game.u1_NAME }</span><input name="" type="text" value="${game.SCORE1 }"></div>
-	                    <div class="group" id="${game.ID }_2" <c:if test="${status.index == 0 }"> ondrop="drop(event,this)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event, this)"</c:if>><i><c:if test="${game.u2_SEQ != 0}">${game.u2_SEQ}</c:if></i><span id="${game.USER2 }">${game.u2_NAME }</span><input name="" type="text" value="${game.SCORE2 }"></div>
+	                    <div class="group" id="${game.ID }_1" <c:if test="${status.index == 0 and match.STATUS == 0 }"> ondrop="drop(event,this)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event, this)"</c:if>><i><c:if test="${game.u1_SEQ != 0}">${game.u1_SEQ}</c:if></i><span id="${game.USER1 }">${game.u1_NAME }</span><input name="" type="text" value="${game.SCORE1 }"></div>
+	                    <div class="group" id="${game.ID }_2" <c:if test="${status.index == 0 and match.STATUS == 0 }"> ondrop="drop(event,this)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event, this)"</c:if>><i><c:if test="${game.u2_SEQ != 0}">${game.u2_SEQ}</c:if></i><span id="${game.USER2 }">${game.u2_NAME }</span><input name="" type="text" value="${game.SCORE2 }"></div>
 	                    </div>  
             		</c:if>
                     <c:if test="${gStatus.index mod 2 == 1}">
-                    <div wId="${game.winnerId }" gSeq="${game.SEQ }" gId="${game.ID}" wSeq="${game.WNextId}" lSeq="${game.LNextId}" class="template js_template ${tempMgt[status.index]}">
+                    <div wId="${game.winnerId }" tNum="${game.tableNum }" sTime="${game.startTime }" gType="${game.TYPE }" gSeq="${game.SEQ }" gId="${game.ID}" wSeq="${game.WNextId}" lSeq="${game.LNextId}" class="template js_template ${tempMgt[status.index]}">
                         <h3>${game.SEQ }</h3>
-                        <div class="group" id="${game.ID }_1" <c:if test="${status.index == 0 }"> ondrop="drop(event,this)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event, this)"</c:if>><i><c:if test="${game.u1_SEQ != 0}">${game.u1_SEQ}</c:if></i><span id="${game.USER1 }">${game.u1_NAME }</span><input name="" type="text" value="${game.SCORE1 }"></div>
-                        <div class="group" id="${game.ID }_2" <c:if test="${status.index == 0 }"> ondrop="drop(event,this)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event, this)"</c:if>><i><c:if test="${game.u2_SEQ != 0}">${game.u2_SEQ}</c:if></i><span id="${game.USER2 }">${game.u2_NAME }</span><input name="" type="text" value="${game.SCORE2 }"></div>
+                        <div class="group" id="${game.ID }_1" <c:if test="${status.index == 0 and match.STATUS == 0 }"> ondrop="drop(event,this)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event, this)"</c:if>><i><c:if test="${game.u1_SEQ != 0}">${game.u1_SEQ}</c:if></i><span id="${game.USER1 }">${game.u1_NAME }</span><input name="" type="text" value="${game.SCORE1 }"></div>
+                        <div class="group" id="${game.ID }_2" <c:if test="${status.index == 0 and match.STATUS == 0 }"> ondrop="drop(event,this)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event, this)"</c:if>><i><c:if test="${game.u2_SEQ != 0}">${game.u2_SEQ}</c:if></i><span id="${game.USER2 }">${game.u2_NAME }</span><input name="" type="text" value="${game.SCORE2 }"></div>
                     </div>  
                     <c:if test="${not status.last }">
                     <div class="matchline">
@@ -112,7 +119,7 @@
 		            				<div class="matchgroup ${groupMgt[status.index]}">
 		            			</c:otherwise>
 		            		</c:choose>
-            			<div wId="${game.winnerId }" gSeq="${game.SEQ }" gId="${game.ID}" wSeq="${game.WNextId}" lSeq="${game.LNextId}" class="template js_template ${tempMgt[status.index * 2 + 1]}">
+            			<div wId="${game.winnerId }" tNum="${game.tableNum }" sTime="${game.startTime }" gType="${game.TYPE }" gSeq="${game.SEQ }" gId="${game.ID}" wSeq="${game.WNextId}" lSeq="${game.LNextId}" class="template js_template ${tempMgt[status.index * 2 + 1]}">
 	                        <h3>${game.SEQ }</h3>
 	                    <div class="group" id="${game.ID }_1" ><i><c:if test="${game.u1_SEQ != 0}">${game.u1_SEQ}</c:if></i><span id="${game.USER2 }">${game.u1_NAME }</span><input name="" type="text" value="${game.SCORE1 }"></div>
 	                    <div class="group" id="${game.ID }_2" ><i><c:if test="${game.u2_SEQ != 0}">${game.u2_SEQ}</c:if></i><span id="${game.USER2 }">${game.u2_NAME }</span><input name="" type="text" value="${game.SCORE2 }"></div>
@@ -141,14 +148,14 @@
 		            				<div class="matchgroup ${groupMgt[status.index]}">
 		            			</c:otherwise>
 		            		</c:choose>
-		                    <div wId="${game.winnerId }" gSeq="${game.SEQ }" gId="${game.ID}" wSeq="${game.WNextId}" lSeq="${game.LNextId}" class="template js_template">
+		                    <div wId="${game.winnerId }" tNum="${game.tableNum }" sTime="${game.startTime }" gType="${game.TYPE }" gSeq="${game.SEQ }" gId="${game.ID}" wSeq="${game.WNextId}" lSeq="${game.LNextId}" class="template js_template">
 		                        <h3>${game.SEQ }</h3>
 		                    <div class="group" id="${game.ID }_1" ><i><c:if test="${game.u1_SEQ != 0}">${game.u1_SEQ}</c:if></i><span id="${game.USER1 }">${game.u1_NAME }</span><input name="" type="text" value="${game.SCORE1 }"></div>
 		                    <div class="group" id="${game.ID }_2" ><i><c:if test="${game.u2_SEQ != 0}">${game.u2_SEQ}</c:if></i><span id="${game.USER2 }">${game.u2_NAME }</span><input name="" type="text" value="${game.SCORE2 }"></div>
 		                    </div>  
 	            		</c:if>
 	                    <c:if test="${gStatus.index mod 2 == 1}">
-	                    <div wId="${game.winnerId }" gSeq="${game.SEQ }" gId="${game.ID}" wSeq="${game.WNextId}" lSeq="${game.LNextId}" class="template js_template ${tempMgt[status.index]}">
+	                    <div wId="${game.winnerId }" tNum="${game.tableNum }" sTime="${game.startTime }" gType="${game.TYPE }" gSeq="${game.SEQ }" gId="${game.ID}" wSeq="${game.WNextId}" lSeq="${game.LNextId}" class="template js_template ${tempMgt[status.index]}">
 	                        <h3>${game.SEQ }</h3>
 	                        <div class="group" id="${game.ID }_1" ><i><c:if test="${game.u1_SEQ != 0}">${game.u1_SEQ}</c:if></i><span id="${game.USER1 }">${game.u1_NAME }</span><input name="" type="text" value="${game.SCORE1 }"></div>
 	                        <div class="group" id="${game.ID }_2" ><i><c:if test="${game.u2_SEQ != 0}">${game.u2_SEQ}</c:if></i><span id="${game.USER2 }">${game.u2_NAME }</span><input name="" type="text" value="${game.SCORE2 }"></div>
@@ -227,25 +234,25 @@
      <div class="dialogcon">
         <ul>
           <li class="cur">
-             <p class=" tc"><b class="editUser1" uid="">王二小</b>VS<b class="editUser2" uid="">昌盛</b></p>
+             <p class=" tc"><b class="editUser1" uid=""></b>VS<b class="editUser2" uid=""></b></p>
              <table class="ued-table-nobor mgt-15" width="100%" cellspacing="0" cellpadding="0">
                 <tbody>
                 	<tr>
                         <th>球桌编号：</th>
                         <td>
-                            <input value="" class="ued-text-2" maxlength="30" type="text">     
+                            <input id="editTableNum" value="" class="ued-text-2" maxlength="30" type="text">     
                         </td>
                     </tr>
                     <tr>
                         <th>比赛类型：</th>
                         <td>
                             <div style="width:180px;" class="ued-select-2 js_select">
-                                <span class="ued-sel-txt">未指定</span>
+                                <span class="ued-sel-txt" id="typeTxt">未指定</span>
                                 <a class="ued-sel-open"></a>
-                                <div class="ued-option" style="display: none;" id="statusSelect">
-                                	<a href="javascript:void(0);" onclick="chgType('')">未指定</a>
-                                	<a href="javascript:void(0);" onclick="chgType(8)">8球</a>
-                                	<a href="javascript:void(0);" onclick="chgType(9)">9球</a>
+                                <div class="ued-option" style="display: none;z-index: 100002;" id="typeSelect">
+                                	<a href="javascript:void(0);" tn="" onclick="chgType('')">未指定</a>
+                                	<a href="javascript:void(0);" tn="8" onclick="chgType(8)">8球</a>
+                                	<a href="javascript:void(0);" tn="9" onclick="chgType(9)">9球</a>
                                 </div>
                             </div>
                             <input type="hidden" id="editType" value="">
@@ -264,19 +271,19 @@
           </li>
           <li>
               <h3 class="tit">选择胜者</h3>
-              <div class="clearfix" style="width:180px; margin:0 auto"><span  class="btn editUser1">王二小</span><span  class="btn editUser2">昌盛</span> </div>
+              <div class="clearfix" style="width:180px; margin:0 auto"><span  class="btn editUser1"></span><span  class="btn editUser2"></span> </div>
                <h3 class="tit">输入比分</h3>
                <input type="hidden" id="editGameId"/>
                 <table class="ued-table-nobor mgt-15" width="100%" cellspacing="0" cellpadding="0">
                 <tbody>
                 	<tr>
-                        <th><span class="editUser1" uid="">王二小</span>：</th>
+                        <th><span class="editUser1" uid=""></span>：</th>
                         <td>
                             <input id="editScore1" value="" class="ued-text-2" maxlength="30" type="text">     
                         </td>
                     </tr>
                    <tr>
-                        <th><span class="editUser2" uid="">昌盛</span>：</th>
+                        <th><span class="editUser2" uid=""></span>：</th>
                         <td>
                              <input id="editScore2"  value="" class="ued-text-2" maxlength="30" type="text"> 
                         </td>
@@ -358,8 +365,34 @@ $(function() {
 	$("#editBtn").live("click", function(){
 		var index = $("#btn-matchbtn .dialogcon li.cur").index();
 		if(index == 0){ //比赛详情
-			
+			var startTime = $("#editStartTime").val();
+			var tableNum = $("#editTableNum").val();
+			var type = $("#editType").val();
+			var gameId = $("#editGameId").val();
+			$.ajax({
+				type : "POST",
+				url : "${ctx}/back/match/edit/updateGameInfo",
+				dataType : "json",
+				data : {
+					startTime : startTime,
+					tableNum : tableNum,
+					type : type,
+					gameId : gameId
+				},
+				success : function(data) {
+					if (data.rsFlag) {
+						$(".dialog-close").trigger("click");
+						alert("编辑成功");
+					}else{
+						alert("编辑失败");
+					}
+				}
+			});
 		}else if(index == 1){ //编辑比分
+			if($(".editUser1").attr("uid") == "" || $(".editUser2").attr("uid") == "" ){
+				alert("比赛人员不全，不得编辑比分及胜者");
+				return;
+			}
 			var winId = $("#btn-matchbtn span.active").attr("uid");
 			var score1 = $("#editScore1").val();
 			var score2 = $("#editScore2").val();
@@ -487,6 +520,11 @@ $(function() {
 			
 			$("#editGameId").val($(self).attr("gId"));
 			
+			$("#editTableNum").val($(self).attr("tNum"));
+			$("#editStartTime").val($(self).attr("sTime"));
+			$("#editType").val($(self).attr("gType"));
+			$("#typeTxt").html($("#typeSelect a[tn='" + $(self).attr("gType") + "']").html());
+			
 			if($(self).attr("wId") != null && $(self).attr("wId") != ""){
 				if($(self).attr("wId") == $div1.find("span").attr("id")){
 					$("#btn-matchbtn span.editUser1").trigger("click");
@@ -499,6 +537,7 @@ $(function() {
 		function chgType(type){
 			$('#editType').val(type);
 		}
+		
 	</script>  
 </body>
 </html>
