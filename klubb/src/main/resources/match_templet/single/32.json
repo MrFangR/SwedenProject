@@ -1,0 +1,221 @@
+{
+    "gameList": [
+        {
+            "seq": 1,
+            "winNextId": "17_1",
+            "loseNextId": "",
+            "roundNum": 1,
+            "showIndex": 1
+        },
+        {
+            "seq": 2,
+            "winNextId": "17_2",
+            "loseNextId": "",
+            "roundNum": 1,
+            "showIndex": 2
+        },
+        {
+            "seq": 3,
+            "winNextId": "18_1",
+            "loseNextId": "",
+            "roundNum": 1,
+            "showIndex": 3
+        },
+        {
+            "seq": 4,
+            "winNextId": "18_2",
+            "loseNextId": "",
+            "roundNum": 1,
+            "showIndex": 4
+        },
+        {
+            "seq": 5,
+            "winNextId": "19_1",
+            "loseNextId": "",
+            "roundNum": 1,
+            "showIndex": 5
+        },
+        {
+            "seq": 6,
+            "winNextId": "19_2",
+            "loseNextId": "",
+            "roundNum": 1,
+            "showIndex": 6
+        },
+        {
+            "seq": 7,
+            "winNextId": "20_1",
+            "loseNextId": "",
+            "roundNum": 1,
+            "showIndex": 7
+        },
+        {
+            "seq": 8,
+            "winNextId": "20_2",
+            "loseNextId": "",
+            "roundNum": 1,
+            "showIndex": 8
+        },
+        {
+            "seq": 9,
+            "winNextId": "21_1",
+            "loseNextId": "",
+            "roundNum": 1,
+            "showIndex": 9
+        },
+        {
+            "seq": 10,
+            "winNextId": "21_2",
+            "loseNextId": "",
+            "roundNum": 1,
+            "showIndex": 10
+        },
+        {
+            "seq": 11,
+            "winNextId": "22_1",
+            "loseNextId": "",
+            "roundNum": 1,
+            "showIndex": 11
+        },
+        {
+            "seq": 12,
+            "winNextId": "22_2",
+            "loseNextId": "",
+            "roundNum": 1,
+            "showIndex": 12
+        },
+        {
+            "seq": 13,
+            "winNextId": "23_1",
+            "loseNextId": "",
+            "roundNum": 1,
+            "showIndex": 13
+        },
+        {
+            "seq": 14,
+            "winNextId": "23_2",
+            "loseNextId": "",
+            "roundNum": 1,
+            "showIndex": 14
+        },
+        {
+            "seq": 15,
+            "winNextId": "24_1",
+            "loseNextId": "",
+            "roundNum": 1,
+            "showIndex": 15
+        },
+        {
+            "seq": 16,
+            "winNextId": "24_2",
+            "loseNextId": "",
+            "roundNum": 1,
+            "showIndex": 16
+        },
+        {
+            "seq": 17,
+            "winNextId": "25_1",
+            "loseNextId": "",
+            "roundNum": 2,
+            "showIndex": 17
+        },
+        {
+            "seq": 18,
+            "winNextId": "25_2",
+            "loseNextId": "",
+            "roundNum": 2,
+            "showIndex": 18
+        },
+        {
+            "seq": 19,
+            "winNextId": "26_1",
+            "loseNextId": "",
+            "roundNum": 2,
+            "showIndex": 19
+        },
+        {
+            "seq": 20,
+            "winNextId": "26_2",
+            "loseNextId": "",
+            "roundNum": 2,
+            "showIndex": 20
+        },
+        {
+            "seq": 21,
+            "winNextId": "27_1",
+            "loseNextId": "",
+            "roundNum": 2,
+            "showIndex": 21
+        },
+        {
+            "seq": 22,
+            "winNextId": "27_2",
+            "loseNextId": "",
+            "roundNum": 2,
+            "showIndex": 22
+        },
+        {
+            "seq": 23,
+            "winNextId": "28_1",
+            "loseNextId": "",
+            "roundNum": 2,
+            "showIndex": 23
+        },
+        {
+            "seq": 24,
+            "winNextId": "28_2",
+            "loseNextId": "",
+            "roundNum": 2,
+            "showIndex": 24
+        },
+        {
+            "seq": 25,
+            "winNextId": "29_1",
+            "loseNextId": "",
+            "roundNum": 3,
+            "showIndex": 25
+        },
+        {
+            "seq": 26,
+            "winNextId": "29_2",
+            "loseNextId": "",
+            "roundNum": 3,
+            "showIndex": 26
+        },
+        {
+            "seq": 27,
+            "winNextId": "30_1",
+            "loseNextId": "",
+            "roundNum": 3,
+            "showIndex": 27
+        },
+        {
+            "seq": 28,
+            "winNextId": "30_2",
+            "loseNextId": "",
+            "roundNum": 3,
+            "showIndex": 28
+        },
+        {
+            "seq": 29,
+            "winNextId": "31_1",
+            "loseNextId": "",
+            "roundNum": 4,
+            "showIndex": 29
+        },
+        {
+            "seq": 30,
+            "winNextId": "31_2",
+            "loseNextId": "",
+            "roundNum": 4,
+            "showIndex": 30
+        },
+        {
+            "seq": 31,
+            "winNextId": "",
+            "loseNextId": "",
+            "roundNum": 5,
+            "showIndex": 31
+        }
+    ]
+}
