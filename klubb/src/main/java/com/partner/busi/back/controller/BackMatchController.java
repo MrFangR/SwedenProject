@@ -6,7 +6,10 @@ package com.partner.busi.back.controller;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
@@ -53,12 +56,56 @@ public class BackMatchController extends Controller {
 		List<List<Game>> winList = generateList(wList, winTitleList, true);
 		List<List<Game>> loseList = generateList(lList, loseTitleList, false);
 		
+		Match match = Match.dao.findById(matchId);
+		
+		setAttr("match", match);
 		setAttr("winList", winList);
 		setAttr("winTitleList", winTitleList);
 		setAttr("loseList", loseList);
 		setAttr("loseTitleList", loseTitleList);
 		render("match_edit.jsp");
 	}
+	
+	/**
+	 * 初始化轮空的比赛
+	 * @param matchId
+	 * @return
+	 */
+	private void initByeGame(int matchId){
+		List<Game> gameList = Game.dao.find("select * from t_game g where g.MATCH_ID=?", matchId);
+		List<Game> round1GameList = Game.dao.find("select * from t_game g where g.MATCH_ID=? and g.ROUND_NUM=1 order by g.SEQ", matchId);
+		for(Game game : round1GameList){
+			if((game.getUSER1() != null && game.getUSER2() == null) || (game.getUSER1() == null && game.getUSER2() != null)){ //有轮空人员
+				String W_NEXT_ID = game.getWNextId();
+				
+				//获得唯一参赛者
+				Integer userId = null;
+				if(game.getUSER1() != null){
+					userId = game.getUSER1();
+				}else if(game.getUSER2() != null){
+					userId = game.getUSER2();
+				}
+				
+				//修改下一场比赛中参赛者
+				if(StringUtils.isNotBlank(W_NEXT_ID)){ //下一场比赛不为空
+					Integer seq = Integer.parseInt(W_NEXT_ID.split("_")[0]);
+					int nextIndex = Integer.parseInt(W_NEXT_ID.split("_")[1]);
+					for(Game toGame : gameList){
+						if(toGame.getSEQ().equals(seq)){ //下一场比赛
+							if(nextIndex == 1){
+								toGame.setUSER1(userId);
+							}else if(nextIndex == 2){
+								toGame.setUSER2(userId);
+							}
+							toGame.update();
+							break;
+						}
+					}
+				}
+			}
+		}
+	}
+	
 	
 	/**
 	 * 更新比分
@@ -105,6 +152,32 @@ public class BackMatchController extends Controller {
 			DbKit.getConfig().getConnection().rollback();
 			return false;
 		}
+	}
+	
+	/**
+	 * 修改比赛信息
+	 */
+	public void updateGameInfo(){
+		String tableNum = getPara("tableNum");
+		String startTimeStr = getPara("startTime");
+		Integer type = getParaToInt("type");
+		Integer gameId = getParaToInt("gameId");
+		
+		
+		boolean rsFlag = false;
+		try {
+			Date startTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(startTimeStr);
+			Game game = Game.dao.findById(gameId);
+			game.setTableNum(tableNum);
+			game.setTYPE(type);
+			game.setStartTime(startTime);
+			rsFlag = game.update();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			rsFlag = false;
+		}
+		renderJson("rsFlag", rsFlag);
 	}
 	
 	/**
