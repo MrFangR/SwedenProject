@@ -73,6 +73,71 @@
 					</div>
 				<!--cont-con E-->
 			</div>
+			<!--对阵 S-->	
+            <div class="tabsub"   style="display:none; margin:0px;">
+            	<!--第一tab  一列是320px 目前展示5列宽为1600px  如果对阵图列数超过3需要代码判断列数给 box-n div 输入宽度 s-->
+                <div class="box-n on1" style="width:1600px;">
+                	<!--第一大类  s-->
+                    <div class="clearfix">
+                    	<!--比赛标题  s-->
+                        <div class="matchtitle">
+                           <li>第一轮</li>
+                           <li>第二轮</li>
+                           <li>第三轮</li>
+                           <li>半决赛</li>
+                           <li>决赛</li>
+                           <div class="clear"></div>
+                        </div>
+                        <!--比赛标题  e-->
+                    </div>
+                </div>
+            </div>
+            <!--对阵 E-->
+            <!--排行榜  S-->	
+            <div class="tabsub"   style="display:none; margin:0px; background:#fff; padding-top:40px; padding-bottom:40px;">
+           		<table class="table-con">
+           			<tr class="table-tr-even">
+                      <th>排名</th>
+                      <th>参与者名字</th>
+                      <th>比赛历史</th>
+                    </tr>
+                    <tr>
+                      <td>1</td>
+                      <td>Carry Me</td>
+                      <td><i class="win" title="胜利">胜利</i><i class="win" title="胜利">胜利</i><i class="fail" title="失败">失败</i></td>
+                    </tr>
+                    <tr class="table-tr-even">
+                      <td>2</td>
+                      <td>For Funny</td>
+                      <td><i class="fail" title="失败">失败</i><i class="fail" title="失败">失败</i><i class="win" title="胜利">胜利</i></td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td>Rashid</td>
+                      <td><i class="win" title="胜利">胜利</i><i class="win" title="胜利">胜利</i><i class="win" title="胜利">胜利</i></td>
+                    </tr>
+           		</table>
+           	</div>
+           	<!--排行榜 E-->
+           	<!--评论S-->
+           		<div class="ct-dt-pl-main mgt-30 clearfix">
+           			<p class="tx-img fl"><img src="${ctx }/front-ui/images/ct_dt_pl_icon.png" alt=""></p>
+                    <div class="ct-dt-pl-right fl">
+                        <div class="ct-dt-pl-area">
+                            <textarea id="J_ctDtPlText" class="ct-dt-pl-textarea" name="context" rows="" cols="" maxlength="150" onfocus="if(this.value=='我来说两句...') {this.value='';}" onblur="if(this.value=='') {this.value='我来说两句...';}">我来说两句...</textarea>
+                            <p class="limit">还可输入150个字</p>	
+                        </div>
+                        <div class="ct-dt-pl-foot clearfix">
+                            <a id="J_ctDtPlFaceBtn" class="face fl" href="javascript:;"><i class="icon"></i>插入表情</a>
+                            <input class="btn fr" value="发表评论" type="button">
+                            <div id="J_ctDtPlFaceBox" class="ct-dt-pl-face">
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+           		</div>
+           	<!--评论E-->
 		</div>
 		
 		

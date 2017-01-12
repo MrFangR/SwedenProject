@@ -1,5 +1,8 @@
 package com.partner.busi.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.jfinal.plugin.activerecord.Db;
 import com.partner.busi.model.base.BaseGame;
 
@@ -60,6 +63,24 @@ public class Game extends BaseGame<Game> {
 		int rs = Db.update("update t_game set USER" + index + "=? where MATCH_ID = ? and SEQ=?", userId, matchId, seq);
 		return rs > 0;
 	}
+	
+	public List<Game> sordMatch(int matchId){
+		List<Game> userList = new ArrayList<Game>();
+		String sql = "select WINNER_NAME from (select u.NAME as WINNER_NAME, count(g.id) as winNum from t_game g, t_user u where g.WINNER_ID = u.ID and g.MATCH_ID = "+matchId+" group by g.WINNER_ID) temp order by winNum desc ";
+		userList = Db.query(sql);
+		return userList;
+	}
+	
+	public List<Game> getMatchHis(int matchId, int userId){
+		StringBuffer sql = new StringBuffer("select flag, seq from ( select 'win' as flag, seq, t1.WINNER_ID as userId from t_game t1 where t1.MATCH_ID = ");
+		sql.append(matchId).append(" and t1.WINNER_ID = ").append(userId);
+		sql.append(" union all select 'loser' as flag, seq, if(t2.USER1 = t2.WINNER_ID, t2.USER2, t2.USER1 ) as userid from t_game t2 where t2.MATCH_ID = ");
+		sql.append(matchId).append(" and t2.WINNER_ID != ").append(userId).append(" and (t2.USER1 = ").append(userId);
+		sql.append(" or t2.USER2 = ").append(userId).append(" ) ) as t3 order by seq");
+		List<Game> userList = new ArrayList<Game>();
+		userList = Db.query(sql.toString());
+		return userList;
+	}
 
 	public void setU1_SEQ(Long seq) {
 		set("U1_SEQ", seq);
@@ -91,6 +112,22 @@ public class Game extends BaseGame<Game> {
 	
 	public String getU2_NAME() {
 		return get("U2_NAME");
+	}
+	
+	public void setWINNER_NAME(String name) {
+		set("WINNER_NAME", name);
+	}
+	
+	public String getWINNER_NAME() {
+		return get("WINNER_NAME");
+	}
+	
+	public void setFlag(String name) {
+		set("flag", name);
+	}
+	
+	public String getFlag() {
+		return get("flag");
 	}
 	
 }

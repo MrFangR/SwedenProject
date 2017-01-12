@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.jfinal.core.Controller;
+import com.partner.busi.model.Game;
 import com.partner.busi.model.Match;
 import com.partner.busi.model.MatchUser;
 import com.partner.busi.model.User;
@@ -95,5 +96,13 @@ public class MatchDetailController extends Controller {
 			}
 		}
 		renderJson(ret);
+	}
+	
+	public void getMatchHis(){
+		int matchId = getParaToInt("matchId");
+		List<Game> sortData = Game.dao.sordMatch(matchId);
+		for(Game game: sortData){
+			
+		}
 	}
 }
