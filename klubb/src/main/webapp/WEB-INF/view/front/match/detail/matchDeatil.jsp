@@ -96,26 +96,28 @@
             <!--排行榜  S-->	
             <div class="tabsub"   style="display:none; margin:0px; background:#fff; padding-top:40px; padding-bottom:40px;">
            		<table class="table-con">
-           			<tr class="table-tr-even">
+           			<tr>
                       <th>排名</th>
                       <th>参与者名字</th>
                       <th>比赛历史</th>
                     </tr>
-                    <tr>
-                      <td>1</td>
-                      <td>Carry Me</td>
-                      <td><i class="win" title="胜利">胜利</i><i class="win" title="胜利">胜利</i><i class="fail" title="失败">失败</i></td>
-                    </tr>
-                    <tr class="table-tr-even">
-                      <td>2</td>
-                      <td>For Funny</td>
-                      <td><i class="fail" title="失败">失败</i><i class="fail" title="失败">失败</i><i class="win" title="胜利">胜利</i></td>
-                    </tr>
-                    <tr>
-                      <td>3</td>
-                      <td>Rashid</td>
-                      <td><i class="win" title="胜利">胜利</i><i class="win" title="胜利">胜利</i><i class="win" title="胜利">胜利</i></td>
-                    </tr>
+                    <c:forEach var="rink" items="${rinkList }">
+	                    <tr class="table-tr-even">
+	                      <td>${rink.seq }</td>
+	                      <td>${rink.userName }</td>
+	                      <td>
+	                      	<c:forEach var="flag" items="${rink.matchFlag }">
+	                      		<c:if test="${flag=='win' }">
+	                      			<i class="win" title="胜利">胜利</i>
+	                      		</c:if>
+	                      		<c:if test="${flag=='loser' }">
+	                      			<i class="fail" title="失败">失败</i>
+	                      		</c:if>
+	                      	</c:forEach>
+	                      </td>
+	                    </tr>
+                    
+                    </c:forEach>
            		</table>
            	</div>
            	<!--排行榜 E-->

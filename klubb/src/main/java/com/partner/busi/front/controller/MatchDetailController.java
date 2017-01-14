@@ -3,6 +3,7 @@
  */
 package com.partner.busi.front.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -13,6 +14,7 @@ import com.partner.busi.model.Game;
 import com.partner.busi.model.Match;
 import com.partner.busi.model.MatchUser;
 import com.partner.busi.model.User;
+import com.partner.busi.vo.MatchRinkListVo;
 import com.partner.common.base.ResultInfo;
 import com.partner.common.util.FrontSessionUtil;
 
@@ -49,6 +51,17 @@ public class MatchDetailController extends Controller {
 			}
 		}
 		setAttr("applyFlag",applyFlag);
+		List<Game> sortData = Game.dao.sordMatch(Integer.parseInt(matchId));
+		List<MatchRinkListVo> rinkingList = new ArrayList<MatchRinkListVo>();
+		MatchRinkListVo rinkVo = null;
+		for(int i=0;i<sortData.size();i++){
+			Game game = sortData.get(i);
+			String[] tempFlag = Game.dao.getMatchHis(Integer.parseInt(matchId), game.getUSER_ID());
+			rinkVo = new MatchRinkListVo(game.getWINNER_NAME(), i+1, tempFlag);
+			rinkingList.add(rinkVo);
+		}
+		setAttr("rinkList",rinkingList);
+		setAttr("sortData",sortData);
 		render("matchDeatil.jsp");
 	}
 	
@@ -102,7 +115,9 @@ public class MatchDetailController extends Controller {
 		int matchId = getParaToInt("matchId");
 		List<Game> sortData = Game.dao.sordMatch(matchId);
 		for(Game game: sortData){
-			
+			String[] tempFlag = Game.dao.getMatchHis(matchId, Integer.parseInt(String.valueOf(game.getUSER_ID())));
+			game.setMatchFlag(tempFlag);
 		}
+		renderJson(sortData);
 	}
 }
