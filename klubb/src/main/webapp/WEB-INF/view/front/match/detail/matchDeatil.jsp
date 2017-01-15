@@ -122,23 +122,15 @@
            	</div>
            	<!--排行榜 E-->
            	<!--评论S-->
-           		<div class="ct-dt-pl-main mgt-30 clearfix">
-           			<p class="tx-img fl"><img src="${ctx }/front-ui/images/ct_dt_pl_icon.png" alt=""></p>
-                    <div class="ct-dt-pl-right fl">
-                        <div class="ct-dt-pl-area">
-                            <textarea id="J_ctDtPlText" class="ct-dt-pl-textarea" name="context" rows="" cols="" maxlength="150" onfocus="if(this.value=='我来说两句...') {this.value='';}" onblur="if(this.value=='') {this.value='我来说两句...';}">我来说两句...</textarea>
-                            <p class="limit">还可输入150个字</p>	
-                        </div>
-                        <div class="ct-dt-pl-foot clearfix">
-                            <a id="J_ctDtPlFaceBtn" class="face fl" href="javascript:;"><i class="icon"></i>插入表情</a>
-                            <input class="btn fr" value="发表评论" type="button">
-                            <div id="J_ctDtPlFaceBox" class="ct-dt-pl-face">
-                                
-                            </div>
-                        </div>
-                    </div>
-                    <div class="clearfix"></div>
-           		</div>
+           	<div class="tabsub"   style="display:none; margin:0px;background:#fff">
+           	<%@ include file="/ninclude/frontMember/evaluation.jsp"%>
+			</div>
+			<form enctype="multipart/form-data" action="" id="evaForm">
+			  	<input type="hidden" value="${match.ID}" id="OBJ_ID" name="evaluation.OBJ_ID"/>
+			   	<input type="hidden" value="3" id="OBJ_TYPE" name="evaluation.OBJ_TYPE"/>
+			   	<input type="hidden" value="" id="CONTENT" name="evaluation.CONTENT"/>
+			   	<input type="hidden" value="" id="P_ID" name="evaluation.P_ID"/>
+			</form>
            	<!--评论E-->
 		</div>
 		

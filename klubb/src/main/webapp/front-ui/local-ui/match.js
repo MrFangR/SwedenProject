@@ -27,10 +27,10 @@ function showResultList(data){
 	$.each(data.list, function(i, mat){
 		htmlStr += "<li class='listbox mr20'>";
 		htmlStr += "<div class='listboximg'>";
-		htmlStr += "<a href='"+ctx+"/front/match/viewMat?type="+mat.ID+"'  target='_blank'><img  src='"+uploadUrl+mat.IMG+"' class='attachment-thumbnail wp-post-image'></a>";
+		htmlStr += "<a href='"+ctx+"/front/matchdetail?matchId="+mat.ID+"'  target='_blank'><img  src='"+uploadUrl+mat.IMG+"' class='attachment-thumbnail wp-post-image'></a>";
 		htmlStr += "</div>";
 		htmlStr += "<div class='listinfo'>";
-		htmlStr += "<div class='listtitle'><a href='#none'  target='_blank'>"+mat.NAME+"</a></div>";
+		htmlStr += "<div class='listtitle'><a href='"+ctx+"/front/matchdetail?matchId="+mat.ID+"'  target='_blank'>"+mat.NAME+"</a></div>";
 		htmlStr += "<div class='listdate'>比赛时间："+mat.START_DATE+"</div>";
 		htmlStr += "</div>";
 		htmlStr += "</li>";

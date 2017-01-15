@@ -12,6 +12,7 @@
             <th>比赛制度<i class="ued-cor-up"></i></th>
             <th>参与人数</th>
             <th>比赛时间</th>
+            <th>比赛状态</th>
             <th>操作</th>
         </tr>
         <c:if test="${empty paginate.list}">
@@ -33,7 +34,21 @@
 		            <td>${match.playerNum}</td>
 		            <td><fmt:formatDate value="${match.startDate}" pattern="dd/MM/yyyy HH:mm:ss"/></td>
 		            <td>
-		            	<a href="cancleMat(${match.ID})">取消活动</a>
+		            	<c:choose>
+							<c:when test="${match.STATUS eq -1}">已取消</c:when>
+							<c:when test="${match.STATUS eq 0}">未开始</c:when>
+							<c:when test="${match.STATUS eq 1}">进行中</c:when>
+							<c:when test="${match.STATUS eq 2}">已完成</c:when>
+						</c:choose>
+		            </td>
+		            <td>
+		            	<c:choose>
+							<c:when test="${match.STATUS eq 0}">
+								<a href="javascript:;" onclick="startMat(${match.ID})">开始比赛</a>
+							</c:when>
+						</c:choose>
+		            	
+		            	<a href="javascript:;" onclick="cancleMat(${match.ID},${match.STATUS})" class="js_collect2">取消比赛</a>
 		            	<a href="#none">编辑对阵图</a>
 		            </td>
 				</tr>

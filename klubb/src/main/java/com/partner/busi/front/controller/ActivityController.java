@@ -1,6 +1,7 @@
 package com.partner.busi.front.controller;
 
 import java.util.Date;
+import java.util.List;
 
 import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
@@ -58,8 +59,8 @@ public class ActivityController extends Controller {
 	@Before(ActivityValidator.class)
 	public void addAct(){
 		boolean rsFlag = false;
-//		String rsMsg = "发布失败，请稍后再试";
-		String rsMsg = "Det gick inte att publicera. Vänligen försök senare.";
+//		String rsMsg = "参加活动失败";
+		String rsMsg = "Det gick inte att anmäla dig till aktiviteten.";
 		
 		ActUser actUser = getModel(ActUser.class);
 		//判断是否为登录状态
@@ -68,11 +69,19 @@ public class ActivityController extends Controller {
 			User user = FrontSessionUtil.getSession(getRequest());
 			actUser.set("USER_ID", user.getID());
 		}
-		actUser.set("CREATE_TIME", new Date());
-		rsFlag = actUser.save();
-		if(rsFlag){
-//			rsMsg = "参加成功！";
-			rsMsg = "Du är anmäld till aktiviteten!";
+		//判断用户是否已经报名参加比赛，表中是否有手机号或者邮箱
+		Integer userId = actUser.getUserId();
+		
+		List<ActUser> userlist = ActUser.dao.findUserList(actUser.getUserId(),actUser.getPhone(),actUser.getEMAIL());
+		if(userlist == null || userlist.size()==0){
+			actUser.set("CREATE_TIME", new Date());
+			rsFlag = actUser.save();
+			if(rsFlag){
+//				rsMsg = "参加成功！";
+				rsMsg = "Du är anmäld till aktiviteten!";
+			}
+		}else{
+			rsMsg = "当前用户已报名";
 		}
 		setAttr("rsFlag", rsFlag);
 		setAttr("rsMsg", rsMsg);

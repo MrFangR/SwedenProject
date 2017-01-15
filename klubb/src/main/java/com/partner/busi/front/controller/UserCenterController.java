@@ -235,8 +235,11 @@ public class UserCenterController extends Controller {
 		String rsMsg = "Det gick inte att inställa aktiviteten. Vänligen försök senare.";
 		
 		int matId = getParaToInt("matId");
+		Match mat = Match.dao.findById(matId);
 		Integer userId = FrontSessionUtil.getSession(getRequest()).getID();
-		//String userId = "1";
+		//判断活动是已经开始
+		
+		
 		rsFlag = MatchUser.dao.deleteByUserIdAndActId(userId,matId);
 		
 		setAttr("rsFlag", rsFlag);

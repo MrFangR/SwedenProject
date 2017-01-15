@@ -93,7 +93,13 @@ function save(){
 		data : $("#evaForm").serialize(),
 		success: function(data){
 			if(data.rsFlag){
-				alert(data.rsMsg);
+				ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+				   {type:2,
+					info:'提示信息',
+					text:'<div style=" font-size:18px; color:#ff0000;">'+data.rsMsg+'</div>',
+					'ok':function(){},
+					tag:'zq-ring'}
+	               );
 				$("#J_ctDtPlText").val("");
 				showEvaluation(1);
 			}else{

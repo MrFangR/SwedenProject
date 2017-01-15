@@ -1,4 +1,5 @@
 $(function(){
+	initUpload();
 	showMatch(1);
 });
 function showMatch(pageNum){
@@ -52,7 +53,7 @@ function update(){
 }
 //显示提示信息
 function showNotice(data){
-	$(".color-3").each(function(){
+	$(".fs-14").each(function(){
 		var tip = eval("data." + this.id);
 		if(tip != null && tip != "" && tip != undefined && tip != "undefined"){
 			$(this).html(tip);
@@ -66,20 +67,73 @@ function showNotice(data){
 function validData(){
 	return true;
 }
+function cancleMat(ID,status){
+	var statusMsg = "";
+	if(status == -1){
+		return;
+	}else if(status == 0){
+		statusMsg = "未开始";
+	}else if(status == 1){
+		statusMsg = "进行中";
+	}else if(status == 2){
+		statusMsg = "已完成";
+	}
+		
+	$(".js_collect2").live("click",function(){
+		ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+					   {type:2,
+						info:'取消比赛确认',
+						text:'<div style=" font-size:18px; color:#ff0000;"> 取消比赛提示</div>您好，您确认要取消比赛吗，目前比赛状态：'+statusMsg,
+						'ok':function(){canMat(ID)},
+						tag:'cw-ring'}
+		               );
+	})
+}
+
 //取消比赛
-function cancleMat(ID){
+function canMat(ID){
 	$.ajax({
 		type : 'get',
 		cache : false,
 		async : true,
 		url : ctx + "/back/match/cancleMatch",
+		dataType : "json",
 		data: {
 			matID : ID
 		},
-		dataType : "html",
 		success : function(data){
-			location.href=ctx + "/back/match";
-			return
+			if(data.rsFlag){
+				location.href=ctx + "/back/match";
+				return
+			}else{
+				alert(data.rsMsg);
+			}
+		},
+		error : function(json){
+			pop.fail("系统异常，请稍后重试");
+			return;
+		}
+	});
+}
+
+//开始比赛
+function startMat(matId){
+	$.ajax({
+		type : 'get',
+		cache : false,
+		async : true,
+		url : ctx + "/back/match/startMatch",
+		data: {
+			matID : matId
+		},
+		dataType : "json",
+		success : function(data){
+			if(data.rsFlag){
+				location.href=ctx + "/back/match";
+				return
+			}else{
+				alert("开始比赛失败！");
+			}
 		},
 		error : function(json){
 			pop.fail("系统异常，请稍后重试");
@@ -89,20 +143,17 @@ function cancleMat(ID){
 }
 
 
-
 //图片相关
 function initUpload(){
 	//图片上传
 	$("#imgForUpload").live("change", function(){
-		alert('sssss');
 		$.ajaxFileUpload({
-		    url : '${ctx}/upload/imgUpload',
+		    url : ctx + '/upload/imgUpload',
 		    secureuri:false,
 		    fileElementId:'imgForUpload',//file标签的id
 		    dataType: 'json',//返回数据的类型
 		    data:{},//一同上传的数据
 		    success: function (data) {
-		    	alert(data);
 		    	var obj = jQuery.parseJSON(data);
 		    	$("#imgPath").val(obj.fileName);
 		    	$("#showImg").attr("src", "${uploadUrl}" + obj.fileName);

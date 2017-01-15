@@ -62,4 +62,13 @@ public class ActUser extends BaseActUser<ActUser> {
 			return true;
 		}
 	}
+
+	public List<ActUser> findUserList(Integer userID, String phone, String email) {
+		String sql = "select * from t_act_user where USER_ID = ? OR phone = ? OR EMAIL = ?";
+		List<Object> paraLst = new  ArrayList<Object>();
+			paraLst.add(userID);
+			paraLst.add(phone);
+			paraLst.add(email);
+		return dao.find(sql,paraLst.toArray());
+	}
 }

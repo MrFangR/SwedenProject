@@ -90,13 +90,13 @@ function joinAct(){
 }
 //显示提示信息
 function showNotice(data){
-	if(data.rsFlag){
+	if(typeof(data.rsMsg)!="undefined"){
 		ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
 				   {type:2,
 					info:'提示信息',
-					text:'<div style=" font-size:18px; color:#ff0000;">Det gick inte att anmäla dig till aktiviteten.</div>',//参加活动失败
+					text:'<div style=" font-size:18px; color:#ff0000;">'+data.rsMsg+'</div>',//参加活动失败
 					'ok':function(){},
-					tag:'zq-ring'}
+					tag:'cw-ring'}
 	               );
 	}else{
 		$(".notice").each(function(){

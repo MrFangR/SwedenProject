@@ -95,10 +95,9 @@ function cancleMat(matId){
 						   {type:2,
 							info:'取消成功',
 							text:'<div style=" font-size:18px; color:#ff0000;">Du har inställt aktiviteten.</div>',//取消活动成功，您好，您已取消参加活动
-							'ok':function(){location.href=ctx + "/userCenter/toActMan";},
-							tag:'cw-ring'}
+							'ok':function(){location.href=ctx + "/userCenter/toMatMan";},
+							tag:'zq-ring'}
 			               );
-				
 			}
 		},
 	});
