@@ -62,7 +62,70 @@ public class MatchDetailController extends Controller {
 		}
 		setAttr("rinkList",rinkingList);
 		setAttr("sortData",sortData);
+
+
+		/*对阵图start*/
+		String sql = "SELECT g.*, IFNULL(mu1.SEQ, 0) AS U1_SEQ, IFNULL(mu2.SEQ, 0) AS U2_SEQ,"
+				+ " IFNULL(u1.`NAME`,'') as U1_NAME, IFNULL(u2.`NAME`,'') as U2_NAME"
+				+ " FROM t_game g"
+				+ " LEFT JOIN t_match_user AS mu1 ON g.USER1 = mu1.USER_ID and g.MATCH_ID=mu1.MATCH_ID"
+				+ " LEFT JOIN t_match_user AS mu2 ON g.USER2 = mu2.USER_ID and g.MATCH_ID=mu2.MATCH_ID"
+				+ " LEFT JOIN t_user AS u1 ON g.USER1 = u1.ID"
+				+ " LEFT JOIN t_user AS u2 ON g.USER2 = u2.ID"
+				+ " INNER JOIN t_match AS m ON m.ID = g.MATCH_ID"
+				+ " WHERE g.MATCH_ID = ? and %s"
+				+ " ORDER BY g.SHOW_INDEX";
+		final String WIN_CON = "(m.TYPE in (1, 3) or (m.TYPE in (2, 4) and L_NEXT_ID != ''))";
+		final String LOSE_CON = "(m.TYPE in (2, 4) and L_NEXT_ID = '')";
+
+		List<Game> wList = Game.dao.find(String.format(sql, WIN_CON), matchId);
+		List<Game> lList = Game.dao.find(String.format(sql, LOSE_CON), matchId);
+
+		List<String> winTitleList = new ArrayList<String>();
+		List<String> loseTitleList = new ArrayList<String>();
+
+		List<List<Game>> winList = generateList(wList, winTitleList, true);
+		List<List<Game>> loseList = generateList(lList, loseTitleList, false);
+
+		setAttr("winList", winList);
+		setAttr("winTitleList", winTitleList);
+		setAttr("loseList", loseList);
+		setAttr("loseTitleList", loseTitleList);
+		/*对阵图end*/
+
 		render("matchDeatil.jsp");
+	}
+
+	private List<List<Game>> generateList(List<Game> list, List<String> titleList, boolean isWin){
+		List<List<Game>> retList = new ArrayList<List<Game>>();
+
+		List<Integer> roundList = new ArrayList<Integer>();
+		for(Game game : list){
+			if(!roundList.contains(game.getRoundNum())){
+				roundList.add(game.getRoundNum());
+				retList.add(new ArrayList<Game>());
+			}
+		}
+		if(isWin){
+			for(int i = 0; i < roundList.size(); i++){
+				if(i == roundList.size() - 1){
+					titleList.add("决赛");
+				}else if(i == roundList.size() - 2){
+					titleList.add("半决赛");
+				}else{
+					titleList.add("第" + roundList.get(i) + "轮");
+				}
+			}
+		}else{
+			for(int i = 0; i < roundList.size(); i++){
+				titleList.add("败者组回合" + roundList.get(i));
+			}
+		}
+
+		for(Game game : list){
+			retList.get(game.getRoundNum() - 1).add(game);
+		}
+		return retList;
 	}
 	
 	public void getUserLst(){
