@@ -39,7 +39,7 @@ public class MatchDetailController extends Controller {
 			params.put("matchId", matchId);
 			params.put("userId", loginUser.getID());
 			List<MatchUser> currUser = MatchUser.dao.findUserByMatchId(params);
-			if(userLst == null || userLst.size()==0){//未报名
+			if(currUser == null || currUser.size()==0){//未报名
 				//获取比赛最大参赛人数
 				//获取目前报名的最大seq
 				int seq = MatchUser.dao.countMatchPersion(Integer.parseInt(matchId));
