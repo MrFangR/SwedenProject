@@ -5,9 +5,6 @@
 <script>
 		var ctx = "${ctx}";
 </script>
-<link rel="stylesheet" type="text/css" href="${ctx}/back-ui/pub-ui/css/skin1/navtab.css" />
-<script type="text/javascript" src="${ctx}/back-ui/pub-ui/js/lib/jquery-1.7.2.min.js"></script>
-<script type="text/javascript" src="${ctx}/back-ui/pub-ui/js/plugin/navtab.js"></script>
 <%
 	/* 比赛列表查询结果 */
 %>
@@ -75,7 +72,8 @@ $(".b-radio").click(function(){
 	$(this).addClass("bon-radio");
 	$(this).siblings("input").attr("checked", "checked");
 });
-function editMatch(matchId){
-	$("#navtab").UED_navtab.open('1-9', '编辑赛事', '${ctx}/back/match/edit?matchId=4');
+function editMatch(matchId) {
+    parent.editMatch(matchId);
 }
+
 </script>

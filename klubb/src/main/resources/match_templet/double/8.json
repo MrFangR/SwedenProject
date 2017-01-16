@@ -83,6 +83,13 @@
             "loseNextId": "13_1",
             "roundNum": 3,
             "showIndex": 11
+        },
+        {
+            "seq": 13,
+            "winNextId": "",
+            "loseNextId": "",
+            "roundNum": 4,
+            "showIndex": 13
         }
     ]
 }

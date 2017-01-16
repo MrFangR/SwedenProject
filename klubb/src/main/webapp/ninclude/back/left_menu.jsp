@@ -66,4 +66,11 @@ $(function(){
     	$("#left-control").jScrollPane();
     }, 100);
 });
+
+function editMatch(matchId) {
+    var tabid="1-9";
+    var txt = "编辑赛事";
+    var url = "${ctx}/back/match/edit?matchId=4"
+    $("#navtab").UED_navtab.open(tabid, txt, url);
+}
 </script>
