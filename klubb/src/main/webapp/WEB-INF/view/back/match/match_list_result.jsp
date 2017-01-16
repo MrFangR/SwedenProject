@@ -1,6 +1,13 @@
 <%@ page pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<c:set var="ctx" value="${CONTEXT_PATH}"/>
+<script>
+		var ctx = "${ctx}";
+</script>
+<link rel="stylesheet" type="text/css" href="${ctx}/back-ui/pub-ui/css/skin1/navtab.css" />
+<script type="text/javascript" src="${ctx}/back-ui/pub-ui/js/lib/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="${ctx}/back-ui/pub-ui/js/plugin/navtab.js"></script>
 <%
 	/* 比赛列表查询结果 */
 %>
@@ -49,7 +56,7 @@
 						</c:choose>
 		            	
 		            	<a href="javascript:;" onclick="cancleMat(${match.ID},${match.STATUS})" class="js_collect2">取消比赛</a>
-		            	<a href="#none">编辑对阵图</a>
+		            	<a href="javascript:;" onclick="editMatch(${match.ID})">编辑赛事</a>
 		            </td>
 				</tr>
 			</c:forEach>
@@ -60,10 +67,15 @@
 <div class="tc">
 	<%@include file="/ninclude/back/page.jsp"%>
 </div>
+
+
 <script type="text/javascript">
 $(".b-radio").click(function(){
 	$(this).closest("tbody").find(".b-radio").removeClass("bon-radio");
 	$(this).addClass("bon-radio");
 	$(this).siblings("input").attr("checked", "checked");
 });
+function editMatch(matchId){
+	$("#navtab").UED_navtab.open('1-9', '编辑赛事', '${ctx}/back/match/edit?matchId=4');
+}
 </script>

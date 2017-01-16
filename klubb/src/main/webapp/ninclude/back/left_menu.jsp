@@ -29,15 +29,19 @@
 			<a tabid="1-7" url="${ctx}/back/happytimes">
 				<b class="b-t6"></b><span>Happytimes管理</span>
 			</a>
+			<!-- 
 			<a tabid="1-8" url="${ctx}/back/match/edit?matchId=4">
 				<b class="b-t6"></b><span>对阵图tmp</span>
 			</a>
-			<a tabid="1-9" url="${ctx}/back/match">
+			 -->
+			<a tabid="1-8" url="${ctx}/back/match">
 				<b class="b-t6"></b><span>比赛管理</span>
 			</a>
+			<!-- 
 			<a tabid="1-10" url="${ctx}/back/match/editUser">
 				<b class="b-t6"></b><span>编辑参赛人员</span>
 			</a>
+			 -->
 		</li>
 	</ul>
 	
