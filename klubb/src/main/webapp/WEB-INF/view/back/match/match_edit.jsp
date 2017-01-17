@@ -44,6 +44,8 @@
                <div class="clear"></div>
             </div>
             <!--比赛标题  e-->
+            <!--比赛内容框  s-->
+            <div class="clearfix">
             <c:forEach items="${winList}" var="gList" varStatus="status">
             	<c:if test="${status.index == 0}">
             		<!--可拖动部分  s-->
@@ -104,6 +106,8 @@
             </c:forEach>
             </div>
             </div>
+            <!--比赛内容框 e-->
+            </div>
 
 			<div class="clearfix mgt-40">
             <!--比赛标题  s-->
@@ -114,6 +118,8 @@
                <div class="clear"></div>
             </div>
             <!--比赛标题  e-->
+            <!--比赛内容框  s-->
+            <div class="clearfix">
             <c:forEach items="${loseList}" var="gList" varStatus="status">
        			<!--可拖动部分  s-->
                 <div class="nodrop" style="margin-top: ${lBoxMgt[status.index]}px;">
@@ -173,6 +179,8 @@
             	</c:forEach>
             	</div>
             </c:forEach>
+                <!--比赛内容框 e-->
+            </div>
             </div>
             </div>
 
