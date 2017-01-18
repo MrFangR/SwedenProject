@@ -57,7 +57,7 @@ nav ul li.line{
 .menu-body{position:relative;}
 .login{ position:absolute; top:0px; right:30px;color:#eb003b;}
 .login a{color:#eb003b;}
-.header-con span{color:#eb003b;  margin-top:42px; position:absolute; left:1100px; z-index:8}
+.header-con span{color:#eb003b;  margin-top:42px; position:absolute; left:1100px; z-index:8; width:160px}
 .header-con span a{color:#eb003b;}
 .gonggao{background:#282828; height:65px; width:100%; line-height:65px}
 .ggfont{ margin-left: auto;
@@ -1377,7 +1377,7 @@ nav ul li.line{
 .matchbtn{ 
  	position:absolute; 
 	top:0px; 
-	right:-70px; 
+	right:-50px; 
 	z-index:9; 
 	width:76px; 
 	height:76px; 
@@ -1390,7 +1390,7 @@ nav ul li.line{
     -moz-border-radius:5px;}
 .matchbtn i.mtch_edit{ width:24px; height:24px; display:inline-block; position:absolute; top:24px; left:10px;
 background:url(../images/icon-3.png) 6px -25px no-repeat; cursor:pointer;}
-.matchbtn i.mtch_see{ width:24px; height:24px; display:inline-block; position:absolute; top:24px; left:40px;
+.matchbtn i.mtch_see{ width:24px; height:24px; display:inline-block; position:absolute; top:24px; left:30px;
 background:url(../images/icon-wx13.png) 0px -50px no-repeat; cursor:pointer;}
 .dialogtitle{ height:40px; line-height:40px; border-bottom:1px solid #666;}
 .dialogtitle ul li{ float:left;height:40px; line-height:40px; font-size:16px; padding:auto 20px;margin:auto 20px; cursor:pointer}
@@ -1514,24 +1514,7 @@ background:url(../images/icon-wx13.png) 0px -50px no-repeat; cursor:pointer;}
     box-shadow:none;
 }
 .dialog-tipInfo{ font-size:16px;color:#3c3c3c; padding-left:30px;line-height:40px;padding-left: 80px !important;}
-.matchbtn{ 
- 	position:absolute; 
-	top:0px; 
-	right:-50px; 
-	z-index:9; 
-	width:76px; 
-	height:76px; 
-	background:#333;
-	ilter:alpha(opacity=80); /*IE滤镜，透明度50%*/
-	-moz-opacity:0.8; /*Firefox私有，透明度50%*/
-	opacity:0.8;/*其他，透明度50%*/
-	 border-radius:5px;
-	-webkit-border-radius:5px;
-    -moz-border-radius:5px;}
-.matchbtn i.mtch_edit{ width:24px; height:24px; display:inline-block; position:absolute; top:24px; left:10px;
-background:url(../images/icon-3.png) 6px -25px no-repeat; cursor:pointer;}
-.matchbtn i.mtch_see{ width:24px; height:24px; display:inline-block; position:absolute; top:24px; left:40px;
-background:url(../images/icon-wx13.png) 0px -50px no-repeat; cursor:pointer;}
+
 .dialogtitle{ height:40px; line-height:40px; border-bottom:1px solid #666;}
 .dialogtitle ul li{ float:left;height:40px; line-height:40px; font-size:16px; padding:auto 20px;margin:auto 20px; cursor:pointer}
 .dialogtitle ul li.cur{ border-bottom:2px solid #e4007f; color:#e4007f}
