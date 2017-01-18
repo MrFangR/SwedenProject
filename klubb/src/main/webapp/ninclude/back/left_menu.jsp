@@ -67,15 +67,11 @@ $(function(){
     }, 100);
 });
 
-function editMatch(matchId) {
-    var tabid="1-9";
-    var txt = "编辑赛事";
+function editMatch(matchId,matchName) {
+    var tabid="2-"+matchId;
+    var txt = matchName;
     var url = "${ctx}/back/match/edit?matchId="+matchId;
     $("#navtab").UED_navtab.open(tabid, txt, url);
 }
 
-function hideLeftMenu(){
-	$("#left-control").append("style","display:none");
-	$("#right-control").addClass("right-control-on");
-}
 </script>

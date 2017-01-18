@@ -53,7 +53,7 @@
 						</c:choose>
 		            	
 		            	<a href="javascript:;" onclick="cancleMat(${match.ID},${match.STATUS})" class="js_collect2">取消比赛</a>
-		            	<a href="javascript:;" onclick="editMatch(${match.ID})">编辑赛事</a>
+		            	<a href="javascript:;" onclick="editMatch(${match.ID},'${match.NAME}')">编辑赛事</a>
 		            </td>
 				</tr>
 			</c:forEach>
@@ -72,8 +72,8 @@ $(".b-radio").click(function(){
 	$(this).addClass("bon-radio");
 	$(this).siblings("input").attr("checked", "checked");
 });
-function editMatch(matchId) {
-    parent.editMatch(matchId);
+function editMatch(matchId,matchName) {
+    parent.editMatch(matchId,matchName);
 }
 
 </script>

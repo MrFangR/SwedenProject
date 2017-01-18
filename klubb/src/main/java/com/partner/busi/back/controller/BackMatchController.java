@@ -76,10 +76,21 @@ public class BackMatchController extends Controller {
 		List<MatchUser> noMatchUser = MatchUser.dao.findMatchUserListNoSeq(String.valueOf(matchId));
 		setAttr("noMatchUser", noMatchUser);
 		//获取全部报名人员
-		List<MatchUser> allMatchUser = MatchUser.dao.findMatchUserListByMatchId(String.valueOf(matchId));
-		setAttr("allMatchUser",allMatchUser);
+		/*List<MatchUser> allMatchUser = MatchUser.dao.findMatchUserListByMatchId(String.valueOf(matchId));
+		setAttr("allMatchUser",allMatchUser);*/
 		
 		render("match_edit.jsp");
+	}
+	
+	//获取参赛人员列表
+	public void tab3list(){
+		Integer matchId = getParaToInt("matchId");
+		int pageNum = getParaToInt("pageNum");
+		int pageSize = Constants.PAGESIZE;
+		
+		Page<MatchUser> allMatchUser = MatchUser.dao.findMatchUserListByMatchId(pageNum, pageSize,String.valueOf(matchId));
+		setAttr("paginate",allMatchUser);
+		render("match_edit_tab3.jsp");
 	}
 	
 	/**

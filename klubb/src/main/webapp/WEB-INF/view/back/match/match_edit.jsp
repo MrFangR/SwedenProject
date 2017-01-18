@@ -204,64 +204,8 @@
             <!--第二tab  e-->
             <!-- 第三个tab s -->
            	<div class="box-n">
-	            <div>
-	            	<table width="100%" cellspacing="0" cellpadding="0" border="0" class="ued-table mgt-20">
-	            		<colgroup>
-	            			<col width="5%" />
-							<col width="10%" />
-							<col width="5%" />
-							<col width="15%" />
-							<col width="15%" />
-							<col width="10%" />
-							<col width="10%" />
-							<col width="30%" />
-	            		</colgroup>
-	            		<tbody>
-	            			<tr class="ued-tr-even">
-								<th>排序</th>
-								<th>姓名</th>
-								<th>性别</th>
-								<th>邮箱</th>
-								<th>手机号</th>
-								<th>起始分</th>
-								<th>报名时间</th>
-							</tr>
-							<c:if test="${empty allMatchUser}">
-								<tr><td colspan="7">抱歉，未查询到符合条件的记录</td></tr>
-							</c:if>
-							<c:if test="${not empty allMatchUser}">
-								<c:forEach items="${allMatchUser}" var="user">
-									<tr class="ued-tr-odd">
-										<td class="pdl-10">${user.SEQ }</td>
-										<td>${user.NAME }</td>
-										<td>
-											<c:choose>
-												<c:when test="${user.GENDER eq 0}">
-													女
-												</c:when>
-												<c:when test="${user.GENDER eq 1}">
-													男
-												</c:when>
-											</c:choose>
-										</td>
-										<td>${user.EMAIL }</td>
-										<td>${user.PHONE }</td>
-										<td>
-											<c:choose>
-												<c:when test="${empty user.startScore}">
-													<font class="color-4">未设置</font>
-												</c:when>
-												<c:otherwise>
-													${user.startScore }
-												</c:otherwise>
-											</c:choose>
-										</td>
-										<td>${user.createTime }</td>
-									</tr>
-								</c:forEach>
-							</c:if>
-	            		</tbody>
-	            	</table>
+           		<input id="pageNumIn" name="pageNum" type="hidden" value="1"/>
+	            <div id="tab3List">
 	            </div>
            	</div>
             <!-- 第三个tab e -->
@@ -406,12 +350,9 @@
  <script type="text/javascript">
 
 $(function() {
-	//隐藏左侧菜单
-	//parent.hideLeftMenu();
+	showTab3List(1);
 	var tabFlag = '${tabFlag}';
 	 if(tabFlag=='editUser'){
-		 /* $("li.liQuery").addClass("on1").siblings().removeClass("on1");
-		 $("#matchUserLst").show().siblings(".box-n").hide(); */
 		 $("li.liQuery").trigger("click");
 	 }
 	//tab切换
@@ -781,6 +722,34 @@ $(function() {
 		
 		function chgType(type){
 			$('#editType').val(type);
+		}
+		
+		function showTab3List(pageNum){
+			$('#pageNumIn').val(pageNum);
+			$.ajax({
+				type : 'get',
+				cache : false,
+				async : true,
+				url : "${ctx}/back/match/edit/tab3list",
+				data : {
+					pageNum : $('#pageNumIn').val(),
+					matchId: $("#matchId").val()
+				},
+				dataType : "html",
+				success : function(data){
+					$('#tab3List').html(data);
+					return;
+				},
+				error : function(json){
+					pop.fail("系统异常，请稍后重试");
+					return;
+				}
+			});
+		}
+		
+		//翻页
+		function qry4Page(pageNum){
+			showTab3List(pageNum);
 		}
 		
 	</script>  
