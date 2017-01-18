@@ -38,8 +38,8 @@ public class BackEditMatchUserController extends Controller {
 		if(StringUtils.isBlank(matchId)){
 			matchId = "2";
 		}
-		Page<MatchUser> matchUser = MatchUser.dao.findMatchUserListBySeq(currPageNum, currPageSize, matchId);
-		setAttr("matchUser",matchUser);
+		//Page<MatchUser> matchUser = MatchUser.dao.findMatchUserListBySeq(currPageNum, currPageSize, matchId);
+		//setAttr("matchUser",matchUser);
 		List<MatchUser> noMatchUser = MatchUser.dao.findMatchUserListNoSeq(matchId);
 		setAttr("noMatchUser", noMatchUser);
 		//获取全部报名人员

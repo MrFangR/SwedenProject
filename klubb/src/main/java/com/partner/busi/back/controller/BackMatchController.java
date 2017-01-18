@@ -71,17 +71,7 @@ public class BackMatchController extends Controller {
 		if(StringUtils.isNotBlank(tabFlag)){
 			setAttr("tabFlag",tabFlag);
 		}
-		String pageNum = getPara("pageNum");
-		int currPageNum=1;
-		int currPageSize=Constants.PAGESIZE;
-		if(StringUtils.isNotBlank(pageNum)){
-			currPageNum = Integer.parseInt(pageNum);
-		}
-		String pageSize = getPara("pageSize");
-		if(StringUtils.isNotBlank(pageSize)){
-			currPageSize = Integer.parseInt(pageSize);
-		}
-		Page<MatchUser> matchUser = MatchUser.dao.findMatchUserListBySeq(currPageNum, currPageSize, String.valueOf(matchId));
+		List<MatchUser> matchUser = MatchUser.dao.findMatchUserListBySeq(String.valueOf(matchId));
 		setAttr("matchUser",matchUser);
 		List<MatchUser> noMatchUser = MatchUser.dao.findMatchUserListNoSeq(String.valueOf(matchId));
 		setAttr("noMatchUser", noMatchUser);

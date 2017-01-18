@@ -10,6 +10,7 @@
 	<div class="ued-location mgb-20">我的位置：比赛管理</div>
 	
 	<div class="ued-tab js_tab">
+		<input type="hidden" id="matchId" value="${match.ID }">
         <!--tab  s-->
         <div class="ued-tab-tit clearfix js_tab_tit">
             <ul class="ued-tab-1 fl clearfix">
@@ -188,7 +189,7 @@
             <!--第二tab  s-->
             <div class="box-n" style="width:100%" id="matchUserLst">
                     <div id='single1' class='container'>
-						<c:forEach var="user" items="${matchUser.list }">
+						<c:forEach var="user" items="${matchUser}">
 							<c:if test="${not empty user.startScore}">
 								<div>${user.NAME } <p class="input">初始分：<span>${user.startScore }</span></p><i class="mtch_del" dataValue="${user.ID }"></i><i class="mtch_edit" dataValue="${user.ID }" startScore="${user.startScore }"></i></div>
 							</c:if>
@@ -415,7 +416,7 @@ $(function() {
 	 if(tabFlag=='editUser'){
 		 /* $("li.liQuery").addClass("on1").siblings().removeClass("on1");
 		 $("#matchUserLst").show().siblings(".box-n").hide(); */
-		 $("li.liQuery a").trigger("click");
+		 $("li.liQuery").trigger("click");
 	 }
 	//tab切换
 	$(".dialogtitle ul li").live(
@@ -439,6 +440,7 @@ $(function() {
 	$(".container i.mtch_del").click(function() {
 		var userId = $(this).attr("dataValue");
 		  var obj = $(this);
+		  var matchId=$("#matchId").val();
 		  $.ajax({
 			  type:"post",
 			  url:ctx + "/back/match/edit/delUser",
@@ -450,7 +452,7 @@ $(function() {
 			  success:function(json){
 				  if(json.retCode == 0 ){
 					  obj.parent().remove();
-					  location.href=ctx + "/back/match/edit?flag=editUser";
+					  location.href=ctx + "/back/match/edit?matchId="+matchId+"&flag=editUser";
 				  }else{
 					  ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
 					   {type:2,
@@ -583,13 +585,14 @@ $(function() {
     		success:function(json){
     			if(json.retCode == 0 ){
     				$("#btn-dialog").trigger("dialog-close");
+    				var matchId=$("#matchId").val();
     				ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
  	 					   {type:2,
  	 						info:'比赛管理',
  	 						text:'<div style=" font-size:18px; color:#ff0000;"> '+json.retMsg+' </div>',
  	 						'ok':function(){
  	 							$("#btn-dialog").trigger("dialog-close");
- 	 							location.href=ctx + "/back/match/edit?flag=editUser";
+ 	 							location.href=ctx + "/back/match/edit?matchId="+matchId+"&flag=editUser";
  	 						},
  	 						tag:'zq-ring'}
  	 		               );
@@ -627,13 +630,14 @@ $(function() {
     		success:function(json){
     			if(json.retCode == 0 ){
     			$("#btn-fen").trigger("dialog-close");
+    			var matchId=$("#matchId").val();
     				ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
  	 					   {type:2,
  	 						info:'修改起始分',
  	 						text:'<div style=" font-size:18px; color:#ff0000;"> '+json.retMsg+' </div>',
  	 						'ok':function(){
  	 							$("#btn-dialog").trigger("dialog-close");
- 	 							location.href=ctx + "/back/match/edit?flag=editUser";
+ 	 							location.href=ctx + "/back/match/edit?matchId="+matchId+"&flag=editUser";
  	 						},
  	 						tag:'zq-ring'}
  	 		               );
