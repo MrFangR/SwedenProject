@@ -20,7 +20,7 @@
 		<!-- left menu -->
 		<%@include file="/ninclude/back/left_menu.jsp"%>
 	    <!-- main  s -->
-	    <div class="right-control navtab-content">
+	    <div class="right-control navtab-content" id="right-control">
 	        <div class="mask"></div>
 	    	<iframe width="100%" height="auto" src="${ctx}/back/main/index" frameborder="0" tabid="201" style="display: inline;"></iframe>
 	    </div>

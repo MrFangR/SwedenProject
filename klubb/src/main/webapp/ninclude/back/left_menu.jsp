@@ -70,7 +70,12 @@ $(function(){
 function editMatch(matchId) {
     var tabid="1-9";
     var txt = "编辑赛事";
-    var url = "${ctx}/back/match/edit?matchId=4"
+    var url = "${ctx}/back/match/edit?matchId="+matchId;
     $("#navtab").UED_navtab.open(tabid, txt, url);
+}
+
+function hideLeftMenu(){
+	$("#left-control").append("style","display:none");
+	$("#right-control").addClass("right-control-on");
 }
 </script>
