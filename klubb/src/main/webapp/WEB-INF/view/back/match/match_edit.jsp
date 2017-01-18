@@ -18,11 +18,11 @@
                 <li class="liQuery"><a class="ued-see" href="javascript:void(0)">编辑参与者</a></li>
                 <li class="liLook"><a class="ued-see" href="javascript:void(0)">查看参与者</a></li>
             </ul>
-    
+
         </div>
         <!--tab  e-->
         <!--tabcon  s-->
-        <div class="ued-tab-con mgt-20">	
+        <div class="ued-tab-con mgt-20">
                <!--第一tab  一列是320px 目前展示5列宽为1600px  如果对阵图列数超过3需要代码判断列数给 box-n div 输入宽度 s-->
             <c:set var="boxMgt" value="${fn:split('0,80,220,490,1050', ',') }" />
             <c:set var="tempMgt" value="${fn:split('60,200,480,1050', ',') }" />
@@ -80,17 +80,17 @@
                             <h3>${game.SEQ }</h3>
 	                    <div class="group" id="${game.ID }_1" <c:if test="${status.index == 0 and match.STATUS == 0 }"> ondrop="drop(event,this)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event, this)"</c:if>><i><c:if test="${game.u1_SEQ != 0}">${game.u1_SEQ}</c:if></i><span id="${game.USER1 }">${game.u1_NAME }</span><input name="" type="text" value="${game.SCORE1 }"></div>
 	                    <div class="group" id="${game.ID }_2" <c:if test="${status.index == 0 and match.STATUS == 0 }"> ondrop="drop(event,this)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event, this)"</c:if>><i><c:if test="${game.u2_SEQ != 0}">${game.u2_SEQ}</c:if></i><span id="${game.USER2 }">${game.u2_NAME }</span><input name="" type="text" value="${game.SCORE2 }"></div>
-	                    </div>  
+	                    </div>
             		</c:if>
                     <c:if test="${gStatus.index mod 2 == 1}">
                     <div wId="${game.winnerId }" tNum="${game.tableNum }" sTime="${game.startTime }" gType="${game.TYPE }" gSeq="${game.SEQ }" gId="${game.ID}" wSeq="${game.WNextId}" lSeq="${game.LNextId}" class="template js_template" style="margin-top: ${tempMgt[status.index]}px;">
                         <h3>${game.SEQ }</h3>
                         <div class="group" id="${game.ID }_1" <c:if test="${status.index == 0 and match.STATUS == 0 }"> ondrop="drop(event,this)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event, this)"</c:if>><i><c:if test="${game.u1_SEQ != 0}">${game.u1_SEQ}</c:if></i><span id="${game.USER1 }">${game.u1_NAME }</span><input name="" type="text" value="${game.SCORE1 }"></div>
                         <div class="group" id="${game.ID }_2" <c:if test="${status.index == 0 and match.STATUS == 0 }"> ondrop="drop(event,this)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event, this)"</c:if>><i><c:if test="${game.u2_SEQ != 0}">${game.u2_SEQ}</c:if></i><span id="${game.USER2 }">${game.u2_NAME }</span><input name="" type="text" value="${game.SCORE2 }"></div>
-                    </div>  
+                    </div>
                     <c:if test="${not status.last }">
                     <div class="matchline">
-                       
+
                        <svg  x="0" y="0" width="290px" height="${svgHeight[status.index] }px">
                           <path d="M 228 1 L 236 1 L 236 ${svgHeight[status.index] } " class="bracket-line"/>
                         </svg>
@@ -101,7 +101,7 @@
                     </c:if>
                   </div>
                   </c:if>
-                  <!--完整模板  e--> 
+                  <!--完整模板  e-->
             	</c:forEach>
             	</div>
             </c:forEach>
@@ -300,7 +300,7 @@
 	        </div>
 	    </div>
 	</div>
-	
+
 	<!--弹框初始化分数  s-->
 	 <div data-role="ued-dialog" class="ued-dialog" id="btn-fen">
 	    <div class="dialog-header">
@@ -338,22 +338,18 @@
                 	<tr>
                         <th>球桌编号：</th>
                         <td>
-                            <input id="editTableNum" value="" class="ued-text-2" maxlength="30" type="text">     
+                            <input id="editTableNum" value="" class="ued-text-2" maxlength="30" type="text">
                         </td>
                     </tr>
                     <tr>
                         <th>比赛类型：</th>
                         <td>
-                            <div style="width:180px;" class="ued-select-2 js_select">
-                                <span class="ued-sel-txt" id="typeTxt">未指定</span>
-                                <a class="ued-sel-open"></a>
-                                <div class="ued-option" style="display: none;z-index: 100002;" id="typeSelect">
-                                	<a href="javascript:void(0);" tn="" onclick="chgType('')">未指定</a>
-                                	<a href="javascript:void(0);" tn="8" onclick="chgType(8)">8球</a>
-                                	<a href="javascript:void(0);" tn="9" onclick="chgType(9)">9球</a>
-                                </div>
-                            </div>
-                            <input type="hidden" id="editType" value="">
+                            <select size="1" style="width:180px;" id="editType">
+                                <option value="">未指定</option>
+                                <option value="8">8球</option>
+                                <option value="9">9球</option>
+                            </select>
+
                         </td>
                     </tr>
                    <tr>
@@ -361,9 +357,9 @@
                         <td>
                              	<input id="editStartTime" value="" class="Wdate ued-text-2" maxlength="30" type="text" onClick="WdatePicker({ dateFmt: 'yyyy-MM-dd HH:mm:ss' })" style="border: 1px solid #e5e5e5;height: 28px;padding-left: 10px;">
                         </td>
-                    
+
                     </tr>
-                  
+
                 </tbody>
             </table>
           </li>
@@ -377,29 +373,29 @@
                 	<tr>
                         <th><span class="editUser1" uid=""></span>：</th>
                         <td>
-                            <input id="editScore1" value="" class="ued-text-2" maxlength="30" type="text">     
+                            <input id="editScore1" value="" class="ued-text-2" maxlength="30" type="text">
                         </td>
                     </tr>
                    <tr>
                         <th><span class="editUser2" uid=""></span>：</th>
                         <td>
-                             <input id="editScore2"  value="" class="ued-text-2" maxlength="30" type="text"> 
+                             <input id="editScore2"  value="" class="ued-text-2" maxlength="30" type="text">
                         </td>
-                    
+
                     </tr>
-                  
+
                 </tbody>
             </table>
           </li>
         </ul>
-     
+
      </div>
-      
+
         <div class="pd-10 tc">
             <button type="button" class="ued-button-2 mgr-25" id="editBtn">保存修改</button>
             <button type="button" class="ued-button-3 dialog-close">取消</button>
         </div>
-   
+
 </div>
   <!--弹框编辑比分  e-->
 <script type="text/javascript" src="${ctx}/back-ui/pub-ui/js/lib/jquery-1.7.2.min.js"></script>
@@ -407,8 +403,8 @@
 <script type="text/javascript" src="${ctx}/back-ui/pub-ui/js/plugin/jquery.ztree.all-3.5.js"></script>
 <script type="text/javascript" src="${ctx}/back-ui/pub-ui/js/plugin/dialog.js"></script>
 <script type="text/javascript" src='${ctx}/back-ui/pub-ui/js/plugin/dragula.js'></script>
- <script type="text/javascript"> 
- 
+ <script type="text/javascript">
+
 $(function() {
 	//隐藏左侧菜单
 	//parent.hideLeftMenu();
@@ -505,7 +501,7 @@ $(function() {
 	$("#btn-matchbtn span.btn:not('.active')").live("click", function() {
 		$(this).addClass("active").siblings("span.btn").removeClass("active");
 	});
-	
+
 	$("#editBtn").live("click", function(){
 		var index = $("#btn-matchbtn .dialogcon li.cur").index();
 		if(index == 0){ //比赛详情
@@ -525,6 +521,10 @@ $(function() {
 				},
 				success : function(data) {
 					if (data.rsFlag) {
+                        var $game = $("div.ued-tab-con div[gId='"+gameId+"']");
+                        $game.attr("sTime", startTime);
+                        $game.attr("gType", type);
+                        $game.attr("tNum", tableNum);
 						$(".dialog-close").trigger("click");
 						alert("编辑成功");
 					}else{
@@ -558,7 +558,7 @@ $(function() {
 						$game.attr("wId", winId);
 						$("#" + gameId + "_1").find("input").val(score1);
 						$("#" + gameId + "_2").find("input").val(score2);
-						
+
 						moveUserToGame(gameId, "w"); //移动到胜者组
 						moveUserToGame(gameId, "l"); //移动到败者组
 						$(".dialog-close").trigger("click");
@@ -571,7 +571,7 @@ $(function() {
 		}
 	});
     initBoxWidth();
-    
+
   //增加参赛人同
     $("#submitUser").bind("click",function(){
     	var id = $("#addUser").val();
@@ -617,7 +617,7 @@ $(function() {
     		}
     	});
     });
-  
+
     $("#setStartScore").bind("click",function(){
     	$.ajax({
     		type:"post",
@@ -769,7 +769,6 @@ $(function() {
 			$("#editTableNum").val($(self).attr("tNum"));
 			$("#editStartTime").val($(self).attr("sTime"));
 			$("#editType").val($(self).attr("gType"));
-			$("#typeTxt").html($("#typeSelect a[tn='" + $(self).attr("gType") + "']").html());
 			
 			if($(self).attr("wId") != null && $(self).attr("wId") != ""){
 				if($(self).attr("wId") == $div1.find("span").attr("id")){

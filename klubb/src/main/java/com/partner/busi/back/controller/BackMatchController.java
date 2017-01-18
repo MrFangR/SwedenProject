@@ -182,7 +182,10 @@ public class BackMatchController extends Controller {
 		
 		boolean rsFlag = false;
 		try {
-			Date startTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(startTimeStr);
+			Date startTime = null;
+			if (StringUtils.isNotEmpty(startTimeStr)) {
+				startTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(startTimeStr);
+			}
 			Game game = Game.dao.findById(gameId);
 			game.setTableNum(tableNum);
 			game.setTYPE(type);
