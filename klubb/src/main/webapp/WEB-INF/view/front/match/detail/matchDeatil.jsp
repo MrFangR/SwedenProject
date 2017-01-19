@@ -57,7 +57,7 @@
                                         </div>
                                         <input id="pageNumIn" name="pageNum" type="hidden" value="1"/>
                                          <div id="matchUserList"></div>
-                                         <div class="paging clearfix" id="pageDiv"></div>
+                                         <div class="paging clearfix" id="matchPageDiv"></div>
 					</div>
 				<!--cont-con E-->
 			</div>
@@ -490,9 +490,9 @@ function showMatchUserList(pageNum){
 			$('#matchUserList').html(data);
 			//设置分页
 			var pageData = new Object();
-			pageData.totalPage=$("#userTotalPage").val();
-			pageData.pageNumber=$("#userPageNum").val();
-			setPageInfo("pageDiv", pageData, showMatchUserList);
+			pageData.totalPage=parseInt($("#userTotalPage").val());
+			pageData.pageNumber=parseInt($("#userPageNum").val());
+			setPageInfo("matchPageDiv", pageData, showMatchUserList);
 			return false;
 		},
 		error : function(json){
@@ -501,11 +501,11 @@ function showMatchUserList(pageNum){
 		}
 	});
 }
-
-//翻页
-function qry4Page(pageNum){
-	showMatchUserList(pageNum);
-}
+//
+////翻页
+//function qry4Page(pageNum){
+//	showMatchUserList(pageNum);
+//}
 </script>
 </html>
 

@@ -1,4 +1,3 @@
-var _changePage;
 
 /**
  * 设置分页信息
@@ -7,8 +6,9 @@ var _changePage;
  * @param changePage 回调函数，翻页功能实现
  */
 function setPageInfo(eleId, data, changePage){
-	_changePage = changePage;
-	
+    var suffix = new Date().getTime();
+    eval("window._changePage" + suffix + "=changePage");
+
 	/**分页start**/
 	var pageTotal = data.totalPage;
 	var pageIndex = data.pageNumber;
@@ -19,7 +19,7 @@ function setPageInfo(eleId, data, changePage){
 	if(pageIndex <= 1){ //第一页
 		htmlStr += "    <a class='prev-on' href='javascript:;'>上一页</a>";
 	}else{
-		htmlStr += "    <a class='prev' href='javascript:;' onclick='_changePage(" + (pageIndex - 1) + ")'>上一页</a>";
+		htmlStr += "    <a class='prev' href='javascript:;' onclick='_changePage"+suffix+"(" + (pageIndex - 1) + ")'>上一页</a>";
 	}
 	if(pageTotal > 0){ //有页数
 		if(pageTotal == 1){//只有1页
@@ -28,7 +28,7 @@ function setPageInfo(eleId, data, changePage){
 			if(pageIndex <= 1){ //第一页
 				htmlStr += "    <a href='javascript:;' class='on'>1</a>";
 			}else{
-				htmlStr += "    <a href='javascript:;' onclick='_changePage(1)'>1</a>";
+				htmlStr += "    <a href='javascript:;' onclick='_changePage"+suffix+"(1)'>1</a>";
 			}
 			
 			var startIndex = pageIndex - Math.floor(showNum/2);
@@ -51,7 +51,7 @@ function setPageInfo(eleId, data, changePage){
 				if(pageIndex == i){
 					htmlStr += "    <a href='javascript:;' class='on'>" + i + "</a>";
 				}else{
-					htmlStr += "    <a href='javascript:;' onclick='_changePage(" + i + ")'>" + i + "</a>";
+					htmlStr += "    <a href='javascript:;' onclick='_changePage"+suffix+"(" + i + ")'>" + i + "</a>";
 				}
 			}
 			if(endIndex < pageTotal){ //需要显示...
@@ -60,24 +60,24 @@ function setPageInfo(eleId, data, changePage){
 			if(pageIndex >= pageTotal){ //最后一页
 				htmlStr += "    <a href='javascript:;' class='on'>" + pageTotal + "</a>";
 			}else{
-				htmlStr += "    <a href='javascript:;' onclick='_changePage(" + pageTotal + ")'>" + pageTotal + "</a>";
+				htmlStr += "    <a href='javascript:;' onclick='_changePage"+suffix+"(" + pageTotal + ")'>" + pageTotal + "</a>";
 			}
 		}
 	}
 	if(pageIndex >= pageTotal){ //最后一页
 		htmlStr += "    <a class='next-on' href='javascript:;'>下一页</a>";
 	}else{
-		htmlStr += "    <a class='next' href='javascript:;' onclick='_changePage(" + (pageIndex + 1) + ")'>下一页</a>";
+		htmlStr += "    <a class='next' href='javascript:;' onclick='_changePage"+suffix+"(" + (pageIndex + 1) + ")'>下一页</a>";
 	}
 	htmlStr += "    <span>到<input type='text' class='paging-text' style='color: rgb(153, 153, 153); font-weight: normal;'/>页</span>"
-			+ "    <a class='bg-on' href='javascript:;' onclick='goToPage(this)'>确定</a>"
+			+ "    <a class='bg-on' href='javascript:;' onclick='goToPage(this, \"_changePage"+suffix+"\")'>确定</a>"
 			+ "</div>";
 	$("#" + eleId).html(htmlStr);
 }
 
-function goToPage(obj){
+function goToPage(obj, func){
 	var page = $(obj).siblings("span").find(".paging-text").val();
 	if(page != null && page != ""){
-		_changePage(page);
+		eval(func+"(page)")
 	}
 }
