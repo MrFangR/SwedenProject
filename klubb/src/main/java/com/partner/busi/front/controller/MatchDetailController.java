@@ -10,12 +10,14 @@ import java.util.List;
 import java.util.Map;
 
 import com.jfinal.core.Controller;
+import com.jfinal.plugin.activerecord.Page;
 import com.partner.busi.model.Game;
 import com.partner.busi.model.Match;
 import com.partner.busi.model.MatchUser;
 import com.partner.busi.model.User;
 import com.partner.busi.vo.MatchRinkListVo;
 import com.partner.common.base.ResultInfo;
+import com.partner.common.constant.Constants;
 import com.partner.common.util.FrontSessionUtil;
 
 /**
@@ -28,8 +30,8 @@ public class MatchDetailController extends Controller {
 		String matchId = getPara("matchId");
 		Match match = Match.dao.findById(matchId);
 		setAttr("match",match);
-		List<MatchUser> userLst = MatchUser.dao.findMatchUserListByMatchId(matchId);
-		setAttr("userLst",userLst);
+		/*List<MatchUser> userLst = MatchUser.dao.findMatchUserListByMatchId(matchId);
+		setAttr("userLst",userLst);*/
 		//判断当前用户是否已报名
 		User loginUser = FrontSessionUtil.getSession(getRequest());
 		int applyFlag = 0; //报名按钮标志  0 未报名  1 已报名  2 比赛报名人数已满
@@ -94,6 +96,17 @@ public class MatchDetailController extends Controller {
 		/*对阵图end*/
 
 		render("matchDeatil.jsp");
+	}
+	
+	//获取参赛人员列表
+	public void matchUserList(){
+		Integer matchId = getParaToInt("matchId");
+		int pageNum = getParaToInt("pageNum");
+		int pageSize = Constants.PAGESIZE;
+		
+		Page<MatchUser> allMatchUser = MatchUser.dao.findMatchUserListByMatchId(pageNum, pageSize,String.valueOf(matchId));
+		setAttr("page",allMatchUser);
+		render("match_detail_list.jsp");
 	}
 
 	private List<List<Game>> generateList(List<Game> list, List<String> titleList, boolean isWin){

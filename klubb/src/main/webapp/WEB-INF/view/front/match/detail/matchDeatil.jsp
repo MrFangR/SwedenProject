@@ -55,26 +55,14 @@
                                        <div class="cont-text">
                                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${match.DESCRIPTION }
                                         </div>
-                                        
-                                         <table class="table-con">
-                                                  <tr class="table-tr-even">
-                                                    <th>报名顺序</th>
-                                                    <th>参赛人员姓名</th>
-                                                    <th>起始分</th>
-                                                  </tr>
-                                                  <c:forEach var="user" items="${userLst }">
-                                                  	<tr>
-	                                                    <td>${user.SEQ }</td>
-	                                                    <td>${user.NAME }</td>
-	                                                    <td>${user.startScore }</td>
-	                                                  </tr>
-                                                  </c:forEach>
-                                                </table>
+                                        <input id="pageNumIn" name="pageNum" type="hidden" value="1"/>
+                                         <div id="matchUserList"></div>
+                                         <div class="paging clearfix" id="pageDiv"></div>
 					</div>
 				<!--cont-con E-->
 			</div>
 			<!--对阵 S-->	
-            <div class="tabsub"   style="display:none; margin:0px;">
+            <div class="tabsub"  style="display:none; margin:0px;">
 				<!--第一tab  一列是320px 目前展示5列宽为1600px  如果对阵图列数超过3需要代码判断列数给 box-n div 输入宽度 s-->
 				<c:set var="boxMgt" value="${fn:split('0,80,220,490,1050', ',') }" />
 				<c:set var="tempMgt" value="${fn:split('60,200,480,1050', ',') }" />
@@ -360,6 +348,7 @@
 <script	 type="text/javascript" src="${ctx}/front-ui/js/dragula.js"></script>
 <script type="text/javascript">
 $(function(){
+	showMatchUserList(1);
 	$("#addMatch").bind("click",function(){
 		$("#addMatch").unbind("click");
 		$.ajax({
@@ -483,6 +472,39 @@ function initDialog(self) {
     }else{
         $("#btn-matchbtn span.btn").removeClass("active");
 	}
+}
+
+function showMatchUserList(pageNum){
+	$('#pageNumIn').val(pageNum);
+	$.ajax({
+		type : 'get',
+		cache : false,
+		async : false,
+		url : "${ctx}/front/matchdetail/matchUserList",
+		data : {
+			pageNum : $('#pageNumIn').val(),
+			matchId: $("#introMatchId").val()
+		},
+		dataType : "html",
+		success : function(data){
+			$('#matchUserList').html(data);
+			//设置分页
+			var pageData = new Object();
+			pageData.totalPage=$("#userTotalPage").val();
+			pageData.pageNumber=$("#userPageNum").val();
+			setPageInfo("pageDiv", pageData, showMatchUserList);
+			return false;
+		},
+		error : function(json){
+			pop.fail("系统异常，请稍后重试");
+			return;
+		}
+	});
+}
+
+//翻页
+function qry4Page(pageNum){
+	showMatchUserList(pageNum);
 }
 </script>
 </html>

@@ -745,6 +745,8 @@ $(function() {
 					return;
 				}
 			});
+			//设置分页
+			setPageInfo("pageDiv", data.page, showHappyTimes);
 		}
 		
 		//翻页
