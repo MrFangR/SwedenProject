@@ -11,9 +11,9 @@
 <table width="100%" cellspacing="0" cellpadding="0" border="0" class="ued-table mgt-20">
     <tbody>
         <tr class="ued-tr-even">
-            <th>序号<i class="ued-cor-d"></i></th>
-            <th>比赛名称<i class="ued-cor-d"></i></th>
-            <th>比赛制度<i class="ued-cor-up"></i></th>
+            <th>序号</th>
+            <th>比赛名称</th>
+            <th>比赛制度</th>
             <th>参与人数</th>
             <th>比赛时间</th>
             <th>比赛状态</th>

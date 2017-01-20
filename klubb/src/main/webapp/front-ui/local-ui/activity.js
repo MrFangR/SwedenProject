@@ -9,7 +9,7 @@ function searchAct(pageNum){
 		data: {
 			title : $('#title').val(),
 			pageNum : pageNum,
-			pageSize : 3
+			pageSize : 16
 		},
 		dataType : "json",
 		success : function(data){

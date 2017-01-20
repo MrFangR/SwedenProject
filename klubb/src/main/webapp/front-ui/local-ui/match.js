@@ -9,7 +9,7 @@ function searchMat(pageNum){
 		data: {
 			title : $('#title').val(),
 			pageNum : pageNum,
-			pageSize : 3
+			pageSize : 16
 		},
 		dataType : "json",
 		success : function(data){
@@ -25,17 +25,22 @@ function searchMat(pageNum){
 function showResultList(data){
 	var htmlStr = "";
 	$.each(data.list, function(i, mat){
+		var startDate = FormatDate(mat.START_DATE);
 		htmlStr += "<li class='listbox mr20'>";
 		htmlStr += "<div class='listboximg'>";
 		htmlStr += "<a href='"+ctx+"/front/matchdetail?matchId="+mat.ID+"'  target='_blank'><img  src='"+uploadUrl+mat.IMG+"' class='attachment-thumbnail wp-post-image'></a>";
 		htmlStr += "</div>";
 		htmlStr += "<div class='listinfo'>";
 		htmlStr += "<div class='listtitle'><a href='"+ctx+"/front/matchdetail?matchId="+mat.ID+"'  target='_blank'>"+mat.NAME+"</a></div>";
-		htmlStr += "<div class='listdate'>比赛时间："+mat.START_DATE+"</div>";
+		htmlStr += "<div class='listdate'>比赛时间："+startDate+"</div>";
 		htmlStr += "</div>";
 		htmlStr += "</li>";
 	});
 	$("#resultDIV").html(htmlStr);
 	
-	setPageInfo("pageDiv", data, searchAct);
+	setPageInfo("pageDiv", data, searchMat);
+}
+function FormatDate (strTime) {
+    var date = new Date(strTime);
+    return date.getDate()+"/"+(date.getMonth()+1)+"/"+date.getFullYear()+" "+date.getHours()+":"+date.getMinutes()+":"+date.getSeconds();
 }

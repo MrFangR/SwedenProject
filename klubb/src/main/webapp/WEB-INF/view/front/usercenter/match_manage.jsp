@@ -76,7 +76,7 @@ function showUserMat(pageNum){
 			$("#matListDiv").html(htmlStr);
 				
 			//设置分页
-			setPageInfo("pageDiv", data, showUserAct);
+			setPageInfo("pageDiv", data, showUserMat);
 		},
 	});
 
