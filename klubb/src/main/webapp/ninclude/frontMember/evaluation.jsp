@@ -129,7 +129,7 @@ function showEvaluation(pageNum){
 							+ "	<dd class='fr'>"
 							+ "		<div class='row clearfix'>"
 							+ "			<h5 class='nickname fl'><i18n:get key="portal.evaluation.name"></i18n:get>:" + eva.NICKNAME + "</h5>"
-							+ "			<span class='time fl'>" + FormatDate(eva.CREATE_TIME) + "</span>"
+							+ "			<span class='time'>" + FormatDate(eva.CREATE_TIME) + "</span>"
 							+ "		</div>"
 							+ "		<input type='hidden' value='" + eva.ID + "' class='evaId'/>"
 							+ "		<div class='context'>" + eva.CONTENT + "</div>";
@@ -139,7 +139,7 @@ function showEvaluation(pageNum){
 							+"				<li>"
 							+"					<div class='r-row clearfix'>"
 							+"						<h5 class='r-nickname fl'><i18n:get key="portal.evaluation.name"></i18n:get>:" + eva.replyList[i].NICKNAME + "</h5>"
-							+"						<span class='r-time fl'>" + eva.replyList[i].CREATE_TIME + "</span>"
+							+"						<span class='r-time'>" + eva.replyList[i].CREATE_TIME + "</span>"
 							+"					</div>"
 							+"					<div class='r-context'>" + eva.replyList[i].CONTENT + "</div>"
 							+"				</li>"
