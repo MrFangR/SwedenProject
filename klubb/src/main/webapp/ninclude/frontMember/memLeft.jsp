@@ -16,11 +16,7 @@
 
 	</div>
 	<ul class="us-menu mgt-25">
-		<li id="infoMgr"><a href="javascript:myLoadLeft('infoMgr','${ctx }/userCenter');" class="link curr clearfix"> <i
-				class="icon fl diyi"></i>
-				<h5 class="name fl">信息管理</h5>
-		</a></li>
-		<li id="activityMgr"><a href="javascript:myLoadLeft('activityMgr','${ctx}/userCenter/toActMan');" class="link clearfix" url="toActMan"> <i
+		<li id="activityMgr"><a href="javascript:myLoadLeft('activityMgr','${ctx}/userCenter/toActMan');" class="link curr clearfix" url="toActMan"> <i
 				class="icon fl diliu"></i>
 				<h5 class="name fl">活动管理</h5>
 		</a></li>
@@ -31,6 +27,10 @@
 		<li id="matchMgr"><a href="javascript:myLoadLeft('matchMgr','${ctx}/userCenter/toMatMan');" class="link clearfix" url="toMatMan"> <i
 				class="icon fl disan"></i>
 				<h5 class="name fl">参赛管理</h5>
+		</a></li>
+		<li id="infoMgr"><a href="javascript:myLoadLeft('infoMgr','${ctx }/userCenter');" class="link clearfix"> <i
+				class="icon fl diyi"></i>
+				<h5 class="name fl">信息管理</h5>
 		</a></li>
 	</ul>
 </div>

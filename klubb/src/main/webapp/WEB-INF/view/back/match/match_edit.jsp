@@ -191,7 +191,7 @@
                     <div id='single1' class='container'>
 						<c:forEach var="user" items="${matchUser}">
 							<c:if test="${not empty user.startScore}">
-								<div>${user.NAME } <p class="input">初始分：<span>${user.startScore }</span></p><i class="mtch_del" dataValue="${user.ID }"></i><i class="mtch_edit" dataValue="${user.ID }" startScore="${user.startScore }"></i></div>
+								<div>${user.NAME } <p class="input">初始分：<span>${user.startScore }</span></p><i class="mtch_del" dataValue="${user.ID }"></i><i class="mtch_edit" dataValue="${user.ID }" userValue="${user.userId }" startScore="${user.startScore }"></i></div>
 							</c:if>
 							<c:if test="${empty user.startScore}">
 								<div>${user.NAME } <p class="input">初始分：<span>0</span></p><i class="mtch_del" dataValue="${user.ID }"></i><i class="mtch_edit" dataValue="${user.ID }" startScore="${user.startScore }"></i></div>
@@ -257,6 +257,7 @@
 	        <p class="pd-20 dialog-tipInfo clearfix">分数：
 	       		<input name="startScore" id="startScore" type="text">
 	       		<input type="hidden" id="matchUserId">
+	       		<input type="hidden" id="userId">
 	       </p>
 	        <div class="pd-10 tc">
 	            <button type="button" class="ued-button-2 mgr-25" id="setStartScore">保存</button>
@@ -424,10 +425,12 @@ $(function() {
 					});
 	//弹出框比分
 	$(".mtch_edit").bind("click", function() {
-		var userId = $(this).attr("dataValue");
+		var matchId = $(this).attr("dataValue");
+		var userId = $(this).attr("userValue");
 		var startScore = $(this).attr("startScore");
-		$("#matchUserId").val(userId);
+		$("#matchUserId").val(matchId);
 		$("#startScore").val(startScore);
+		$("#userId").val(userId);
 		$("#btn-fen").trigger("dialog-open");
 	});
 	//弹出框
@@ -565,7 +568,8 @@ $(function() {
     		url:ctx+"/back/match/edit/setScore",
     		data:{
     			id:$("#matchUserId").val(),
-    			score:$("#startScore").val()
+    			score:$("#startScore").val(),
+    			uid:$("#userId").val()
     		},
     		dataType:"json",
     		success:function(json){

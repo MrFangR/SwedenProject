@@ -21,6 +21,7 @@ import com.jfinal.plugin.activerecord.Page;
 import com.jfinal.plugin.activerecord.tx.Tx;
 import com.partner.busi.model.Game;
 import com.partner.busi.model.Match;
+import com.partner.busi.model.User;
 import com.partner.busi.model.MatchTemplate.GameTemplate;
 import com.partner.busi.model.MatchUser;
 import com.partner.common.base.ResultInfo;
@@ -331,8 +332,15 @@ public class BackMatchController extends Controller {
 		ResultInfo retInfo = new ResultInfo();
 		int id = getParaToInt("id");
 		String score = getPara("score");
+		int uid = getParaToInt("uid");
 		int result = MatchUser.dao.updateStartScore(id, score);
 		if(result>0){
+			//补充更新t_user 表最近一场起始分
+			User user = User.dao.findById(uid);
+			if(user != null){
+				user.setLastStartScore(score);
+				user.update();
+			}
 			retInfo.setRetCode(0);
 			retInfo.setRetMsg("更新成功");
 		}else{

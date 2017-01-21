@@ -40,7 +40,7 @@ public class MatchUser extends BaseMatchUser<MatchUser> {
 	}
 	
 	public List<MatchUser> findMatchUserListBySeq(String matchId) {
-		StringBuilder sql = new StringBuilder("select m.ID, u.NAME, m.START_SCORE from t_match_user m, t_user u where m.USER_ID = u.ID and m.SEQ IS NOT NULL AND MATCH_ID = "+matchId);
+		StringBuilder sql = new StringBuilder("select m.ID, u.NAME, m.START_SCORE, m.USER_ID from t_match_user m, t_user u where m.USER_ID = u.ID and m.SEQ IS NOT NULL AND MATCH_ID = "+matchId);
 		/*List<Object> params = new ArrayList<Object>();
 		params.add(matchId);*/
 		sql.append(" order by m.SEQ");
@@ -49,7 +49,7 @@ public class MatchUser extends BaseMatchUser<MatchUser> {
 	}
 	
 	public List<MatchUser> findMatchUserListNoSeq(String matchId) {
-		StringBuilder sql = new StringBuilder(" select m.ID, u.NAME, m.START_SCORE from t_match_user m, t_user u where m.USER_ID = u.ID and m.SEQ IS NULL AND MATCH_ID = "+matchId);
+		StringBuilder sql = new StringBuilder(" select m.ID, u.NAME, m.START_SCORE, m.USER_ID from t_match_user m, t_user u where m.USER_ID = u.ID and m.SEQ IS NULL AND MATCH_ID = "+matchId);
 		sql.append(" order by m.SEQ ");
 		return dao.find(sql.toString());
 	}
