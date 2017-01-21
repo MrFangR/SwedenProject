@@ -73,6 +73,14 @@ public abstract class BaseUser<M extends BaseUser<M>> extends Model<M> implement
 		return get("PHONE");
 	}
 
+	public void setLastStartScore(java.lang.String lastStartScore) {
+		set("LAST_START_SCORE", lastStartScore);
+	}
+
+	public java.lang.String getLastStartScore() {
+		return get("LAST_START_SCORE");
+	}
+
 	public void setSTATUS(java.lang.Integer STATUS) {
 		set("STATUS", STATUS);
 	}
