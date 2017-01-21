@@ -726,7 +726,7 @@ $(function() {
 		
 		function showTab3List(pageNum){
 			$('#pageNumIn').val(pageNum);
-			$.ajax({
+            $.ajax({
 				type : 'get',
 				cache : false,
 				async : true,
@@ -745,9 +745,7 @@ $(function() {
 					return;
 				}
 			});
-			//设置分页
-			setPageInfo("pageDiv", data.page, showHappyTimes);
-		}
+        }
 		
 		//翻页
 		function qry4Page(pageNum){
