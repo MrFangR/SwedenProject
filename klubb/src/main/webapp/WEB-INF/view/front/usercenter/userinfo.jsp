@@ -226,7 +226,7 @@ function submitInfo(){
 				   {type:2,
 					info:'个人资料',
 					text:'<div style=" font-size:18px; color:#ff0000;">'+json.retMsg+'</div>',
-					'ok':function(){window.location.href = '${ctx}/userCenter';},
+					'ok':function(){window.location.href = '${ctx}/userCenter/toUserInfo';},
 					tag:'zq-ring'}
 	               );
 				
@@ -294,7 +294,7 @@ function submitPwd(){
 				   {type:2,
 					info:'个人资料',
 					text:'<div style=" font-size:18px; color:#ff0000;">'+json.retMsg+'</div>',
-					'ok':function(){window.location.href = '${ctx}/userCenter';},
+					'ok':function(){window.location.href = '${ctx}/userCenter/toUserInfo';},
 					tag:'zq-ring'}
 	               );
 			} else {

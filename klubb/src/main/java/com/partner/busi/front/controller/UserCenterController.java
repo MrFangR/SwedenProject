@@ -86,7 +86,7 @@ public class UserCenterController extends Controller {
 		renderJson(page);
 	}
 	
-	public void index(){
+	public void toUserInfo(){
 		//判断是否为登录状态
 		if(FrontSessionUtil.isLogin(getRequest())){
 			//获取用户登录信息

@@ -28,7 +28,7 @@
 				class="icon fl disan"></i>
 				<h5 class="name fl">参赛管理</h5>
 		</a></li>
-		<li id="infoMgr"><a href="javascript:myLoadLeft('infoMgr','${ctx }/userCenter');" class="link clearfix"> <i
+		<li id="infoMgr"><a href="javascript:myLoadLeft('infoMgr','${ctx }/userCenter/toUserInfo');" class="link clearfix" url="toUserInfo"> <i
 				class="icon fl diyi"></i>
 				<h5 class="name fl">信息管理</h5>
 		</a></li>
