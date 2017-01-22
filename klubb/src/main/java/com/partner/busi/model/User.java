@@ -38,6 +38,6 @@ public class User extends BaseUser<User> {
 			whereSql.append(" or  NICKNAME like concat('%',?,'%'))");
 			paramList.add(title);
 		}
-		return paginate(pageNumber, pageSize, true, selSql, whereSql.toString(),paramList.toArray());
+		return paginate(pageNumber, pageSize, selSql, whereSql.toString(),paramList.toArray());
 	}
 }

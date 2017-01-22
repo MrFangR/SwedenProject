@@ -63,4 +63,16 @@ public class BackUserController extends Controller {
 		}
 		renderJson(retInfo);
 	}
+	
+	public void addUser(){
+		String name = getPara("user_name");
+		User user = new User();
+		user.setNAME(name);
+		user.setSTATUS(0);
+		user.save();
+		ResultInfo retInfo = new ResultInfo();
+		retInfo.setRetCode(0);
+		retInfo.setRetMsg("添加成功");
+		renderJson(retInfo);
+	}
 }

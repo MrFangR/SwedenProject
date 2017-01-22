@@ -8,6 +8,11 @@
 <div class="ued-title">
 	<h4>查询结果</h4>
 </div>
+<div class="clearfix pdl-10 pdr-10">
+	<ul class="ued-keys fl js_keys">
+		<li><a class="amend" id="addUser">添加</a></li>
+	</ul>
+</div>
 <table width="100%" cellspacing="0" cellpadding="0" border="0" class="ued-table mgt-20">
 	<colgroup>
 		<col width="2%" />
@@ -83,10 +88,18 @@
 <div class="tc">
 	<%@include file="/ninclude/back/page.jsp"%>
 </div>
+
 <script type="text/javascript">
+$(function(){
+	//弹出框比分
+	$("#addUser").bind("click", function() {
+		$("#btn-dialog").trigger("dialog-open");
+	});
+});
 $(".b-radio").click(function(){
 	$(this).closest("tbody").find(".b-radio").removeClass("bon-radio");
 	$(this).addClass("bon-radio");
 	$(this).siblings("input").attr("checked", "checked");
 });
+
 </script>

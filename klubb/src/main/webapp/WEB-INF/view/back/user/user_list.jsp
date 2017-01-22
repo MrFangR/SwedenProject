@@ -45,6 +45,26 @@
 			</div>
 		</div>
 	</div>
+ <!--弹框  s-->
+ <div data-role="ued-dialog" class="ued-dialog" id="btn-dialog">
+    <div class="dialog-header">
+        <h3>添加人员</h3>
+        <span class="dialog-tool">
+            <a title="关闭" class="dialog-close">X</a>
+        </span>
+    </div>
+    <div>
+        <p class="pd-20 dialog-tipInfo clearfix">姓名：
+        	<input name="user_name" id="user_name" type="text"><font color="color-3">&nbsp;*</font>
+       	</p>
+        <div class="pd-10 tc">
+            <button type="button" class="ued-button-2 mgr-25" id="submitUser">保存</button>
+            <button type="button" class="ued-button-3 dialog-close">取消</button>
+        </div>
+    </div>
+</div>
+	
 </body>
+<script type="text/javascript" src="${ctx}/back-ui/pub-ui/js/plugin/dialog.js"></script>
 <script type="text/javascript" src="${ctx}/back-ui/local-ui/backUser.js"></script>
 </html>
