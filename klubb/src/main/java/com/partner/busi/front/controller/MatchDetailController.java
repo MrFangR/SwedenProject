@@ -6,6 +6,8 @@ package com.partner.busi.front.controller;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -68,6 +70,24 @@ public class MatchDetailController extends Controller {
 			rinkVo = new MatchRinkListVo(game.getWINNER_NAME(), seq, tempFlag);
 			rinkingList.add(rinkVo);
 		}
+		//将比赛list调整成map进行存储
+		Map<String,List<MatchRinkListVo>> rinkMap = new LinkedHashMap<String,List<MatchRinkListVo>>();
+		Iterator iter = rinkingList.iterator();
+		while(iter.hasNext()){
+			rinkVo = (MatchRinkListVo) iter.next();
+			if(rinkMap.get(rinkVo.getSeq())==null){
+				//获取此排名的list
+				List<MatchRinkListVo> mapValue = new ArrayList<MatchRinkListVo>();
+				for(int i=0;i<rinkingList.size();i++){
+					MatchRinkListVo temp =  rinkingList.get(i);
+					if(temp.getSeq()==rinkVo.getSeq()){
+						mapValue.add(temp);
+					}
+				}
+				rinkMap.put(String.valueOf(rinkVo.getSeq()), mapValue);
+			}
+		}
+		setAttr("rinkMap",rinkMap);
 		setAttr("rinkList",rinkingList);
 		setAttr("sortData",sortData);
 

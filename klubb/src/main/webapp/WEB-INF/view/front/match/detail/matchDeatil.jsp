@@ -235,9 +235,28 @@
                       <th>参与者名字</th>
                       <th>比赛历史</th>
                     </tr>
+                    <c:forEach var="rink" items="${rinkMap }">
+                    		<c:forEach var="rinkV" items="${rink.value }" varStatus="status">
+                    	<tr class="table-tr-even">
+                    		<c:if test="${status.first }"><td rowspan="${fn:length(rink.value)}" >${rink.key }</td></c:if>
+                    		  <td>${rinkV.userName }</td>
+		                      <td>
+		                      	<c:forEach var="flag" items="${rinkV.matchFlag }">
+		                      		<c:if test="${flag=='win' }">
+		                      			<i class="win" title="胜利">胜利</i>
+		                      		</c:if>
+		                      		<c:if test="${flag=='loser' }">
+		                      			<i class="fail" title="失败">失败</i>
+		                      		</c:if>
+		                      	</c:forEach>
+		                      </td>
+                    		</c:forEach>
+                    	</tr>
+                    </c:forEach>
+                    <!-- 
                     <c:forEach var="rink" items="${rinkList }">
 	                    <tr class="table-tr-even">
-	                      <td>${rink.seq }</td>
+	                      <td >${rink.seq }</td>
 	                      <td>${rink.userName }</td>
 	                      <td>
 	                      	<c:forEach var="flag" items="${rink.matchFlag }">
@@ -250,8 +269,8 @@
 	                      	</c:forEach>
 	                      </td>
 	                    </tr>
-                    
                     </c:forEach>
+                     -->
            		</table>
            	</div>
            	<!--排行榜 E-->
