@@ -66,7 +66,7 @@ public class Game extends BaseGame<Game> {
 	
 	public List<Game> sordMatch(int matchId){
 		//List<Game> userList = new ArrayList<Game>();
-		String sql = "select WINNER_NAME, USER_ID from (select u.NAME as WINNER_NAME, count(g.id) as winNum, u.id as USER_ID from t_game g, t_user u where g.WINNER_ID = u.ID and g.MATCH_ID = "+matchId+" group by g.WINNER_ID) temp order by winNum desc ";
+		String sql = "select WINNER_NAME, USER_ID, winNum from (select u.NAME as WINNER_NAME, count(g.id) as winNum, u.id as USER_ID from t_game g, t_user u where g.WINNER_ID = u.ID and g.MATCH_ID = "+matchId+" group by g.WINNER_ID) temp order by winNum desc ";
 //		userList = Db.query(sql);
 		return dao.find(sql);
 	}
@@ -134,6 +134,14 @@ public class Game extends BaseGame<Game> {
 	
 	public String getWINNER_NAME() {
 		return get("WINNER_NAME");
+	}
+	
+	public void setWinNum(long winNum) {
+		set("winNum", winNum);
+	}
+	
+	public long getWinNum() {
+		return get("winNum");
 	}
 	
 	public void setFlag(String name) {

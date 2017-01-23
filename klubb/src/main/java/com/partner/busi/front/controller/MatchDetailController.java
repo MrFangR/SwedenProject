@@ -56,10 +56,16 @@ public class MatchDetailController extends Controller {
 		List<Game> sortData = Game.dao.sordMatch(Integer.parseInt(matchId));
 		List<MatchRinkListVo> rinkingList = new ArrayList<MatchRinkListVo>();
 		MatchRinkListVo rinkVo = null;
+		int preWinNum = 0;
 		for(int i=0;i<sortData.size();i++){
 			Game game = sortData.get(i);
 			String[] tempFlag = Game.dao.getMatchHis(Integer.parseInt(matchId), game.getUSER_ID());
-			rinkVo = new MatchRinkListVo(game.getWINNER_NAME(), i+1, tempFlag);
+			int seq = i+1;//排行榜名次
+			if(preWinNum == game.getWinNum()){
+				seq = seq - 1;
+			}
+			preWinNum = Integer.parseInt(String.valueOf(game.getWinNum()));
+			rinkVo = new MatchRinkListVo(game.getWINNER_NAME(), seq, tempFlag);
 			rinkingList.add(rinkVo);
 		}
 		setAttr("rinkList",rinkingList);
