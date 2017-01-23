@@ -1,12 +1,12 @@
 package com.partner.busi.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.apache.commons.lang.StringUtils;
-
+import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.Page;
 import com.partner.busi.model.base.BaseMatch;
+import org.apache.commons.lang.StringUtils;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Match extends BaseMatch<Match> {
 	
@@ -49,5 +49,44 @@ public class Match extends BaseMatch<Match> {
 		List<Object> params = new ArrayList<Object>();
 		params.add(userID);
 		return paginate(pageNum, pageSize, select, sql.toString(), params.toArray());
+	}
+
+
+	/**
+	 * 获取当前剩余人员（用于双败比赛）
+	 * 双败比赛只有败者组会淘汰人，总人数-败者组淘汰掉的人数
+	 * @param martchId
+	 * @return
+	 */
+	public int getCurrRemainPlayer(int martchId){
+		String sql = "select (select count(*) from t_match_user m where m.MATCH_ID = ? and m.SEQ is not null)" +
+				"-" +
+				"(select count(*) from t_game g where g.MATCH_ID = ? and g.L_NEXT_ID = '' and g.W_NEXT_ID != '' and g.WINNER_ID is not null)";
+
+		return Db.queryInt(sql, martchId, martchId).intValue();
+	}
+
+	/**
+	 * 得到最后的seq（用于双败比赛）
+	 * @param martchId
+	 * @return
+	 */
+	public int getStopSeq(int martchId){
+		String sql = "select (select ROUND(count(*)/2)*2 from t_match_user u where u.MATCH_ID = ? and u.SEQ is not null) - " +
+				"(select IFNULL(m.STOP_PLAYER,0) from t_match m where m.ID = ?)";
+		int losePlayer = Db.queryBigDecimal(sql, martchId, martchId).intValue();
+
+		sql = "select max(seq) from (select * from t_game g where g.MATCH_ID = ? and ((g.L_NEXT_ID = '' and g.W_NEXT_ID != '') or (g.L_NEXT_ID = '' and g.W_NEXT_ID = '')) ORDER BY g.SEQ LIMIT ?) as a";
+		return Db.queryInt(sql, martchId, losePlayer + 1).intValue();
+	}
+
+	/**
+	 * 子比赛ID
+	 * @param martchId
+	 * @return
+	 */
+	public Integer getChildMatchId(int martchId){
+		String sql = "select ID from t_match where p_id=?";
+		return Db.queryInt(sql, martchId).intValue();
 	}
 }

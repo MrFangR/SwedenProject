@@ -3,17 +3,6 @@
  */
 package com.partner.busi.back.controller;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.sql.SQLException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
-import org.apache.commons.lang.StringUtils;
-
 import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
 import com.jfinal.plugin.activerecord.DbKit;
@@ -21,12 +10,21 @@ import com.jfinal.plugin.activerecord.Page;
 import com.jfinal.plugin.activerecord.tx.Tx;
 import com.partner.busi.model.Game;
 import com.partner.busi.model.Match;
-import com.partner.busi.model.User;
 import com.partner.busi.model.MatchTemplate.GameTemplate;
 import com.partner.busi.model.MatchUser;
+import com.partner.busi.model.User;
 import com.partner.common.base.ResultInfo;
 import com.partner.common.constant.Constants;
 import com.partner.common.util.MatchTemplateCache;
+import org.apache.commons.lang.StringUtils;
+
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 /** 
  * @ClassName: BackMatchController 
@@ -38,35 +36,38 @@ public class BackMatchController extends Controller {
 	
 	public void index(){
 		Integer matchId = getParaToInt("matchId");
-		String sql = "SELECT g.*, IFNULL(mu1.SEQ, 0) AS U1_SEQ, IFNULL(mu2.SEQ, 0) AS U2_SEQ,"
-				+ " IFNULL(u1.`NAME`,'') as U1_NAME, IFNULL(u2.`NAME`,'') as U2_NAME"
-				+ " FROM t_game g"
-				+ " LEFT JOIN t_match_user AS mu1 ON g.USER1 = mu1.USER_ID and g.MATCH_ID=mu1.MATCH_ID"
-				+ " LEFT JOIN t_match_user AS mu2 ON g.USER2 = mu2.USER_ID and g.MATCH_ID=mu2.MATCH_ID"
-				+ " LEFT JOIN t_user AS u1 ON g.USER1 = u1.ID"
-				+ " LEFT JOIN t_user AS u2 ON g.USER2 = u2.ID"
-				+ " INNER JOIN t_match AS m ON m.ID = g.MATCH_ID"
-				+ " WHERE g.MATCH_ID = ? and %s"
-				+ " ORDER BY g.SHOW_INDEX";
-		final String WIN_CON = "(m.TYPE in (1, 3) or (m.TYPE in (2, 4) and L_NEXT_ID != ''))";
-		final String LOSE_CON = "(m.TYPE in (2, 4) and L_NEXT_ID = '')";
-		
-		List<Game> wList = Game.dao.find(String.format(sql, WIN_CON), matchId);
-		List<Game> lList = Game.dao.find(String.format(sql, LOSE_CON), matchId);
-		
+		Match match = Match.dao.findById(matchId);
+
+		Integer lastSeq = null;
+		Integer secondMatchId = null;
+		if(match.getStopPlayer() != null && !match.getStopPlayer().equals(0)){
+			lastSeq = Match.dao.getStopSeq(matchId);
+			secondMatchId = Match.dao.getChildMatchId(matchId);
+		}
+
+		List<Game> wList = Game.dao.getAgainstList(matchId, lastSeq, true);
+		List<Game> lList = Game.dao.getAgainstList(matchId, lastSeq, false);
+		List<Game> sList = new ArrayList<Game>();
+		if(secondMatchId != null){
+			sList = Game.dao.getAgainstList(secondMatchId, null, true);
+		}
+
 		List<String> winTitleList = new ArrayList<String>();
 		List<String> loseTitleList = new ArrayList<String>();
-		
+		List<String> secondTitleList = new ArrayList<String>();
+
 		List<List<Game>> winList = generateList(wList, winTitleList, true);
 		List<List<Game>> loseList = generateList(lList, loseTitleList, false);
-		
-		Match match = Match.dao.findById(matchId);
-		
+		List<List<Game>> secondList = generateList(sList, secondTitleList, true);
+
+
 		setAttr("match", match);
 		setAttr("winList", winList);
 		setAttr("winTitleList", winTitleList);
 		setAttr("loseList", loseList);
 		setAttr("loseTitleList", loseTitleList);
+		setAttr("secondTitleList", secondTitleList);
+		setAttr("secondList", secondList);
 		
 		String tabFlag = getPara("flag");
 		if(StringUtils.isNotBlank(tabFlag)){
@@ -292,9 +293,11 @@ public class BackMatchController extends Controller {
 			//2.2生成比赛
 			if(match.getTYPE() == 1 || match.getTYPE() == 3){ //单败
 //				generateSingleGame(userIdList, 0, 0, 1, matchId);
-				generateSingleGame(userIdList, matchId);
+				generateSingleGame(userIdList, null, matchId);
 			} else if(match.getTYPE() == 2 || match.getTYPE() == 4){ //双败
 				generateDoubleGame(userIdList, matchId);
+				Integer childMatchId = Match.dao.getChildMatchId(matchId);
+				generateSingleGame(null, match.getStopPlayer(), childMatchId);
 			}
 		}
 	}
@@ -408,15 +411,15 @@ public class BackMatchController extends Controller {
 	/**
 	 * 生成单败制比赛
 	 * @param userIdList
-	 * @param seq
-	 * @param userSum
-	 * @param roundNum
 	 * @param matchId
 	 */
-	private void generateSingleGame(List<Integer> userIdList, int matchId){
+	private void generateSingleGame(List<Integer> userIdList, Integer doubleStop, int matchId){
 		int userSum = 0;
 		if(userIdList != null){ //首轮有此参数
 			userSum = userIdList.size();
+		}
+		if(doubleStop != null){ //由双败生成的单败比赛
+			userSum = doubleStop;
 		}
 		int gameSum = 1;
 		//根据参赛人员人数获得比赛场数
@@ -432,7 +435,7 @@ public class BackMatchController extends Controller {
 			for(int i = 0; i < list.size(); i++){
 				Game game = new Game();
 				GameTemplate tmp = list.get(i);
-				if(tmp.getRoundNum() == 1){ //首轮有此参数
+				if(tmp.getRoundNum() == 1 && doubleStop == null){ //首轮有此参数
 					game.setUSER1(userIdList.get(userIndex++));
 					if(i + byeUserSum < gameSum){ //不轮空才设置user2
 						game.setUSER2(userIdList.get(userIndex++));
@@ -454,9 +457,6 @@ public class BackMatchController extends Controller {
 	/**
 	 * 生成双败制比赛
 	 * @param userIdList
-	 * @param seq
-	 * @param userSum
-	 * @param roundNum
 	 * @param matchId
 	 */
 	private void generateDoubleGame(List<Integer> userIdList, int matchId){

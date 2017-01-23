@@ -14,7 +14,13 @@
         <!--tab  s-->
         <div class="ued-tab-tit clearfix js_tab_tit">
             <ul class="ued-tab-1 fl clearfix">
-                <li class="on1 "><a class="ued-add" href="javascript:void(0)">编辑对阵图</a></li>
+				<c:if test="${fn:length(secondList) <= 0}">
+					<li class="on1 "><a class="ued-add" href="javascript:void(0)">编辑对阵图</a></li>
+				</c:if>
+				<c:if test="${fn:length(secondList) > 0}">
+					<li class="on1 "><a class="ued-add" href="javascript:void(0)">编辑第一轮对阵图</a></li>
+					<li class="liQuery"><a class="ued-add" href="javascript:void(0)">编辑第二轮对阵图</a></li>
+				</c:if>
                 <li class="liQuery"><a class="ued-see" href="javascript:void(0)">编辑参与者</a></li>
                 <li class="liLook"><a class="ued-see" href="javascript:void(0)">查看参与者</a></li>
             </ul>
@@ -66,14 +72,6 @@
             	<c:forEach items="${gList}" var="game" varStatus="gStatus">
             		<c:if test="${gStatus.index mod 2 == 0}">
 	            		<!--完整模板  s-->
-	            		<!--<c:choose>
-	            			<c:when test="${gStatus.index == 0}">
-	            				<div class="matchgroup">
-	            			</c:when>
-	            			<c:otherwise>
-	            				<div class="matchgroup" style="margin-top: ${groupMgt[status.index]}px;">
-	            			</c:otherwise>
-	            		</c:choose>-->
                         <div class="matchgroup">
 
                         <div wId="${game.winnerId }" tNum="${game.tableNum }" sTime="${game.startTime }" gType="${game.TYPE }" gSeq="${game.SEQ }" gId="${game.ID}" wSeq="${game.WNextId}" lSeq="${game.LNextId}" class="template js_template" <c:if test="${gStatus.index > 0}">style="margin-top: ${tempMgt[status.index]}px;"</c:if>>
@@ -83,33 +81,36 @@
 	                    </div>
             		</c:if>
                     <c:if test="${gStatus.index mod 2 == 1}">
-                    <div wId="${game.winnerId }" tNum="${game.tableNum }" sTime="${game.startTime }" gType="${game.TYPE }" gSeq="${game.SEQ }" gId="${game.ID}" wSeq="${game.WNextId}" lSeq="${game.LNextId}" class="template js_template" style="margin-top: ${tempMgt[status.index]}px;">
-                        <h3>${game.SEQ }</h3>
-                        <div class="group" id="${game.ID }_1" <c:if test="${status.index == 0 and match.STATUS == 0 }"> ondrop="drop(event,this)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event, this)"</c:if>><i><c:if test="${game.u1_SEQ != 0}">${game.u1_SEQ}</c:if></i><span id="${game.USER1 }">${game.u1_NAME }</span><input name="" type="text" value="${game.SCORE1 }"></div>
-                        <div class="group" id="${game.ID }_2" <c:if test="${status.index == 0 and match.STATUS == 0 }"> ondrop="drop(event,this)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event, this)"</c:if>><i><c:if test="${game.u2_SEQ != 0}">${game.u2_SEQ}</c:if></i><span id="${game.USER2 }">${game.u2_NAME }</span><input name="" type="text" value="${game.SCORE2 }"></div>
-                    </div>
-                    <c:if test="${not status.last }">
-                    <div class="matchline">
+						<div wId="${game.winnerId }" tNum="${game.tableNum }" sTime="${game.startTime }" gType="${game.TYPE }" gSeq="${game.SEQ }" gId="${game.ID}" wSeq="${game.WNextId}" lSeq="${game.LNextId}" class="template js_template" style="margin-top: ${tempMgt[status.index]}px;">
+							<h3>${game.SEQ }</h3>
+							<div class="group" id="${game.ID }_1" <c:if test="${status.index == 0 and match.STATUS == 0 }"> ondrop="drop(event,this)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event, this)"</c:if>><i><c:if test="${game.u1_SEQ != 0}">${game.u1_SEQ}</c:if></i><span id="${game.USER1 }">${game.u1_NAME }</span><input name="" type="text" value="${game.SCORE1 }"></div>
+							<div class="group" id="${game.ID }_2" <c:if test="${status.index == 0 and match.STATUS == 0 }"> ondrop="drop(event,this)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event, this)"</c:if>><i><c:if test="${game.u2_SEQ != 0}">${game.u2_SEQ}</c:if></i><span id="${game.USER2 }">${game.u2_NAME }</span><input name="" type="text" value="${game.SCORE2 }"></div>
+						</div>
+						<c:if test="${not status.last }">
+						<div class="matchline">
 
-                       <svg  x="0" y="0" width="290px" height="${svgHeight[status.index] }px">
-                          <path d="M 228 1 L 236 1 L 236 ${svgHeight[status.index] } " class="bracket-line"/>
-                        </svg>
-                        <svg  x="0" y="0"  width="290px" height="${svgHeight[status.index] }px" style="margin-top:-6px">
-                            <path d="M 228,${svgHeight[status.index] } L 236,${svgHeight[status.index] }  L 236,1  L 244,1" class="bracket-line"/>
-                        </svg>
-                    </div>
-                    </c:if>
-                  </div>
-                  </c:if>
+						   <svg  x="0" y="0" width="290px" height="${svgHeight[status.index] }px">
+							  <path d="M 228 1 L 236 1 L 236 ${svgHeight[status.index] } " class="bracket-line"/>
+							</svg>
+							<svg  x="0" y="0"  width="290px" height="${svgHeight[status.index] }px" style="margin-top:-6px">
+								<path d="M 228,${svgHeight[status.index] } L 236,${svgHeight[status.index] }  L 236,1  L 244,1" class="bracket-line"/>
+							</svg>
+						</div>
+						</c:if>
+					  </div>
+					</c:if>
+					<c:if test="${status.last and fn:length(secondList) <= 0}">
+					 </div>
+					</c:if>
                   <!--完整模板  e-->
             	</c:forEach>
             	</div>
             </c:forEach>
-            </div>
-            </div>
             <!--比赛内容框 e-->
             </div>
+			</div>
 
+		<c:if test="${fn:length(loseTitleList) > 0}">
 			<div class="clearfix mgt-40">
             <!--比赛标题  s-->
             <div class="matchtitle">
@@ -157,24 +158,25 @@
 		                    </div>
 	            		</c:if>
 	                    <c:if test="${gStatus.index mod 2 == 1}">
-	                    <div wId="${game.winnerId }" tNum="${game.tableNum }" sTime="${game.startTime }" gType="${game.TYPE }" gSeq="${game.SEQ }" gId="${game.ID}" wSeq="${game.WNextId}" lSeq="${game.LNextId}" class="template js_template" style="margin-top: ${lTempMgt[status.index]}px;">
-	                        <h3>${game.SEQ }</h3>
-	                        <div class="group" id="${game.ID }_1" ><i><c:if test="${game.u1_SEQ != 0}">${game.u1_SEQ}</c:if></i><span id="${game.USER1 }">${game.u1_NAME }</span><input name="" type="text" value="${game.SCORE1 }"></div>
-	                        <div class="group" id="${game.ID }_2" ><i><c:if test="${game.u2_SEQ != 0}">${game.u2_SEQ}</c:if></i><span id="${game.USER2 }">${game.u2_NAME }</span><input name="" type="text" value="${game.SCORE2 }"></div>
-	                    </div>
-	                    <c:if test="${not status.last }">
-	                    <div class="matchline">
+							<div wId="${game.winnerId }" tNum="${game.tableNum }" sTime="${game.startTime }" gType="${game.TYPE }" gSeq="${game.SEQ }" gId="${game.ID}" wSeq="${game.WNextId}" lSeq="${game.LNextId}" class="template js_template" style="margin-top: ${lTempMgt[status.index]}px;">
+								<h3>${game.SEQ }</h3>
+								<div class="group" id="${game.ID }_1" ><i><c:if test="${game.u1_SEQ != 0}">${game.u1_SEQ}</c:if></i><span id="${game.USER1 }">${game.u1_NAME }</span><input name="" type="text" value="${game.SCORE1 }"></div>
+								<div class="group" id="${game.ID }_2" ><i><c:if test="${game.u2_SEQ != 0}">${game.u2_SEQ}</c:if></i><span id="${game.USER2 }">${game.u2_NAME }</span><input name="" type="text" value="${game.SCORE2 }"></div>
+							</div>
+							<c:if test="${not status.last }">
+							<div class="matchline">
 
-	                       <svg  x="0" y="0" width="290px" height="${lSvgHeight[status.index] }px">
-	                          <path d="M 228 1 L 236 1 L 236 ${lSvgHeight[status.index] } " class="bracket-line"/>
-	                        </svg>
-	                        <svg  x="0" y="0"  width="290px" height="${lSvgHeight[status.index] }px" style="margin-top:-6px">
-	                            <path d="M 228,${lSvgHeight[status.index] } L 236,${lSvgHeight[status.index] }  L 236,1  L 244,1" class="bracket-line"/>
-	                        </svg>
-	                    </div>
-	                    </c:if>
-	                  </div>
+							   <svg  x="0" y="0" width="290px" height="${lSvgHeight[status.index] }px">
+								  <path d="M 228 1 L 236 1 L 236 ${lSvgHeight[status.index] } " class="bracket-line"/>
+								</svg>
+								<svg  x="0" y="0"  width="290px" height="${lSvgHeight[status.index] }px" style="margin-top:-6px">
+									<path d="M 228,${lSvgHeight[status.index] } L 236,${lSvgHeight[status.index] }  L 236,1  L 244,1" class="bracket-line"/>
+								</svg>
+							</div>
+							</c:if>
+						  </div>
 	                  </c:if>
+
                   <!--完整模板  e-->
                   </c:if>
             	</c:forEach>
@@ -182,10 +184,90 @@
             </c:forEach>
                 <!--比赛内容框 e-->
             </div>
+				<c:if test="${fn:length(secondList) <= 0}">
             </div>
-            </div>
+				</c:if>
 			</div>
+			</c:if>
+			</div>
+
              <!--第一tab  e-->
+
+
+			<c:if test="${fn:length(secondList) > 0}">
+			<div id="boxDiv1" class="box-n" style="width:1600px;">
+				<div class="clearfix">
+					<!--比赛标题  s-->
+					<div class="matchtitle">
+						<c:forEach items="${secondTitleList}" var="title">
+							<li>${title}</li>
+						</c:forEach>
+						<div class="clear"></div>
+					</div>
+					<!--比赛标题  e-->
+					<!--比赛内容框  s-->
+					<div class="clearfix">
+						<c:forEach items="${secondList}" var="gList" varStatus="status">
+						<c:if test="${status.index == 0}">
+						<!--可拖动部分  s-->
+						<c:choose>
+						<c:when test="${match.STATUS == 0 }">
+						<div class="dropbox">
+							</c:when>
+							<c:otherwise>
+							<div class="nodrop">
+								</c:otherwise>
+								</c:choose>
+								</c:if>
+								<c:if test="${status.index > 0}">
+								<!--可拖动部分  s-->
+								<div class="nodrop" style="margin-top: ${boxMgt[status.index]}px;">
+									</c:if>
+									<c:forEach items="${gList}" var="game" varStatus="gStatus">
+									<c:if test="${gStatus.index mod 2 == 0}">
+									<!--完整模板  s-->
+									<div class="matchgroup">
+
+										<div wId="${game.winnerId }" tNum="${game.tableNum }" sTime="${game.startTime }" gType="${game.TYPE }" gSeq="${game.SEQ }" gId="${game.ID}" wSeq="${game.WNextId}" lSeq="${game.LNextId}" class="template js_template" <c:if test="${gStatus.index > 0}">style="margin-top: ${tempMgt[status.index]}px;"</c:if>>
+											<h3>${game.SEQ }</h3>
+											<div class="group" id="${game.ID }_1" <c:if test="${status.index == 0 and match.STATUS == 0 }"> ondrop="drop(event,this)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event, this)"</c:if>><i><c:if test="${game.u1_SEQ != 0}">${game.u1_SEQ}</c:if></i><span id="${game.USER1 }">${game.u1_NAME }</span><input name="" type="text" value="${game.SCORE1 }"></div>
+											<div class="group" id="${game.ID }_2" <c:if test="${status.index == 0 and match.STATUS == 0 }"> ondrop="drop(event,this)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event, this)"</c:if>><i><c:if test="${game.u2_SEQ != 0}">${game.u2_SEQ}</c:if></i><span id="${game.USER2 }">${game.u2_NAME }</span><input name="" type="text" value="${game.SCORE2 }"></div>
+										</div>
+										</c:if>
+										<c:if test="${gStatus.index mod 2 == 1}">
+										<div wId="${game.winnerId }" tNum="${game.tableNum }" sTime="${game.startTime }" gType="${game.TYPE }" gSeq="${game.SEQ }" gId="${game.ID}" wSeq="${game.WNextId}" lSeq="${game.LNextId}" class="template js_template" style="margin-top: ${tempMgt[status.index]}px;">
+											<h3>${game.SEQ }</h3>
+											<div class="group" id="${game.ID }_1" <c:if test="${status.index == 0 and match.STATUS == 0 }"> ondrop="drop(event,this)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event, this)"</c:if>><i><c:if test="${game.u1_SEQ != 0}">${game.u1_SEQ}</c:if></i><span id="${game.USER1 }">${game.u1_NAME }</span><input name="" type="text" value="${game.SCORE1 }"></div>
+											<div class="group" id="${game.ID }_2" <c:if test="${status.index == 0 and match.STATUS == 0 }"> ondrop="drop(event,this)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event, this)"</c:if>><i><c:if test="${game.u2_SEQ != 0}">${game.u2_SEQ}</c:if></i><span id="${game.USER2 }">${game.u2_NAME }</span><input name="" type="text" value="${game.SCORE2 }"></div>
+										</div>
+										<c:if test="${not status.last }">
+											<div class="matchline">
+
+												<svg  x="0" y="0" width="290px" height="${svgHeight[status.index] }px">
+													<path d="M 228 1 L 236 1 L 236 ${svgHeight[status.index] } " class="bracket-line"/>
+												</svg>
+												<svg  x="0" y="0"  width="290px" height="${svgHeight[status.index] }px" style="margin-top:-6px">
+													<path d="M 228,${svgHeight[status.index] } L 236,${svgHeight[status.index] }  L 236,1  L 244,1" class="bracket-line"/>
+												</svg>
+											</div>
+										</c:if>
+									</div>
+									</c:if>
+									<c:if test="${status.last}">
+										</div>
+									</c:if>
+								<!--完整模板  e-->
+								</c:forEach>
+							</div>
+							</c:forEach>
+							<!--比赛内容框 e-->
+						</div>
+					</div>
+				</div>
+			</c:if>
+
+
+
             <!--第二tab  s-->
             <div class="box-n" style="width:100%" id="matchUserLst">
                     <div id='single1' class='container'>
