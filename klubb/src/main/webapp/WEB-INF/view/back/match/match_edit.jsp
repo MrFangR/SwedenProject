@@ -270,6 +270,7 @@
 
             <!--第二tab  s-->
             <div class="box-n" style="width:100%" id="matchUserLst">
+                    <button class="ued-button-4 js_dialog mgl-25" id="randomSort">打散用户顺序</button> 
                     <div id='single1' class='container'>
 						<c:forEach var="user" items="${matchUser}">
 							<c:if test="${not empty user.startScore}">
@@ -438,6 +439,42 @@ $(function() {
 	 if(tabFlag=='editUser'){
 		 $("li.liQuery").trigger("click");
 	 }
+	 $("#randomSort").bind("click",function(){
+		 var obj = $(this);
+		 var matchId=$("#matchId").val();
+		  $.ajax({
+			  type:"post",
+			  url:ctx + "/back/match/edit/randomSort",
+			  data:{
+				  id: matchId
+			  },
+			  async:false,
+			  dataType:"json",
+			  success:function(json){
+				  if(json.retCode == 0 ){
+					  obj.parent().remove();
+					  location.href=ctx + "/back/match/edit?matchId="+matchId+"&flag=editUser";
+				  }else{
+					  ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+					   {type:2,
+						info:'比赛管理',
+						text:'<div style=" font-size:18px; color:#ff0000;"> '+json.retMsg+' </div>',
+						'ok':function(){},
+						tag:'cw-ring'}
+		               );
+				  }
+			  },
+			  error:function(){
+				  ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+				   {type:2,
+					info:'比赛管理',
+					text:'<div style=" font-size:18px; color:#ff0000;"> 系统异常，请稍后重试 </div>',
+					'ok':function(){},
+					tag:'cw-ring'}
+	               );
+			  }
+		  });
+	 });
 	//tab切换
 	$(".dialogtitle ul li").live(
 			"click",

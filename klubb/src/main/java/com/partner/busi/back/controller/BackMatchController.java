@@ -16,6 +16,7 @@ import com.partner.busi.model.User;
 import com.partner.common.base.ResultInfo;
 import com.partner.common.constant.Constants;
 import com.partner.common.util.MatchTemplateCache;
+
 import org.apache.commons.lang.StringUtils;
 
 import java.math.BigDecimal;
@@ -23,8 +24,10 @@ import java.math.RoundingMode;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 /** 
  * @ClassName: BackMatchController 
@@ -317,6 +320,61 @@ public class BackMatchController extends Controller {
 			retInfo.setRetMsg("参赛人员删除成功！");
 		}
 		renderJson(retInfo);
+	}
+	
+	public void randomSort(){
+		ResultInfo retInfo = new ResultInfo();
+		retInfo.setRetCode(1);
+        retInfo.setRetMsg("打乱失败");
+		String id = getPara("id");
+		List<MatchUser> matchUser = MatchUser.dao.findMatchUserListBySeq(id);
+		Collections.shuffle(matchUser);
+		MatchUser user = null;
+        MatchUser userDefail = null;
+		for(int i=0;i<matchUser.size();i++){
+			user = matchUser.get(i);
+            userDefail = MatchUser.dao.findById(user.getID());
+            userDefail.setSEQ(i+1);
+            userDefail.update();
+		}
+        /*int len=matchUser.size();
+        Integer[] strTemp = generateRandomize(len);
+        MatchUser user = null;
+        MatchUser userDefail = null;
+        for(int i=0; i<len; i++)  
+        {  
+            user = matchUser.get(i);
+            userDefail = MatchUser.dao.findById(user.getID());
+            userDefail.setSEQ(strTemp[i]);
+            userDefail.update();
+        }*/ 
+        retInfo.setRetCode(0);
+        retInfo.setRetMsg("打乱成功");
+		renderJson(retInfo);
+	}
+	
+	public Integer[] generateRandomize(int len){
+		Integer[] temp = new Integer[len];
+        Random random=new Random();
+        boolean flag = true;
+        for(int i=0; i<len; i++){
+        	int pos=Math.abs(random.nextInt(len)%len)+1;
+        	while(true){
+            	for(int j=0;j<len;j++){
+                	if(temp[j]!= null && temp[j] == pos){
+                		flag = false;
+                		break;
+                	}
+                }
+            	if(flag){
+            		temp[i] = pos;
+            		break;
+            	}
+            	pos=(int)(random.nextDouble()*(len-i+1)+i)-1;
+            	flag = true;
+            }
+        }
+		return temp;
 	}
 	
 	public void addUser(){
