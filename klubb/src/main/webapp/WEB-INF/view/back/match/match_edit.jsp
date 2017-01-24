@@ -11,6 +11,7 @@
 	
 	<div class="ued-tab js_tab">
 		<input type="hidden" id="matchId" value="${match.ID }">
+		<input type="hidden" id="matchStatus" value="${match.STATUS }">
         <!--tab  s-->
         <div class="ued-tab-tit clearfix js_tab_tit">
             <ul class="ued-tab-1 fl clearfix">
@@ -270,7 +271,10 @@
 
             <!--第二tab  s-->
             <div class="box-n" style="width:100%" id="matchUserLst">
-                    <button class="ued-button-4 js_dialog mgl-25" id="randomSort">打散用户顺序</button> 
+            		<c:if test="${match.STATUS == 0 }">
+                    	<button class="ued-button-4 js_dialog mgl-25" id="randomSort">打散用户顺序</button> 
+                    	<button class="ued-button-4 js_dialog mgl-25" >重新生成对阵图</button> 
+            		</c:if>
                     <div id='single1' class='container'>
 						<c:forEach var="user" items="${matchUser}">
 							<c:if test="${not empty user.startScore}">
@@ -281,8 +285,9 @@
 							</c:if>
 						</c:forEach>
                    </div>
-
-                  <div class="tc" style="width:60%; margin-top:30px;"><button class="ued-button-2 js_dialog">添加人员</button></div>
+					<c:if test="${match.STATUS == 0 }">
+                  		<div class="tc" style="width:60%; margin-top:30px;"><button class="ued-button-2 js_dialog">添加人员</button></div>
+                  	</c:if>
              </div>
             <!--第二tab  e-->
             <!-- 第三个tab s -->
@@ -495,6 +500,26 @@ $(function() {
 		$("#btn-dialog").trigger("dialog-open");
 	});
 	$(".container i.mtch_del").click(function() {
+		//判断比赛是否在进行中
+		var matchStatus = $("#matchStatus").val();
+		if(matchStatus!=0){
+			var retInfo = "";
+			if(matchStatus==-1){
+				retInfo = "比赛已取消，无法删除参赛人员";
+			}else if(matchStatus==1){
+				retInfo = "比赛正在进行中，无法删除参赛人员";
+			}else if(matchStatus==2){
+				retInfo = "比赛已完成，无法删除参赛人员";
+			}
+			ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+			   {type:2,
+				info:'比赛管理',
+				text:'<div style=" font-size:18px; color:#ff0000;"> '+retInfo+' </div>',
+				'ok':function(){},
+				tag:'cw-ring'}
+               );
+			return;
+		}
 		var userId = $(this).attr("dataValue");
 		  var obj = $(this);
 		  var matchId=$("#matchId").val();
@@ -544,6 +569,25 @@ $(function() {
 					});
 	//弹出框比分
 	$(".mtch_edit").bind("click", function() {
+		var matchStatus = $("#matchStatus").val();
+		if(matchStatus!=0){
+			var retInfo = "";
+			if(matchStatus==-1){
+				retInfo = "比赛已取消，无法编辑起始分";
+			}else if(matchStatus==1){
+				retInfo = "比赛正在进行中，无法编辑起始分";
+			}else if(matchStatus==2){
+				retInfo = "比赛已完成，无法编辑起始分";
+			}
+			ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+			   {type:2,
+				info:'比赛管理',
+				text:'<div style=" font-size:18px; color:#ff0000;"> '+retInfo+' </div>',
+				'ok':function(){},
+				tag:'cw-ring'}
+               );
+			return;
+		}
 		var matchId = $(this).attr("dataValue");
 		var userId = $(this).attr("userValue");
 		var startScore = $(this).attr("startScore");
