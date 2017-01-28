@@ -3,14 +3,6 @@
  */
 package com.partner.busi.front.controller;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-
 import com.jfinal.core.Controller;
 import com.jfinal.plugin.activerecord.Page;
 import com.partner.busi.model.Game;
@@ -21,6 +13,8 @@ import com.partner.busi.vo.MatchRinkListVo;
 import com.partner.common.base.ResultInfo;
 import com.partner.common.constant.Constants;
 import com.partner.common.util.FrontSessionUtil;
+
+import java.util.*;
 
 /**
  * @author fangrui
@@ -93,32 +87,36 @@ public class MatchDetailController extends Controller {
 
 
 		/*对阵图start*/
-		String sql = "SELECT g.*, IFNULL(mu1.SEQ, 0) AS U1_SEQ, IFNULL(mu2.SEQ, 0) AS U2_SEQ,"
-				+ " IFNULL(u1.`NAME`,'') as U1_NAME, IFNULL(u2.`NAME`,'') as U2_NAME"
-				+ " FROM t_game g"
-				+ " LEFT JOIN t_match_user AS mu1 ON g.USER1 = mu1.USER_ID and g.MATCH_ID=mu1.MATCH_ID"
-				+ " LEFT JOIN t_match_user AS mu2 ON g.USER2 = mu2.USER_ID and g.MATCH_ID=mu2.MATCH_ID"
-				+ " LEFT JOIN t_user AS u1 ON g.USER1 = u1.ID"
-				+ " LEFT JOIN t_user AS u2 ON g.USER2 = u2.ID"
-				+ " INNER JOIN t_match AS m ON m.ID = g.MATCH_ID"
-				+ " WHERE g.MATCH_ID = ? and %s"
-				+ " ORDER BY g.SHOW_INDEX";
-		final String WIN_CON = "(m.TYPE in (1, 3) or (m.TYPE in (2, 4) and L_NEXT_ID != ''))";
-		final String LOSE_CON = "(m.TYPE in (2, 4) and L_NEXT_ID = '')";
+		Integer lastSeq = null;
+		Integer secondMatchId = null;
+		if(match.getStopPlayer() != null && !match.getStopPlayer().equals(0)){
+			lastSeq = Match.dao.getStopSeq(Integer.parseInt(matchId));
+			secondMatchId = Match.dao.getChildMatchId(Integer.parseInt(matchId));
+		}
 
-		List<Game> wList = Game.dao.find(String.format(sql, WIN_CON), matchId);
-		List<Game> lList = Game.dao.find(String.format(sql, LOSE_CON), matchId);
+		List<Game> wList = Game.dao.getAgainstList(Integer.parseInt(matchId), lastSeq, true);
+		List<Game> lList = Game.dao.getAgainstList(Integer.parseInt(matchId), lastSeq, false);
+		List<Game> sList = new ArrayList<Game>();
+		if(secondMatchId != null){
+			sList = Game.dao.getAgainstList(secondMatchId, null, true);
+		}
 
 		List<String> winTitleList = new ArrayList<String>();
 		List<String> loseTitleList = new ArrayList<String>();
+		List<String> secondTitleList = new ArrayList<String>();
 
 		List<List<Game>> winList = generateList(wList, winTitleList, true);
 		List<List<Game>> loseList = generateList(lList, loseTitleList, false);
+		List<List<Game>> secondList = generateList(sList, secondTitleList, true);
 
+
+		setAttr("match", match);
 		setAttr("winList", winList);
 		setAttr("winTitleList", winTitleList);
 		setAttr("loseList", loseList);
 		setAttr("loseTitleList", loseTitleList);
+		setAttr("secondTitleList", secondTitleList);
+		setAttr("secondList", secondList);
 		/*对阵图end*/
 
 		render("matchDeatil.jsp");

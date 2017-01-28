@@ -145,9 +145,6 @@
 	                    </div>
             		</c:if>
 
-
-
-
             		<c:if test="${status.index mod 2 == 1}">
 	            		<c:if test="${gStatus.index mod 2 == 0}">
 		            		<!--完整模板  s-->
