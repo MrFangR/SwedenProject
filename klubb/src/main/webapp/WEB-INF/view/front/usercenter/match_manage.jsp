@@ -62,9 +62,9 @@ function showUserMat(pageNum){
 			var htmlStr = "";
 			$.each(data.list, function(i, mat){
 				htmlStr +="<dl style='display: block;'  class='list hiddenMap position-rel'>"
-						+ "	<dt class='img position-rel fl'><a target='_blank' href='"+ctx+"/front/activity/viewAct?type="+mat.ID+"'><img src='"+uploadUrl+mat.IMG+"' width='340' height='310'></a></dt>"
+						+ "	<dt class='img position-rel fl'><a target='_blank' href='"+ctx+"/front/matchdetail?matchId="+mat.ID+"'><img src='"+uploadUrl+mat.IMG+"' width='340' height='310'></a></dt>"
 						+ "	<dd class='info  position-rel fr'>"
-						+ "		<p class='title'><a target='_blank' href='"+ctx+"/front/activity/viewAct?type="+mat.ID+"'>"+mat.NAME+"</a></p>"
+						+ "		<p class='title'><a target='_blank' href='"+ctx+"/front/matchdetail?matchId="+mat.ID+"'>"+mat.NAME+"</a></p>"
 						+ "		<p class='gray6 mgt-12'>"+mat.DESCRIPTION+"</p>"
 						+ "		<div class='moreInfo'><input name='cancleMat' onclick='cancleMat("+mat.ID+")' class='contbtn' value='—取消报名' type='button'></div>"
 						+ "	</dd>"

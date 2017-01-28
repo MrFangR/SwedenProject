@@ -24,14 +24,17 @@ public class Match extends BaseMatch<Match> {
 		return dao.find("select ID, NAME, IMG, DESCRIPTION from t_match where p_id is null and STATUS != -1 order by start_date desc");
 	}
 	
-	public Page<Match> findList(String title, int pageNum, Integer pagesize) {
+	public Page<Match> findList(String title, int pageNum, Integer pagesize, int status) {
 		String select = "select * ";
-		StringBuilder sql = new StringBuilder(" from t_match  where STATUS != -1 AND p_id is null ");
+		StringBuilder sql = new StringBuilder(" from t_match  where p_id is null ");
 		List<Object> params = new ArrayList<Object>();
 		if (StringUtils.isNotBlank(title)) {
 			sql.append(" and NAME like ? ");
 			params.add("%" + title + "%");
 		}
+		sql.append(" and STATUS=? ");
+		params.add(status);
+		
 		sql.append(" order by START_DATE desc");
 		return paginate(pageNum, pagesize, select, sql.toString(), params.toArray());
 	}

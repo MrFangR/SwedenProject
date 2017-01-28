@@ -1,15 +1,35 @@
+var index = 0;
 $(function(){
 	searchMat(1);
+	$(".list-tab .list-title").click(function(){
+	   	index = $(this).index();
+        if(index <= 2){
+        	searchMat(1);
+		}else{
+			searchMatUser(1);
+		}
+	 })
 });
 //查询
 function searchMat(pageNum){
+	var status = 1;
+	if(index==0){
+		status = 1;
+	}
+	if(index==1){
+		status = 0;
+	}
+	if(index==2){
+		status = 2;
+	}
 	$.ajax({
 		type : 'POST',
 		url : ctx + "/front/match/list",
 		data: {
 			title : $('#title').val(),
 			pageNum : pageNum,
-			pageSize : 16
+			pageSize : 16,
+			status : status
 		},
 		dataType : "json",
 		success : function(data){
@@ -36,9 +56,48 @@ function showResultList(data){
 		htmlStr += "</div>";
 		htmlStr += "</li>";
 	});
-	$("#resultDIV").html(htmlStr);
+	$(".listtabcon").find(".tabsub").eq(index).find("ul").html(htmlStr);
 	
-	setPageInfo("pageDiv", data, searchMat);
+	//$("#resultDIV").html(htmlStr);
+	
+	setPageInfo("pageDiv"+index, data, searchMat);
+}
+function searchMatUser(pageNum){
+	$.ajax({
+		type : 'POST',
+		url : ctx + "/front/match/showMatUser",
+		data: {
+			pageNum : pageNum,
+			pageSize : 16
+		},
+		dataType : "json",
+		success : function(data){
+			showUserResult(data);
+			return;
+		},
+		error : function(json){
+			pop.fail("系统异常，请稍后重试");
+			return;
+		}
+	});
+}
+function showUserResult(data){
+	var htmlStr = "";
+	$.each(data.list, function(i, user){
+		if(i%2==0){
+			htmlStr += "<tr>";
+		}else{
+			htmlStr += "<tr class='table-tr-even'>";
+		}
+		htmlStr += "<td>"+user.NAME+"</td>";
+		htmlStr += "<td>"+user.START_SCORE+"</td>";
+		htmlStr += "</tr>";
+	});
+	$(".listtabcon").find(".tabsub").eq(index).find("tbody").html(htmlStr);
+	
+	//$("#resultDIV").html(htmlStr);
+	
+	setPageInfo("pageDiv"+index, data, searchMatUser);
 }
 function FormatDate (strTime) {
     var date = new Date(strTime);

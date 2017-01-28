@@ -24,15 +24,61 @@
   </div>
 <!--ist-con S-->		
   <div class="list-con">
-     <div class="list-contitle">比赛列表</div>
-      <ul id="resultDIV">
-      </ul>
-          <!--Match 备注图片用li分割， 如果加日期要加日期分页符-->
-      <!--分页 start-->
-      <div class="paging clearfix" id="pageDiv">
-      </div>
-      <!--分页 end-->      
-      <div class="clearfix"></div>
+	<div class="list-tab"> 
+   		<div class="list-title curr">当前比赛</div>
+        <div class="list-title">即将比赛</div>
+        <div class="list-title">往期比赛</div>
+        <div class="list-title">报名用户</div>
+        <div class=" clearfix"></div>
+	</div>
+	<!--内容 S-->	
+	<div class="listtabcon">
+	<!--第一 S-->	
+	<div class="tabsub mgt-20">
+		<ul></ul>
+		<!--分页 start-->
+      	<div class="paging clearfix" id="pageDiv0"></div>
+      	<!--分页 end--> 
+	   	<div class="clearfix"></div>
+	</div>
+    <!--第一 E-->	 
+    <!--第二 S-->	
+    <div class="tabsub" style="display:none;">
+    	<ul></ul>
+  		<!--分页 start-->
+  		<div class="paging clearfix" id="pageDiv1"></div>
+  		<!--分页 end-->  
+	<div class="clearfix"></div>          
+    </div>
+    <!--第二 E-->	 
+    <!--第三 S-->	
+    <div class="tabsub" style="display:none;">
+    	<ul></ul>
+		<!--分页 start-->
+        <div class="paging clearfix" id="pageDiv2"></div> 
+        <!--分页 end-->  
+		<div class="clearfix"></div>
+    </div>
+    <!--第三 E-->	 
+    <!--第四 S-->	
+    <div class="tabsub" style="display:none;">
+    	<table class="table-con mgt-20">
+    		<thead>
+        	<tr>
+        		<th>参赛人员姓名</th>
+           		<th>起始分</th>
+         	</tr>
+         	</thead>
+         	<tbody></tbody>
+      	</table>
+      	<!--分页 start-->
+        <div class="paging clearfix" id="pageDiv3"></div> 
+        <!--分页 end-->  
+		<div class="clearfix"></div>
+    </div>
+    <!--第四 E-->	 
+	 </div>
+	 <!--内容 E-->
   </div>
 <!--list-con E-->	
 <!--bottom S-->

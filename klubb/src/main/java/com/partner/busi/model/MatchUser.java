@@ -146,4 +146,11 @@ public class MatchUser extends BaseMatchUser<MatchUser> {
 		StringBuffer sb = new StringBuffer(" UPDATE t_match_user MU SET MU.START_SCORE = '"+score+"' WHERE MU.ID = "+id);
 		return Db.update(sb.toString());
 	}
+
+	public Page<MatchUser> findMatUserList(int pageNum, int pageSize) {
+		String select = " select m.*, u.NAME";
+		StringBuilder sql = new StringBuilder(" from t_match_user m, t_user u where m.USER_ID = u.ID ");
+		sql.append(" order by m.SEQ ");
+		return paginate(pageNum, pageSize, select, sql.toString());
+	}
 }
