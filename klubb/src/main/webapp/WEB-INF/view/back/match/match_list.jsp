@@ -63,8 +63,8 @@
                     <tr>
                         <th><font color="color-3">*&nbsp;</font>第三名争夺赛：</th>
                         <td  colspan="3">
-	                       	<input class="inp-radio" type="radio" name="match.THIRD" unit="年" value="1"><span class="b-radio mgr-30"><b></b>是</span>
-	                        <input class="inp-radio" type="radio" name="match.THIRD" checked="checked" unit="半年" value="0"><span class="b-radio"><b></b>否</span>
+	                       	<input class="inp-radio" type="radio" name="match.THIRD" unit="年" value="1" checked="checked"><span class="b-radio mgr-30"><b></b>是</span>
+	                        <input class="inp-radio" type="radio" name="match.THIRD" unit="半年" value="0"><span class="b-radio"><b></b>否</span>
 	                    </td>
                     </tr>
                     <tr>
@@ -79,6 +79,13 @@
                         <td colspan="3">
                             <input type="text" name="match.MAX_PLAYER" value="" class="ued-text-2" maxlength="30">
                             <p class="color-3 fs-14" id="max_player_msg"></p>    
+                        </td>
+                    </tr>
+                    <tr style="display:none;">
+                        <th><font color="color-3">*&nbsp;</font>双败截止人数：</th>
+                        <td colspan="3">
+                            <input type="text" name="match.STOP_PLAYER" value="" class="ued-text-2" maxlength="30">
+                            <p class="color-3 fs-14" id="stop_player_msg"></p>    
                         </td>
                     </tr>
                     <tr>

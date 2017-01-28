@@ -13,6 +13,10 @@ public class MatchValidator extends Validator  {
 		validateInteger("match.MAX_PLAYER", 2, 99999, "max_player_msg", "请填写正确的人数");
 		validateRequiredString("match.IMG", "img_path_msg", "请填加图片");
 		validateString("match.DESCRIPTION", 1, 200, "description_msg", "请输入1~200描述内容");
+		int type = c.getParaToInt("match.TYPE");
+		if(type==2||type==4){
+			validateInteger("match.STOP_PLAYER", 2, 99999, "stop_player_msg", "请填写正确的人数");
+		}
 	}
 
 	@Override

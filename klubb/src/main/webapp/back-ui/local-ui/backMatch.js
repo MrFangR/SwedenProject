@@ -1,6 +1,15 @@
 $(function(){
 	initUpload();
 	showMatch(1);
+	$("input[name='match.TYPE']").click(function(){
+		var type = $(this).val();
+		if(type==2||type==4){
+			 $("input[name='match.STOP_PLAYER']").parent().parent().show();
+		}else{
+			$("input[name='match.STOP_PLAYER']").val("");
+			 $("input[name='match.STOP_PLAYER']").parent().parent().hide();
+		}
+	 })
 });
 function showMatch(pageNum){
 	$('#pageNumIn').val(pageNum);
