@@ -282,10 +282,20 @@ public class BackMatchController extends Controller {
 	
 	public void generateGame(){
 		Integer matchId = getParaToInt("matchId");
+		ResultInfo retInfo = new ResultInfo();
+		retInfo.setRetCode(1);
+		retInfo.setRetMsg("生成对阵图失败");
 		Match match = Match.dao.findById(matchId);
 		if(match != null && match.getSTATUS() == 0){ //比赛未开始，根据当前用户信息重新生成比赛
 			//1.删除本赛事下所有比赛
+			Integer secondMatchId = null;
+			if(match.getStopPlayer() != null && !match.getStopPlayer().equals(0)){
+				secondMatchId = Match.dao.getChildMatchId(matchId);
+			}
 			Game.dao.deleteByMatchId(matchId);
+			if(secondMatchId != null){
+				Game.dao.deleteByMatchId(secondMatchId);
+			}
 			//2.根据当前人员生成比赛
 			//2.1获取当前参赛人员，orderby seq
 			List<MatchUser> list = MatchUser.dao.findUserByMatchId(matchId);
@@ -302,7 +312,12 @@ public class BackMatchController extends Controller {
 				Integer childMatchId = Match.dao.getChildMatchId(matchId);
 				generateSingleGame(null, match.getStopPlayer(), childMatchId);
 			}
+			retInfo.setRetCode(0);
+			retInfo.setRetMsg("生成对阵图成功");
+		} else if (match.getSTATUS() != 0){
+			retInfo.setRetMsg("只能对未开始的比赛生成对阵图");
 		}
+		renderJson(retInfo);
 	}
 	
 	public void delUser(){

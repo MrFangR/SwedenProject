@@ -270,7 +270,7 @@
             <div class="box-n" style="width:100%" id="matchUserLst">
             		<c:if test="${match.STATUS == 0 }">
                     	<button class="ued-button-4 js_dialog mgl-25" id="randomSort">打散用户顺序</button> 
-                    	<button class="ued-button-4 js_dialog mgl-25" >重新生成对阵图</button> 
+                    	<button class="ued-button-4 mgl-25" id="generateGame">重新生成对阵图</button>
             		</c:if>
                     <div id='single1' class='container'>
 						<c:forEach var="user" items="${matchUser}">
@@ -477,6 +477,47 @@ $(function() {
 			  }
 		  });
 	 });
+
+    $("#generateGame").bind("click",function(){
+        var matchId=$("#matchId").val();
+        $.ajax({
+            type:"post",
+            url:ctx + "/back/match/edit/generateGame",
+            data:{
+                matchId: matchId
+            },
+            async:false,
+            dataType:"json",
+            success:function(json){
+                if(json.retCode == 0 ){
+                    ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+                        {type:2,
+                            info:'比赛管理',
+                            text:'<div style=" font-size:18px; color:#ff0000;"> '+json.retMsg+' </div>',
+                            'ok':function(){},
+                            tag:'zq-ring'}
+                    );
+                }else{
+                    ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+                        {type:2,
+                            info:'比赛管理',
+                            text:'<div style=" font-size:18px; color:#ff0000;"> '+json.retMsg+' </div>',
+                            'ok':function(){},
+                            tag:'cw-ring'}
+                    );
+                }
+            },
+            error:function(){
+                ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+                    {type:2,
+                        info:'比赛管理',
+                        text:'<div style=" font-size:18px; color:#ff0000;"> 系统异常，请稍后重试 </div>',
+                        'ok':function(){},
+                        tag:'cw-ring'}
+                );
+            }
+        });
+    });
 	//tab切换
 	$(".dialogtitle ul li").live(
 			"click",
