@@ -70,13 +70,13 @@
 			<!--对阵 S-->	
             <div class="tabsub"  style="display:none; margin:0px;">
 				<!--第一tab  一列是320px 目前展示5列宽为1600px  如果对阵图列数超过3需要代码判断列数给 box-n div 输入宽度 s-->
-				<c:set var="boxMgt" value="${fn:split('0,80,220,490,1050', ',') }" />
-				<c:set var="tempMgt" value="${fn:split('60,200,480,1050', ',') }" />
-				<c:set var="svgHeight" value="${fn:split('76,140,280,560', ',') }" />
+				<c:set var="boxMgt" value="${fn:split('0,50,140,340,740', ',') }" />
+				<c:set var="tempMgt" value="${fn:split('20,120,320,720', ',') }" />
+				<c:set var="svgHeight" value="${fn:split('56,100,200,400', ',') }" />
 
-				<c:set var="lBoxMgt" value="${fn:split('60,0,70,0,140,80,360,300', ',') }" />
-				<c:set var="lTempMgt" value="${fn:split('60,60,200,200,480,480,60,100', ',') }" />
-				<c:set var="lSvgHeight" value="${fn:split('76,76,280,140,560,280,560,560', ',') }" />
+				<c:set var="lBoxMgt" value="${fn:split('50,0,50,0,100,60,260,220', ',') }" />
+				<c:set var="lTempMgt" value="${fn:split('20,20,120,120,320,320,60,100', ',') }" />
+				<c:set var="lSvgHeight" value="${fn:split('56,56,56,100,56,200,56,56', ',') }" />
 
 				<input type="hidden" id="winTitleLength" value="${fn:length(winTitleList)}">
 				<input type="hidden" id="loseTitleLength" value="${fn:length(loseTitleList)}">
@@ -176,8 +176,8 @@
 													</div>
 													<c:if test="${not status.last }">
 														<div class="matchline">
-															<svg  x="0" y="0" width="290px" height="76px" style="margin-top:-86px">
-																<path d="M 228,66 L 236,66  L 236,1  L 244,1" class="bracket-line"/>
+															<svg  x="0" y="0" width="290px" height="${lSvgHeight[status.index] }px" style="margin-top:-86px">
+																<path d="M 228,${lSvgHeight[status.index] } L 236,${lSvgHeight[status.index] }  L 236,1  L 244,1" class="bracket-line"/>
 															</svg>
 														</div>
 													</c:if>
