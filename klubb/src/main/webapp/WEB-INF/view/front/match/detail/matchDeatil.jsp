@@ -223,6 +223,15 @@
 							</div>
 							<c:if test="${fn:length(secondList) <= 0}">
 						</div>
+						<c:if test="${not empty thirdGame}">
+							<div class="matchgroup mgt-60">
+								<div wId="${thirdGame.winnerId }" tNum="${thirdGame.tableNum }" sTime="${thirdGame.startTime }" gType="${thirdGame.TYPE }" gSeq="${thirdGame.SEQ }" gId="${thirdGame.ID}" wSeq="${thirdGame.WNextId}" lSeq="${thirdGame.LNextId}" class="template js_template">
+									<h3>${thirdGame.SEQ }</h3>
+									<div class="group" id="${thirdGame.ID }_1" ><i><c:if test="${thirdGame.u1_SEQ != 0}">${thirdGame.u1_SEQ}</c:if></i><span id="${thirdGame.USER1 }">${thirdGame.u1_NAME }</span><input name="" type="text" value="${thirdGame.SCORE1 }"></div>
+									<div class="group" id="${thirdGame.ID }_2" ><i><c:if test="${thirdGame.u2_SEQ != 0}">${thirdGame.u2_SEQ}</c:if></i><span id="${thirdGame.USER2 }">${thirdGame.u2_NAME }</span><input name="" type="text" value="${thirdGame.SCORE2 }"></div>
+								</div>
+							</div>
+						</c:if>
 						</c:if>
 					</div>
 					</c:if>
@@ -292,6 +301,15 @@
 									</c:if>
 									<c:if test="${status.last}">
 								</div>
+									<c:if test="${not empty thirdGame}">
+										<div class="matchgroup mgt-60">
+											<div wId="${thirdGame.winnerId }" tNum="${thirdGame.tableNum }" sTime="${thirdGame.startTime }" gType="${thirdGame.TYPE }" gSeq="${thirdGame.SEQ }" gId="${thirdGame.ID}" wSeq="${thirdGame.WNextId}" lSeq="${thirdGame.LNextId}" class="template js_template">
+												<h3>${thirdGame.SEQ }</h3>
+												<div class="group" id="${thirdGame.ID }_1" ><i><c:if test="${thirdGame.u1_SEQ != 0}">${thirdGame.u1_SEQ}</c:if></i><span id="${thirdGame.USER1 }">${thirdGame.u1_NAME }</span><input name="" type="text" value="${thirdGame.SCORE1 }"></div>
+												<div class="group" id="${thirdGame.ID }_2" ><i><c:if test="${thirdGame.u2_SEQ != 0}">${thirdGame.u2_SEQ}</c:if></i><span id="${thirdGame.USER2 }">${thirdGame.u2_NAME }</span><input name="" type="text" value="${thirdGame.SCORE2 }"></div>
+											</div>
+										</div>
+									</c:if>
 								</c:if>
 								<!--完整模板  e-->
 								</c:forEach>

@@ -63,6 +63,17 @@ public class BackMatchController extends Controller {
 		List<List<Game>> loseList = generateList(lList, loseTitleList, false);
 		List<List<Game>> secondList = generateList(sList, secondTitleList, true);
 
+		Game thirdGame = null;
+		if(match.getTHIRD() != null && match.getTHIRD().equals(1)){
+			Integer thirdMatchId = matchId;
+			if(match.getTYPE() == 2 || match.getTYPE() == 4){ //双败
+				if (match.getStopPlayer() != null && !match.getStopPlayer().equals(0)){
+					Integer childMatchId = Match.dao.getChildMatchId(matchId);
+					thirdMatchId = childMatchId;
+				}
+			}
+			thirdGame = Game.dao.getThirdGame(thirdMatchId);
+		}
 
 		setAttr("match", match);
 		setAttr("winList", winList);
@@ -71,6 +82,7 @@ public class BackMatchController extends Controller {
 		setAttr("loseTitleList", loseTitleList);
 		setAttr("secondTitleList", secondTitleList);
 		setAttr("secondList", secondList);
+		setAttr("thirdGame", thirdGame);
 		
 		String tabFlag = getPara("flag");
 		if(StringUtils.isNotBlank(tabFlag)){
@@ -304,13 +316,20 @@ public class BackMatchController extends Controller {
 				userIdList.add(user.getUserId());
 			}
 			//2.2生成比赛
+			Integer thirdMatchId = matchId;
 			if(match.getTYPE() == 1 || match.getTYPE() == 3){ //单败
 //				generateSingleGame(userIdList, 0, 0, 1, matchId);
 				generateSingleGame(userIdList, null, matchId);
 			} else if(match.getTYPE() == 2 || match.getTYPE() == 4){ //双败
 				generateDoubleGame(userIdList, matchId);
-				Integer childMatchId = Match.dao.getChildMatchId(matchId);
-				generateSingleGame(null, match.getStopPlayer(), childMatchId);
+				if (match.getStopPlayer() != null && !match.getStopPlayer().equals(0)){
+					Integer childMatchId = Match.dao.getChildMatchId(matchId);
+					generateSingleGame(null, match.getStopPlayer(), childMatchId);
+					thirdMatchId = childMatchId;
+				}
+			}
+			if(match.getTHIRD() != null && match.getTHIRD().equals(1)){
+				Game.dao.generateThird(thirdMatchId);
 			}
 			retInfo.setRetCode(0);
 			retInfo.setRetMsg("生成对阵图成功");

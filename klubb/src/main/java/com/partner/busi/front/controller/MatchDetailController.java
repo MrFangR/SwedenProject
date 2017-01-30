@@ -109,6 +109,17 @@ public class MatchDetailController extends Controller {
 		List<List<Game>> loseList = generateList(lList, loseTitleList, false);
 		List<List<Game>> secondList = generateList(sList, secondTitleList, true);
 
+		Game thirdGame = null;
+		if(match.getTHIRD() != null && match.getTHIRD().equals(1)){
+			Integer thirdMatchId = Integer.parseInt(matchId);
+			if(match.getTYPE() == 2 || match.getTYPE() == 4){ //双败
+				if (match.getStopPlayer() != null && !match.getStopPlayer().equals(0)){
+					Integer childMatchId = Match.dao.getChildMatchId(Integer.parseInt(matchId));
+					thirdMatchId = childMatchId;
+				}
+			}
+			thirdGame = Game.dao.getThirdGame(thirdMatchId);
+		}
 
 		setAttr("match", match);
 		setAttr("winList", winList);
@@ -117,6 +128,7 @@ public class MatchDetailController extends Controller {
 		setAttr("loseTitleList", loseTitleList);
 		setAttr("secondTitleList", secondTitleList);
 		setAttr("secondList", secondList);
+		setAttr("thirdGame", thirdGame);
 		/*对阵图end*/
 
 		render("matchDeatil.jsp");

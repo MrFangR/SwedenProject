@@ -97,7 +97,7 @@ public class Game extends BaseGame<Game> {
 				+ " LEFT JOIN t_user AS u1 ON g.USER1 = u1.ID"
 				+ " LEFT JOIN t_user AS u2 ON g.USER2 = u2.ID"
 				+ " INNER JOIN t_match AS m ON m.ID = g.MATCH_ID"
-				+ " WHERE g.MATCH_ID = ? and %s"
+				+ " WHERE g.MATCH_ID = ? and g.SHOW_INDEX is not null and %s"
 				+ " ORDER BY g.SHOW_INDEX";
 		final String WIN_CON = "(m.TYPE in (1, 3) or (m.TYPE in (2, 4) and L_NEXT_ID != ''))";
 		final String LOSE_CON = "(m.TYPE in (2, 4) and L_NEXT_ID = '')";
@@ -115,6 +115,24 @@ public class Game extends BaseGame<Game> {
 				return Game.dao.find(String.format(sql, LOSE_CON), martchId);
 			}
 		}
+	}
+
+	public boolean generateThird(int matchId){
+		String sql = "insert into t_game(SEQ, W_NEXT_ID, L_NEXT_ID, MATCH_ID, STATUS) values (" +
+				"(select t.s + 1 from (select max(seq) as s from t_game where MATCH_ID=?) as t), '', '', ?, 0)";
+		int rs = Db.update(sql, matchId, matchId);
+		if (rs > 0){
+			Game thirdGame = getThirdGame(matchId);
+			sql = "update t_game set L_NEXT_ID=? where SEQ = ?";
+			Db.update(sql, thirdGame.getSEQ() + "_1", thirdGame.getSEQ() - 3);
+			Db.update(sql, thirdGame.getSEQ() + "_2", thirdGame.getSEQ() - 2);
+		}
+		return rs > 0;
+	}
+
+	public Game getThirdGame(int matchId){
+		String sql = "select * from t_game where MATCH_ID = ? and SHOW_INDEX is null";
+		return dao.findFirst(sql, matchId);
 	}
 
 	public void setU1_SEQ(Long seq) {
