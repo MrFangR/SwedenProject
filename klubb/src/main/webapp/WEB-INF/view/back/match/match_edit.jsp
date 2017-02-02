@@ -403,7 +403,7 @@
                    <tr>
                         <th>开始时间：</th>
                         <td>
-                             	<input id="editStartTime" value="" class="Wdate ued-text-2" maxlength="30" type="text" onClick="WdatePicker({ dateFmt: 'yyyy-MM-dd HH:mm:ss' })" style="border: 1px solid #e5e5e5;height: 28px;padding-left: 10px;">
+                             	<input id="editStartTime" value="" class="Wdate ued-text-2" maxlength="30" type="text" onClick="WdatePicker({ dateFmt: 'yyyy-MM-dd HH:mm' })" style="border: 1px solid #e5e5e5;height: 28px;padding-left: 10px;">
                         </td>
 
                     </tr>

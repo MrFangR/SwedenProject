@@ -428,7 +428,7 @@
 				</li>
 				<li>
 					<h3 class="tit">比赛胜者</h3>
-					<div class="clearfix" style="width:180px; margin:0 auto"><span  class="btn editUser1"></span><span  class="btn editUser2"></span> </div>
+					<div class="clearfix" style="width:180px; margin:0 auto"><span id="editUser1" class="btn editUser1"></span><span id="editUser2" class="btn editUser2"></span> </div>
 					<h3 class="tit">比赛比分</h3>
 					<input type="hidden" id="editGameId"/>
 					<table class="ued-table-nobor mgt-15" width="100%" cellspacing="0" cellpadding="0">
@@ -583,9 +583,9 @@ function initDialog(self) {
 
     if($(self).attr("wId") != null && $(self).attr("wId") != ""){
         if($(self).attr("wId") == $div1.find("span").attr("id")){
-            $("#btn-matchbtn span.editUser1").addClass("active").siblings("span.btn").removeClass("active");
+            $("#editUser1").addClass("active").siblings("span.btn").removeClass("active");
         }else if($(self).attr("wId") == $div2.find("span").attr("id")){
-            $("#btn-matchbtn span.editUser2").addClass("active").siblings("span.btn").removeClass("active");
+            $("#editUser2").addClass("active").siblings("span.btn").removeClass("active");
         }
     }else{
         $("#btn-matchbtn span.btn").removeClass("active");
