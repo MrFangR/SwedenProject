@@ -52,11 +52,12 @@ public class MatchDetailController extends Controller {
 		List<Game> sortData = Game.dao.sordMatch(Integer.parseInt(matchId));
 		List<MatchRinkListVo> rinkingList = new ArrayList<MatchRinkListVo>();
 		MatchRinkListVo rinkVo = null;
-		int preWinNum = 0;
+		int preWinNum = 0;//排行榜名次
+		int seq = 0;//
 		for(int i=0;i<sortData.size();i++){
 			Game game = sortData.get(i);
 			String[] tempFlag = Game.dao.getMatchHis(Integer.parseInt(matchId), game.getUSER_ID());
-			int seq = i+1;//排行榜名次
+			seq = seq+1;//排行榜名次
 			if(preWinNum == game.getWinNum()){
 				seq = seq - 1;
 			}
