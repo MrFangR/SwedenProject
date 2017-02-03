@@ -293,10 +293,10 @@
                     <div id='single1' class='container'>
 						<c:forEach var="user" items="${matchUser}">
 							<c:if test="${not empty user.startScore}">
-								<div>${user.NAME } <p class="input">初始分：<span>${user.startScore }</span></p><i class="mtch_del" dataValue="${user.ID }"></i><i class="mtch_edit" dataValue="${user.ID }" userValue="${user.userId }" startScore="${user.startScore }"></i></div>
+								<div>${user.NAME } <p class="input">初始分：<span>${user.startScore }</span></p><i class="mtch_del" dataValue="${user.ID }" dataName="${user.NAME }"></i><i class="mtch_edit" dataValue="${user.ID }" userValue="${user.userId }" startScore="${user.startScore }"></i></div>
 							</c:if>
 							<c:if test="${empty user.startScore}">
-								<div>${user.NAME } <p class="input">初始分：<span>0</span></p><i class="mtch_del" dataValue="${user.ID }"></i><i class="mtch_edit" dataValue="${user.ID }" startScore="${user.startScore }"></i></div>
+								<div>${user.NAME } <p class="input">初始分：<span>0</span></p><i class="mtch_del" dataValue="${user.ID }" dataName="${user.NAME }"></i><i class="mtch_edit" dataValue="${user.ID }" startScore="${user.startScore }"></i></div>
 							</c:if>
 						</c:forEach>
                    </div>
@@ -579,40 +579,49 @@ $(function() {
 			return;
 		}
 		var userId = $(this).attr("dataValue");
-		  var obj = $(this);
-		  var matchId=$("#matchId").val();
-		  $.ajax({
-			  type:"post",
-			  url:ctx + "/back/match/edit/delUser",
-			  data:{
-				  id: userId
-			  },
-			  async:false,
-			  dataType:"json",
-			  success:function(json){
-				  if(json.retCode == 0 ){
-					  obj.parent().remove();
-					  location.href=ctx + "/back/match/edit?matchId="+matchId+"&flag=editUser";
-				  }else{
-					  ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
-					   {type:2,
-						info:'比赛管理',
-						text:'<div style=" font-size:18px; color:#ff0000;"> '+json.retMsg+' </div>',
-						'ok':function(){},
-						tag:'cw-ring'}
-		               );
-				  }
-			  },
-			  error:function(){
-				  ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
-				   {type:2,
-					info:'比赛管理',
-					text:'<div style=" font-size:18px; color:#ff0000;"> 系统异常，请稍后重试 </div>',
-					'ok':function(){},
-					tag:'cw-ring'}
-	               );
-			  }
-		  });
+		var userName = $(this).attr("dataName");
+	  var obj = $(this);
+	  var matchId=$("#matchId").val();
+	  ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+			   {type:2,
+				info:'比赛管理',
+				text:'<div style=" font-size:18px; color:#ff0000;"> 确定要删除用户【'+userName+'】？？ </div>',
+				'ok':function(){
+					 $.ajax({
+						  type:"post",
+						  url:ctx + "/back/match/edit/delUser",
+						  data:{
+							  id: userId
+						  },
+						  async:false,
+						  dataType:"json",
+						  success:function(json){
+							  if(json.retCode == 0 ){
+								  obj.parent().remove();
+								  location.href=ctx + "/back/match/edit?matchId="+matchId+"&flag=editUser";
+							  }else{
+								  ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+								   {type:2,
+									info:'比赛管理',
+									text:'<div style=" font-size:18px; color:#ff0000;"> '+json.retMsg+' </div>',
+									'ok':function(){},
+									tag:'cw-ring'}
+					               );
+							  }
+						  },
+						  error:function(){
+							  ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+							   {type:2,
+								info:'比赛管理',
+								text:'<div style=" font-size:18px; color:#ff0000;"> 系统异常，请稍后重试 </div>',
+								'ok':function(){},
+								tag:'cw-ring'}
+				               );
+						  }
+					  });
+				},
+				tag:'tx-ring'}
+	              );
 
 	});
 	$(".js_template")
