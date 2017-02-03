@@ -33,9 +33,9 @@
 									<th>搜索：</th>
 									<td><input id="titleIn" type="text" name="title"
 										class="ued-text-2" maxlength="30"
-										placeholder="请输入用户姓名、昵称或邮箱地址" />
-										<button class="ued-button-2 mgr-25" onclick="qryUser()">查询</button>
-										<button class="ued-button-3" onclick="reset()">重置</button></td>
+										placeholder="请输入用户姓名或昵称"  />
+										&nbsp;&nbsp;&nbsp;&nbsp;<button class="ued-button-2 mgr-25" onclick="qryUser()">查询</button>
+										<button class="ued-button-3" onclick="resetQry()">重置</button></td>
 								</tr>
 							</tbody>
 						</table>

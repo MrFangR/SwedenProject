@@ -15,9 +15,8 @@
 </div>
 <table width="100%" cellspacing="0" cellpadding="0" border="0" class="ued-table mgt-20">
 	<colgroup>
-		<col width="2%" />
 		<col width="8%" />
-		<col width="8%" />
+		<col width="10%" />
 		<col width="10%" />
 		<col width="15%" />
 		<col width="13%" />
@@ -28,7 +27,6 @@
 	</colgroup>
 	<tbody>
 		<tr class="ued-tr-even">
-			<th></th>
 			<th>姓名</th>
 			<th>昵称</th>
 			<th>人口号</th>
@@ -46,10 +44,12 @@
 		<c:if test="${not empty paginate.list}">
 			<c:forEach items="${paginate.list}" var="user">
 				<tr class="ued-tr-odd">
+				<!-- 
 					<td class="pdl-10">
 						<input type="radio" name="userId" class="inp-radio" value="${user.ID}"/>
 						<span class="b-radio"><b></b></span>
 					</td>
+				 -->
 					<td><a href="javascript:viewUser(${user.ID});">${user.NAME}</a></td>
 					<td>${user.NICKNAME }</td>
 					<td>${user.idNumber }</td>
@@ -77,7 +77,7 @@
 					</td>
 					<td><fmt:formatDate value="${user.createTime}" type="both"/></td>
 					<td>
-						<button class="ued-button-4" onclick="delUser(${user.ID})">删除</button>
+						<button class="ued-button-4" onclick="delUser(${user.ID},'${user.NAME}')">删除</button>
 						<button class="ued-button-6" onclick="viewUser(${user.ID})">详情</button>
 					</td>
 				</tr>

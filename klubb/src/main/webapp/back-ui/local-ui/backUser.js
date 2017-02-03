@@ -92,49 +92,64 @@ function resetAdd(){
 	$('#roleName_a').text("");
 }
 
-function delUser(id){
-	$.ajax({
-		type : 'post',
-		cache : false,
-		async : true,
-		url : ctx + "/back/user/delUser",
-		data: {
-			"userId" : id
+function resetQry(){
+	$("#titleIn").val("");
+	qryUser(1);
+}
+
+function delUser(id,name){
+	ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+	   {type:2,
+		info:'用户管理',
+		text:'<div style=" font-size:18px; color:#ff0000;"> 确定要删除用户：'+name+'，此删除不可恢复。</div>',
+		'ok':function(){
+			$.ajax({
+				type : 'post',
+				cache : false,
+				async : true,
+				url : ctx + "/back/user/delUser",
+				data: {
+					"userId" : id
+				},
+				dataType : "json",
+				success : function(json){
+					var flag = json.retCode;
+					if (flag == 0) {
+						ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+						   {type:2,
+							info:'用户管理',
+							text:'<div style=" font-size:18px; color:#ff0000;">'+json.retMsg+'</div>',
+							'ok':function(){qryUser(1);},
+							tag:'zq-ring'}
+			               );
+						
+					} else {
+						ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+						   {type:2,
+							info:'用户管理',
+							text:'<div style=" font-size:18px; color:#ff0000;">'+json.retMsg+'</div>',
+							'ok':function(){},
+							tag:'cw-ring'}
+			               );
+					}
+					return;
+				},
+				error : function(){
+					ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+					   {type:2,
+						info:'用户管理',
+						text:'<div style=" font-size:18px; color:#ff0000;"> 系统异常，请稍后重试 </div>',
+						'ok':function(){},
+						tag:'cw-ring'}
+		               );
+					return;
+				}
+			});
+			
 		},
-		dataType : "json",
-		success : function(json){
-			var flag = json.retCode;
-			if (flag == 0) {
-				ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
-				   {type:2,
-					info:'用户管理',
-					text:'<div style=" font-size:18px; color:#ff0000;">'+json.retMsg+'</div>',
-					'ok':function(){qryUser(1);},
-					tag:'zq-ring'}
-	               );
-				
-			} else {
-				ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
-				   {type:2,
-					info:'用户管理',
-					text:'<div style=" font-size:18px; color:#ff0000;">'+json.retMsg+'</div>',
-					'ok':function(){},
-					tag:'cw-ring'}
-	               );
-			}
-			return;
-		},
-		error : function(){
-			ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
-			   {type:2,
-				info:'用户管理',
-				text:'<div style=" font-size:18px; color:#ff0000;"> 系统异常，请稍后重试 </div>',
-				'ok':function(){},
-				tag:'cw-ring'}
-               );
-			return;
-		}
-	});
+		tag:'tx-ring'}
+    );
+	
 }
 
 function viewUser(id){
