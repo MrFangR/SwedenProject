@@ -63,10 +63,18 @@ function updateStatus(f, contactId){
 			},
 			dataType : "json",
 			success : function(json){
-				if (json.flag == 0) {
-					qry(1);
-				}
-				alert(json.msg);
+                var type = "cw-ring";
+                if (json.flag == 0) {
+                    type = "zq-ring";
+                    qry(1);
+                }
+                ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+                    {type:2,
+                        info:'留言管理',
+                        text:'<div style=" font-size:18px; color:#ff0000;"> '+json.msg+' </div>',
+                        'ok':function(){},
+                        tag:type}
+                );
 				return;
 			},
 			error : function(){

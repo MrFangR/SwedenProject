@@ -40,18 +40,22 @@ public class BackPictureController extends Controller {
 		String picId = getPara("picId");
 		String isRecommend = getPara("isRecommend");
 		Picture picture = Picture.dao.findById(picId);
+		int flag = 1;
 		String msg = "标记失败，请稍后再试！";
 		if(picture != null){
 			picture.set("IS_RECOMMEND", isRecommend);
 			boolean rs = picture.update();
 			if(rs){
+				flag = 0;
 				msg = "标记成功";
 				if("0".equals(isRecommend)){
 					msg = "取消" + msg;
 				}
 			}
 		}
-		renderJson("msg", msg);
+		setAttr("flag", flag);
+		setAttr("msg", msg);
+		renderJson();
 	}
 	
 	/**

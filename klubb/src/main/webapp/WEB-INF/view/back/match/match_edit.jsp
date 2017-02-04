@@ -700,15 +700,33 @@ $(function() {
                         $game.attr("gType", type);
                         $game.attr("tNum", tableNum);
 						$(".dialog-close").trigger("click");
-						alert("编辑成功");
+                        ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+                            {type:2,
+                                info:'比赛管理',
+                                text:'<div style=" font-size:18px; color:#ff0000;"> 编辑成功 </div>',
+                                'ok':function(){},
+                                tag:'zq-ring'}
+                        );
 					}else{
-						alert("编辑失败");
+                        ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+                            {type:2,
+                                info:'比赛管理',
+                                text:'<div style=" font-size:18px; color:#ff0000;"> 编辑失败 </div>',
+                                'ok':function(){},
+                                tag:'cw-ring'}
+                        );
 					}
 				}
 			});
 		}else if(index == 1){ //编辑比分
 			if($(".editUser1").attr("uid") == "" || $(".editUser2").attr("uid") == "" ){
-				alert("比赛人员不全，不得编辑比分及胜者");
+                ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+                    {type:2,
+                        info:'比赛管理',
+                        text:'<div style=" font-size:18px; color:#ff0000;">比赛人员不全，不得编辑比分及胜者</div>',
+                        'ok':function(){},
+                        tag:'cw-ring'}
+                );
 				return;
 			}
 			var winId = $("#btn-matchbtn span.active").attr("uid");
@@ -736,9 +754,21 @@ $(function() {
 						moveUserToGame(gameId, "w"); //移动到胜者组
 						moveUserToGame(gameId, "l"); //移动到败者组
 						$(".dialog-close").trigger("click");
-						alert("编辑成功");
+                        ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+                            {type:2,
+                                info:'比赛管理',
+                                text:'<div style=" font-size:18px; color:#ff0000;"> 编辑成功 </div>',
+                                'ok':function(){},
+                                tag:'zq-ring'}
+                        );
 					}else{
-						alert("编辑失败");
+                        ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+                            {type:2,
+                                info:'比赛管理',
+                                text:'<div style=" font-size:18px; color:#ff0000;"> 编辑失败 </div>',
+                                'ok':function(){},
+                                tag:'cw-ring'}
+                        );
 					}
 				}
 			});

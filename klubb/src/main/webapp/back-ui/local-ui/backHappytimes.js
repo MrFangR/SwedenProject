@@ -43,7 +43,17 @@ function updateRecommend(self, picId){
 		},
 		dataType : "json",
 		success : function(json){
-			alert(json.msg);
+			var type = "cw-ring";
+			if(json.flag == 0){
+				type = "zq-ring";
+			}
+            ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+                {type:2,
+                    info:'Happytimes管理',
+                    text:'<div style=" font-size:18px; color:#ff0000;"> '+json.msg+' </div>',
+                    'ok':function(){},
+                    tag:type}
+            );
 			return;
 		},
 		error : function(){
