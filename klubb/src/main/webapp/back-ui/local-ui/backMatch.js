@@ -165,7 +165,7 @@ function initUpload(){
 		    success: function (data) {
 		    	var obj = jQuery.parseJSON(data);
 		    	$("#imgPath").val(obj.fileName);
-		    	$("#showImg").attr("src", "${uploadUrl}" + obj.fileName);
+		    	$("#showImg").attr("src", uploadUrl + obj.fileName);
 		    },
 		    error: function (data, status, e) {
 		        alert(e);

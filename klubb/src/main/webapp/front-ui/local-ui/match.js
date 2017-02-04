@@ -2,8 +2,16 @@ var index = 0;
 $(function(){
 	searchMat(1);
 	$(".list-tab .list-title").click(function(){
+		$(".inputfont").val("");
 	   	index = $(this).index();
         if(index <= 2){
+        	searchMat(1);
+		}else{
+			searchMatUser(1);
+		}
+	 })
+	 $(".inputbut").click(function(){
+	   	if(index <= 2){
         	searchMat(1);
 		}else{
 			searchMatUser(1);
@@ -67,6 +75,7 @@ function searchMatUser(pageNum){
 		type : 'POST',
 		url : ctx + "/front/match/showMatUser",
 		data: {
+			title : $('#title').val(),
 			pageNum : pageNum,
 			pageSize : 16
 		},
@@ -89,8 +98,8 @@ function showUserResult(data){
 		}else{
 			htmlStr += "<tr class='table-tr-even'>";
 		}
-		htmlStr += "<td>"+user.NAME+"</td>";
-		htmlStr += "<td>"+user.START_SCORE+"</td>";
+		htmlStr += "<td>"+user.NICKNAME+"</td>";
+		htmlStr += "<td>"+user.LAST_START_SCORE+"</td>";
 		htmlStr += "</tr>";
 	});
 	$(".listtabcon").find(".tabsub").eq(index).find("tbody").html(htmlStr);

@@ -32,10 +32,11 @@ public class MatchController extends Controller {
 	 * show matche userlist
 	 */
 	public void showMatUser(){
+		String title = getPara("title");
 		int pageNum = getParaToInt("pageNum");
 		int pageSize = getParaToInt("pageSize");
 		
-		Page<MatchUser> page = MatchUser.dao.findMatUserList(pageNum, pageSize);
+		Page<MatchUser> page = MatchUser.dao.findMatUserList(title, pageNum, pageSize);
 		renderJson(page);
 	}
 

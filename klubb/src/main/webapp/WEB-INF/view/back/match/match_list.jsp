@@ -70,7 +70,7 @@
                     <tr>
                         <th><font color="color-3">*&nbsp;</font>开始时间：</th>
                         <td  colspan="3">
-                             <div class="ued-time-2 fl"><input type="text" name="match.START_DATE" onclick="WdatePicker()" class="Wdate"></div>
+                             <div class="ued-time-2 fl"><input type="text" name="match.START_DATE" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" class="	"></div>
                              <p class="color-3 fs-14" id="start_time_msg"></p> 
                         </td>
                     </tr>

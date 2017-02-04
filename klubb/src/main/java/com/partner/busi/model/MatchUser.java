@@ -145,10 +145,15 @@ public class MatchUser extends BaseMatchUser<MatchUser> {
 		return Db.update(sb.toString());
 	}
 
-	public Page<MatchUser> findMatUserList(int pageNum, int pageSize) {
-		String select = " select m.*, u.NAME";
-		StringBuilder sql = new StringBuilder(" from t_match_user m, t_user u where m.USER_ID = u.ID ");
-		sql.append(" order by m.SEQ ");
-		return paginate(pageNum, pageSize, select, sql.toString());
+	public Page<MatchUser> findMatUserList(String title, int pageNum, int pageSize) {
+		String select = " select t.* ";
+		StringBuilder sql = new StringBuilder(" FROM t_user t where t.LAST_START_SCORE<>'' ");
+		List<Object> params = new ArrayList<Object>();
+		if (StringUtils.isNotBlank(title)) {
+			sql.append(" and NICKNAME like ? ");
+			params.add("%" + title + "%");
+		}
+		sql.append(" ORDER BY t.NICKNAME ");
+		return paginate(pageNum, pageSize, select, sql.toString(), params.toArray());
 	}
 }
