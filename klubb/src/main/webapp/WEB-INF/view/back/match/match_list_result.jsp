@@ -23,9 +23,9 @@
 			<td colspan="3">抱歉，未查询到符合条件的记录</td>
 		</c:if>
 		<c:if test="${not empty paginate.list}">
-			<c:forEach items="${paginate.list}" var="match">
+			<c:forEach items="${paginate.list}" var="match" varStatus="status">
 				<tr class="ued-tr-odd">
-					<td>${match.ID}</td>
+					<td>${(paginate.pageNumber-1)*paginate.pageSize+status.index+1}</td>
 		            <td>${match.NAME}</td>
 		            <td>
 		            	<c:choose>
