@@ -90,7 +90,7 @@ public class BackMatchController extends Controller {
 		}
 		List<MatchUser> matchUser = MatchUser.dao.findMatchUserListBySeq(String.valueOf(matchId));
 		setAttr("matchUser",matchUser);
-		List<MatchUser> noMatchUser = MatchUser.dao.findMatchUserListNoSeq(String.valueOf(matchId));
+		List<User> noMatchUser = User.dao.findNoMatchUser(matchId);
 		setAttr("noMatchUser", noMatchUser);
 		//获取全部报名人员
 		/*List<MatchUser> allMatchUser = MatchUser.dao.findMatchUserListByMatchId(String.valueOf(matchId));
@@ -413,10 +413,20 @@ public class BackMatchController extends Controller {
 	
 	public void addUser(){
 		String id = getPara("id");
-		MatchUser user = MatchUser.dao.findById(id);
-		int maxSeq = MatchUser.dao.countMatchPersion(user.getMatchId());
-		user.setSEQ(maxSeq+1);
-		user.update();
+		String matchId = getPara("matchId");
+		MatchUser user = MatchUser.dao.findMatchUserByUID(matchId,id);
+		int maxSeq = MatchUser.dao.countMatchPersion(Integer.parseInt(matchId));
+		if(user == null){
+			user = new MatchUser();
+			user.setMatchId(Integer.parseInt(matchId));
+			user.setSEQ(maxSeq+1);
+			user.setUserId(Integer.parseInt(id));
+			user.setCreateTime(new Date());
+			user.save();
+		}else{
+			user.setSEQ(maxSeq+1);
+			user.update();
+		}
 		ResultInfo retInfo = new ResultInfo();
 		retInfo.setRetCode(0);
 		retInfo.setRetMsg("添加成功");

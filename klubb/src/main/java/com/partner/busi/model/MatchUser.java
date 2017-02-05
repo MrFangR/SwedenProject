@@ -46,6 +46,11 @@ public class MatchUser extends BaseMatchUser<MatchUser> {
 		return dao.find(sql.toString());
 	}
 	
+	public MatchUser findMatchUserByUID(String matchId, String uid) {
+		StringBuilder sql = new StringBuilder("select * from t_match_user where USER_ID = "+uid+" AND MATCH_ID = "+matchId);
+		return dao.findFirst(sql.toString());
+	}
+	
 	public List<MatchUser> findMatchUserListNoSeq(String matchId) {
 		StringBuilder sql = new StringBuilder(" select m.ID, u.NAME, m.START_SCORE, m.USER_ID from t_match_user m, t_user u where m.USER_ID = u.ID and m.SEQ IS NULL AND m.MATCH_ID = "+matchId);
 		sql.append(" order by m.SEQ ");

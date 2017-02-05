@@ -40,4 +40,9 @@ public class User extends BaseUser<User> {
 		}
 		return paginate(pageNumber, pageSize, selSql, whereSql.toString(),paramList.toArray());
 	}
+	
+	public List<User> findNoMatchUser(int matchId){
+		StringBuilder sql = new StringBuilder(" SELECT * FROM t_user where ID not in ( SELECT USER_ID FROM  t_match_user where SEQ IS NOT NULL and MATCH_ID = "+matchId+" )");
+		return dao.find(sql.toString());
+	}
 }

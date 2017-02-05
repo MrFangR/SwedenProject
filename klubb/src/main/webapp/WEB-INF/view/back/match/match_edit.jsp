@@ -296,7 +296,7 @@
 								<div>${user.NAME } <p class="input">初始分：<span>${user.startScore }</span></p><i class="mtch_del" dataValue="${user.ID }" dataName="${user.NAME }"></i><i class="mtch_edit" dataValue="${user.ID }" userValue="${user.userId }" startScore="${user.startScore }"></i></div>
 							</c:if>
 							<c:if test="${empty user.startScore}">
-								<div>${user.NAME } <p class="input">初始分：<span>0</span></p><i class="mtch_del" dataValue="${user.ID }" dataName="${user.NAME }"></i><i class="mtch_edit" dataValue="${user.ID }" startScore="${user.startScore }"></i></div>
+								<div>${user.NAME } <p class="input">初始分：<span>0</span></p><i class="mtch_del" dataValue="${user.ID }" dataName="${user.NAME }"></i><i class="mtch_edit" dataValue="${user.ID }" userValue="${user.userId }" startScore="${user.startScore }"></i></div>
 							</c:if>
 						</c:forEach>
                    </div>
@@ -781,9 +781,10 @@ $(function() {
     	var id = $("#addUser").val();
     	$.ajax({
     		type:"post",
-    		url:ctx+"/back/match/editUser/addUser",
+    		url:ctx+"/back/match/edit/addUser",
     		data:{
-    			id:id
+    			id:id,
+    			matchId:$("#matchId").val()
     		},
     		dataType:"json",
     		success:function(json){
