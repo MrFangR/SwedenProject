@@ -128,6 +128,9 @@ public class MatchUser extends BaseMatchUser<MatchUser> {
 	public int countMatchPersion(int matchId){
 		String sql = " SELECT max(seq) as maxSeq  from t_match_user where MATCH_ID = "+matchId+" and SEQ IS NOT NULL";
 		MatchUser matchUser = dao.findFirst(sql);
+		if(matchUser.getMaxSeq() == null)
+			return 0;
+		else
 		return matchUser.getMaxSeq();
 	}
 	

@@ -97,11 +97,17 @@ function resetQry(){
 	qryUser(1);
 }
 
-function delUser(id,name){
+function delUser(id,name,status){
+	var info = "";
+	if(status == 0){
+		info = "禁用";
+	}else{
+		info = "启用";
+	}
 	ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
 	   {type:2,
 		info:'用户管理',
-		text:'<div style=" font-size:18px; color:#ff0000;"> 确定要禁用此用户：'+name+'。</div>',
+		text:'<div style=" font-size:18px; color:#ff0000;"> 确定要'+info+'此用户：'+name+'。</div>',
 		'ok':function(){
 			$.ajax({
 				type : 'post',

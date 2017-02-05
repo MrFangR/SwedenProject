@@ -77,7 +77,15 @@
 					</td>
 					<td><fmt:formatDate value="${user.createTime}" type="both"/></td>
 					<td>
-						<button class="ued-button-4" onclick="delUser(${user.ID},'${user.NAME}')">禁用</button>
+							<c:choose>
+								<c:when test="${user.STATUS eq 0}">
+						<button class="ued-button-4" onclick="delUser(${user.ID},'${user.NAME}',${user.STATUS})">
+									禁用</button>
+								</c:when>
+								<c:when test="${user.STATUS eq 1}">
+									<button class="ued-button-5" onclick="delUser(${user.ID},'${user.NAME}',${user.STATUS})">启用</button>
+								</c:when>
+							</c:choose>
 						<button class="ued-button-6" onclick="viewUser(${user.ID})">详情</button>
 					</td>
 				</tr>
