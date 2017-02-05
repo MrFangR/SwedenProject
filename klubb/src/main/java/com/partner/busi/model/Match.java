@@ -3,9 +3,12 @@ package com.partner.busi.model;
 import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.Page;
 import com.partner.busi.model.base.BaseMatch;
+
 import org.apache.commons.lang.StringUtils;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Match extends BaseMatch<Match> {
@@ -18,6 +21,13 @@ public class Match extends BaseMatch<Match> {
 
 	public java.lang.Long getPlayerNum() {
 		return get("PLAYER_NUM");
+	}
+	
+
+	public String getStartDateStr() {
+		Date startDate = this.getStartDate();
+		SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		return formatDate.format(startDate);
 	}
 	
 	public List<Match> queryNewMatch(){

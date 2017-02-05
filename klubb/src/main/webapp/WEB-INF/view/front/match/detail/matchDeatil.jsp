@@ -56,7 +56,7 @@
 								<input name="addMatch" class="contbtn" value="+报名人数已满" type="button" disabled="disabled">
 							</c:when>
 						</c:choose>
-						<span>时间：${match.startDate }</span><span class="mgl-200"></span></p>
+						<span>时间：${match.startDateStr }</span><span class="mgl-200"></span></p>
                                        <p class="conline"></p>
                                        <div class="cont-text">
                                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${match.DESCRIPTION }

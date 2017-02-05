@@ -66,7 +66,7 @@ public class MatchUser extends BaseMatchUser<MatchUser> {
 	public Page<MatchUser> findMatchUserListByMatchId(int pageNum, Integer pagesize,String matchId){
 		String select = " select m.SEQ, m.CREATE_TIME, m.START_SCORE, u.EMAIL, u.GENDER, u.PHONE, u.NAME";
 		StringBuilder sql = new StringBuilder(" from t_match_user m, t_user u where m.USER_ID = u.ID AND m.MATCH_ID = "+matchId);
-		sql.append(" order by m.SEQ ");
+		sql.append(" order by m.CREATE_TIME ");
 		return paginate(pageNum, pagesize, select, sql.toString());
 	}
 	

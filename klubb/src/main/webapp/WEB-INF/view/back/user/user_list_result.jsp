@@ -68,16 +68,16 @@
 					<td>
 						<c:choose>
 							<c:when test="${user.STATUS eq 0}">
-								<font class="color-4">可用</font>
+								<font class="color-5">可用</font>
 							</c:when>
 							<c:when test="${user.STATUS eq 1}">
-								<font class="color-5">不可用</font>
+								<font class="color-4">不可用</font>
 							</c:when>
 						</c:choose>
 					</td>
 					<td><fmt:formatDate value="${user.createTime}" type="both"/></td>
 					<td>
-						<button class="ued-button-4" onclick="delUser(${user.ID},'${user.NAME}')">删除</button>
+						<button class="ued-button-4" onclick="delUser(${user.ID},'${user.NAME}')">禁用</button>
 						<button class="ued-button-6" onclick="viewUser(${user.ID})">详情</button>
 					</td>
 				</tr>

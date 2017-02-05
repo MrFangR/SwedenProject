@@ -17,9 +17,9 @@
     <th>参赛人员姓名</th>
     <th>起始分</th>
   </tr>
-  <c:forEach var="user" items="${page.list }">
+  <c:forEach var="user" items="${page.list }" varStatus="status">
   	<tr>
-     <td>${user.SEQ }</td>
+     <td>${(page.pageNumber-1)*page.pageSize+status.count}</td>
      <td>${user.NAME }</td>
      <td>${user.startScore }</td>
    </tr>

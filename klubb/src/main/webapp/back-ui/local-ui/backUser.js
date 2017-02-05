@@ -101,7 +101,7 @@ function delUser(id,name){
 	ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
 	   {type:2,
 		info:'用户管理',
-		text:'<div style=" font-size:18px; color:#ff0000;"> 确定要删除用户：'+name+'，此删除不可恢复。</div>',
+		text:'<div style=" font-size:18px; color:#ff0000;"> 确定要禁用此用户：'+name+'。</div>',
 		'ok':function(){
 			$.ajax({
 				type : 'post',

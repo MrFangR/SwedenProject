@@ -52,14 +52,20 @@ public class BackUserController extends Controller {
 	
 	public void delUser(){
 		Integer userId = getParaToInt("userId");
-		boolean flag = User.dao.deleteById(userId);
+		boolean flag = false;
+		User user = User.dao.findById(userId);
+		if(user != null){
+			user.setSTATUS(1);
+			user.update();
+			flag = true;
+		}
 		ResultInfo retInfo = new ResultInfo();
 		if(flag){
 			retInfo.setRetCode(0);
-			retInfo.setRetMsg("删除成功");
+			retInfo.setRetMsg("禁用成功");
 		}else{
 			retInfo.setRetCode(1);
-			retInfo.setRetMsg("删除失败");
+			retInfo.setRetMsg("禁用失败");
 		}
 		renderJson(retInfo);
 	}

@@ -29,7 +29,7 @@ public class User extends BaseUser<User> {
 	public Page<User> findUserLst(int pageNumber,int pageSize, String title){
 		String selSql = "select *  ";
 		List<Object> paramList=new ArrayList<Object>();
-		StringBuffer whereSql = new StringBuffer(" from t_user where STATUS = 0 ");
+		StringBuffer whereSql = new StringBuffer(" from t_user where 1=1 ");
 		if(!StringUtil.isBlank(title)){
 			whereSql.append(" and ( EMAIL like concat('%',?,'%')");
 			paramList.add(title);
