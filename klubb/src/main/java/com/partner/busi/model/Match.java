@@ -87,7 +87,7 @@ public class Match extends BaseMatch<Match> {
 	public Integer getStopSeq(int martchId){
 		String sql = "select (select ROUND(count(*)/2)*2 from t_match_user u where u.MATCH_ID = ? and u.SEQ is not null) - " +
 				"(select IFNULL(m.STOP_PLAYER,0) from t_match m where m.ID = ?) + " +
-				"(select count(*) from t_game g where g.MATCH_ID = ? and ((g.USER1 is null and g.USER2 is not null) or (g.USER2 is null and g.USER1 is not null)))";
+				"(select count(*) from t_game g where g.MATCH_ID = ? and g.ROUND_NUM=1 and g.L_NEXT_ID != '' and ((g.USER1 is null and g.USER2 is not null) or (g.USER2 is null and g.USER1 is not null)))";
 		int losePlayer = Db.queryBigDecimal(sql, martchId, martchId, martchId).intValue();
 
 		if(losePlayer + 1 <= 1){
