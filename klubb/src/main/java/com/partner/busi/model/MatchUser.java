@@ -74,6 +74,14 @@ public class MatchUser extends BaseMatchUser<MatchUser> {
 		String sql = "select * from t_match_user where MATCH_ID = ? and SEQ is not null order by SEQ ";
 		return dao.find(sql, matchId);
 	};
+
+	public boolean insertSecondMatchUser(Game game, int userId) {
+		String sql = "insert into t_match_user(MATCH_ID, SEQ, USER_ID, CREATE_TIME, START_SCORE) values " +
+				"(?, (select t.s + 1 from (select ifnull(max(seq), 0) as s from t_match_user where MATCH_ID=?) as t), ?, now(), (select LAST_START_SCORE from t_user where ID = ?))";
+		int matchId = game.getMatchId();
+		int rs = Db.update(sql, matchId, matchId, userId, userId);
+		return rs > 0;
+	}
 	
 	public void setNAME(String name) {
 		set("NAME", name);

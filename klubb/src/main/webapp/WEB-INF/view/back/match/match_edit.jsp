@@ -217,14 +217,15 @@
 						<c:forEach items="${secondList}" var="gList" varStatus="status">
 						<c:if test="${status.index == 0}">
 						<!--可拖动部分  s-->
-						<c:choose>
-						<c:when test="${match.STATUS == 0 }">
-						<div class="dropbox">
-							</c:when>
-							<c:otherwise>
-							<div class="nodrop">
-								</c:otherwise>
-								</c:choose>
+							<div class="dropbox">
+						<%--<c:choose>--%>
+						<%--<c:when test="${match.STATUS == 0 }">--%>
+						<%--<div class="dropbox">--%>
+							<%--</c:when>--%>
+							<%--<c:otherwise>--%>
+							<%--<div class="nodrop">--%>
+								<%--</c:otherwise>--%>
+								<%--</c:choose>--%>
 								</c:if>
 								<c:if test="${status.index > 0}">
 								<!--可拖动部分  s-->

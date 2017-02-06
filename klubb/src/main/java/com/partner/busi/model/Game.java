@@ -135,6 +135,16 @@ public class Game extends BaseGame<Game> {
 		return dao.findFirst(sql, matchId);
 	}
 
+	/**
+	 * 得到第二轮下一场比赛
+	 * @param matchId
+	 * @return
+	 */
+	public Game getSecondNextGame(int matchId){
+		String sql = "select * from t_game where MATCH_ID = ? and (USER1 is null or USER2 is null) order by seq";
+		return dao.findFirst(sql, matchId);
+	}
+
 	public void setU1_SEQ(Long seq) {
 		set("U1_SEQ", seq);
 	}

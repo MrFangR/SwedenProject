@@ -190,14 +190,64 @@ public class BackMatchController extends Controller {
 			Integer loseId = (game.getUSER1().equals(winId)) ? game.getUSER2() : game.getUSER1();
 			flag3 = Game.dao.moveUserToGame(game.getMatchId(), seq, index, loseId);
 		}
-		if(flag1 && flag2 && flag3){
+		boolean flag4 = moveToSecondMatch(game);
+		if(flag1 && flag2 && flag3 && flag4){
 			return true;
 		}else{
 			DbKit.getConfig().getConnection().rollback();
 			return false;
 		}
 	}
-	
+
+	private boolean moveToSecondMatch(Game game) {
+		//0.判断是否有第二回合
+		int matchId = game.getMatchId();
+		Match match = Match.dao.findById(matchId);
+		if(match.getStopPlayer() != null && !match.getStopPlayer().equals(0)){
+			Integer lastSeq = Match.dao.getStopSeq(matchId);
+			int secondPlayer = match.getStopPlayer();
+			//1.判断是否要移入第二回合
+			if(lastSeq == null){
+				return true;
+			}else{
+				if(game.getSEQ() >= lastSeq-secondPlayer){ //需要移动
+					//2.判断移入到哪个seq
+					Integer secondMatchId = Match.dao.getChildMatchId(matchId);
+					//3.移入下一轮比赛
+					MatchUser matchUser = MatchUser.dao.findMatchUserByUID(String.valueOf(secondMatchId), String.valueOf(game.getWinnerId()));
+					if(matchUser != null) {
+						matchUser.delete();
+						//TODO:删除game表
+					}else{
+						matchUser = MatchUser.dao.findMatchUserByUID(String.valueOf(secondMatchId), String.valueOf(game.getUSER1().equals(game.getWinnerId()) ? game.getUSER2():game.getUSER1()));
+						if(matchUser != null) {
+							matchUser.delete();
+							//TODO:删除game表
+						}
+					}
+					Game nextGame = Game.dao.getSecondNextGame(secondMatchId);
+					if(nextGame.getUSER1() == null){
+						nextGame.setUSER1(game.getWinnerId());
+					}else{
+						nextGame.setUSER2(game.getWinnerId());
+					}
+					boolean rs = nextGame.update();
+					if(!rs){
+						return false;
+					}else{
+						return MatchUser.dao.insertSecondMatchUser(nextGame, game.getWinnerId());
+					}
+				}else{
+					return true;
+				}
+			}
+
+		}else{
+			return true;
+		}
+	}
+
+
 	/**
 	 * 修改比赛信息
 	 */
