@@ -164,7 +164,13 @@ function initUpload(){
 		    	$("#showImg").attr("src", "${uploadUrl}" + obj.fileName);
 		    },
 		    error: function (data, status, e) {
-		        alert(e);
+		        ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+	   					   {type:2,
+	   						info:'提示信息',
+	   						text:'<div style=" font-size:18px; color:#ff0000;"> 系统异常，请稍后重试 </div>',
+	   						'ok':function(){},
+	   						tag:'cw-ring'}
+	   		               );
 		    }
 		});
 	});

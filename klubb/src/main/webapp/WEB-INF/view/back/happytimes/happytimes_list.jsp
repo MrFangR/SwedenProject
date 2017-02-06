@@ -42,7 +42,13 @@ $(function(){
 				if (json.flag == 0) {
 					qry(1);
 				}
-				alert(json.msg);
+				ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+				   {type:2,
+					info:'提示信息',
+					text:'<div style=" font-size:18px; color:#ff0000;">'+json.msg+'</div>',
+					'ok':function(){},
+					tag:'zq-ring'}
+	               );
 				return;
 			},
 			error : function(){

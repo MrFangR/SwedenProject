@@ -98,7 +98,7 @@ function showUserResult(data){
 		}else{
 			htmlStr += "<tr class='table-tr-even'>";
 		}
-		htmlStr += "<td>"+user.NICKNAME+"</td>";
+		htmlStr += "<td>"+user.NAME+"</td>";
 		htmlStr += "<td>"+user.LAST_START_SCORE+"</td>";
 		htmlStr += "</tr>";
 	});

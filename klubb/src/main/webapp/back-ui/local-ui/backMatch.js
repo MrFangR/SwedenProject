@@ -115,7 +115,13 @@ function canMat(ID){
 				location.href=ctx + "/back/match";
 				return
 			}else{
-				alert(data.rsMsg);
+				ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+						   {type:2,
+							info:'提示信息',
+							text:'<div style=" font-size:18px; color:#ff0000;">'+data.rsMsg+'</div>',
+							'ok':function(){back();},
+							tag:'zq-ring'}
+			              );
 			}
 		},
 		error : function(json){
@@ -141,7 +147,13 @@ function startMat(matId){
 				location.href=ctx + "/back/match";
 				return
 			}else{
-				alert("开始比赛失败！");
+				ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+						   {type:2,
+							info:'提示信息',
+							text:'<div style=" font-size:18px; color:#ff0000;">开始比赛失败！</div>',
+							'ok':function(){back();},
+							tag:'zq-ring'}
+			              );
 			}
 		},
 		error : function(json){
@@ -168,7 +180,13 @@ function initUpload(){
 		    	$("#showImg").attr("src", uploadUrl + obj.fileName);
 		    },
 		    error: function (data, status, e) {
-		        alert(e);
+		    	ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+	   					   {type:2,
+	   						info:'提示信息',
+	   						text:'<div style=" font-size:18px; color:#ff0000;"> 系统异常，请稍后重试 </div>',
+	   						'ok':function(){},
+	   						tag:'cw-ring'}
+	   		               );
 		    }
 		});
 	});
