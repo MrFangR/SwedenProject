@@ -211,20 +211,13 @@ public class BackMatchController extends Controller {
 				return true;
 			}else{
 				if(game.getSEQ() >= lastSeq-secondPlayer){ //需要移动
-					//2.判断移入到哪个seq
+					//2.移入下一轮比赛
+					//删除已存在的同组及自己的数据
 					Integer secondMatchId = Match.dao.getChildMatchId(matchId);
-					//3.移入下一轮比赛
-					MatchUser matchUser = MatchUser.dao.findMatchUserByUID(String.valueOf(secondMatchId), String.valueOf(game.getWinnerId()));
-					if(matchUser != null) {
-						matchUser.delete();
-						//TODO:删除game表
-					}else{
-						matchUser = MatchUser.dao.findMatchUserByUID(String.valueOf(secondMatchId), String.valueOf(game.getUSER1().equals(game.getWinnerId()) ? game.getUSER2():game.getUSER1()));
-						if(matchUser != null) {
-							matchUser.delete();
-							//TODO:删除game表
-						}
-					}
+					MatchUser.dao.deleteByGame(secondMatchId, game);
+					Game.dao.deleteByGame(secondMatchId, game);
+
+					//3.判断移入到哪个seq
 					Game nextGame = Game.dao.getSecondNextGame(secondMatchId);
 					if(nextGame.getUSER1() == null){
 						nextGame.setUSER1(game.getWinnerId());

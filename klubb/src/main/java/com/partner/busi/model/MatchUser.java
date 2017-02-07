@@ -82,6 +82,18 @@ public class MatchUser extends BaseMatchUser<MatchUser> {
 		int rs = Db.update(sql, matchId, matchId, userId, userId);
 		return rs > 0;
 	}
+
+	/**
+	 * 用于双败转单败，删除上一轮同场比赛的两人
+	 * @param game
+	 * @param matchId
+	 * @return
+	 */
+	public boolean deleteByGame(int matchId, Game game){
+		String sql = "delete from t_match_user where match_id=? and (user_id = ? or user_id = ?)";
+		int rs = Db.update(sql, matchId, game.getUSER1(), game.getUSER2());
+		return rs > 0;
+	}
 	
 	public void setNAME(String name) {
 		set("NAME", name);

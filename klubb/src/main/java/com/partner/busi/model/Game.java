@@ -145,6 +145,20 @@ public class Game extends BaseGame<Game> {
 		return dao.findFirst(sql, matchId);
 	}
 
+	/**
+	 * 用于双败转单败，删除上一轮同场比赛的两人
+	 * @param game
+	 * @param matchId
+	 * @return
+	 */
+	public boolean deleteByGame(int matchId, Game game){
+		String sql = "update t_game set user1=null where match_id=? and (user1 = ? or user1 = ?)";
+		int rs1 = Db.update(sql, matchId, game.getUSER1(), game.getUSER2());
+		sql = "update t_game set user2=null where match_id=? and (user2 = ? or user2 = ?)";
+		int rs2 = Db.update(sql, matchId, game.getUSER1(), game.getUSER2());
+		return rs1 + rs2 > 0;
+	}
+
 	public void setU1_SEQ(Long seq) {
 		set("U1_SEQ", seq);
 	}
