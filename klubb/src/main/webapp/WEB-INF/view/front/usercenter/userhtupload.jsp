@@ -114,7 +114,13 @@ function initUpload(){
 		    	$("#uploadPic").hide();
 		    },
 		    error: function (data, status, e) {
-		        alert(e);
+		        ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+				   {type:2,
+					info:'提示信息',
+					text:'<div style=" font-size:18px; color:#ff0000;">'+e+'</div>',//您好，上传happytimes成功！
+					'ok':function(){location.href=ctx + "/userCenter/toHappytimes";},
+					tag:'cw-ring'}
+	               );
 		    }
 		});
 	});
