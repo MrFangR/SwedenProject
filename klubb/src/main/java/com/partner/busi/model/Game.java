@@ -159,6 +159,12 @@ public class Game extends BaseGame<Game> {
 		return rs1 + rs2 > 0;
 	}
 
+	public boolean isLastGame(Game game){
+		String sql = "select count(*) from t_game where match_id=? and seq > ?";
+		long rs = Db.queryLong(sql, game.getMatchId(), game.getSEQ());
+		return rs == 0;
+	}
+
 	public void setU1_SEQ(Long seq) {
 		set("U1_SEQ", seq);
 	}

@@ -191,7 +191,8 @@ public class BackMatchController extends Controller {
 			flag3 = Game.dao.moveUserToGame(game.getMatchId(), seq, index, loseId);
 		}
 		boolean flag4 = moveToSecondMatch(game);
-		if(flag1 && flag2 && flag3 && flag4){
+		boolean flag5 = finishMatch(game);
+		if(flag1 && flag2 && flag3 && flag4 && flag5){
 			return true;
 		}else{
 			DbKit.getConfig().getConnection().rollback();
@@ -199,7 +200,29 @@ public class BackMatchController extends Controller {
 		}
 	}
 
-	private boolean moveToSecondMatch(Game game) {
+    private boolean finishMatch(Game game) {
+        //判断是否有第二回合
+        int matchId = game.getMatchId();
+        Match match = Match.dao.findById(matchId);
+        if(match.getStopPlayer() != null && !match.getStopPlayer().equals(0)){ //有第二回合，不做判断
+            return true;
+        }else{//无第二回合，或是第二回合
+            if (Game.dao.isLastGame(game)){ //是最后一场比赛
+                match.setSTATUS(2);
+                match.update();
+                if(match.getPId() != null){
+                    Match pMatch = Match.dao.findById(match.getPId());
+                    pMatch.setSTATUS(2);
+                    pMatch.update();
+                }
+                return true;
+            }else{
+                return true;
+            }
+        }
+    }
+
+    private boolean moveToSecondMatch(Game game) {
 		//0.判断是否有第二回合
 		int matchId = game.getMatchId();
 		Match match = Match.dao.findById(matchId);
