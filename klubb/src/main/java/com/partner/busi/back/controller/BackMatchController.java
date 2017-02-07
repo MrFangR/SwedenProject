@@ -462,19 +462,22 @@ public class BackMatchController extends Controller {
 	}
 	
 	public void addUser(){
-		String id = getPara("id");
+		String uid = getPara("id");
 		String matchId = getPara("matchId");
-		MatchUser user = MatchUser.dao.findMatchUserByUID(matchId,id);
+		MatchUser user = MatchUser.dao.findMatchUserByUID(matchId,uid);
+		User u = User.dao.findById(uid);
 		int maxSeq = MatchUser.dao.countMatchPersion(Integer.parseInt(matchId));
 		if(user == null){
 			user = new MatchUser();
 			user.setMatchId(Integer.parseInt(matchId));
 			user.setSEQ(maxSeq+1);
-			user.setUserId(Integer.parseInt(id));
+			user.setUserId(Integer.parseInt(uid));
 			user.setCreateTime(new Date());
+			user.setStartScore(u.getLastStartScore());
 			user.save();
 		}else{
 			user.setSEQ(maxSeq+1);
+			user.setStartScore(u.getLastStartScore());
 			user.update();
 		}
 		ResultInfo retInfo = new ResultInfo();
