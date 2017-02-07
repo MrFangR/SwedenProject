@@ -28,42 +28,59 @@
 				            	<tr>
 		                            <th><font color="color-3">*&nbsp;</font>姓名：</th>
 		                            <td>
-		                                <input type="text" value="${user.NAME }" class="ued-text-2" maxlength="30">
+		                                <input type="text" value="${user.NAME }" class="ued-text-2" maxlength="30" readonly>
 		                            </td>
-		                            <th><font color="color-3">*&nbsp;</font>昵称：</th>
+		                            <th>昵称：</th>
 		                            <td>
-		                            	<input type="text" value="${user.NICKNAME }" class="ued-text-2" maxlength="30"/>
+		                            	<input type="text" value="${user.NICKNAME }" class="ued-text-2" maxlength="30" readonly>
 		                            </td>
 		                        </tr>
 		                        <tr>
 		                            <th><font color="color-3">*&nbsp;</font>人口号：</th>
 		                            <td>
-		                                <input type="text" value="${user.idNumber }" class="ued-text-2" maxlength="30">
+		                                <input type="text" value="${user.idNumber }" class="ued-text-2" maxlength="30" readonly>
 		                            </td>
 		                            <th><font color="color-3">*&nbsp;</font>邮箱：</th>
 		                            <td>
-		                            	<input type="text" value="${user.EMAIL }" class="ued-text-2" maxlength="30"/>
+		                            	<input type="text" value="${user.EMAIL }" class="ued-text-2" maxlength="30" readonly>
 		                            </td>
 		                        </tr>
 		                        <tr>
 		                            <th><font color="color-3">*&nbsp;</font>性别：</th>
 		                            <td>
 		                                <c:if test="${user.GENDER==0 }">
-		                                	<input name="sex" type="radio" value="1" class="ued-text-2" style="width:30px;border: 0;" disabled>男   
-											<input name="sex" type="radio" value="0" class="ued-text-2" style="width:30px; margin-left:50px;border: 0;" checked="checked" disabled> 女
+		                                	<input name="sex" type="radio" value="1" class="ued-text-2" style="width:30px;border: 0;" disabled readonly>男   
+											<input name="sex" type="radio" value="0" class="ued-text-2" style="width:30px; margin-left:50px;border: 0;" checked="checked" disabled readonly> 女
 		                                </c:if>
 		                                <c:if test="${user.GENDER==1 }">
-		                                	<input name="sex" type="radio" value="1" class="ued-text-2" style="width:30px;border: 0;" checked="checked" disabled>男   
-											<input name="sex" type="radio" value="0" class="ued-text-2" style="width:30px; margin-left:50px;border: 0;" disabled> 女
+		                                	<input name="sex" type="radio" value="1" class="ued-text-2" style="width:30px;border: 0;" checked="checked" disabled readonly>男   
+											<input name="sex" type="radio" value="0" class="ued-text-2" style="width:30px; margin-left:50px;border: 0;" disabled readonly> 女
 		                                </c:if>
 		                                
 		                            </td>
-		                            <th><font color="color-3">*&nbsp;</font>手机号：</th>
+		                            <th>手机号：</th>
 		                            <td>
-		                            	<input type="text" value="${user.PHONE }" class="ued-text-2" maxlength="30"/>
+		                            	<input type="text" value="${user.PHONE }" class="ued-text-2" maxlength="30" readonly>
 		                            </td>
 		                        </tr>
-		                        
+		                        <tr>
+		                        	<th><font color="color-3">*&nbsp;</font>状态：</th>
+		                            <td>
+		                                <c:if test="${user.STATUS==0 }">
+		                                	<input name="status" type="radio" value="1" class="ued-text-2" style="width:30px;border: 0;" disabled readonly>不可用
+											<input name="status" type="radio" value="0" class="ued-text-2" style="width:30px; margin-left:50px;border: 0;" checked="checked" disabled readonly> 可用
+		                                </c:if>
+		                                <c:if test="${user.STATUS==1 }">
+		                                	<input name="status" type="radio" value="1" class="ued-text-2" style="width:30px;border: 0;" checked="checked" disabled readonly>不可用
+											<input name="status" type="radio" value="0" class="ued-text-2" style="width:30px; margin-left:50px;border: 0;" disabled readonly> 可用
+		                                </c:if>
+		                                
+		                            </td>
+		                            <th>起始分：</th>
+		                            <td>
+		                            	<input type="text" value="${user.lastStartScore }" class="ued-text-2" maxlength="30" readonly>
+		                            </td>
+		                        </tr>
 		                    </tbody>
 		                </table>
 		            </div>

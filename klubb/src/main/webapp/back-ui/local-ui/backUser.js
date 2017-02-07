@@ -161,3 +161,19 @@ function delUser(id,name,status){
 function viewUser(id){
 	location.href=ctx + "/back/user/viewUser?userId=" + id;
 }
+
+//编辑
+function edit(){
+	var uid = $(":radio[name='userId']:checked").val();
+	if (uid==null || uid==undefined || uid=="") {
+		ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+		   {type:2,
+			info:'用户管理',
+			text:'<div style=" font-size:18px; color:#ff0000;"> 请选择要操作的记录 </div>',
+			'ok':function(){},
+			tag:'tx-ring'}
+           );
+		return;
+	}
+	location.href=ctx + "/back/user/toEditUser?userId=" + uid;
+}

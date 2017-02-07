@@ -11,12 +11,14 @@
 <div class="clearfix pdl-10 pdr-10">
 	<ul class="ued-keys fl js_keys">
 		<li><a class="amend" id="addUser">添加</a></li>
+		<li><a class="amend" href="javascript:edit();">编辑</a></li>
 	</ul>
 </div>
 <table width="100%" cellspacing="0" cellpadding="0" border="0" class="ued-table mgt-20">
 	<colgroup>
+		<col width="2%" />
 		<col width="8%" />
-		<col width="10%" />
+		<col width="8%" />
 		<col width="10%" />
 		<col width="15%" />
 		<col width="13%" />
@@ -27,6 +29,7 @@
 	</colgroup>
 	<tbody>
 		<tr class="ued-tr-even">
+			<th></th>
 			<th>姓名</th>
 			<th>昵称</th>
 			<th>人口号</th>
@@ -39,17 +42,17 @@
 		</tr>
 		
 		<c:if test="${empty paginate.list}">
-			<td colspan="9">抱歉，未查询到符合条件的记录</td>
+			<tr>
+			<td colspan="10">抱歉，未查询到符合条件的记录</td>
+			</tr>
 		</c:if>
 		<c:if test="${not empty paginate.list}">
 			<c:forEach items="${paginate.list}" var="user">
 				<tr class="ued-tr-odd">
-				<!-- 
 					<td class="pdl-10">
 						<input type="radio" name="userId" class="inp-radio" value="${user.ID}"/>
 						<span class="b-radio"><b></b></span>
 					</td>
-				 -->
 					<td><a href="javascript:viewUser(${user.ID});">${user.NAME}</a></td>
 					<td>${user.NICKNAME }</td>
 					<td>${user.idNumber }</td>
