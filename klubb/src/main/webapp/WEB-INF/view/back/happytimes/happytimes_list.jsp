@@ -52,7 +52,13 @@ $(function(){
 				return;
 			},
 			error : function(){
-				pop.fail("系统异常，请稍后重试");
+				ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+					   {type:2,
+						info:'提示信息',
+						text:'<div style=" font-size:18px; color:#ff0000;"> 系统异常，请稍后重试 </div>',
+						'ok':function(){back();},
+						tag:'zq-ring'}
+		              );
 				return;
 			}
 		});

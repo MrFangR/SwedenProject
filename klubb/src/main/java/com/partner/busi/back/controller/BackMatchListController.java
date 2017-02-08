@@ -29,7 +29,7 @@ public class BackMatchListController extends Controller {
 	 */
 	public void list(){
 		int pageNum = getParaToInt("pageNum");
-		int pageSize = Constants.PAGESIZE;
+		int pageSize = Constants.PAGESIZE*2;
 		
 		Page<Match> page = Match.dao.findListAndUser(pageNum, pageSize);
 		setAttr("paginate", page);
@@ -49,6 +49,17 @@ public class BackMatchListController extends Controller {
 		mat.set("STATUS", 0);
 		rsFlag = mat.save();
 		rsMsg = "发布成功";
+		if(mat.getTYPE()==2||mat.getTYPE()==4){
+			Match matChild = new Match();
+			matChild.set("NAME", mat.getNAME()+"_child");
+			matChild.set("TYPE", 1);
+			matChild.set("THIRD", 0);
+			matChild.set("START_DATE", mat.getStartDate());
+			matChild.set("MAX_PLAYER", mat.getMaxPlayer());
+			matChild.set("P_ID", mat.getID());
+			matChild.set("STATUS", 0);
+			matChild.save();
+		}
 		
 		setAttr("rsFlag", rsFlag);
 		setAttr("rsMsg", rsMsg);
