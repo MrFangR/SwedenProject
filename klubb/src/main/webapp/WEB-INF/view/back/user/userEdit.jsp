@@ -106,6 +106,7 @@
 		    </div>
 	</div>
 </body>
+<script  src="${ctx }/js/jST.v0.1.4.min.js"></script>
 <script type="text/javascript">
 var rootContext = '${ctx}';
 
@@ -122,9 +123,10 @@ function submit(){
 		   {type:2,
 			info:'用户管理',
 			text:'<div style=" font-size:18px; color:#ff0000;"> 姓名不能为空！ </div>',
-			'ok':function(){return;},
+			'ok':function(){},
 			tag:'tx-ring'}
               );
+		return;
 	}
 	var idNum = $("#idNum").val();
 	if(idNum.trim().length==0){
@@ -132,7 +134,7 @@ function submit(){
 		   {type:2,
 			info:'用户管理',
 			text:'<div style=" font-size:18px; color:#ff0000;"> 人口号不能为空！ </div>',
-			'ok':function(){return;},
+			'ok':function(){},
 			tag:'tx-ring'}
               );
 		return;
@@ -143,10 +145,19 @@ function submit(){
 		   {type:2,
 			info:'用户管理',
 			text:'<div style=" font-size:18px; color:#ff0000;"> 邮箱不能为空！ </div>',
-			'ok':function(){return;},
+			'ok':function(){},
 			tag:'tx-ring'}
               );
 		return;
+	}else if(!jST.isEmail(uEmail)){
+		ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+				   {type:2,
+					info:'用户管理',
+					text:'<div style=" font-size:18px; color:#ff0000;"> 邮箱格式不正确！ </div>',
+					'ok':function(){},
+					tag:'tx-ring'}
+		              );
+				return;
 	}
 	//邮箱唯一性校验
 	$.ajax({
@@ -165,9 +176,10 @@ function submit(){
 				   {type:2,
 					info:'用户管理',
 					text:'<div style=" font-size:18px; color:#ff0000;"> 此邮箱已注册，请更换其他邮箱！ </div>',
-					'ok':function(){return;},
+					'ok':function(){},
 					tag:'tx-ring'}
 		              );
+				return;
 			}
 			//更新提交
 			$.ajax({
@@ -190,9 +202,10 @@ function submit(){
 					   {type:2,
 						info:'用户管理',
 						text:'<div style=" font-size:18px; color:#ff0000;"> 系统异常，请稍后重试！ </div>',
-						'ok':function(){return;},
+						'ok':function(){},
 						tag:'cw-ring'}
 			              );
+					return;
 				}
 			});
 		},
@@ -201,9 +214,10 @@ function submit(){
 			   {type:2,
 				info:'用户管理',
 				text:'<div style=" font-size:18px; color:#ff0000;"> 系统异常，请稍后重试！ </div>',
-				'ok':function(){return;},
+				'ok':function(){},
 				tag:'cw-ring'}
 	              );
+			return;
 		}
 	});
 	
