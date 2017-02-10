@@ -17,6 +17,12 @@ $(function(){
 			searchMatUser(1);
 		}
 	 })
+	 document.onkeydown = function(e){
+        if(!e) e = window.event;
+        if((e.keyCode || e.which) == 13){
+        	$(".inputbut").click();
+        }
+    }
 });
 //查询
 function searchMat(pageNum){

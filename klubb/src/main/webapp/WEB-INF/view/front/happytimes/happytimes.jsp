@@ -19,8 +19,8 @@
 
 	<div class="search">
 		<p class="w1000">
-			<input name="" type="text" class="inputfont" value="">
-			<input name="" type="button" class="inputbut" value="<i18n:get key='portal.activity.search.button'></i18n:get>">
+			<input name="title" id="title" type="text" class="inputfont" value="">
+			<input name="" type="button" onclick="showHappyTimes(1)" class="inputbut" value="<i18n:get key='portal.activity.search.button'></i18n:get>">
 			<input id="pageSizeIn" name="pageSize" type="hidden" value="12"/>
 		</p>
 	</div>
@@ -45,13 +45,19 @@
 <script type="text/javascript">
 $(function(){
 	showHappyTimes(1);
-	
+	document.onkeydown = function(e){
+        if(!e) e = window.event;
+        if((e.keyCode || e.which) == 13){
+        	$(".inputbut").click();
+        }
+    }
 });
 function showHappyTimes(pageNum){
 	$.ajax({
 		type : 'POST',
 		url : ctx + "/front/happytimes/showHappy",
 		data: {
+			title : $('#title').val(),
 			pageNum : pageNum,
 			pageSize : $('#pageSizeIn').val()
 		},

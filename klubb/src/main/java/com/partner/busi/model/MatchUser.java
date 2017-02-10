@@ -178,7 +178,7 @@ public class MatchUser extends BaseMatchUser<MatchUser> {
 		StringBuilder sql = new StringBuilder(" FROM t_user t where t.LAST_START_SCORE<>'' ");
 		List<Object> params = new ArrayList<Object>();
 		if (StringUtils.isNotBlank(title)) {
-			sql.append(" and NICKNAME like ? ");
+			sql.append(" and NAME like ? ");
 			params.add("%" + title + "%");
 		}
 		sql.append(" ORDER BY t.NICKNAME ");

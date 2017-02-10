@@ -37,10 +37,11 @@ public class HappyTimesController  extends Controller {
 	 * show happytimes
 	 */
 	public void showHappy(){
+		String title = getPara("title");
 		int pageNum = getParaToInt("pageNum");
 		int pageSize = getParaToInt("pageSize");
 		
-		Page<Picture> page = Picture.dao.findPic(pageNum,pageSize);
+		Page<Picture> page = Picture.dao.findPic(title,pageNum,pageSize);
 		setAttr("page", page);
 		renderJson();
 	}

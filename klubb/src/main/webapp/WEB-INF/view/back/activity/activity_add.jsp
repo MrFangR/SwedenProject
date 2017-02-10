@@ -41,7 +41,7 @@
 		                            <th><font color="color-3">*&nbsp;</font>活动时间：</th>
 		                            <td>
 		                            	<div class="ued-time fl mgl-10">
-		                            		<input type="text" name="activity.ACT_TIME" class="Wdate ued-text-2" onClick="WdatePicker()" maxlength="30"/>
+		                            		<input type="text" name="activity.ACT_TIME" class="Wdate ued-text-2" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:00'})" maxlength="30"/>
 		                            		<p class="color-3 fs-14" id="act_time_msg"></p>  
 		                            	</div>
 		                            </td>

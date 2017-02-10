@@ -1,6 +1,9 @@
 package com.partner.busi.model;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import org.apache.commons.lang.StringUtils;
 
 import com.jfinal.plugin.activerecord.Page;
 import com.partner.busi.model.base.BasePicture;
@@ -20,9 +23,16 @@ public class Picture extends BasePicture<Picture> {
 		return dao.find("select ID, URL, DESCRIPTION, USER_ID from t_picture where IS_RECOMMEND = 1 order by CREATE_TIME desc ");
 	}
 	
-	public Page<Picture> findPic(int pageNum, int pageSize) {
-		Page<Picture> page = paginate(pageNum, pageSize, "select * ", " from t_picture p order by p.CREATE_TIME desc");
-		return page;
+	public Page<Picture> findPic(String title, int pageNum, int pageSize) {
+		String select = "select * ";
+		StringBuilder sql = new StringBuilder(" from t_picture a where 1=1 ");
+		List<Object> params = new ArrayList<Object>();
+		if (StringUtils.isNotBlank(title)) {
+			sql.append(" and a.DESCRIPTION like ? ");
+			params.add("%" + title + "%");
+		}
+		sql.append(" order by a.CREATE_TIME desc");
+		return paginate(pageNum, pageSize, select, sql.toString(), params.toArray());
 	}
 
 	public Picture findPrevPic(String picID) {

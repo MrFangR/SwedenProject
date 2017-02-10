@@ -94,7 +94,7 @@ function save(){
 		success: function(data){
 			if(data.rsFlag){
 				ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
-				   {type:2,
+				   {type:3,
 					info:'提示信息',
 					text:'<div style=" font-size:18px; color:#ff0000;">'+data.rsMsg+'</div>',
 					'ok':function(){},
@@ -139,7 +139,7 @@ function showEvaluation(pageNum){
 							+"				<li>"
 							+"					<div class='r-row clearfix'>"
 							+"						<h5 class='r-nickname fl'><i18n:get key="portal.evaluation.name"></i18n:get>:" + eva.replyList[i].NICKNAME + "</h5>"
-							+"						<span class='r-time'>" + eva.replyList[i].CREATE_TIME + "</span>"
+							+"						<span class='r-time'>" + FormatDate(eva.replyList[i].CREATE_TIME) + "</span>"
 							+"					</div>"
 							+"					<div class='r-context'>" + eva.replyList[i].CONTENT + "</div>"
 							+"				</li>"
@@ -209,7 +209,7 @@ function showNotice(data){
 					info:'提示信息',
 					text:'<div style=" font-size:18px; color:#ff0000;">'+data.rsMsg+'</div>',
 					'ok':function(){},
-					tag:'zq-ring'}
+					tag:'tx-ring'}
 	               );
 	}else{
 		$(".notice").each(function(){
