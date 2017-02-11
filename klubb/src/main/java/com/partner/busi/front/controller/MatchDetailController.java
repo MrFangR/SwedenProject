@@ -205,7 +205,7 @@ public class MatchDetailController extends Controller {
 				Match match = Match.dao.findById(matchId);
 				//获取目前报名的最大seq
 				int seq = MatchUser.dao.countMatchPersion(matchId);
-				if(seq!=0 && seq<match.getMaxPlayer()){
+				if(seq<match.getMaxPlayer()){
 					MatchUser matchUser = new MatchUser();
 					matchUser.setMatchId(matchId);
 					matchUser.setSEQ(seq+1);

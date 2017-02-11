@@ -34,7 +34,7 @@
 			<div class="us-bd-base xmfb_con_text">
 
 				<dl class="us-info-dl clearfix">
-					<dt class="fl">
+					<dt class="fl" style="width:150px">
 						<span class="rose">*</span><i18n:get key="portal.user.forget.email"></i18n:get>：
 					</dt>
 					<dd class="fl">
@@ -43,11 +43,11 @@
 					<dd class="notice" id="email_notice"></dd>
 				</dl>
 				<dl class="us-info-dl clearfix">
-					<dt class="fl">
+					<dt class="fl" style="width:150px">
 						<span class="rose">*</span><i18n:get key="portal.contact.form.code"></i18n:get>：
 					</dt>
 					<dd class="fl">
-						<input type="text" id="imgcode" name="imgcode" maxlength="4"
+						&nbsp;&nbsp;<input type="text" id="imgcode" name="imgcode" maxlength="4"
 							class="ued-input fl" style="width:100px;" /> <img
 							id="randCodeImage" class="mgl-10" style="height: 40px;"
 							src="${ctx}/front/randCodeImage" />
@@ -112,7 +112,7 @@
 					   {type:2,
 						info:'忘记密码',
 						text:'<div style=" font-size:18px; color:#ff0000;">'+json.retMsg+'</div>',
-						'ok':function(){},
+						'ok':function(){window.location.href = '${ctx}/front/toLogin';},
 						tag:'zq-ring'}
 		               );
 				} else {
@@ -121,6 +121,7 @@
 					var tip = json.retMsg.split(":");
 					if(tip.length>1){
 						$("#"+tip[0]+"_notice").html(tip[1]);
+						getRandImg();
 					}else{
 						ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
 						   {type:2,
