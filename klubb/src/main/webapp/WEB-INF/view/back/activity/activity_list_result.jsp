@@ -11,7 +11,7 @@
 <div class="clearfix pdl-10 pdr-10">
 	<ul class="ued-keys fl js_keys">
 		<li><a class="amend" href="javascript:edit();">编辑</a></li>
-		<li><a class="amend" href="javascript:release();">发布</a></li>
+		<li><a class="amend" href="javascript:release();">新增</a></li>
 	</ul>
 </div>
 <table width="100%" cellspacing="0" cellpadding="0" border="0" class="ued-table mgt-20">
@@ -62,7 +62,10 @@
 					<td>
 						<button class="ued-button-4" onclick="deleteAct(${act.ID},${act.STATUS})">删除</button>
 						<button class="ued-button-6" onclick="hideAct(${act.ID},${act.STATUS})">隐藏</button>
-						<button class="ued-button-4" onclick="ReRelease(${act.ID},${act.STATUS})">发布</button>
+						<c:if test="${act.STATUS}!=1">
+							<button class="ued-button-4" onclick="ReRelease(${act.ID},${act.STATUS})">发布</button>
+						</c:if>
+						
 					</td>
 				</tr>
 			</c:forEach>

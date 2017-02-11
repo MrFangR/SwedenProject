@@ -16,7 +16,13 @@ function qryAct(pageNum){
 			return;
 		},
 		error : function(json){
-			pop.fail("系统异常，请稍后重试");
+			ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+					   {type:2,
+						info:'提示消息',
+						text:'<div style=" font-size:18px; color:#ff0000;"> 系统异常，请稍后重试 </div>',
+						'ok':function(){return;},
+						tag:'cw-ring'}
+		               );
 			return;
 		}
 	});
@@ -29,12 +35,19 @@ function qry4Page(pageNum){
 function reset(){
 	$('#titleIn, #authorIn, #cUserNoIn').val('');
 	$('#statusSelect a').first().click();
+	qryAct(1);
 }
 //编辑
 function edit(){
 	var activityID = $(":radio[name='activityID']:checked").val();
 	if (activityID==null || activityID==undefined || activityID=="") {
-		pop.fail("请选择要操作的记录");
+		ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+				   {type:2,
+					info:'提示消息',
+					text:'<div style=" font-size:18px; color:#ff0000;">请选择要操作的记录.</div>',
+					'ok':function(){return;},
+					tag:'tx-ring'}
+	               );
 		return;
 	}
 	location.href=ctx + "/back/activity/edit?type=" + activityID;
@@ -59,7 +72,13 @@ function deleteAct(ID,status){
 			return
 		},
 		error : function(json){
-			pop.fail("系统异常，请稍后重试");
+			ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+					   {type:2,
+						info:'提示消息',
+						text:'<div style=" font-size:18px; color:#ff0000;"> 系统异常，请稍后重试 </div>',
+						'ok':function(){return;},
+						tag:'cw-ring'}
+		               );
 			return;
 		}
 	});
@@ -83,7 +102,13 @@ function hideAct(ID,status){
 			return
 		},
 		error : function(json){
-			pop.fail("系统异常，请稍后重试");
+			ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+					   {type:2,
+						info:'提示消息',
+						text:'<div style=" font-size:18px; color:#ff0000;"> 系统异常，请稍后重试 </div>',
+						'ok':function(){return;},
+						tag:'cw-ring'}
+		               );
 			return;
 		}
 	});
