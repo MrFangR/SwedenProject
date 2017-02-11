@@ -37,7 +37,7 @@ public class Activity extends BaseActivity<Activity> {
 
 	public Page<Activity> findList(String title, int pageNum, Integer pagesize) {
 		String select = "select a.*";
-		StringBuilder sql = new StringBuilder(" from t_activity a where 1=1 ");
+		StringBuilder sql = new StringBuilder(" from t_activity a where a.STATUS=1 ");
 		List<Object> params = new ArrayList<Object>();
 		if (StringUtils.isNotBlank(title)) {
 			sql.append(" and a.TITLE like ? ");

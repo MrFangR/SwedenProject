@@ -43,7 +43,7 @@
 		                            <td>
 		                            	<div class="ued-time fl mgl-10">
 		                            		
-		                            		<input type="text" name="activity.ACT_TIME" value="<fmt:formatDate value='${act.actTime}' pattern='yyyy-MM-dd HH:mm:ss'/>" class="Wdate ued-text-2" onClick="WdatePicker()" maxlength="30"/>
+		                            		<input type="text" name="activity.ACT_TIME" value="<fmt:formatDate value='${act.actTime}' pattern='yyyy-MM-dd HH:mm:ss'/>" class="Wdate ued-text-2" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:00'})" maxlength="30"/>
 		                            		<p class="color-3 fs-14" id="act_time_msg"></p>  
 		                            	</div>
 		                            </td>

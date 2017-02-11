@@ -65,9 +65,13 @@ function showUserMat(pageNum){
 						+ "	<dt class='img position-rel fl'><a target='_blank' href='"+ctx+"/front/matchdetail?matchId="+mat.ID+"'><img src='"+uploadUrl+mat.IMG+"' width='340' height='310'></a></dt>"
 						+ "	<dd class='info  position-rel fr'>"
 						+ "		<p class='title'><a target='_blank' href='"+ctx+"/front/matchdetail?matchId="+mat.ID+"'>"+mat.NAME+"</a></p>"
-						+ "		<p class='gray6 mgt-12'>"+mat.DESCRIPTION+"</p>"
-						+ "		<div class='moreInfo'><input name='cancleMat' onclick='cancleMat("+mat.ID+")' class='contbtn' value='—取消报名' type='button'></div>"
-						+ "	</dd>"
+						+ "		<p class='gray6 mgt-12'>"+mat.DESCRIPTION+"</p>";
+				if(mat.STATUS=="0"){
+				htmlStr +="		<div class='moreInfo'><input name='cancleMat' onclick='cancleMat("+mat.ID+")' class='contbtn' value='—取消报名' type='button'></div>";
+				}else{
+				htmlStr +="		<div class='moreInfo'></div>";
+				}
+				htmlStr +="	</dd>"
 						+ "</dl>";
 			});
 			htmlStr +="<div class='clear'></div>"

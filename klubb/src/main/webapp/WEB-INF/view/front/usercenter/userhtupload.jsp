@@ -142,7 +142,7 @@ function uploadHT(){
 					ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
 					   {type:2,
 						info:'提示信息',
-						text:'<div style=" font-size:18px; color:#ff0000;">Laddat upp</div>Du har laddat upp bilder/en bild till Happytimes!',//您好，上传happytimes成功！
+						text:'<div style=" font-size:18px; color:#ff0000;">Laddat upp</div>En bild till Happytimes!',//您好，上传happytimes成功！
 						'ok':function(){location.href=ctx + "/userCenter/toHappytimes";},
 						tag:'zq-ring'}
 		               );
