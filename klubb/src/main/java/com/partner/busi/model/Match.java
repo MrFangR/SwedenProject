@@ -58,7 +58,7 @@ public class Match extends BaseMatch<Match> {
 
 	public Page<Match> findAllMatByUser(Integer userID, int pageNum, int pageSize) {
 		String select = "select a.*";
-		StringBuilder sql = new StringBuilder(" from t_match a where a.ID in ( SELECT u.MATCH_ID FROM t_match_user u where u.USER_ID=?) ORDER BY a.START_DATE DESC ");
+		StringBuilder sql = new StringBuilder(" from t_match a where a.ID in ( SELECT u.MATCH_ID FROM t_match_user u where u.USER_ID=?) AND a.STATUS<>-1 ORDER BY a.START_DATE DESC ");
 		List<Object> params = new ArrayList<Object>();
 		params.add(userID);
 		return paginate(pageNum, pageSize, select, sql.toString(), params.toArray());
