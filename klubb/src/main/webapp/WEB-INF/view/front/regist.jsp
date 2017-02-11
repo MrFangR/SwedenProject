@@ -32,37 +32,37 @@
 						
 							
                                     <dl  class="us-info-dl clearfix">
-										<dt class="fl"><span class="rose">*</span><i18n:get key="portal.contact.form.name"></i18n:get>：</dt>
+										<dt class="fl" style="width:175px"><span class="rose">*</span><i18n:get key="portal.contact.form.name"></i18n:get>：</dt>
 										<dd class="fl"><input  type="text" id="name" placeholder="Ange ditt namn"/></dd><!-- 请输入您的姓名 -->
 										<dd id="name_notice" class="notice"></dd>
 									</dl>
 									<dl  class="us-info-dl clearfix">
-										<dt class="fl"><span class="rose">*</span><i18n:get key="portal.regist.nickname"></i18n:get>：</dt>
+										<dt class="fl" style="width:175px"><span class="rose">*</span><i18n:get key="portal.regist.nickname"></i18n:get>：</dt>
 										<dd class="fl"><input  type="text" id="nickName" placeholder="Ange ditt smeknamn"/></dd><!-- 请输入您的昵称 -->
 										<dd id="nickName_notice" class="notice"></dd>
 									</dl>
                                     <dl  class="us-info-dl clearfix">
-										<dt class="fl"><span class="rose">*</span><i18n:get key="portal.regist.number"></i18n:get>：</dt>
+										<dt class="fl" style="width:175px"><span class="rose">*</span><i18n:get key="portal.regist.number"></i18n:get>：</dt>
 										<dd class="fl"><input  type="text" id="idNum" placeholder="Ange ditt personnummer"/></dd><!-- 请输入您的人口号 -->
 										<dd id="idNum_notice" class="notice"></dd>
 									</dl>
                                     <dl  class="us-info-dl clearfix">
-										<dt class="fl"><span class="rose">*</span><i18n:get key="portal.regist.email"></i18n:get>：</dt>
+										<dt class="fl" style="width:175px"><span class="rose">*</span><i18n:get key="portal.regist.email"></i18n:get>：</dt>
 										<dd class="fl"><input  type="text" id="email" placeholder="ange din e-postadress"/></dd><!-- 请输入您的邮箱 -->
 										<dd id="email_notice" class="notice"></dd>
 									</dl>
 									<dl  class="us-info-dl clearfix">
-										<dt class="fl"><span class="rose">*</span><i18n:get key="portal.regist.password"></i18n:get>：</dt>
+										<dt class="fl" style="width:175px"><span class="rose">*</span><i18n:get key="portal.regist.password"></i18n:get>：</dt>
 										<dd class="fl"><input  type="password" id="pwd" placeholder="建议使用两种字符组合"/></dd><!-- 建议使用两种字符组合 -->
 										<dd id="pwd_notice" class="notice"></dd>
 									</dl>
 									<dl  class="us-info-dl clearfix">
-										<dt class="fl"><span class="rose">*</span><i18n:get key="portal.regist.repassword"></i18n:get>：</dt>
+										<dt class="fl" style="width:175px"><span class="rose">*</span><i18n:get key="portal.regist.repassword"></i18n:get>：</dt>
 										<dd class="fl"><input  type="password" id="repwd" placeholder="bekräfta ditt nytt lösenord"/></dd><!-- 请再次输入密码 -->
 										<dd id="repwd_notice" class="notice"></dd>
 									</dl>
 									<dl  class="us-info-dl clearfix">
-										<dt class="fl"><span class="rose">*</span><i18n:get key="portal.regist.gender"></i18n:get>：</dt>
+										<dt class="fl" style="width:175px"><span class="rose">*</span><i18n:get key="portal.regist.gender"></i18n:get>：</dt>
 										<dd class="fl">
 											<input name="sex" type="radio" value="1" style="width:30px;border: 0;">男   
 											<input name="sex" type="radio" value="0" style="width:30px; margin-left:50px;border: 0;"> 女
@@ -70,7 +70,7 @@
 										<dd id="sex_notice" class="notice"></dd>
 									</dl>	
                                     <dl  class="us-info-dl clearfix">
-										<dt class="fl"><i18n:get key="portal.regist.phone"></i18n:get>：</dt>
+										<dt class="fl" style="width:175px"><i18n:get key="portal.regist.phone"></i18n:get>：</dt>
 										<dd class="fl"><input  type="text" id="phone" placeholder="Mobilnummer"/></dd><!-- 请输入您的手机号 -->
 										<dd id="phone_notice" class="notice"></dd>
 									</dl>

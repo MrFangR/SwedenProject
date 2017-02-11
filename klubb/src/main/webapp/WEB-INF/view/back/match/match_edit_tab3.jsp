@@ -59,7 +59,7 @@
 												</c:otherwise>
 											</c:choose>
 										</td>
-										<td>${user.createTime }</td>
+										<td>${user.createTimeStr }</td>
 									</tr>
 								</c:forEach>
 							</c:if>

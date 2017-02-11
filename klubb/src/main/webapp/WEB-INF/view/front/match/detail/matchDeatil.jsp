@@ -479,11 +479,12 @@ $(function(){
 			success : function(json){
 				var mark = json.retCode;
 				if(mark==0){
+					var matchId = $("#introMatchId").val();
 					ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
 					   {type:2,
 						info:'registrera',//注册
 						text:'<div style=" font-size:18px; color:#ff0000;">'+json.retMsg+'</div>',
-						'ok':function(){window.location.href = '${ctx}/front/matchdetail';},
+						'ok':function(){window.location.href = '${ctx}/front/matchdetail?matchId='+matchId;},
 						tag:'zq-ring'}
 		               );
 				}else{

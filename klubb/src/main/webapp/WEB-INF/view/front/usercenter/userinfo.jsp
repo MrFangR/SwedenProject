@@ -234,6 +234,7 @@ function submitInfo(){
 				var tip = json.retMsg.split(":");
 				$("#"+tip[0]+"_notice").html(tip[1]);
 				$("#submitInfo").bind("click",submitInfo);
+				getRandImg();
 			}
 		},
 		error : function() {
@@ -243,6 +244,7 @@ function submitInfo(){
 				text:'<div style=" font-size:18px; color:#ff0000;">Det gick inte att ändra lösenordet. </div>',//修改失败
 				'ok':function(){
 					$("#submitInfo").bind("click",submitInfo);
+					getRandImg();
 					},
 				tag:'cw-ring'}
                );
@@ -251,6 +253,9 @@ function submitInfo(){
 	});
 }
 
+function getRandImg(){
+	$('#randCodeImage').attr('src', "${ctx}/sys/randCodeImage?"+Math.random());
+}
 function submitPwd(){
 	
 	$("#submitPwd").unbind("click");

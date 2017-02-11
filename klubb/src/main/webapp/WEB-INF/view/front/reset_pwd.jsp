@@ -118,7 +118,7 @@ function subPwd() {
 			
 			<div class="us-bd-base xmfb_con_text">
 			<c:if test="${retInfo.retCode==0 }">
-				<input type="input" value="${email }" id="hiddenEmail"/>
+				<input type="hidden" value="${email }" id="hiddenEmail"/>
 				<dl class="us-info-dl clearfix">
 					<dt class="fl">
 						<span class="rose">*</span><i18n:get key="portal.user.forget.newpwd"></i18n:get>：

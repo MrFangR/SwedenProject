@@ -5,7 +5,9 @@ import com.jfinal.plugin.activerecord.Page;
 import com.partner.busi.model.base.BaseMatchUser;
 import org.apache.commons.lang.StringUtils;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -132,6 +134,12 @@ public class MatchUser extends BaseMatchUser<MatchUser> {
 	
 	public Integer getMaxSeq() {
 		return get("maxSeq");
+	}
+	
+	public String getCreateTimeStr() {
+		Date startDate = this.getCreateTime();
+		SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		return formatDate.format(startDate);
 	}
 	/**
 	 * 
