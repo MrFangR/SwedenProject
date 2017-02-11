@@ -78,10 +78,10 @@ public class BackSessionUtil {
 	 * @param request
 	 * @return userNo/""
 	 */
-	public static String getUserId(HttpServletRequest request){
+	public static Integer getUserId(HttpServletRequest request){
 		CUser user = getUser(request);
 		if (user != null) {
-			return user.getStr("ID");
+			return user.getID();
 		} else {
 			return null;
 		}

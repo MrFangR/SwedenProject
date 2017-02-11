@@ -36,7 +36,8 @@
 				            	<tr>
 		                            <th><font color="color-3">*&nbsp;</font>活动名称：</th>
 		                            <td>
-		                                ${act.TITLE}
+		                                
+		                                <input type="text" name="activity.TITLE" value="${act.TITLE}" class="ued-text-2" maxlength="30" readonly="readonly">
 		                                <p class="color-3 fs-14" id="title_msg"></p>            
 		                            </td>
 		                            <th><font color="color-3">*&nbsp;</font>活动时间：</th>
@@ -75,13 +76,12 @@
     						<script id="editor" type="text/plain" style="width:98%;height:500px;"></script>
     					</div>
 		            </div>
-		            
 		            <input type="hidden" name="activity.ID" value="${act.ID }" />
 					<input type="hidden" id="CONTENT" name="activity.CONTENT" value=""/>
 					<input type="hidden" id="type" name="type" value=""/>
    		</form>
-					<div id="contentStr" style="visibility: hidden;">${act.CONTENT }</div>
-		            <div class="mgt-25 tc"><button class="ued-button-2 mgr-25"  onclick="update(1)">保存</button><button class="ued-button-2 mgr-25"  onclick="update(2)">发布</button><button class="ued-button-3" onclick="back()">返回</button></div>
+					<div id="contentStr" style="display: hidden;">${act.CONTENT }</div>
+		            <div class="mgt-25 tc"><button class="ued-button-2 mgr-25"  onclick="update(2)">发布</button><button class="ued-button-3" onclick="back()">返回</button></div>
 		        </div>
 		    </div>
 	</div>
