@@ -53,7 +53,7 @@
 									</dl>
 									<dl  class="us-info-dl clearfix">
 										<dt class="fl" style="width:175px"><span class="rose">*</span><i18n:get key="portal.regist.password"></i18n:get>：</dt>
-										<dd class="fl"><input  type="password" id="pwd" placeholder="建议使用两种字符组合"/></dd><!-- 建议使用两种字符组合 -->
+										<dd class="fl"><input  type="password" id="pwd" placeholder=""/></dd><!-- 建议使用两种字符组合 -->
 										<dd id="pwd_notice" class="notice"></dd>
 									</dl>
 									<dl  class="us-info-dl clearfix">
@@ -100,25 +100,25 @@ function userRegist(){
 	$("#submitRegist").unbind("click");
 	var name = $("#name").val();
 	if(name.trim().length==0){
-		$("#name_notice").html("姓名不能为空！");
+		$("#name_notice").html("Ange ditt namn	！");
 		$("#submitRegist").bind("click",userRegist);
 		return false;
 	}
 	var niceName = $("#nickName").val();
 	if(niceName.trim().length==0){
-		$("#nickName_notice").html("昵称不能为空！");
+		$("#nickName_notice").html("Ange ditt smeknamn！");
 		$("#submitRegist").bind("click",userRegist);
 		return false;
 	}
 	var idNum = $("#idNum").val();
 	if(idNum.trim().length==0){
-		$("#idNum_notice").html("人口号不能为空！");
+		$("#idNum_notice").html("Ange ditt personnummer！");
 		$("#submitRegist").bind("click",userRegist);
 		return false;
 	}
 	var email = $("#email").val();
 	if(email.trim().length==0){
-		$("#email_notice").html("邮箱不能为空！");
+		$("#email_notice").html("ange din e-postadress！");
 		$("#submitRegist").bind("click",userRegist);
 		return false;
 	}else if(!jST.isEmail(email)){
@@ -128,13 +128,13 @@ function userRegist(){
 	}
 	var pwd = $("#pwd").val();
 	if(pwd.trim().length==0){
-		$("#pwd_notice").html("密码不能为空！");
+		$("#pwd_notice").html("ange ditt lösenord！");
 		$("#submitRegist").bind("click",userRegist);
 		return false;
 	}
 	var repwd = $("#repwd").val();
 	if(repwd.trim().length==0){
-		$("#repwd_notice").html("确认密码不能为空！");
+		$("#repwd_notice").html("Bekräfta ditt lösenord！");
 		$("#submitRegist").bind("click",userRegist);
 		return false;
 	}else if(pwd!=repwd){
@@ -176,7 +176,7 @@ function userRegist(){
 		error : function() {
 			ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
 			   {type:2,
-				info:'忘记密码',
+				info:'jag har glömt mitt lösenord',
 				text:'<div style=" font-size:18px; color:#ff0000;"> 注册失败 </div>',
 				'ok':function(){$("#submitRegist").bind("click",userRegist);},
 				tag:'cw-ring'}

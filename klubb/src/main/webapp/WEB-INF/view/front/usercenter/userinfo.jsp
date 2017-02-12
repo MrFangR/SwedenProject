@@ -72,7 +72,7 @@
 									</dl>
 									<!-- 
                                     <dl  class="us-info-dl clearfix">
-										<dt class="fl">邮箱地址：</dt>
+										<dt class="fl">e-postadress：</dt>
 										<dd class="fl"><input  type="text" id="email" value="${user.EMAIL }"/></dd>
 										<dd class="notice" id="email_notice"></dd>
 									</dl>
@@ -181,28 +181,28 @@ function submitInfo(){
 	$("#submitInfo").unbind("click");
 	var name = $("#name").val();
 	if(name.trim().length==0){
-		$("#name_notice").html("姓名不能为空！");
+		$("#name_notice").html("Ange ditt namn！");
 		$("#submitInfo").bind("click",submitInfo);
 		return false;
 	}
 	var niceName = $("#nickName").val();
 	if(niceName.trim().length==0){
-		$("#nickName_notice").html("昵称不能为空！");
+		$("#nickName_notice").html("Ange ditt smeknamn！");
 		$("#submitInfo").bind("click",submitInfo);
 		return false;
 	}
 	var idNum = $("#idNum").val();
 	if(idNum.trim().length==0){
-		$("#idNum_notice").html("人口号不能为空！");
+		$("#idNum_notice").html("Ange ditt personnummer！");
 		$("#submitInfo").bind("click",submitInfo);
 		return false;
 	}
 	/* var email = $("#email").val();
 	if(email.trim().length==0){
-		$("#email_notice").html("邮箱不能为空！");
+		$("#email_notice").html("ange din e-postadress！");
 		return false;
 	}else if(!jST.isEmail(email)){
-		$("#email_notice").html("请输入全法邮箱地址！");
+		$("#email_notice").html("E-postadressen är ogiltlig！");
 		return false;
 	} */
 	$.ajax({
@@ -224,7 +224,7 @@ function submitInfo(){
 			if (mark == 0) {
 				ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
 				   {type:2,
-					info:'个人资料',
+					info:'min profil',
 					text:'<div style=" font-size:18px; color:#ff0000;">'+json.retMsg+'</div>',
 					'ok':function(){window.location.href = '${ctx}/userCenter/toUserInfo';},
 					tag:'zq-ring'}
@@ -240,7 +240,7 @@ function submitInfo(){
 		error : function() {
 			ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
 			   {type:2,
-				info:'个人资料',
+				info:'min profil',
 				text:'<div style=" font-size:18px; color:#ff0000;">Det gick inte att ändra lösenordet. </div>',//修改失败
 				'ok':function(){
 					$("#submitInfo").bind("click",submitInfo);
@@ -261,19 +261,19 @@ function submitPwd(){
 	$("#submitPwd").unbind("click");
 	var oldpwd = $("#oldPwd").val();
 	if(oldpwd.trim().length == 0){
-		$("#oldPwd").parent().next(".notice").html("原始密码不能为空！");
+		$("#oldPwd").parent().next(".notice").html("Ange gamla lösenordet！");
 		$("#submitPwd").bind("click",submitPwd);
 		return false;
 	}
 	var newpwd = $("#newPwd").val();
 	if(newpwd.trim().length==0){
-		$("#newPwd").parent().next(".notice").html("新密码不能为空！");
+		$("#newPwd").parent().next(".notice").html("ange ett nytt lösenord！");
 		$("#submitPwd").bind("click",submitPwd);
 		return false;
 	}
 	var repwd = $("#repwd").val();
 	if(repwd.trim().length==0){
-		$("#repwd").parent().next(".notice").html("确认密码不能为空！");
+		$("#repwd").parent().next(".notice").html("bekräfta ditt nytt lösenord！");
 		$("#submitPwd").bind("click",submitPwd);
 		return false;
 	}else if(newpwd!=repwd){
@@ -297,7 +297,7 @@ function submitPwd(){
 			if (mark == 0) {
 				ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
 				   {type:2,
-					info:'个人资料',
+					info:'min profil',
 					text:'<div style=" font-size:18px; color:#ff0000;">'+json.retMsg+'</div>',
 					'ok':function(){window.location.href = '${ctx}/userCenter/toUserInfo';},
 					tag:'zq-ring'}
@@ -312,7 +312,7 @@ function submitPwd(){
 		error : function() {
 			ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
 			   {type:2,
-				info:'个人资料',
+				info:'min profil',
 				text:'<div style=" font-size:18px; color:#ff0000;">Det gick inte att ändra lösenordet.</div>',//修改失败 
 				'ok':function(){
 					$("#submitPwd").bind("click",submitPwd);
