@@ -61,11 +61,12 @@
 					<td><fmt:formatDate value="${act.createTime}" type="both"/></td>
 					<td>
 						<button class="ued-button-4" onclick="deleteAct(${act.ID},${act.STATUS})">删除</button>
-						<button class="ued-button-6" onclick="hideAct(${act.ID},${act.STATUS})">隐藏</button>
-						<c:if test="${act.STATUS}!=1">
+						<c:if test="${act.STATUS ne 2}">
+							<button class="ued-button-6" onclick="hideAct(${act.ID},${act.STATUS})">隐藏</button>
+						</c:if>
+						<c:if test="${act.STATUS ne 1}">
 							<button class="ued-button-4" onclick="ReRelease(${act.ID},${act.STATUS})">发布</button>
 						</c:if>
-						
 					</td>
 				</tr>
 			</c:forEach>

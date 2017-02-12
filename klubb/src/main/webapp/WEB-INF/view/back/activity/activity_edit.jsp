@@ -80,8 +80,8 @@
 					<input type="hidden" id="CONTENT" name="activity.CONTENT" value=""/>
 					<input type="hidden" id="type" name="type" value=""/>
    		</form>
-					<div id="contentStr" style="display: hidden;">${act.CONTENT }</div>
-		            <div class="mgt-25 tc"><button class="ued-button-2 mgr-25"  onclick="update(2)">发布</button><button class="ued-button-3" onclick="back()">返回</button></div>
+					<div class="mgt-25 tc"><button class="ued-button-2 mgr-25"  onclick="update(2)">发布</button><button class="ued-button-3" onclick="back()">返回</button></div>
+					<div id="contentStr" style="display:none;">${act.CONTENT }</div>
 		        </div>
 		    </div>
 	</div>

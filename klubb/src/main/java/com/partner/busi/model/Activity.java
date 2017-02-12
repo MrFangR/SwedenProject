@@ -34,10 +34,22 @@ public class Activity extends BaseActivity<Activity> {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	public Page<Activity> findBackList(String title, int pageNum, Integer pagesize) {
+		String select = "select a.*";
+		StringBuilder sql = new StringBuilder(" from t_activity a where a.STATUS in (0,1,2) ");
+		List<Object> params = new ArrayList<Object>();
+		if (StringUtils.isNotBlank(title)) {
+			sql.append(" and a.TITLE like ? ");
+			params.add("%" + title + "%");
+		}
+		sql.append(" order by a.CREATE_TIME desc");
+		return paginate(pageNum, pagesize, select, sql.toString(), params.toArray());
+	}
 
 	public Page<Activity> findList(String title, int pageNum, Integer pagesize) {
 		String select = "select a.*";
-		StringBuilder sql = new StringBuilder(" from t_activity a where a.STATUS=1 ");
+		StringBuilder sql = new StringBuilder(" from t_activity a where a.STATUS = 1 ");
 		List<Object> params = new ArrayList<Object>();
 		if (StringUtils.isNotBlank(title)) {
 			sql.append(" and a.TITLE like ? ");

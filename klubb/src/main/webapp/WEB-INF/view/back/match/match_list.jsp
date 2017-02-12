@@ -53,16 +53,16 @@
                     </tr>
                     <tr>
                        	<th><font color="color-3">*&nbsp;</font>赛制：</th>
-                        <td colspan="3">
-                        	<input class="inp-radio" type="radio" name="match.TYPE" checked="checked" value="1"><span class="b-radio mgr-30"><b></b>单败</span>
-                            <input class="inp-radio" type="radio" name="match.TYPE"  value="2"><span class="b-radio"><b></b>双败</span>
-                            <input class="inp-radio" type="radio" name="match.TYPE"  value="3"><span class="b-radio"><b></b>单败plus</span>
-                            <input class="inp-radio" type="radio" name="match.TYPE"  value="4"><span class="b-radio"><b></b>双败plus</span>
+                        <td>
+                        	<input class="inp-radio" type="radio" name="match.TYPE" value="1" checked="checked"><span class="b-radio mgr-30"><b></b>单败</span>
+                            <input class="inp-radio" type="radio" name="match.TYPE" value="2"><span class="b-radio"><b></b>双败</span>
+                            <input class="inp-radio" type="radio" name="match.TYPE" value="3"><span class="b-radio"><b></b>单败plus</span>
+                            <input class="inp-radio" type="radio" name="match.TYPE" value="4"><span class="b-radio"><b></b>双败plus</span>
                         </td>
                     </tr>
                     <tr>
                         <th><font color="color-3">*&nbsp;</font>第三名争夺赛：</th>
-                        <td  colspan="3">
+                        <td>
 	                       	<input class="inp-radio" type="radio" name="match.THIRD" unit="年" value="1" checked="checked"><span class="b-radio mgr-30"><b></b>是</span>
 	                        <input class="inp-radio" type="radio" name="match.THIRD" unit="半年" value="0"><span class="b-radio"><b></b>否</span>
 	                    </td>

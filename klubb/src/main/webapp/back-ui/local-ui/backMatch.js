@@ -199,5 +199,9 @@ function initUpload(){
 }
 //返回
 function back(){
-	location.href = ctx+"/back/match/init";
+	$('.ued-text-2').val('');
+	$('.ued-textarea').val('');
+	$('#showImg').attr("src", "");
+	$("input[name='match.TYPE']:eq(0)").attr("checked",'checked');
+	$("input[name=match.THIRD]:eq(0)").attr("checked",'checked');
 }

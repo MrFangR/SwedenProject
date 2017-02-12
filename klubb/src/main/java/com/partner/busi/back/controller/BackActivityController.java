@@ -35,7 +35,7 @@ public class BackActivityController extends Controller {
 		int pageNum = getParaToInt("pageNum");
 		int pageSize = Constants.PAGESIZE;
 		
-		Page<Activity> page = Activity.dao.findList(title, pageNum, pageSize);
+		Page<Activity> page = Activity.dao.findBackList(title, pageNum, pageSize);
 		setAttr("paginate", page);
 		render("activity/activity_list_result.jsp");
 	}
