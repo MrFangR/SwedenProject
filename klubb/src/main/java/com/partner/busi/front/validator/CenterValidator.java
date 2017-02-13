@@ -22,12 +22,12 @@ public class CenterValidator extends Validator {
 	@Override
 	protected void validate(Controller c) {
 		// TODO Auto-generated method stub
-        validateRequiredString("name", "nameMsg", "姓名不能为空!");
-		validateRequiredString("nickName", "nickNameMsg", "昵称不能为空!");
-		validateRequiredString("idNum", "idNumMsg", "人口号不能为空!");
+        validateRequiredString("name", "nameMsg", "Ange ditt namn!");
+		validateRequiredString("nickName", "nickNameMsg", "Ange ditt smeknamn!");
+		validateRequiredString("idNum", "idNumMsg", "Ange ditt personnummer!");
 		//validateRequiredString("email", "emailMsg", "邮箱不能为空!");
 		//validateEmail("email", "emailMsg", "请输入正确用户邮箱!");
-		validateRequiredString("imgcode", "imgcodeMsg", "验证码不能为空!");
+		validateRequiredString("imgcode", "imgcodeMsg", "ange verifieringskoden!");
 		String inputRandomCode = c.getPara("imgcode");
 		if(StringUtils.isNotBlank(inputRandomCode)){
 	        boolean loginSuccess = c.validateCaptcha("imgcode");
