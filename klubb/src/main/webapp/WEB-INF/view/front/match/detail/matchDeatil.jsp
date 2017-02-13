@@ -45,17 +45,19 @@
 						<h1 class="contitle">${match.NAME }</h1>
 						<input type="hidden" id="introMatchId" value="${match.ID }">
 						<p class="confutitle">
-						<c:choose>
-							<c:when test="${applyFlag==0 }">
-								<input id="addMatch" name="addMatch" class="contbtn" value="+参加比赛" type="button">
-							</c:when>
-							<c:when test="${applyFlag==1 }">
-								<input name="addMatch" class="contbtn" value="+已报名" type="button" disabled="disabled" style="background: #C8C8C8">
-							</c:when>
-							<c:when test="${applyFlag==2 }">
-								<input name="addMatch" class="contbtn" value="+报名人数已满" type="button" disabled="disabled">
-							</c:when>
-						</c:choose>
+						<c:if test="${match.STATUS == 0}">
+							<c:choose>
+								<c:when test="${applyFlag==0 }">
+									<input id="addMatch" name="addMatch" class="contbtn" value="+参加比赛" type="button">
+								</c:when>
+								<c:when test="${applyFlag==1 }">
+									<input name="addMatch" class="contbtn" value="+已报名" type="button" disabled="disabled" style="background: #C8C8C8">
+								</c:when>
+								<c:when test="${applyFlag==2 }">
+									<input name="addMatch" class="contbtn" value="+报名人数已满" type="button" disabled="disabled">
+								</c:when>
+							</c:choose>
+						</c:if>
 						<span>时间：${match.startDateStr }</span><span class="mgl-200"></span></p>
                                        <p class="conline"></p>
                                        <div class="cont-text">
