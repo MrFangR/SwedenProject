@@ -67,12 +67,27 @@ function save(){
 			success: function(json){
 				var retCode = json.retCode;
 				if(retCode==0){
-					alert("发布成功");
-					location.href=ctx + "/back/notice";
+                    ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+                        {type:2,
+                            info:'通告配置',
+                            text:'<div style=" font-size:18px; color:#ff0000;"> 发布成功 </div>',
+                            'ok':function(){
+                                location.href=ctx + "/back/notice";
+							},
+                            tag:'zq-ring'}
+                    );
+
 				}else{
-					alert("发布失败");
-					return;
+                    ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+                        {type:2,
+                            info:'通告配置',
+                            text:'<div style=" font-size:18px; color:#ff0000;"> 发布失败 </div>',
+                            'ok':function(){},
+                            tag:'cw-ring'}
+                    );
+                    return;
 				}
+
 			}
 		});
 		

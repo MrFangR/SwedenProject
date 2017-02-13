@@ -39,7 +39,13 @@ function qry4Page(pageNum){
 function updateStatus(f, contactId){
 //	var newsId = $(":radio[name='contactId']:checked").val();
 	if (contactId==null || contactId==undefined || contactId=="") {
-		pop.fail("请选择要操作的记录");
+        ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+            {type:2,
+                info:'留言管理',
+                text:'<div style=" font-size:18px; color:#ff0000;"> 请选择要操作的记录 </div>',
+                'ok':function(){},
+                tag:'cw-ring'}
+        );
 		return;
 	}
 	var confirmMsg = "";
@@ -48,41 +54,54 @@ function updateStatus(f, contactId){
 	} else if (f == 1){
 		confirmMsg = "是否确认将此留言标记为已读？";
 	} else {
-		pop.fail("操作标识获取失败，请稍后重新操作");
+        ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+            {type:2,
+                info:'留言管理',
+                text:'<div style=" font-size:18px; color:#ff0000;"> 操作标识获取失败，请稍后重新操作 </div>',
+                'ok':function(){},
+                tag:'cw-ring'}
+        );
 		return;
 	}
-	pop.confirm(confirmMsg, function(){
-		$.ajax({
-			type : 'post',
-			cache : false,
-			async : true,
-			url : ctx + "/back/contact/updateStatus",
-			data: {
-				contactId : contactId,
-				status : f
-			},
-			dataType : "json",
-			success : function(json){
-                var type = "cw-ring";
-                if (json.flag == 0) {
-                    type = "zq-ring";
-                    qry(1);
-                }
-                ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
-                    {type:2,
-                        info:'留言管理',
-                        text:'<div style=" font-size:18px; color:#ff0000;"> '+json.msg+' </div>',
-                        'ok':function(){},
-                        tag:type}
-                );
-				return;
-			},
-			error : function(){
-				pop.fail("系统异常，请稍后重试");
-				return;
-			}
-		});
-	});
+    ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+        {type:2,
+            info:'留言管理',
+            text:'<div style=" font-size:18px; color:#ff0000;"> '+confirmMsg+' </div>',
+            'ok':function(){
+                $.ajax({
+                    type : 'post',
+                    cache : false,
+                    async : true,
+                    url : ctx + "/back/contact/updateStatus",
+                    data: {
+                        contactId : contactId,
+                        status : f
+                    },
+                    dataType : "json",
+                    success : function(json){
+                        var type = "cw-ring";
+                        if (json.flag == 0) {
+                            type = "zq-ring";
+                            qry(1);
+                        }
+                        ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+                            {type:2,
+                                info:'留言管理',
+                                text:'<div style=" font-size:18px; color:#ff0000;"> '+json.msg+' </div>',
+                                'ok':function(){},
+                                tag:type}
+                        );
+                        return;
+                    },
+                    error : function(){
+                        pop.fail("系统异常，请稍后重试");
+                        return;
+                    }
+                });
+            },
+            tag:'tx-ring'}
+    );
+
 }
 
 

@@ -70,9 +70,15 @@ function update(status){
 			data : $("#introduceForm").serialize(),
 			success: function(data){
 				if(data.rsFlag){
-					pop.success(data.rsMsg, function(){
-						back();
-					});
+                    ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+                        {type:2,
+                            info:'介绍管理',
+                            text:'<div style=" font-size:18px; color:#ff0000;"> '+data.rsMsg+' </div>',
+                            'ok':function(){
+                                back();
+                            },
+                            tag:'zq-ring'}
+                    );
 				}else{
 					showNotice(data);
 				}

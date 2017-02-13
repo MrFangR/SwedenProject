@@ -86,7 +86,13 @@ function save(){
 			data : $("#configForm").serialize(),
 			success: function(data){
 				if(data.rsFlag){
-					pop.success(data.rsMsg, function(){});
+                    ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+                        {type:2,
+                            info:'台球厅配置',
+                            text:'<div style=" font-size:18px; color:#ff0000;"> '+data.rsMsg+' </div>',
+                            'ok':function(){},
+                            tag:'zq-ring'}
+                    );
 				}else{
 					showNotice(data);
 				}
