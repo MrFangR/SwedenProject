@@ -15,6 +15,11 @@
 	href="${ctx }/front-ui/css/reset.css">
 <link rel="stylesheet" type="text/css"
 	href="${ctx }/front-ui/css/component.css" />
+	<style>
+		#contactForm dt{
+			width: 180px;
+		}
+	</style>
 </head>
 <body class="tm-background">
 	<header>
