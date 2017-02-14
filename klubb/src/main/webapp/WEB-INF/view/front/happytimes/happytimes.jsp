@@ -67,13 +67,15 @@ function showHappyTimes(pageNum){
 			var dateStrPre = "";
 			var dateStrNext = "";
 			$.each(data.page.list, function(i, pic){
+				var date = new Date(pic.CREATE_TIME);
+				var month = date.getMonth()+1;
 				dateStrNext = FormatDate(pic.CREATE_TIME);
 				if(dateStrPre != dateStrNext){
 				dateStrPre = FormatDate(pic.CREATE_TIME);
 				htmlStr += "<div class='clearfix'></div>"
 						+ "<div class='riqi'>"
-						+ "<p class='date'>"+dateStrNext.substr(8,2)+"</p>"
-						+ "<p class='month'>"+dateStrNext.substr(5,2)+"月</p>"
+						+ "<p class='date'>"+date.getDate()+"</p>"
+						+ "<p class='month'>"+month+"月</p>"
 						+ "<p class='Category'><i18n:get key='portal.menu.happytimes'></i18n:get></p>"
 						+ "</div>"
 				}
