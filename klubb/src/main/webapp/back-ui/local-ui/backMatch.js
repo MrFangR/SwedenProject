@@ -202,8 +202,7 @@ function back(){
 	$('.ued-text-2').val('');
 	$('.ued-textarea').val('');
 	$('#showImg').attr("src", "");
-	$("input[name='match.TYPE']:eq(0)").attr("checked",'checked');
-	$("input[name='match.THIRD']:eq(0)").attr("checked",'checked');
-	$("input[name='match.STOP_PLAYER']").val("");
-	$("input[name='match.STOP_PLAYER']").parent().parent().hide();
+	$("input[name='match.TYPE']:eq(0)").next().trigger('click');
+	$("input[name='match.THIRD']:eq(0)").next().trigger('click');
+	$(".fs-14").html("");
 }
