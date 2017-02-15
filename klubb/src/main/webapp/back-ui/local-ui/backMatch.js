@@ -203,5 +203,5 @@ function back(){
 	$('.ued-textarea').val('');
 	$('#showImg').attr("src", "");
 	$("input[name='match.TYPE']:eq(0)").attr("checked",'checked');
-	$("input[name=match.THIRD]:eq(0)").attr("checked",'checked');
+	$("input[name='match.THIRD']:eq(0)").attr("checked",'checked');
 }
