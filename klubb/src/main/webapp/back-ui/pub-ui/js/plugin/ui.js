@@ -73,12 +73,13 @@ $(function(){
 		}else{
 			if(_bRadio.hasClass("bon-radio"))_bRadio.removeClass("bon-radio");
 		}
-		_bRadio.click(function(){
-			_inpRadio.trigger("click");	
-			if($("input[type='radio']:checked")){
-				$("input[type='radio']:checked").next().addClass("bon-radio");	
-				$("input[type='radio']:not(:checked)").next().removeClass("bon-radio");
-			}
+		_bRadio.click(function(e){
+            _inpRadio.trigger("click");
+            if($("input[type='radio']:checked")){
+                $("input[type='radio']:checked").next().addClass("bon-radio");
+                $("input[type='radio']:not(:checked)").next().removeClass("bon-radio");
+            }
+            e.stopImmediatePropagation();
 		});
 	})
 	//修改默认checkbox样式
