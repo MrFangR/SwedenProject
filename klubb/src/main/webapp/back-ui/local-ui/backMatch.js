@@ -204,4 +204,6 @@ function back(){
 	$('#showImg').attr("src", "");
 	$("input[name='match.TYPE']:eq(0)").attr("checked",'checked');
 	$("input[name='match.THIRD']:eq(0)").attr("checked",'checked');
+	$("input[name='match.STOP_PLAYER']").val("");
+	$("input[name='match.STOP_PLAYER']").parent().parent().hide();
 }
