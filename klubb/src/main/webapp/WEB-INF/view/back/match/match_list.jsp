@@ -98,7 +98,7 @@
                 </tbody>
             </table>
             </form>
-            <div class="mgt-25 tc"><button class="ued-button-2 mgr-25" onclick="update()">保存</button><button class="ued-button-3" onclick="back()">重置</button></div>
+            <div class="mgt-25 tc"><button class="ued-button-2 mgr-25" onclick="update()">发布</button><button class="ued-button-3" onclick="back()">重置</button></div>
             <!-- 列表 e -->
         </div>
     </div>

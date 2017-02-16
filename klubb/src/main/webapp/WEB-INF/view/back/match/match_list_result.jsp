@@ -48,7 +48,7 @@
 		            <td>
 		            	<c:choose>
 							<c:when test="${match.STATUS eq 0}">
-								<a href="javascript:;" onclick="startMat(${match.ID})">开始比赛</a>
+								<a href="javascript:;" onclick="startMat(${match.ID})" class="js_collect2">开始比赛</a>
 							</c:when>
 						</c:choose>
 		            	
