@@ -158,7 +158,7 @@ function ui_com_hallpop(objShow,objHide,objhallpop,obj){
 								
 								var misoAlert_btnbr2 = document.createElement('span')
 			                	$(misoAlert_btnbr2).addClass("misoAlert-btnbr");
-								$(misoAlert_btnbr2).html("bekräfta");
+								$(misoAlert_btnbr2).html("确定");
 								$(misoAlert_btnbr2).live('click',function(){
 									$(".ands-miso-cover").remove();
 									$(objhallpop).hide();
