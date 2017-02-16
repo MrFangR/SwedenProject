@@ -56,7 +56,11 @@ function update(){
 					   {type:2,
 						info:'提示信息',
 						text:'<div style=" font-size:18px; color:#ff0000;">添加比赛成功</div>',
-						'ok':function(){back();},
+						'ok':function(){
+							showMatch(1);
+							back();
+							$(".ued-add").trigger('click');
+						},
 						tag:'zq-ring'}
 		              );
 				}else{
@@ -100,7 +104,7 @@ function cancleMat(ID,status){
 						info:'取消比赛确认',
 						text:'<div style=" font-size:18px; color:#ff0000;"> 取消比赛提示</div>您好，您确认要取消比赛吗，目前比赛状态：'+statusMsg,
 						'ok':function(){canMat(ID)},
-						tag:'cw-ring'}
+						tag:'tx-ring'}
 		               );
 	})
 }
@@ -126,7 +130,7 @@ function canMat(ID){
 							info:'提示信息',
 							text:'<div style=" font-size:18px; color:#ff0000;">'+data.rsMsg+'</div>',
 							'ok':function(){back();},
-							tag:'zq-ring'}
+							tag:'tx-ring'}
 			              );
 			}
 		},
@@ -139,6 +143,19 @@ function canMat(ID){
 
 //开始比赛
 function startMat(matId){
+	alert('ssssssssssss');
+	$(".js_collect2").live("click",function(){
+		ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+					   {type:2,
+						info:'开始比赛确认',
+						text:'<div style=" font-size:18px; color:#ff0000;"> 开始比赛提示</div>您好，您确认要开始比赛吗?',
+						'ok':function(){startMatch(matId)},
+						tag:'tx-ring'}
+		               );
+	})
+}
+
+function startMatch(matId){
 	$.ajax({
 		type : 'get',
 		cache : false,

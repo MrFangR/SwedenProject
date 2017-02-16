@@ -61,7 +61,7 @@
 					<td><fmt:formatDate value="${act.createTime}" type="both"/></td>
 					<td>
 						<button class="ued-button-4" onclick="deleteAct(${act.ID},${act.STATUS})">删除</button>
-						<c:if test="${act.STATUS ne 2}">
+						<c:if test="${act.STATUS ne 2&&act.STATUS ne 0}">
 							<button class="ued-button-6" onclick="hideAct(${act.ID},${act.STATUS})">隐藏</button>
 						</c:if>
 						<c:if test="${act.STATUS ne 1}">
