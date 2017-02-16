@@ -906,9 +906,10 @@ $(function() {
 		}
 	}
 	
-		dragula([ single1 ], {
-			removeOnSpill : true
-		});
+		dragula([document.getElementById('single1')])
+			.on("drop", function(el){
+			    alert("drop");
+			});
 		function allowDrop(ev) {
 			ev.preventDefault();
 		}
