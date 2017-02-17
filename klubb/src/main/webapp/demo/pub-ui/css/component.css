@@ -369,7 +369,6 @@ nav ul li.line{
     width: 86px;
 }
 .paging a.prev, .paging a.next {
-    background: rgba(0, 0, 0, 0) url("../images/icon-w4.gif") no-repeat scroll 0 0;
 }
 .paging a.prev {
     background-position:5px 8px;
@@ -381,11 +380,9 @@ nav ul li.line{
     padding-right: 20px;
 }
 .paging a.prev-on {
-    background: #f8f8f8 url("../images/icon-w4.gif") no-repeat scroll 5px -83px;
     padding-left: 20px;
 }
 .paging a.next-on {
-    background: #f8f8f8 url("../images/icon-w4.gif") no-repeat scroll 55px -135px;
     padding-right: 20px;
 }
 .paging-new {
