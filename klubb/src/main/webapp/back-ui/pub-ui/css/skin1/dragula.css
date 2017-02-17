@@ -52,7 +52,5 @@
 
 /*编辑参赛人*/
 .container i{ width:24px; height:24px; display:inline-block; vertical-align:middle; float:right}
-.mtch_del{background:url(../../images/icon-3.png) 6px -60px no-repeat;}
-.mtch_del:hover{background:url(../../images/icon-3.png) 6px -92px no-repeat;}
-.mtch_edit{background:url(../../images/icon-3.png) 6px 4px no-repeat;}
-.mtch_edit:hover{background:url(../../images/icon-3.png) 6px -25px no-repeat;}
+.mtch_del{background:url(../../images/icon-3.png) 6px -402px no-repeat; cursor:pointer}
+.mtch_edit{background:url(../../images/icon-3.png) 6px 4px no-repeat;cursor:pointer}
