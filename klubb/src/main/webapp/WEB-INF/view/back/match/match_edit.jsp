@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>精简开店后台管理系统</title>
+	<title></title>
     <%@include file="/ninclude/back/header.jsp"%>
 </head>
 
@@ -906,10 +906,31 @@ $(function() {
 		}
 	}
 	
+		var dragFirstIndex, dragSecondIndex;
 		dragula([document.getElementById('single1')])
-			.on("drop", function(el){
-			    alert("drop");
-			});
+	   .on("drag", function(el){
+	        dragFirstIndex = $("#single1 div.gu-transit").index();
+	   }).on("drop", function(el){
+	   	   ui_com_hallpop(".js_collect","#ands_misoAlert_close","#ands-miso-popAlert",{type:1,text:'页面加载中请稍后.....'});
+	       dragSecondIndex = $("#single1 div.gu-transit").index();
+	       var userId = $("#single1 div.gu-transit .mtch_edit").attr("userValue");
+	       var matchUId = $("#single1 div.gu-transit .mtch_edit").attr("dataValue");
+	       $.ajax({
+	       		type : "POST",
+				url : "${ctx}/back/match/edit/dragUser",
+				dataType : "json",
+				data : {
+					id : userId,
+					matchId : $("#matchId").val(),
+					matchUId : matchUId,
+					firstIndex : dragFirstIndex,
+					secondIndex : dragSecondIndex
+				},
+				success : function(data) {
+					ui_com_hallpop(".js_collect","#ands_misoAlert_close","#ands-miso-popAlert",{type:4});	
+				}
+	       });
+	   });
 		function allowDrop(ev) {
 			ev.preventDefault();
 		}
