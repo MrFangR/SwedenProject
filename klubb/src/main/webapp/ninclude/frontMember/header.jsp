@@ -2,9 +2,9 @@
  <%@ taglib prefix="i18n" uri="/i18n-taglib" %>
  
  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
- <h1 class="herder-logo"><img src="${ctx }/front-ui/images/logo.png" width="136" height="161"></h1>
      <div class="header-con">
-         <span class="fr">
+         <h1 class="herder-logo"><img src="${ctx }/front-ui/images/logo.png" width="136" height="161"></h1>
+         <span class="fr" style="width:200px">
          	<c:if test="${FRONT_SESSION_USER.EMAIL == null }">
          		<a href="${ctx }/front/toLogin"><i18n:get key="portal.menu.login"></i18n:get></a> | <a href="${ctx }/front/toRegist"><i18n:get key="portal.menu.regist"></i18n:get></a>
          	</c:if>
