@@ -1473,7 +1473,6 @@ background:url(../images/icon-wx13.png) 0px -50px no-repeat; cursor:pointer;}
     height:10px;
     margin-left:10px;
     overflow: hidden;
-    background:url("images/panel-tool.gif") -9px 0 no-repeat;
 }
 .dialog-header .dialog-tool a.dialog-recover{
     display: block;
@@ -1483,7 +1482,6 @@ background:url(../images/icon-wx13.png) 0px -50px no-repeat; cursor:pointer;}
     height:10px;
     margin-left:10px;
     overflow: hidden;
-    background:url("images/panel-tool.gif") -18px 0 no-repeat;
 }
 .dialog-background {
     position: absolute;
