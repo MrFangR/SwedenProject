@@ -153,6 +153,21 @@ public class MatchUser extends BaseMatchUser<MatchUser> {
 		return Db.update(sb.toString());
 	}
 	
+	/**
+	 * 
+	 * @param matchId
+	 * @param start 更新区间的开始值
+	 * @param end  更新区间的开始值
+	 * @return int 返回更新的记录数
+	 * 指间区间批量对SEQ 进行递减操作
+	 */
+	public int batchUpdateSeq(int matchId, int start, int end){
+		start = start+1;
+		end =end+2;
+		StringBuffer sb = new StringBuffer(" UPDATE t_match_user MU SET MU.SEQ = MU.SEQ-1 WHERE MU.MATCH_ID = "+matchId+" AND MU.SEQ IS NOT NULL AND MU.SEQ > "+start+" AND MU.SEQ < "+end);
+		return Db.update(sb.toString());
+	}
+	
 	public int countMatchPersion(int matchId){
 		String sql = " SELECT max(seq) as maxSeq  from t_match_user where MATCH_ID = "+matchId+" and SEQ IS NOT NULL";
 		MatchUser matchUser = dao.findFirst(sql);

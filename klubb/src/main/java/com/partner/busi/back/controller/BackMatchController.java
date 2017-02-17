@@ -502,6 +502,25 @@ public class BackMatchController extends Controller {
 		renderJson(retInfo);
 	}
 	
+	public void dragUser(){
+		ResultInfo retInfo = new ResultInfo();
+		retInfo.setRetCode(1);
+		String uid = getPara("id");
+		String matchId = getPara("matchId");
+		String matchUId = getPara("matchUId");
+		String firstIndex = getPara("firstIndex");
+		String secondIndex = getPara("secondIndex");
+		//操作流程是批量更新大于second,小于firstIndex的数据，之后再更新自己的记录
+		int flag = MatchUser.dao.batchUpdateSeq(Integer.parseInt(matchId), Integer.parseInt(firstIndex), Integer.parseInt(secondIndex));
+		if(flag>0){
+			MatchUser user = MatchUser.dao.findById(matchUId);
+			user.setSEQ(Integer.parseInt(secondIndex)+1);
+			user.update();
+			retInfo.setRetCode(0);
+		}
+		renderJson(retInfo);
+	}
+	
 	public void setScore(){
 		ResultInfo retInfo = new ResultInfo();
 		int id = getParaToInt("id");
