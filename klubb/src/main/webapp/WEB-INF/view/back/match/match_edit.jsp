@@ -14,7 +14,7 @@
 		<input type="hidden" id="matchStatus" value="${match.STATUS }">
         <!--tab  s-->
         <div class="ued-tab-tit clearfix js_tab_tit">
-            <ul class="ued-tab-1 fl clearfix">
+            <ul class="ued-tab-1 fl clearfix" id="subTab">
 				<c:if test="${fn:length(secondList) <= 0}">
 					<li class="on1 "><a class="ued-add" href="javascript:void(0)">编辑对阵图</a></li>
 				</c:if>
@@ -42,7 +42,7 @@
             <input type="hidden" id="winTitleLength" value="${fn:length(winTitleList)}">
             <input type="hidden" id="loseTitleLength" value="${fn:length(loseTitleList)}">
 
-            <div id="boxDiv" class="box-n on1" style="width:1600px;">
+            <div id="boxDiv0" class="box-n on1" style="width:1600px;">
             <div class="clearfix">
             <!--比赛标题  s-->
             <div class="matchtitle">
@@ -879,10 +879,12 @@ $(function() {
         if(loseLen > 0){
             len = loseLen;
         }
-        $("#boxDiv").css("width", 320*len + "px");
+        $("#boxDiv0").css("width", 320*len + "px");
     }
 
 	function moveUserToGame(gameId, type){
+        var currIndex = $("#subTab .on1").index();
+
 		var $fromGame = $("div.ued-tab-con div[gId='"+gameId+"']");
 		var nextSeq = null;
 		var nextIndex = null;
@@ -893,7 +895,7 @@ $(function() {
 		}
 		
 		if(nextSeq != null && nextSeq != "" && nextIndex != null && nextIndex != ""){
-			var $toGame = $("div.ued-tab-con div[gSeq='"+nextSeq+"']");
+			var $toGame = $("#boxDiv"+currIndex+" div[gSeq='"+nextSeq+"']");
 			var userId = "";
 			if(type == "w"){ //胜者
 				userId = $fromGame.attr("wId");
