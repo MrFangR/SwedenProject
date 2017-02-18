@@ -984,10 +984,18 @@ $(function() {
 			var $div1 = $(self).children("div:first");
 			var $div2 = $(self).children("div:last");
 
-			$(".editUser1").html($div1.find("span").html());
+			var userName1 = $div1.find("span").html();
+			if(userName1 == ""){
+			    userName1 = "&nbsp;";
+			}
+			$(".editUser1").html(userName1);
 			$(".editUser1").attr("uid", $div1.find("span").attr("id"));
 
-			$(".editUser2").html($div2.find("span").html());
+            var userName2 = $div2.find("span").html();
+            if(userName2 == ""){
+                userName2 = "&nbsp;";
+            }
+			$(".editUser2").html(userName2);
 			$(".editUser2").attr("uid", $div2.find("span").attr("id"));
 			
 			$("#editScore1").val($div1.find("input").val());
