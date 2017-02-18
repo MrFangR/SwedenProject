@@ -599,7 +599,8 @@ $(function() {
 						  success:function(json){
 							  if(json.retCode == 0 ){
 								  obj.parent().remove();
-								  location.href=ctx + "/back/match/edit?matchId="+matchId+"&flag=editUser";
+                                  $("#generateGame").trigger("click");
+                                  location.href=ctx + "/back/match/edit?matchId="+matchId+"&flag=editUser";
 							  }else{
 								  ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
 								   {type:2,
