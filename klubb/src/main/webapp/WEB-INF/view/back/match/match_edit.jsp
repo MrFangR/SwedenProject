@@ -141,7 +141,7 @@
                                 <div class="matchgroup">
             			<div wId="${game.winnerId }" tNum="${game.tableNum }" sTime="${game.startTime }" gType="${game.TYPE }" gSeq="${game.SEQ }" gId="${game.ID}" wSeq="${game.WNextId}" lSeq="${game.LNextId}" class="template js_template"  <c:if test="${gStatus.index > 0}">style="margin-top: ${lTempMgt[status.index]}px;"</c:if>>
 	                        <h3>${game.SEQ }</h3>
-	                    <div class="group" id="${game.ID }_1" ><i><c:if test="${game.u1_SEQ != 0}">${game.u1_SEQ}</c:if></i><span id="${game.USER2 }">${game.u1_NAME }</span><input name="" type="text" value="${game.SCORE1 }"></div>
+	                    <div class="group" id="${game.ID }_1" ><i><c:if test="${game.u1_SEQ != 0}">${game.u1_SEQ}</c:if></i><span id="${game.USER1 }">${game.u1_NAME }</span><input name="" type="text" value="${game.SCORE1 }"></div>
 	                    <div class="group" id="${game.ID }_2" ><i><c:if test="${game.u2_SEQ != 0}">${game.u2_SEQ}</c:if></i><span id="${game.USER2 }">${game.u2_NAME }</span><input name="" type="text" value="${game.SCORE2 }"></div>
 	                    </div>
 	                    <c:if test="${not status.last }">
@@ -725,55 +725,16 @@ $(function() {
                 ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
                     {type:2,
                         info:'比赛管理',
-                        text:'<div style=" font-size:18px; color:#ff0000;">比赛人员不全，不得编辑比分及胜者</div>',
-                        'ok':function(){},
-                        tag:'cw-ring'}
+                        text:'<div style=" font-size:18px; color:#ff0000;"> 比赛人员不全，确定要编辑比分及胜者吗？ </div>',
+                        'ok':function(){
+                            doUpdateScore()
+                        },
+                        tag:'tx-ring'}
                 );
-				return;
+            }else{
+                doUpdateScore();
 			}
-			var winId = $("#btn-matchbtn span.active").attr("uid");
-			var score1 = $("#editScore1").val();
-			var score2 = $("#editScore2").val();
-			var gameId = $("#editGameId").val();
-			$.ajax({
-				type : "POST",
-				url : "${ctx}/back/match/edit/updateScore",
-				dataType : "json",
-				data : {
-					winId : winId,
-					score1 : score1,
-					score2 : score2,
-					gameId : gameId
-				},
-				success : function(data) {
-					if (data.rsFlag) {
-						//编辑比分及胜者属性
-						var $game = $("div.ued-tab-con div[gId='"+gameId+"']");
-						$game.attr("wId", winId);
-						$("#" + gameId + "_1").find("input").val(score1);
-						$("#" + gameId + "_2").find("input").val(score2);
 
-						moveUserToGame(gameId, "w"); //移动到胜者组
-						moveUserToGame(gameId, "l"); //移动到败者组
-						$(".dialog-close").trigger("click");
-                        ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
-                            {type:2,
-                                info:'比赛管理',
-                                text:'<div style=" font-size:18px; color:#ff0000;"> 编辑成功 </div>',
-                                'ok':function(){},
-                                tag:'zq-ring'}
-                        );
-					}else{
-                        ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
-                            {type:2,
-                                info:'比赛管理',
-                                text:'<div style=" font-size:18px; color:#ff0000;"> 编辑失败 </div>',
-                                'ok':function(){},
-                                tag:'cw-ring'}
-                        );
-					}
-				}
-			});
 		}
 	});
     initBoxWidth();
@@ -871,6 +832,52 @@ $(function() {
     	});
     });
 });
+
+function doUpdateScore(){
+    var winId = $("#btn-matchbtn span.active").attr("uid");
+    var score1 = $("#editScore1").val();
+    var score2 = $("#editScore2").val();
+    var gameId = $("#editGameId").val();
+    $.ajax({
+        type : "POST",
+        url : "${ctx}/back/match/edit/updateScore",
+        dataType : "json",
+        data : {
+            winId : winId,
+            score1 : score1,
+            score2 : score2,
+            gameId : gameId
+        },
+        success : function(data) {
+            if (data.rsFlag) {
+                //编辑比分及胜者属性
+                var $game = $("div.ued-tab-con div[gId='"+gameId+"']");
+                $game.attr("wId", winId);
+                $("#" + gameId + "_1").find("input").val(score1);
+                $("#" + gameId + "_2").find("input").val(score2);
+
+                moveUserToGame(gameId, "w"); //移动到胜者组
+                moveUserToGame(gameId, "l"); //移动到败者组
+                $(".dialog-close").trigger("click");
+                ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+                    {type:2,
+                        info:'比赛管理',
+                        text:'<div style=" font-size:18px; color:#ff0000;"> 编辑成功 </div>',
+                        'ok':function(){},
+                        tag:'zq-ring'}
+                );
+            }else{
+                ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
+                    {type:2,
+                        info:'比赛管理',
+                        text:'<div style=" font-size:18px; color:#ff0000;"> 编辑失败 </div>',
+                        'ok':function(){},
+                        tag:'cw-ring'}
+                );
+            }
+        }
+    });
+}
 
     function initBoxWidth(){
         var winLen = $("#winTitleLength").val();

@@ -123,15 +123,24 @@ public class Game extends BaseGame<Game> {
 		int rs = Db.update(sql, matchId, matchId);
 		if (rs > 0){
 			Game thirdGame = getThirdGame(matchId);
-			sql = "update t_game set L_NEXT_ID=? where SEQ = ?";
-			Db.update(sql, thirdGame.getSEQ() + "_1", thirdGame.getSEQ() - 3);
-			Db.update(sql, thirdGame.getSEQ() + "_2", thirdGame.getSEQ() - 2);
+			sql = "update t_game set L_NEXT_ID=? where SEQ = ? and MATCH_ID=?";
+			Db.update(sql, thirdGame.getSEQ() + "_1", thirdGame.getSEQ() - 3, matchId);
+			Db.update(sql, thirdGame.getSEQ() + "_2", thirdGame.getSEQ() - 2, matchId);
 		}
 		return rs > 0;
 	}
 
 	public Game getThirdGame(int matchId){
-		String sql = "select * from t_game where MATCH_ID = ? and SHOW_INDEX is null";
+		String sql = "SELECT g.*, IFNULL(mu1.SEQ, 0) AS U1_SEQ, IFNULL(mu2.SEQ, 0) AS U2_SEQ,"
+				+ " IFNULL(u1.`NAME`,'') as U1_NAME, IFNULL(u2.`NAME`,'') as U2_NAME"
+				+ " FROM t_game g"
+				+ " LEFT JOIN (select * from t_match_user where seq is not null) AS mu1 ON g.USER1 = mu1.USER_ID and g.MATCH_ID=mu1.MATCH_ID"
+				+ " LEFT JOIN (select * from t_match_user where seq is not null) AS mu2 ON g.USER2 = mu2.USER_ID and g.MATCH_ID=mu2.MATCH_ID"
+				+ " LEFT JOIN t_user AS u1 ON g.USER1 = u1.ID"
+				+ " LEFT JOIN t_user AS u2 ON g.USER2 = u2.ID"
+				+ " INNER JOIN t_match AS m ON m.ID = g.MATCH_ID"
+				+ " WHERE g.MATCH_ID = ? and g.SHOW_INDEX is null"
+				+ " ORDER BY g.SHOW_INDEX";
 		return dao.findFirst(sql, matchId);
 	}
 

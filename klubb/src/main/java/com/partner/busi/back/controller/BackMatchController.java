@@ -171,11 +171,14 @@ public class BackMatchController extends Controller {
 	
 	@Before(Tx.class)
 	private boolean updateScoreTx(Integer winId, Integer score1, Integer score2, Integer gameId) throws SQLException{
-		boolean flag1 = Game.dao.updateScore(gameId, winId, score1, score2);
+		Game game = Game.dao.findById(gameId);
+		boolean flag1 = true;
+		if(game.getUSER1() != null && game.getUSER2() != null){
+			flag1 = Game.dao.updateScore(gameId, winId, score1, score2);
+		}
 		boolean flag2 = true;
 		boolean flag3 = true;
-		
-		Game game = Game.dao.findById(gameId);
+
 		String wNextId = game.getWNextId();
 		if(StringUtils.isNotBlank(wNextId)){ //胜者组迁移
 			Integer seq = Integer.parseInt(wNextId.split("_")[0]);
