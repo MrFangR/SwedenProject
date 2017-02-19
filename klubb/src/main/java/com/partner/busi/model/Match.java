@@ -26,7 +26,7 @@ public class Match extends BaseMatch<Match> {
 
 	public String getStartDateStr() {
 		Date startDate = this.getStartDate();
-		SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		SimpleDateFormat formatDate = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 		return formatDate.format(startDate);
 	}
 	
