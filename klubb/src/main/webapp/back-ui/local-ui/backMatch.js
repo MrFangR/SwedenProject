@@ -143,7 +143,6 @@ function canMat(ID){
 
 //开始比赛
 function startMat(matId){
-	alert('ssssssssssss');
 	$(".js_collect2").live("click",function(){
 		ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
 					   {type:2,
