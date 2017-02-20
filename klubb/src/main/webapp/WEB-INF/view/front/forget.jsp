@@ -74,6 +74,14 @@
 </body>
 </html>
 <script type="text/javascript">
+
+	document.onkeydown=function(event){
+		var keyCode = event.keyCode?event.keyCode:event.which?event.which:event.charCode;
+		if (keyCode ==13){
+			stepNext();
+		}
+	}
+
 	$(function(){
 		getRandImg();
 		$("#randCodeImage").click(getRandImg);
@@ -89,7 +97,7 @@
 	function stepNext() {
 		var email = $("#email").val();
 		if (email.trim().length == 0) {
-			$("#email_notice").html("邮箱不能为空！");
+			$("#email_notice").html("ange din e-postadress");
 			return false;
 		} else if (!jST.isEmail(email)) {
 			$("#email_notice").html("E-postadressen är ogiltlig!");//请输入正确邮箱地址!
@@ -110,7 +118,7 @@
 					//alert(json.retMsg);
 					ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
 					   {type:2,
-						info:'忘记密码',
+						info:'jag har glömt mitt lösenord',
 						text:'<div style=" font-size:18px; color:#ff0000;">'+json.retMsg+'</div>',
 						'ok':function(){window.location.href = '${ctx}/front/toLogin';},
 						tag:'zq-ring'}
@@ -125,7 +133,7 @@
 					}else{
 						ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
 						   {type:2,
-							info:'忘记密码',
+							info:'jag har glömt mitt lösenord',
 							text:'<div style=" font-size:18px; color:#ff0000;">'+json.retMsg+'</div>',
 							'ok':function(){window.location.href = '${ctx}/front/toRegist';},
 							tag:'cw-ring'}

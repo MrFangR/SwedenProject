@@ -479,7 +479,7 @@ $(function(){
 					var matchId = $("#introMatchId").val();
 					ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
 					   {type:2,
-						info:'registrera',//注册
+						info:'参加比赛',//注册
 						text:'<div style=" font-size:18px; color:#ff0000;">'+json.retMsg+'</div>',
 						'ok':function(){window.location.href = '${ctx}/front/matchdetail?matchId='+matchId;},
 						tag:'zq-ring'}
@@ -487,7 +487,7 @@ $(function(){
 				}else{
 					ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
 					   {type:2,
-						info:'报名比赛',
+						info:'参加比赛',
 						text:'<div style=" font-size:18px; color:#ff0000;"> '+json.retMsg+' </div>',
 						'ok':function(){$("#addMatch").bind("click");;},
 						tag:'cw-ring'}
@@ -497,7 +497,7 @@ $(function(){
 			error:function(){
 				ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",
 				   {type:2,
-					info:'报名比赛',
+					info:'参加比赛',
 					text:'<div style=" font-size:18px; color:#ff0000;"> 报名失败 </div>',
 					'ok':function(){$("#addMatch").bind("click");;},
 					tag:'cw-ring'}

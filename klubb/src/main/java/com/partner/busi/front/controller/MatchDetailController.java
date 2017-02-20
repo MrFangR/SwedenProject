@@ -211,6 +211,7 @@ public class MatchDetailController extends Controller {
 					matchUser.setSEQ(seq+1);
 					matchUser.setUserId(loginUser.getID());
 					matchUser.setCreateTime(new Date());
+					matchUser.setStartScore(loginUser.getLastStartScore());
 					matchUser.save();
 					ret.setRetCode(0);
 					ret.setRetMsg("报名成功");

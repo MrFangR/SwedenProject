@@ -149,6 +149,12 @@ $("#submitLogin").click(function(){
 function getRandImg(){
 	$('#randCodeImage').attr('src', "${ctx}/sys/randCodeImage?"+Math.random());
 }
+document.onkeydown=function(event){
+	var keyCode = event.keyCode?event.keyCode:event.which?event.which:event.charCode;
+	if (keyCode ==13){
+		$("#submitLogin").trigger("click");
+	}
+}
 $(function(){
 	$("#randCodeImage").click(getRandImg);
 	$("#loginname").focus(function(){
@@ -160,6 +166,7 @@ $(function(){
 	$("#imgcode").focus(function(){
 		$("#imgcode_notice").html("");
 	});
+	
 });
 </script>
 

@@ -20,9 +20,9 @@ public class PwdValidator extends Validator {
 	@Override
 	protected void validate(Controller c) {
 		// TODO Auto-generated method stub
-		validateRequiredString("oldPwd", "oldPwdMsg", "旧密码不能为空!");
-		validateRequiredString("newPwd", "newPwdMsg", "新密码不能为空!");
-		validateRequiredString("repwd", "repwdMsg", "确认密码不能为空!");
+		validateRequiredString("oldPwd", "oldPwdMsg", "Ange gamla lösenordet!");
+		validateRequiredString("newPwd", "newPwdMsg", "ange ett nytt lösenord!");
+		validateRequiredString("repwd", "repwdMsg", "bekräfta ditt nytt lösenord!");
 		String pwd = c.getPara("newPwd");
 		String repwd = c.getPara("repwd");
 		if(!pwd.equals(repwd)){

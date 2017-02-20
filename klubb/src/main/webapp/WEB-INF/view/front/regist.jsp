@@ -96,6 +96,13 @@
 </html>
 <script type="text/javascript">
 
+document.onkeydown=function(event){
+	var keyCode = event.keyCode?event.keyCode:event.which?event.which:event.charCode;
+	if (keyCode ==13){
+		$("#submitRegist").trigger("click");
+	}
+}
+
 function userRegist(){
 	$("#submitRegist").unbind("click");
 	var name = $("#name").val();

@@ -13,6 +13,14 @@
 <script src="${ctx }/front-ui/js/ui.js"></script>
 <script src="${ctx }/js/jST.v0.1.4.min.js"></script>
 <script type="text/javascript">
+
+document.onkeydown=function(event){
+	var keyCode = event.keyCode?event.keyCode:event.which?event.which:event.charCode;
+	if (keyCode ==13){
+		subPwd();
+	}
+}
+
 $(function(){
 	var retCode = '${retInfo.retCode}';
 	if(retCode != 0){
