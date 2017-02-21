@@ -300,4 +300,7 @@ button,.button{
 .ued-button-6{padding:0 15px; background:#fbfbfb; font-size: 14px;color: #535257;}
 .ued-button-6:hover{background:#f0f0f0;}
 
+.ued-button-7{height:25px; line-height:25px;padding:0 15px; background:#9fc91a; font-size: 14px;}
+.ued-button-7:hover{background:#93bd0e;}
+
 .ued-btn-small{ height: 26px; line-height: 26px;font-size: 13px;}
