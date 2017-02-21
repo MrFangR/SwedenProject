@@ -486,22 +486,28 @@ public class BackMatchController extends Controller {
 		MatchUser user = MatchUser.dao.findMatchUserByUID(matchId,uid);
 		User u = User.dao.findById(uid);
 		int maxSeq = MatchUser.dao.countMatchPersion(Integer.parseInt(matchId));
-		if(user == null){
-			user = new MatchUser();
-			user.setMatchId(Integer.parseInt(matchId));
-			user.setSEQ(maxSeq+1);
-			user.setUserId(Integer.parseInt(uid));
-			user.setCreateTime(new Date());
-			user.setStartScore(u.getLastStartScore());
-			user.save();
-		}else{
-			user.setSEQ(maxSeq+1);
-			user.setStartScore(u.getLastStartScore());
-			user.update();
-		}
+		Match match = Match.dao.findById(matchId);
 		ResultInfo retInfo = new ResultInfo();
-		retInfo.setRetCode(0);
-		retInfo.setRetMsg("添加成功");
+		if(match.getMaxPlayer()<=maxSeq){
+			retInfo.setRetCode(1);
+			retInfo.setRetMsg("已达参赛人员上限！");
+		}else{
+			if(user == null){
+				user = new MatchUser();
+				user.setMatchId(Integer.parseInt(matchId));
+				user.setSEQ(maxSeq+1);
+				user.setUserId(Integer.parseInt(uid));
+				user.setCreateTime(new Date());
+				user.setStartScore(u.getLastStartScore());
+				user.save();
+			}else{
+				user.setSEQ(maxSeq+1);
+				user.setStartScore(u.getLastStartScore());
+				user.update();
+			}
+			retInfo.setRetCode(0);
+			retInfo.setRetMsg("添加成功");
+		}
 		renderJson(retInfo);
 	}
 	
@@ -511,13 +517,19 @@ public class BackMatchController extends Controller {
 		String uid = getPara("id");
 		String matchId = getPara("matchId");
 		String matchUId = getPara("matchUId");
-		String firstIndex = getPara("firstIndex");
-		String secondIndex = getPara("secondIndex");
+		int firstIndex = getParaToInt("firstIndex");
+		int secondIndex = getParaToInt("secondIndex");
+		int flag;
+		if(firstIndex > secondIndex){
+			flag =  MatchUser.dao.batchUpdateSeqAdd(Integer.parseInt(matchId), secondIndex, firstIndex);
+		}else{
+			
+			flag = MatchUser.dao.batchUpdateSeqSub(Integer.parseInt(matchId), firstIndex, secondIndex);
+		}
 		//操作流程是批量更新大于second,小于firstIndex的数据，之后再更新自己的记录
-		int flag = MatchUser.dao.batchUpdateSeq(Integer.parseInt(matchId), Integer.parseInt(firstIndex), Integer.parseInt(secondIndex));
 		if(flag>0){
 			MatchUser user = MatchUser.dao.findById(matchUId);
-			user.setSEQ(Integer.parseInt(secondIndex)+1);
+			user.setSEQ(secondIndex+1);
 			user.update();
 			retInfo.setRetCode(0);
 		}

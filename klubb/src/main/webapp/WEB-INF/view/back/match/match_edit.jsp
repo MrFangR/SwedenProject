@@ -917,7 +917,7 @@ function doUpdateScore(){
 	}
 	
 		var dragFirstIndex, dragSecondIndex;
-		dragula([document.getElementById('single1')])
+	dragula([document.getElementById('single1')])
 	   .on("drag", function(el){
 	        dragFirstIndex = $("#single1 div.gu-transit").index();
 	   }).on("drop", function(el){

@@ -161,10 +161,16 @@ public class MatchUser extends BaseMatchUser<MatchUser> {
 	 * @return int 返回更新的记录数
 	 * 指间区间批量对SEQ 进行递减操作
 	 */
-	public int batchUpdateSeq(int matchId, int start, int end){
+	public int batchUpdateSeqSub(int matchId, int start, int end){
 		start = start+1;
 		end =end+2;
 		StringBuffer sb = new StringBuffer(" UPDATE t_match_user MU SET MU.SEQ = MU.SEQ-1 WHERE MU.MATCH_ID = "+matchId+" AND MU.SEQ IS NOT NULL AND MU.SEQ > "+start+" AND MU.SEQ < "+end);
+		return Db.update(sb.toString());
+	}
+	
+	public int batchUpdateSeqAdd(int matchId, int start, int end){
+		end =end+1;
+		StringBuffer sb = new StringBuffer(" UPDATE t_match_user MU SET MU.SEQ = MU.SEQ+1 WHERE MU.MATCH_ID = "+matchId+" AND MU.SEQ IS NOT NULL AND MU.SEQ > "+start+" AND MU.SEQ < "+end);
 		return Db.update(sb.toString());
 	}
 	
