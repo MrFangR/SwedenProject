@@ -45,6 +45,7 @@
 .container div i{ position:absolute; top:10px; z-index:100;}
 .container div .input{position:absolute; top:2px; z-index:100; right:-120px; height:34px; line-height:34px; text-indent:10px; background:#999; border:0px; color:#CCC; width:100px;}
 .container div i.mtch_del{right:-210px;}
+.container div i.mtch_str{right:-210px;}
 .container div i.mtch_edit{right:-170px;}
 .container .ex-moved {
   background-color: #e74c3c;
@@ -53,4 +54,5 @@
 /*编辑参赛人*/
 .container i{ width:24px; height:24px; display:inline-block; vertical-align:middle; float:right}
 .mtch_del{background:url(../../images/icon-3.png) 6px -402px no-repeat; cursor:pointer}
+.mtch_str{background:url(../../images/icon-3.png) 6px -428px no-repeat; cursor:pointer}
 .mtch_edit{background:url(../../images/icon-3.png) 6px 4px no-repeat;cursor:pointer}
