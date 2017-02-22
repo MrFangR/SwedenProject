@@ -86,7 +86,7 @@
 									禁用</button>
 								</c:when>
 								<c:when test="${user.STATUS eq 1}">
-									<button class=".ued-button-7" onclick="delUser(${user.ID},'${user.NAME}',${user.STATUS})">启用</button>
+									<button class="ued-button-7" onclick="delUser(${user.ID},'${user.NAME}',${user.STATUS})">启用</button>
 								</c:when>
 							</c:choose>
 						<button class="ued-button-6" onclick="viewUser(${user.ID})">详情</button>
