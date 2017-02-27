@@ -8,6 +8,7 @@ import com.jfinal.plugin.activerecord.Page;
 import com.partner.busi.model.Game;
 import com.partner.busi.model.Match;
 import com.partner.busi.model.MatchUser;
+import com.partner.busi.model.MatchUserSort;
 import com.partner.busi.model.User;
 import com.partner.busi.vo.MatchRinkListVo;
 import com.partner.common.base.ResultInfo;
@@ -49,20 +50,36 @@ public class MatchDetailController extends Controller {
 			}
 		}
 		setAttr("applyFlag",applyFlag);
-		List<Game> sortData = Game.dao.sordMatch(Integer.parseInt(matchId));
+		//排行榜获取思路：分步取数，先取得参赛所有人员，再根据人员逐个核实统计比赛所获名次，放入list,进行排序
+		List<MatchUserSort> sortUserLst = new ArrayList<MatchUserSort>();
+		Map<String,Object> params = new HashMap<String,Object>();
+		params.put("matchId", matchId);
+		List<MatchUser> matchUserLst = MatchUser.dao.findUserByMatchId(params);
+		for(int i=0;i<matchUserLst.size();i++){
+			MatchUser mUser = matchUserLst.get(i);
+			MatchUserSort sortUser = new MatchUserSort();
+			sortUser.setUserId(mUser.getUserId());
+			int score = Game.dao.countMatchScore(Integer.parseInt(matchId), mUser.getUserId().intValue());
+			sortUser.setScore(score);
+			sortUserLst.add(sortUser);
+		}
+		//List<Game> sortData = Game.dao.sordMatch(Integer.parseInt(matchId));
+		Collections.sort(sortUserLst);
+		
 		List<MatchRinkListVo> rinkingList = new ArrayList<MatchRinkListVo>();
 		MatchRinkListVo rinkVo = null;
 		int preWinNum = 0;//排行榜名次
 		int seq = 0;//
-		for(int i=0;i<sortData.size();i++){
-			Game game = sortData.get(i);
-			String[] tempFlag = Game.dao.getMatchHis(Integer.parseInt(matchId), game.getUSER_ID());
+		for(int i=0;i<sortUserLst.size();i++){
+			MatchUserSort game = sortUserLst.get(i);
+			String[] tempFlag = Game.dao.getMatchHis(Integer.parseInt(matchId), game.getUserId());
 			seq = seq+1;//排行榜名次
-			if(preWinNum == game.getWinNum()){
+			if(preWinNum == game.getScore()){
 				seq = seq - 1;
 			}
-			preWinNum = Integer.parseInt(String.valueOf(game.getWinNum()));
-			rinkVo = new MatchRinkListVo(game.getWINNER_NAME(), seq, tempFlag);
+			preWinNum = game.getScore();
+			User user = User.dao.findById(game.getUserId());
+			rinkVo = new MatchRinkListVo(user.getNAME(), seq, tempFlag);
 			rinkingList.add(rinkVo);
 		}
 		//将比赛list调整成map进行存储
@@ -84,7 +101,7 @@ public class MatchDetailController extends Controller {
 		}
 		setAttr("rinkMap",rinkMap);
 		setAttr("rinkList",rinkingList);
-		setAttr("sortData",sortData);
+		setAttr("sortData",sortUserLst);
 
 
 		/*对阵图start*/

@@ -153,6 +153,56 @@ public class Game extends BaseGame<Game> {
 		String sql = "select * from t_game where MATCH_ID = ? and (USER1 is null or USER2 is null) order by seq";
 		return dao.findFirst(sql, matchId);
 	}
+	
+	/**
+	 * 根据用户ID+比赛ID，统计比赛记录
+	 * @param matchId
+	 * @param userId
+	 * @return
+	 */
+	public List<Game> findGameListByUId(int matchId, int userId){
+		String sql = "select * from t_game g where g.MATCH_ID = "+matchId+" and ( g.USER1 = "+userId+" or g.USER2 = "+userId+" )";
+		return dao.find(sql);
+	}
+	/**
+	 * 获取比赛场次
+	 * @param matchId
+	 * @return
+	 */
+	public Game maxMatchSeq(int matchId){
+		String sql = "select max(seq)  as SEQ from t_game where match_id = "+matchId;
+		return dao.findFirst(sql);
+	}
+	/**
+	 * 统计参加比赛所获分数，赢一次记2分，输一场记1分
+	 * @param matchId
+	 * @param userId
+	 * @return
+	 */
+	public int countMatchScore(int matchId, int userId){
+		
+		Match match = Match.dao.findById(matchId);
+		Game game = Game.dao.maxMatchSeq(matchId);
+		int  maxSeq = game.getSEQ();
+		int score = 0;
+		Game tempGame = null;
+		List<Game> gameLst = this.findGameListByUId(matchId, userId);
+		for(int i=0;i<gameLst.size();i++){
+			tempGame = gameLst.get(i);
+			if(tempGame.getWinnerId() == null){
+				if(tempGame.getUSER1() == null || tempGame.getUSER2() == null){
+					score = score+2;
+				}
+			}else if(tempGame.getWinnerId() == userId){
+				score = score+2;
+			}else{
+				if(match.getTHIRD()==1 && (maxSeq-1)!=tempGame.getSEQ()){
+					score = score-1;
+				}
+			}
+		}
+		return score;
+	}
 
 	/**
 	 * 用于双败转单败，删除上一轮同场比赛的两人

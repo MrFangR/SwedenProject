@@ -21,11 +21,11 @@ public class MatchUser extends BaseMatchUser<MatchUser> {
 	public List<MatchUser> findUserByMatchId(Map<String,Object> params){
 		String sql = "select * from t_match_user where 1=1 ";
 		List<Object> paraLst = new  ArrayList<Object>();
-		if(StringUtils.isNotBlank(params.get("matchId").toString())){
+		if(StringUtils.isNotBlank((String) params.get("matchId"))){
 			sql +=" AND MATCH_ID = ?  ";
 			paraLst.add(params.get("matchId").toString());
 		}
-		if(StringUtils.isNotBlank(params.get("userId").toString())){
+		if(StringUtils.isNotBlank((String) params.get("userId"))){
 			sql +=" AND USER_ID = ? ";
 			paraLst.add(params.get("userId").toString());
 		}
