@@ -30,6 +30,7 @@ public class Constants {
     public static final String  STMP = PropKit.use("config.properties").get("smtp");
     public static final String  EMAIL_USER = PropKit.use("config.properties").get("email_user");
     public static final String  EMAIL_PASSWORD = PropKit.use("config.properties").get("email_password");
+    public static final String  EMAIL_PORT = PropKit.use("config.properties").get("email_port");
     
     public static final String UPLOAD_SERVER_URL = PropKit.use("config.properties").get("uploadServerUrl");  //上传文件url
     
