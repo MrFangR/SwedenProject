@@ -103,6 +103,7 @@ function showNotice(data){
 			var tip = eval("data." + this.id);
 			if(tip != null && tip != "" && tip != undefined && tip != "undefined"){
 				$(this).html(tip);
+				alert($(this).parent().html());
 			}else{
 				$(this).html("");
 			}
