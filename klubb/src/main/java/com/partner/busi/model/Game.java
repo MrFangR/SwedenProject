@@ -184,14 +184,18 @@ public class Game extends BaseGame<Game> {
 		
 		Match match = Match.dao.findById(matchId);
 		Game game = Game.dao.maxMatchSeq(matchId);
-		int  maxSeq = game.getSEQ();
+		int  maxSeq =0;
+		if(game.getSEQ() == null){
+			return 0;
+		}
+		maxSeq = game.getSEQ();
 		int score = 0;
 		Game tempGame = null;
 		List<Game> gameLst = this.findGameListByUId(matchId, userId);
 		for(int i=0;i<gameLst.size();i++){
 			tempGame = gameLst.get(i);
 			if(tempGame.getWinnerId() == null){
-				if(tempGame.getUSER1() == null || tempGame.getUSER2() == null){
+				if(tempGame.getSTATUS() == 2 && (tempGame.getUSER1() == null || tempGame.getUSER2() == null)){
 					score = score+2;
 				}
 			}else if(tempGame.getWinnerId() == userId){
