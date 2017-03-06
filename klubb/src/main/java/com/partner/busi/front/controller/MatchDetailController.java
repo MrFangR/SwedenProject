@@ -52,16 +52,38 @@ public class MatchDetailController extends Controller {
 		setAttr("applyFlag",applyFlag);
 		//排行榜获取思路：分步取数，先取得参赛所有人员，再根据人员逐个核实统计比赛所获名次，放入list,进行排序
 		List<MatchUserSort> sortUserLst = new ArrayList<MatchUserSort>();
-		Map<String,Object> params = new HashMap<String,Object>();
-		params.put("matchId", matchId);
-		List<MatchUser> matchUserLst = MatchUser.dao.findUserByMatchId(params);
+		List<MatchUser> matchUserLst = MatchUser.dao.findMatchUserListBySeq(matchId);
+		//判断是否为双败比较
+		if(match.getTYPE() == 2 || match.getTYPE() == 4 ){
+			Integer childMatchId = Match.dao.getChildMatchId(Integer.parseInt(matchId));
+			List<MatchUser> childMatchLst = MatchUser.dao.findMatchUserListBySeq(childMatchId.toString());
+			matchUserLst.addAll(childMatchLst);
+		}
 		for(int i=0;i<matchUserLst.size();i++){
 			MatchUser mUser = matchUserLst.get(i);
-			MatchUserSort sortUser = new MatchUserSort();
-			sortUser.setUserId(mUser.getUserId());
-			int score = Game.dao.countMatchScore(Integer.parseInt(matchId), mUser.getUserId().intValue());
-			sortUser.setScore(score);
-			sortUserLst.add(sortUser);
+			MatchUserSort sortUser = null;
+			boolean flag = false;//标识是否存在userId
+			//判断当前的sortUserLst当中是否包含了当前userId元素
+			for(int j=0;j<sortUserLst.size();j++){
+				MatchUserSort temp = sortUserLst.get(j);
+				if(temp.getUserId() == mUser.getUserId()){
+					sortUser = temp;
+					flag = true;
+					break;
+				}
+			}
+			if(!flag){
+				sortUser =	new MatchUserSort();
+				sortUser.setUserId(mUser.getUserId());
+			}
+			int score = Game.dao.countMatchScore(mUser.getMatchId(), mUser.getUserId().intValue());
+			if(flag){
+				int allScore = score + sortUser.getScore();
+				sortUser.setScore(allScore);
+			}else{
+				sortUser.setScore(score);
+				sortUserLst.add(sortUser);
+			}
 		}
 		//List<Game> sortData = Game.dao.sordMatch(Integer.parseInt(matchId));
 		Collections.sort(sortUserLst);
@@ -70,9 +92,21 @@ public class MatchDetailController extends Controller {
 		MatchRinkListVo rinkVo = null;
 		int preWinNum = 0;//排行榜名次
 		int seq = 0;//
+		List tempFlag = new ArrayList();
 		for(int i=0;i<sortUserLst.size();i++){
 			MatchUserSort game = sortUserLst.get(i);
-			String[] tempFlag = Game.dao.getMatchHis(Integer.parseInt(matchId), game.getUserId());
+			tempFlag = Game.dao.getMatchHis(Integer.parseInt(matchId), game.getUserId());
+			//判断是否为双败比赛，如是增加子比赛
+			Match tempMatch = Match.dao.findById(matchId);
+			if(tempMatch.getTYPE() == 2 || tempMatch.getTYPE() == 4 ){
+				Integer childMatchId = Match.dao.getChildMatchId(Integer.parseInt(matchId));
+				List childFlag = Game.dao.getMatchHis(childMatchId, game.getUserId());
+				tempFlag.addAll(childFlag);
+				/*int parentLen = tempFlag.length;
+				for(int j=0;j<childFlag.length;j++){
+					tempFlag[parentLen+j]=childFlag[j];
+				}*/
+			}
 			seq = seq+1;//排行榜名次
 			if(preWinNum == game.getScore()){
 				seq = seq - 1;
@@ -246,7 +280,7 @@ public class MatchDetailController extends Controller {
 		int matchId = getParaToInt("matchId");
 		List<Game> sortData = Game.dao.sordMatch(matchId);
 		for(Game game: sortData){
-			String[] tempFlag = Game.dao.getMatchHis(matchId, Integer.parseInt(String.valueOf(game.getUSER_ID())));
+			List tempFlag = Game.dao.getMatchHis(matchId, Integer.parseInt(String.valueOf(game.getUSER_ID())));
 			game.setMatchFlag(tempFlag);
 		}
 		renderJson(sortData);

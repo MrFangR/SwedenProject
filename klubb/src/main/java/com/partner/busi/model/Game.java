@@ -71,7 +71,7 @@ public class Game extends BaseGame<Game> {
 		return dao.find(sql);
 	}
 	
-	public String[] getMatchHis(int matchId, int userId){
+	public List getMatchHis(int matchId, int userId){
 		StringBuffer sql = new StringBuffer("select flag, seq from ( select 'win' as flag, seq, t1.WINNER_ID as userId from t_game t1 where t1.MATCH_ID = ");
 		sql.append(matchId).append(" and t1.WINNER_ID = ").append(userId);
 		sql.append(" union all select 'loser' as flag, seq, if(t2.USER1 = t2.WINNER_ID, t2.USER2, t2.USER1 ) as userid from t_game t2 where t2.MATCH_ID = ");
@@ -80,12 +80,13 @@ public class Game extends BaseGame<Game> {
 		List<Game> userList = new ArrayList<Game>();
 		//userList = Db.query(sql.toString());
 		userList = dao.find(sql.toString());
-		String[] strArray = new String[userList.size()];
+		return userList;
+		/*String[] strArray = new String[userList.size()];
 		for(int i=0;i<userList.size();i++){
 			Game game = userList.get(i);
 			strArray[i]=game.getFlag();
 		}
-		return strArray;
+		return strArray;*/
 	}
 
 	public List<Game> getAgainstList(int martchId, Integer lastSeq, boolean isWin){
@@ -288,11 +289,11 @@ public class Game extends BaseGame<Game> {
 		return get("flag");
 	}
 	
-	public String[] getMatchFlag(){
+	public List getMatchFlag(){
 		return get("matchFlag");
 	}
 	
-	public void setMatchFlag(String[] matchFlag){
+	public void setMatchFlag(List matchFlag){
 		set("matchFlag",matchFlag);
 	}
 	

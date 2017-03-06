@@ -337,11 +337,11 @@
                     		<c:if test="${status.first }"><td rowspan="${fn:length(rink.value)}" >${rink.key }</td></c:if>
                     		  <td>${rinkV.userName }</td>
 		                      <td>
-		                      	<c:forEach var="flag" items="${rinkV.matchFlag }">
-		                      		<c:if test="${flag=='win' }">
+		                      	<c:forEach var="matchFlag" items="${rinkV.matchFlag }">
+		                      		<c:if test="${matchFlag.flag=='win' }">
 		                      			<i class="win" title="胜利">胜利</i>
 		                      		</c:if>
-		                      		<c:if test="${flag=='loser' }">
+		                      		<c:if test="${matchFlag.flag=='loser' }">
 		                      			<i class="fail" title="失败">失败</i>
 		                      		</c:if>
 		                      	</c:forEach>
@@ -349,24 +349,6 @@
                     		</c:forEach>
                     	</tr>
                     </c:forEach>
-                    <!-- 
-                    <c:forEach var="rink" items="${rinkList }">
-	                    <tr class="table-tr-even">
-	                      <td >${rink.seq }</td>
-	                      <td>${rink.userName }</td>
-	                      <td>
-	                      	<c:forEach var="flag" items="${rink.matchFlag }">
-	                      		<c:if test="${flag=='win' }">
-	                      			<i class="win" title="胜利">胜利</i>
-	                      		</c:if>
-	                      		<c:if test="${flag=='loser' }">
-	                      			<i class="fail" title="失败">失败</i>
-	                      		</c:if>
-	                      	</c:forEach>
-	                      </td>
-	                    </tr>
-                    </c:forEach>
-                     -->
            		</table>
            	</div>
            	<!--排行榜 E-->

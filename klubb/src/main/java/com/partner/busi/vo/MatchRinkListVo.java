@@ -1,14 +1,17 @@
 package com.partner.busi.vo;
 
+import java.util.List;
+
 public class MatchRinkListVo {
 
 	private String userName;//参赛者名称
 	
 	private int seq;//序列
 	
-	private String[] matchFlag;//比赛历史记录 
+	//private String[] matchFlag;//比赛历史记录 
+	private List matchFlag;
 
-	public MatchRinkListVo(String userName, int seq, String[] matchFlag) {
+	public MatchRinkListVo(String userName, int seq, List matchFlag) {
 		super();
 		this.userName = userName;
 		this.seq = seq;
@@ -31,11 +34,11 @@ public class MatchRinkListVo {
 		this.seq = seq;
 	}
 
-	public String[] getMatchFlag() {
+	public List getMatchFlag() {
 		return matchFlag;
 	}
 
-	public void setMatchFlag(String[] matchFlag) {
+	public void setMatchFlag(List matchFlag) {
 		this.matchFlag = matchFlag;
 	}
 	
