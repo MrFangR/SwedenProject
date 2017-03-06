@@ -1,10 +1,5 @@
 package com.partner.busi.back.controller;
 
-import java.util.Date;
-import java.util.List;
-
-import org.apache.commons.lang.StringUtils;
-
 import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
 import com.jfinal.plugin.activerecord.Page;
@@ -14,6 +9,9 @@ import com.partner.busi.model.Match;
 import com.partner.busi.model.User;
 import com.partner.common.constant.Constants;
 import com.partner.common.util.EmailUtil;
+import org.apache.commons.lang.StringUtils;
+
+import java.util.List;
 
 public class BackMatchListController extends Controller {
 	
@@ -137,7 +135,10 @@ public class BackMatchListController extends Controller {
 		for(Game game : round1GameList){
 			if((game.getUSER1() != null && game.getUSER2() == null) || (game.getUSER1() == null && game.getUSER2() != null)){ //有轮空人员
 				String W_NEXT_ID = game.getWNextId();
-				
+
+				game.setSTATUS(2); //比赛结束
+				game.update();
+
 				//获得唯一参赛者
 				Integer userId = null;
 				if(game.getUSER1() != null){

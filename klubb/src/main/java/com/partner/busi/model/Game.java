@@ -47,7 +47,7 @@ public class Game extends BaseGame<Game> {
 	 * @return
 	 */
 	public boolean updateScore(int gameId, Integer winId, Integer score1, Integer score2){
-		int rs = Db.update("update t_game set WINNER_ID=?, SCORE1=?, SCORE2=? where ID = ?", winId, score1, score2, gameId);
+		int rs = Db.update("update t_game set WINNER_ID=?, SCORE1=?, SCORE2=?, STATUS=2 where ID = ?", winId, score1, score2, gameId);
 		return rs > 0;
 	}
 	
