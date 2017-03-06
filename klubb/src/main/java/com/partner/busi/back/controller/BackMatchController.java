@@ -175,6 +175,9 @@ public class BackMatchController extends Controller {
 		boolean flag1 = true;
 		if(game.getUSER1() != null && game.getUSER2() != null){
 			flag1 = Game.dao.updateScore(gameId, winId, score1, score2);
+		}else{
+			game.setSTATUS(2);
+			game.update();
 		}
 		boolean flag2 = true;
 		boolean flag3 = true;
