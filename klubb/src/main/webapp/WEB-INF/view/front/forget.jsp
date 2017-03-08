@@ -88,6 +88,7 @@
 		$("#nextStep").click(stepNext);
 		$("#email").focus(function(){
 			$("#email_notice").html("");
+			$("#email").removeClass("btn-error");
 		});	
 	});
 	function getRandImg() {
@@ -98,9 +99,11 @@
 		var email = $("#email").val();
 		if (email.trim().length == 0) {
 			$("#email_notice").html("ange din e-postadress");
+			$("#email").addClass("btn-error");
 			return false;
 		} else if (!jST.isEmail(email)) {
 			$("#email_notice").html("E-postadressen är ogiltlig!");//请输入正确邮箱地址!
+			$("#email").addClass("btn-error");
 			return false;
 		}
 		$.ajax({
@@ -129,6 +132,7 @@
 					var tip = json.retMsg.split(":");
 					if(tip.length>1){
 						$("#"+tip[0]+"_notice").html(tip[1]);
+						$("#"+tip[0]).addClass("btn-error");
 						getRandImg();
 					}else{
 						ui_com_hallpop(".js_collect2","#ands_misoAlert_close","#ands-miso-popAlert",

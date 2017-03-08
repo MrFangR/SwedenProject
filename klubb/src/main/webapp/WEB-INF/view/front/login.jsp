@@ -97,15 +97,18 @@ $("#submitLogin").click(function(){
 	var password = $("#loginpwd").val();
 	if (login_no.trim().length == 0) {
 		$("#loginname_notice").html("ange din e-postadress!");//请输入邮箱 
+		$("#loginname").addClass("btn-error");
 		return false;
 	}
 	if (password.trim().length == 0) {
 		$("#loginpwd_notice").html("ange ditt lösenord!");//请输入密码	
+		$("#loginpwd").addClass("btn-error");
 		return false;
 	}
 	var randval = $("#imgcode").val();
 	if (randval.trim().length == 0) {
 		$("#imgcode_notice").html('ange verifieringskoden!');//请输入验证码
+		$("#imgcode").addClass("btn-error");
 		return false;
 	}
 	$("#submitLogin").attr('disabled', true);
@@ -132,8 +135,10 @@ $("#submitLogin").click(function(){
 				var tip = json.retMsg.split(":");
 				if(tip.length>1){
 					$("#"+tip[0]+"_notice").html(tip[1]);
+					$("#"+tip[0]).addClass("btn-error");
 				}else{
 					$("#loginpwd_notice").html("用户登录密码错误，请重新输入！");
+					$("#loginpwd").addClass("btn-error");
 				}
 				$("#submitLogin").attr('disabled', false);
 				getRandImg();
@@ -159,12 +164,15 @@ $(function(){
 	$("#randCodeImage").click(getRandImg);
 	$("#loginname").focus(function(){
 		$("#loginname_notice").html("");
+		$("#loginname").removeClass("btn-error");
 	});
 	$("#loginpwd").focus(function(){
 		$("#loginpwd_notice").html("");
+		$("#loginpwd").removeClass("btn-error");
 	});
 	$("#imgcode").focus(function(){
 		$("#imgcode_notice").html("");
+		$("#imgcode").removeClass("btn-error");
 	});
 	
 });

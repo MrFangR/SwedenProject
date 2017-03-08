@@ -157,24 +157,31 @@ $(function(){
 	$("#randCodeImage").click(getRandImg);
 	$("#name").focus(function(){
 		$("#name_notice").html("");
+		$("#name").removeClass("btn-error");
 	});
 	$("#nickName").focus(function(){
 		$("#nickName_notice").html("");
+		$("#nickName").removeClass("btn-error");
 	});
 	$("#idNum").focus(function(){
 		$("#idNum_notice").html("");
+		$("#idNum").removeClass("btn-error");
 	});
 	$("#imgcode").focus(function(){
 		$("#imgcode_notice").html("");
+		$("#imgcode").removeClass("btn-error");
 	});
 	$("#oldPwd").focus(function(){
 		$("#oldPwd").parent().next(".notice").html("");
+		$("#oldPwd").removeClass("btn-error");
 	});
 	$("#newPwd").focus(function(){
 		$("#newPwd").parent().next(".notice").html("");
+		$("#newPwd").removeClass("btn-error");
 	});
 	$("#repwd").focus(function(){
 		$("#repwd").parent().next(".notice").html("");
+		$("#repwd").removeClass("btn-error");
 	});
 });
 function submitInfo(){
@@ -182,27 +189,32 @@ function submitInfo(){
 	var name = $("#name").val();
 	if(name.trim().length==0){
 		$("#name_notice").html("Ange ditt namn！");
+		$("#name").addClass("btn-error");
 		$("#submitInfo").bind("click",submitInfo);
 		return false;
 	}
 	var niceName = $("#nickName").val();
 	if(niceName.trim().length==0){
 		$("#nickName_notice").html("Ange ditt smeknamn！");
+		$("#nickName").addClass("btn-error");
 		$("#submitInfo").bind("click",submitInfo);
 		return false;
 	}
 	var idNum = $("#idNum").val();
 	if(idNum.trim().length==0){
 		$("#idNum_notice").html("Ange ditt personnummer！");
+		$("#idNum").addClass("btn-error");
 		$("#submitInfo").bind("click",submitInfo);
 		return false;
 	}
 	/* var email = $("#email").val();
 	if(email.trim().length==0){
 		$("#email_notice").html("ange din e-postadress！");
+		$("#email").addClass("btn-error");
 		return false;
 	}else if(!jST.isEmail(email)){
 		$("#email_notice").html("E-postadressen är ogiltlig！");
+		$("#email").addClass("btn-error");
 		return false;
 	} */
 	$.ajax({
@@ -233,6 +245,7 @@ function submitInfo(){
 			} else {
 				var tip = json.retMsg.split(":");
 				$("#"+tip[0]+"_notice").html(tip[1]);
+				$("#"+tip[0]).addClass("btn-error");
 				$("#submitInfo").bind("click",submitInfo);
 				getRandImg();
 			}
@@ -262,22 +275,26 @@ function submitPwd(){
 	var oldpwd = $("#oldPwd").val();
 	if(oldpwd.trim().length == 0){
 		$("#oldPwd").parent().next(".notice").html("Ange gamla lösenordet！");
+		$("#oldPwd").addClass("btn-error");
 		$("#submitPwd").bind("click",submitPwd);
 		return false;
 	}
 	var newpwd = $("#newPwd").val();
 	if(newpwd.trim().length==0){
 		$("#newPwd").parent().next(".notice").html("ange ett nytt lösenord！");
+		$("#newPwd").addClass("btn-error");
 		$("#submitPwd").bind("click",submitPwd);
 		return false;
 	}
 	var repwd = $("#repwd").val();
 	if(repwd.trim().length==0){
 		$("#repwd").parent().next(".notice").html("bekräfta ditt nytt lösenord！");
+		$("#repwd").addClass("btn-error");
 		$("#submitPwd").bind("click",submitPwd);
 		return false;
 	}else if(newpwd!=repwd){
-		$("#repwd").parent().next(".notice").html("Lösenorden stämmer inte");//两次密码不一致,请重新输入!	
+		$("#repwd").parent().next(".notice").html("Lösenorden stämmer inte");//两次密码不一致,请重新输入!
+		$("#repwd").addClass("btn-error");	
 		$("#submitPwd").bind("click",submitPwd);
 		return false;
 	}
@@ -305,6 +322,7 @@ function submitPwd(){
 			} else {
 				var tip = json.retMsg.split(":");
 				$("#"+tip[0]).parent().next(".notice").html(tip[1]);
+				$("#"+tip[0]).addClass("btn-error");
 				$("#submitPwd").bind("click",submitPwd);
 				return;
 			}

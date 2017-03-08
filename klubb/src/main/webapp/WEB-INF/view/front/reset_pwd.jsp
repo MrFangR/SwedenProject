@@ -38,9 +38,11 @@ $(function(){
 	
 	$("#new_pwd").focus(function(){
 		$("#new_pwd_notice").html("");
+		$("#new_pwd").removeClass("btn-error");
 	});
 	$("#re_new_pwd").focus(function(){
 		$("#renew_notice").html("");
+		$("#re_new_pwd").removeClass("btn-error");
 	});
 });
 
@@ -48,16 +50,19 @@ function subPwd() {
 	var pwd = $("#new_pwd").val();
 	if(pwd.trim().length==0){
 		$("#new_pwd_notice").html("密码不能为空！");
+		$("#new_pwd").addClass("btn-error");
 		$("#subPwd").bind("click",subPwd);
 		return false;
 	}
 	var repwd = $("#re_new_pwd").val();
 	if(repwd.trim().length==0){
 		$("#renew_notice").html("确认密码不能为空！");
+		$("#re_new_pwd").addClass("btn-error");
 		$("#subPwd").bind("click",subPwd);
 		return false;
 	}else if(pwd!=repwd){
 		$("#repwd_notice").html("Lösenorden stämmer inte!");//两次密码不一致,请重新输入!	
+		$("#re_new_pwd").addClass("btn-error");
 		$("#subPwd").bind("click",subPwd);
 		return false;
 	}

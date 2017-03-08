@@ -109,43 +109,51 @@ function userRegist(){
 	if(name.trim().length==0){
 		$("#name_notice").html("Ange ditt namn	！");
 		$("#submitRegist").bind("click",userRegist);
+		$("#name").addClass("btn-error");
 		return false;
 	}
 	var niceName = $("#nickName").val();
 	if(niceName.trim().length==0){
 		$("#nickName_notice").html("Ange ditt smeknamn！");
+		$("#nickName").addClass("btn-error");
 		$("#submitRegist").bind("click",userRegist);
 		return false;
 	}
 	var idNum = $("#idNum").val();
 	if(idNum.trim().length==0){
 		$("#idNum_notice").html("Ange ditt personnummer！");
+		$("#idNum").addClass("btn-error");
 		$("#submitRegist").bind("click",userRegist);
 		return false;
 	}
 	var email = $("#email").val();
 	if(email.trim().length==0){
 		$("#email_notice").html("ange din e-postadress！");
+		$("#email").addClass("btn-error");
 		$("#submitRegist").bind("click",userRegist);
 		return false;
 	}else if(!jST.isEmail(email)){
 		$("#email_notice").html("E-postadressen är ogiltlig!");//请输入正确邮箱地址!	
+		$("#email").addClass("btn-error");
 		$("#submitRegist").bind("click",userRegist);
 		return false;
 	}
 	var pwd = $("#pwd").val();
 	if(pwd.trim().length==0){
 		$("#pwd_notice").html("ange ditt lösenord！");
+		$("#pwd").addClass("btn-error");
 		$("#submitRegist").bind("click",userRegist);
 		return false;
 	}
 	var repwd = $("#repwd").val();
 	if(repwd.trim().length==0){
 		$("#repwd_notice").html("Bekräfta ditt lösenord！");
+		$("#repwd").addClass("btn-error");
 		$("#submitRegist").bind("click",userRegist);
 		return false;
 	}else if(pwd!=repwd){
 		$("#repwd_notice").html("Lösenorden stämmer inte!");//两次密码不一致,请重新输入!	
+		$("#repwd").addClass("btn-error");
 		$("#submitRegist").bind("click",userRegist);
 		return false;
 	}
@@ -177,6 +185,7 @@ function userRegist(){
 			} else {
 				var tip = json.retMsg.split(":");
 				$("#"+tip[0]+"_notice").html(tip[1]);
+				$("#"+tip[0]).addClass("btn-error");
 				$("#submitRegist").bind("click",userRegist);
 			}
 		},
@@ -196,21 +205,27 @@ $(function(){
 	$("#submitRegist").bind("click",userRegist);
 	$("#name").focus(function(){
 		$("#name_notice").html("");
+		$("#name").removeClass("btn-error");
 	});
 	$("#nickName").focus(function(){
 		$("#nickName_notice").html("");
+		$("#nickName").removeClass("btn-error");
 	});
 	$("#idNum").focus(function(){
 		$("#idNum_notice").html("");
+		$("#idNum").removeClass("btn-error");
 	});
 	$("#email").focus(function(){
 		$("#email_notice").html("");
+		$("#email").removeClass("btn-error");
 	});
 	$("#pwd").focus(function(){
 		$("#pwd_notice").html("");
+		$("#pwd").removeClass("btn-error");
 	});
 	$("#repwd").focus(function(){
 		$("#repwd_notice").html("");
+		$("#repwd").removeClass("btn-error");
 	});
 });
 </script>
