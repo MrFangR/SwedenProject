@@ -160,8 +160,10 @@ function showNotice(data){
 		var tip = eval("data." + this.id);
 		if(tip != null && tip != "" && tip != undefined && tip != "undefined"){
 			$(this).html(tip);
+            $(this).siblings("dd.fl").children(":first").addClass("btn-error");
 		}else{
 			$(this).html("");
+            $(this).siblings("dd.fl").children(":first").removeClass("btn-error");
 		}
 	});
 }
