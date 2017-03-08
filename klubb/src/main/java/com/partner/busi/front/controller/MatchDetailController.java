@@ -92,6 +92,8 @@ public class MatchDetailController extends Controller {
 		MatchRinkListVo rinkVo = null;
 		int preWinNum = 0;//排行榜名次
 		int seq = 0;//
+		boolean stepTwo = false;//用来控制并列完之后
+		int stepNum = 0;
 		List tempFlag = new ArrayList();
 		for(int i=0;i<sortUserLst.size();i++){
 			MatchUserSort game = sortUserLst.get(i);
@@ -110,11 +112,20 @@ public class MatchDetailController extends Controller {
 			seq = seq+1;//排行榜名次
 			if(preWinNum == game.getScore()){
 				seq = seq - 1;
+				stepTwo = true;
+				stepNum = stepNum + 1;
+			}
+			
+			if(!stepTwo){
+				seq = seq + stepNum;
+				stepNum = 0;
+				stepTwo = false;
 			}
 			preWinNum = game.getScore();
 			User user = User.dao.findById(game.getUserId());
 			rinkVo = new MatchRinkListVo(user.getNAME(), seq, tempFlag);
 			rinkingList.add(rinkVo);
+			stepTwo = false;
 		}
 		//将比赛list调整成map进行存储
 		Map<String,List<MatchRinkListVo>> rinkMap = new LinkedHashMap<String,List<MatchRinkListVo>>();
