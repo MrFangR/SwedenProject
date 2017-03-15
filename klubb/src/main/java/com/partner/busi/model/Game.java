@@ -174,8 +174,24 @@ public class Game extends BaseGame<Game> {
 		String sql = "select max(seq)  as SEQ from t_game where match_id = "+matchId;
 		return dao.findFirst(sql);
 	}
+	//获取胜者组回合数
+	public int WinMatchNum(int matchId,int stopSeq){
+		String sql = "select max(round_num) from t_game where MATCH_ID = "+matchId+" and L_NEXT_ID <> '' and seq < "+stopSeq;
+		return Db.queryInt(sql).intValue();
+	}
+	//获取败者组回会数
+	public int LoseMatchNum(int matchId,int stopSeq){
+		String sql = "select max(round_num) from t_game where MATCH_ID = "+matchId+" and L_NEXT_ID = '' and seq < "+stopSeq;
+		return Db.queryInt(sql).intValue();
+	}
+	//根据matchId + userId 获取game 信息
+	public List<Game> getInfoByMidAndUid(int macthId, int userId){
+		String sql = "select SEQ, START_TIME, USER1, USER2, WINNER_ID, W_NEXT_ID, L_NEXT_ID, TYPE, ROUND_NUM, MATCH_ID, STATUS, WINNER_ID  from t_game where MATCH_ID = "+ macthId +" AND (USER1 = "+ userId +" OR USER2 = "+ userId+")";
+		return dao.find(sql);
+	}
 	/**
-	 * 统计参加比赛所获分数，赢一次记2分，输一场记1分
+	 * 统计参加比赛所获分数，单败比赛赢一次记2分，输一场记1分
+	 * 双败比赛第一
 	 * @param matchId
 	 * @param userId
 	 * @return
@@ -183,27 +199,73 @@ public class Game extends BaseGame<Game> {
 	public int countMatchScore(int matchId, int userId){
 		
 		Match match = Match.dao.findById(matchId);
-		Game game = Game.dao.maxMatchSeq(matchId);
-		int  maxSeq =0;
-		if(game.getSEQ() == null){
-			return 0;
-		}
-		maxSeq = game.getSEQ();
+		int matchFlag = 0;//0 单败   1 双败第一回合   2 双败第二回话
 		int score = 0;
-		Game tempGame = null;
-		List<Game> gameLst = this.findGameListByUId(matchId, userId);
-		for(int i=0;i<gameLst.size();i++){
-			tempGame = gameLst.get(i);
-			if(tempGame.getWinnerId() == null){
-				if(tempGame.getSTATUS() == 2 && (tempGame.getUSER1() == null || tempGame.getUSER2() == null)){
+		//判断是否为双败比赛，以及双败比赛的第几回合
+		if(match.getTYPE() == 2 || match.getTYPE() == 4){//表示为双败比赛第一回合
+			matchFlag = 1;
+		}else if (match.getPId() != null){//表示双败比赛的第二回合
+			matchFlag = 2;
+		}
+		if(matchFlag == 1){//双峰比赛第一回合处理
+			int stopSeq = Match.dao.getStopSeq(matchId); 
+			
+			int x = WinMatchNum(matchId, stopSeq);//胜者组回合数据
+			int y = LoseMatchNum(matchId, stopSeq);//败者组回合数据
+			boolean winFlag = false;//胜者组、败者组回合
+			List<Game> games = getInfoByMidAndUid(matchId, userId);
+			Game game1 = null;
+			for(int i=0;i<games.size();i++){
+				game1 = games.get(i);
+				int roundNum = game1.getRoundNum();
+				//判断用户是胜者组还是败者组
+				if(game1.getLNextId().trim().length() != 0){
+					winFlag = true;//为胜者组
+				}
+				if(winFlag){//再判断是胜还是败
+					if(game1.getWinnerId()!=null && game1.getWinnerId() == userId){
+						score = score + y+roundNum;
+						/*if(roundNum == x || roundNum == y ){
+							score  = score + 100;
+						}*/
+					}else{
+						score = score - (x +1 -roundNum);
+					}
+				}else{//为败者组
+					if(game1.getWinnerId() != null && game1.getWinnerId() == userId){
+						score = score +roundNum;
+					}else{
+						score = score -( x +y +1 - roundNum);
+					}
+				}
+			}
+			
+			
+		}else{
+			Game game = Game.dao.maxMatchSeq(matchId);
+			int  maxSeq =0;
+			if(game.getSEQ() == null){
+				return 0;
+			}
+			maxSeq = game.getSEQ();
+			Game tempGame = null;
+			List<Game> gameLst = this.findGameListByUId(matchId, userId);
+			for(int i=0;i<gameLst.size();i++){
+				tempGame = gameLst.get(i);
+				if(tempGame.getWinnerId() == null){
+					if(tempGame.getSTATUS() == 2 && (tempGame.getUSER1() == null || tempGame.getUSER2() == null)){
+						score = score+2;
+					}
+				}else if(tempGame.getWinnerId() == userId){
 					score = score+2;
+				}else{
+					if(match.getTHIRD()==1 && (maxSeq-1)!=tempGame.getSEQ()){
+						score = score-1;
+					}
 				}
-			}else if(tempGame.getWinnerId() == userId){
-				score = score+2;
-			}else{
-				if(match.getTHIRD()==1 && (maxSeq-1)!=tempGame.getSEQ()){
-					score = score-1;
-				}
+			}
+			if(matchFlag == 2){
+				score = score + 100;
 			}
 		}
 		return score;
