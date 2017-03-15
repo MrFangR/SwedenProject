@@ -185,8 +185,8 @@ public class Game extends BaseGame<Game> {
 		return Db.queryInt(sql).intValue();
 	}
 	//根据matchId + userId 获取game 信息
-	public List<Game> getInfoByMidAndUid(int macthId, int userId){
-		String sql = "select SEQ, START_TIME, USER1, USER2, WINNER_ID, W_NEXT_ID, L_NEXT_ID, TYPE, ROUND_NUM, MATCH_ID, STATUS, WINNER_ID  from t_game where MATCH_ID = "+ macthId +" AND (USER1 = "+ userId +" OR USER2 = "+ userId+")";
+	public List<Game> getInfoByMidAndUid(int macthId, int userId, int stopSeq){
+		String sql = "select SEQ, START_TIME, USER1, USER2, WINNER_ID, W_NEXT_ID, L_NEXT_ID, TYPE, ROUND_NUM, MATCH_ID, STATUS, WINNER_ID  from t_game where MATCH_ID = "+ macthId +" AND seq < "+stopSeq+" AND (USER1 = "+ userId +" OR USER2 = "+ userId+")";
 		return dao.find(sql);
 	}
 	/**
@@ -213,7 +213,7 @@ public class Game extends BaseGame<Game> {
 			int x = WinMatchNum(matchId, stopSeq);//胜者组回合数据
 			int y = LoseMatchNum(matchId, stopSeq);//败者组回合数据
 			boolean winFlag = false;//胜者组、败者组回合
-			List<Game> games = getInfoByMidAndUid(matchId, userId);
+			List<Game> games = getInfoByMidAndUid(matchId, userId, stopSeq);
 			Game game1 = null;
 			for(int i=0;i<games.size();i++){
 				game1 = games.get(i);
@@ -225,9 +225,9 @@ public class Game extends BaseGame<Game> {
 				if(winFlag){//再判断是胜还是败
 					if(game1.getWinnerId()!=null && game1.getWinnerId() == userId){
 						score = score + y+roundNum;
-						/*if(roundNum == x || roundNum == y ){
+						if(roundNum == x || roundNum == y ){
 							score  = score + 100;
-						}*/
+						}
 					}else{
 						score = score - (x +1 -roundNum);
 					}
