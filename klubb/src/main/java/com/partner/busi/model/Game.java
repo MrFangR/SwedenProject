@@ -226,7 +226,7 @@ public class Game extends BaseGame<Game> {
 					if(game1.getWinnerId()!=null && game1.getWinnerId() == userId){
 						score = score + y+roundNum;
 						if(roundNum == x || roundNum == y ){
-							score  = score + 100;
+							score  = 100;
 						}
 					}else{
 						score = score - (x +1 -roundNum);
@@ -234,10 +234,14 @@ public class Game extends BaseGame<Game> {
 				}else{//为败者组
 					if(game1.getWinnerId() != null && game1.getWinnerId() == userId){
 						score = score +roundNum;
+						if(roundNum == x || roundNum == y ){
+							score  = 100;
+						}
 					}else{
 						score = score -( x +y +1 - roundNum);
 					}
 				}
+				winFlag = false;
 			}
 			
 			
@@ -264,10 +268,9 @@ public class Game extends BaseGame<Game> {
 					}
 				}
 			}
-			if(matchFlag == 2){
-				score = score + 100;
-			}
 		}
+		User user = User.dao.findById(userId);
+		System.out.println(" Uid: "+ userId+"   Name : "+user.getNAME()+" >>>>>>>>>>>>  Score : "+score);
 		return score;
 	}
 
