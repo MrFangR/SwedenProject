@@ -162,7 +162,7 @@ public class Game extends BaseGame<Game> {
 	 * @return
 	 */
 	public List<Game> findGameListByUId(int matchId, int userId){
-		String sql = "select * from t_game g where g.MATCH_ID = "+matchId+" and ( g.USER1 = "+userId+" or g.USER2 = "+userId+" )";
+		String sql = "select * from t_game g where g.MATCH_ID = "+matchId+" and ( g.USER1 = "+userId+" or g.USER2 = "+userId+" ) ORDER BY SEQ";
 		return dao.find(sql);
 	}
 	/**
@@ -186,7 +186,7 @@ public class Game extends BaseGame<Game> {
 	}
 	//根据matchId + userId 获取game 信息
 	public List<Game> getInfoByMidAndUid(int macthId, int userId, int stopSeq){
-		String sql = "select SEQ, START_TIME, USER1, USER2, WINNER_ID, W_NEXT_ID, L_NEXT_ID, TYPE, ROUND_NUM, MATCH_ID, STATUS, WINNER_ID  from t_game where MATCH_ID = "+ macthId +" AND seq < "+stopSeq+" AND (USER1 = "+ userId +" OR USER2 = "+ userId+")";
+		String sql = "select SEQ, START_TIME, USER1, USER2, WINNER_ID, W_NEXT_ID, L_NEXT_ID, TYPE, ROUND_NUM, MATCH_ID, STATUS, WINNER_ID  from t_game where MATCH_ID = "+ macthId +" AND seq < "+stopSeq+" AND (USER1 = "+ userId +" OR USER2 = "+ userId+") ORDER BY ROUND_NUM,  L_NEXT_ID DESC";
 		return dao.find(sql);
 	}
 	/**
@@ -263,9 +263,17 @@ public class Game extends BaseGame<Game> {
 				}else if(tempGame.getWinnerId() == userId){
 					score = score+2;
 				}else{
-					if(match.getTHIRD()==1 && (maxSeq-1)!=tempGame.getSEQ()){
-						score = score-1;
+					if(matchFlag == 2){
+						if ((maxSeq-1)!=tempGame.getSEQ()){
+							score = score-1;
+						}
+					}else {
+						if(match.getTHIRD()!=1 || (maxSeq-1)!=tempGame.getSEQ()){
+							score = score-1;
+						}
 					}
+					
+					
 				}
 			}
 		}
