@@ -223,7 +223,14 @@ public class Game extends BaseGame<Game> {
 					winFlag = true;//为胜者组
 				}
 				if(winFlag){//再判断是胜还是败
-					if(game1.getWinnerId()!=null && game1.getWinnerId() == userId){
+					if(game1.getWinnerId() == null){
+						if(game1.getSTATUS() == 2 && (game1.getUSER1() == null || game1.getUSER2() == null)){
+							score = score + y+roundNum;
+							if(roundNum == x || roundNum == y ){
+								score  = 100;
+							}
+						}
+					}else if(game1.getWinnerId()!=null && game1.getWinnerId() == userId){
 						score = score + y+roundNum;
 						if(roundNum == x || roundNum == y ){
 							score  = 100;
@@ -264,7 +271,9 @@ public class Game extends BaseGame<Game> {
 					score = score+2;
 				}else{
 					if(matchFlag == 2){
-						if ((maxSeq-1)!=tempGame.getSEQ()){
+						//判断父比赛是否有第三名争取赛
+						Match parentMatch = Match.dao.findById(match.getPId());
+						if (parentMatch.getTHIRD()!=1 || (maxSeq-1)!=tempGame.getSEQ()){
 							score = score-1;
 						}
 					}else {
@@ -277,8 +286,8 @@ public class Game extends BaseGame<Game> {
 				}
 			}
 		}
-		User user = User.dao.findById(userId);
-		System.out.println(" Uid: "+ userId+"   Name : "+user.getNAME()+" >>>>>>>>>>>>  Score : "+score);
+		/*User user = User.dao.findById(userId);
+		System.out.println(" Uid: "+ userId+"   Name : "+user.getNAME()+" >>>>>>>>>>>>  Score : "+score);*/
 		return score;
 	}
 
