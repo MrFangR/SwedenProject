@@ -239,7 +239,14 @@ public class Game extends BaseGame<Game> {
 						score = score - (x +1 -roundNum);
 					}
 				}else{//为败者组
-					if(game1.getWinnerId() != null && game1.getWinnerId() == userId){
+					if(game1.getWinnerId() == null){
+						if(game1.getSTATUS() == 2 && (game1.getUSER1() == null || game1.getUSER2() == null)){
+							score = score +roundNum;
+							if(roundNum == x || roundNum == y ){
+								score  = 100;
+							}
+						}
+					}else if(game1.getWinnerId() != null && game1.getWinnerId() == userId){
 						score = score +roundNum;
 						if(roundNum == x || roundNum == y ){
 							score  = 100;
